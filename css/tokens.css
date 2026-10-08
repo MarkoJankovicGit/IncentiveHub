@@ -1,0 +1,71 @@
+/* Incentive Hub — tema banke × mod (izvor: Research/brand-tokens.json)
+   Komponente koriste ISKLJUČIVO ove varijable. */
+
+:root,
+[data-tenant="unicredit-rs"][data-mode="light"] {
+  --brand:#E2001A;
+  --accent:#007A91; --accent-strong:#006375; --accent-soft:#E5F2F4; --accent-line:#B3D7DE; --on-accent:#FFFFFF;
+  --danger:#CF3524; --danger-strong:#A82A1C; --danger-soft:#FBECEA; --danger-line:#F2C4BE;
+  --success:#2E7D4F; --success-strong:#276B43; --success-soft:#E8F3EC;
+  --warning:#8A5A00; --warning-soft:#FDF3DC; --warning-line:#F1D9A0;
+  --info:#0D5870; --info-soft:#E6F5FC;
+  --ink:#262626; --ink-2:#404040; --mut:#666666; --faint:#BDBDBD;
+  --line:#E5E5E5; --line-2:#F2F2F2;
+  --bg:#F5F5F5; --card:#FFFFFF; --hover:#FAFAFA; --subtle:#F8F8F8;
+  --control-off:#D4D4D4; --toast-bg:#262626; --overlay:rgba(20,20,20,.45);
+  --shadow-modal:0 18px 50px rgba(0,0,0,.22); --shadow-pop:0 8px 28px rgba(0,0,0,.14);
+  --c1:#007A91; --c2:#65C7EE; --c3:#0D5870; --c4:#FAD47A; --c5:#91D1DD; --c6:#8C8C8C;
+  --ghost:#A6A6A6;
+  color-scheme: light;
+}
+
+[data-tenant="unicredit-rs"][data-mode="dark"] {
+  --brand:#FF3347;
+  --accent:#3FB1C6; --accent-strong:#5CC2D4; --accent-soft:rgba(63,177,198,.16); --accent-line:rgba(63,177,198,.40); --on-accent:#0B1A1D;
+  --danger:#F07A6E; --danger-strong:#F59A90; --danger-soft:rgba(240,122,110,.16); --danger-line:rgba(240,122,110,.40);
+  --success:#5DC48A; --success-strong:#7BD3A1; --success-soft:rgba(93,196,138,.16);
+  --warning:#F2C46B; --warning-soft:rgba(242,196,107,.16); --warning-line:rgba(242,196,107,.40);
+  --info:#7FD0F2; --info-soft:rgba(127,208,242,.16);
+  --ink:#ECEDEE; --ink-2:#C9CCCF; --mut:#A3A8AD; --faint:#5A5F64;
+  --line:#33373A; --line-2:#2A2D30;
+  --bg:#161819; --card:#1F2224; --hover:#26292C; --subtle:#1B1E20;
+  --control-off:#4A4F54; --toast-bg:#2E3236; --overlay:rgba(0,0,0,.60);
+  --shadow-modal:0 18px 50px rgba(0,0,0,.55); --shadow-pop:0 8px 28px rgba(0,0,0,.5);
+  --c1:#3FB1C6; --c2:#7FD0F2; --c3:#91D1DD; --c4:#F2C46B; --c5:#5A8F9A; --c6:#A3A8AD;
+  --ghost:#6B7075;
+  color-scheme: dark;
+}
+
+[data-tenant="dex-neutral"][data-mode="light"] {
+  --brand:#1F3A5F;
+  --accent:#2B5C8A; --accent-strong:#234B71; --accent-soft:#EAF1F8; --accent-line:#BCD0E4; --on-accent:#FFFFFF;
+  --danger:#C0392B; --danger-strong:#A03024; --danger-soft:#FBECEA; --danger-line:#F0C3BE;
+  --success:#2E7D4F; --success-strong:#276B43; --success-soft:#E8F3EC;
+  --warning:#8A5A00; --warning-soft:#FDF3DC; --warning-line:#F1D9A0;
+  --info:#2B5C8A; --info-soft:#EAF1F8;
+  --ink:#1F242B; --ink-2:#3A4048; --mut:#5F6670; --faint:#C6CBD2;
+  --line:#E6E8EC; --line-2:#F0F1F4;
+  --bg:#F2F3F5; --card:#FFFFFF; --hover:#FAFAFB; --subtle:#F8F9FA;
+  --control-off:#D6DAE0; --toast-bg:#23272E; --overlay:rgba(24,28,34,.45);
+  --shadow-modal:0 18px 50px rgba(0,0,0,.22); --shadow-pop:0 8px 28px rgba(0,0,0,.14);
+  --c1:#2B5C8A; --c2:#8FB8DE; --c3:#1F3A5F; --c4:#F2D08A; --c5:#3A9BB5; --c6:#8A919B;
+  --ghost:#A3A9B1;
+  color-scheme: light;
+}
+
+[data-tenant="dex-neutral"][data-mode="dark"] {
+  --brand:#7AA7D6;
+  --accent:#7AA7D6; --accent-strong:#97BBE0; --accent-soft:rgba(122,167,214,.16); --accent-line:rgba(122,167,214,.40); --on-accent:#0B1A2B;
+  --danger:#F07A6E; --danger-strong:#F59A90; --danger-soft:rgba(240,122,110,.16); --danger-line:rgba(240,122,110,.40);
+  --success:#5DC48A; --success-strong:#7BD3A1; --success-soft:rgba(93,196,138,.16);
+  --warning:#F2C46B; --warning-soft:rgba(242,196,107,.16); --warning-line:rgba(242,196,107,.40);
+  --info:#7AA7D6; --info-soft:rgba(122,167,214,.16);
+  --ink:#ECEDEE; --ink-2:#C9CCCF; --mut:#A3A8AD; --faint:#5A5F64;
+  --line:#33373A; --line-2:#2A2D30;
+  --bg:#161819; --card:#1F2224; --hover:#26292C; --subtle:#1B1E20;
+  --control-off:#4A4F54; --toast-bg:#2E3236; --overlay:rgba(0,0,0,.60);
+  --shadow-modal:0 18px 50px rgba(0,0,0,.55); --shadow-pop:0 8px 28px rgba(0,0,0,.5);
+  --c1:#7AA7D6; --c2:#97BBE0; --c3:#5DC48A; --c4:#F2C46B; --c5:#3A9BB5; --c6:#A3A8AD;
+  --ghost:#6B7075;
+  color-scheme: dark;
+}
