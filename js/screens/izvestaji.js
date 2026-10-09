@@ -119,7 +119,7 @@
       rows: function () { return rows; }, key: function (r) { return r.p.id; }, label: function (r) { return r.p.id; },
       cols: [
         { key: 'p', label: t('c.period'), val: function (r) { return r.p.from; }, render: function (r) { return '<b>' + D.periodLabel(r.p.id) + '</b>'; } },
-        { key: 'ty', label: t('rc.ty'), val: function (r) { return r.p.type === 'Q' ? t('ob.q') : t('ob.m'); } },
+        { key: 'ty', label: t('rc.ty'), val: function (r) { return t('ob.' + r.p.type.toLowerCase()); } },
         { key: 'st', label: t('c.status'), val: function (r) { return r.p.status; }, render: function (r) { return ui.pill(t('pst.' + r.p.status), r.p.status === 'isplaceno' ? 'gray' : 'warning'); }, filter: function () { return ['isplaceno', 'saglasnost'].map(function (k) { return { v: k, l: t('pst.' + k) }; }); } },
         { key: 'n', label: t('rc.n'), num: true, search: false, val: function (r) { return r.n; } },
         { key: 't', label: t('rc.tot2'), num: true, search: false, val: function (r) { return r.tot; }, render: function (r) { return F.num(r.tot); } },

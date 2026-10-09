@@ -4,8 +4,8 @@
 :root,
 [data-tenant="unicredit-rs"][data-mode="light"] {
   --brand:#E2001A;
-  --accent:#007A91; --accent-strong:#006375; --accent-soft:#E5F2F4; --accent-line:#B3D7DE; --on-accent:#FFFFFF;
-  --danger:#CF3524; --danger-strong:#A82A1C; --danger-soft:#FBECEA; --danger-line:#F2C4BE;
+  --accent:#E2001A; --accent-strong:#B30015; --accent-soft:#FDE8EA; --accent-line:#F4B3BB; --on-accent:#FFFFFF;
+  --danger:#9E1B1B; --danger-strong:#7F1515; --danger-soft:#F8E7E7; --danger-line:#E3B9B9;
   --success:#2E7D4F; --success-strong:#276B43; --success-soft:#E8F3EC;
   --warning:#8A5A00; --warning-soft:#FDF3DC; --warning-line:#F1D9A0;
   --info:#0D5870; --info-soft:#E6F5FC;
@@ -21,7 +21,7 @@
 
 [data-tenant="unicredit-rs"][data-mode="dark"] {
   --brand:#FF3347;
-  --accent:#3FB1C6; --accent-strong:#5CC2D4; --accent-soft:rgba(63,177,198,.16); --accent-line:rgba(63,177,198,.40); --on-accent:#0B1A1D;
+  --accent:#FF3347; --accent-strong:#FF5C6C; --accent-soft:rgba(255,51,71,.16); --accent-line:rgba(255,51,71,.42); --on-accent:#FFFFFF;
   --danger:#F07A6E; --danger-strong:#F59A90; --danger-soft:rgba(240,122,110,.16); --danger-line:rgba(240,122,110,.40);
   --success:#5DC48A; --success-strong:#7BD3A1; --success-soft:rgba(93,196,138,.16);
   --warning:#F2C46B; --warning-soft:rgba(242,196,107,.16); --warning-line:rgba(242,196,107,.40);

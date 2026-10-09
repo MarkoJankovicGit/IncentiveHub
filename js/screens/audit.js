@@ -15,8 +15,8 @@
     'am.catalog': 'Catalogue', 'am.codelist': 'Code lists', 'am.target': 'Targets', 'am.scheme': 'Bonus schemes', 'am.assignment': 'Assignment', 'am.load': 'Data loads', 'am.calc': 'Calculation', 'am.correction': 'Corrections', 'am.consent': 'Consents', 'am.complaint': 'Complaints', 'am.payout': 'Payout', 'am.org': 'Organisation', 'am.user': 'Users and roles', 'am.template': 'Templates', 'am.login': 'Sign-in'
   });
 
-  var MOD = { product: 'catalog', catalog: 'catalog', mapping: 'catalog', codelist: 'codelist', target: 'target', cascade: 'target', scheme: 'scheme', teamSplit: 'scheme', pointList: 'catalog', assignment: 'assignment', load: 'load', source: 'load', calc: 'calc', correction: 'correction', consent: 'consent', complaint: 'complaint', payout: 'payout', org: 'org', user: 'user', role: 'user', template: 'template', login: 'login' };
-  var CONFIG = ['catalog', 'codelist', 'target', 'scheme', 'assignment', 'org', 'user', 'template'];
+  var MOD = { product: 'catalog', catalog: 'catalog', mapping: 'catalog', codelist: 'codelist', target: 'target', cascade: 'target', scheme: 'scheme', teamSplit: 'scheme', pointList: 'catalog', period: 'period', assignment: 'assignment', load: 'load', source: 'load', calc: 'calc', correction: 'correction', consent: 'consent', complaint: 'complaint', payout: 'payout', org: 'org', user: 'user', role: 'user', template: 'template', login: 'login' };
+  var CONFIG = ['period', 'catalog', 'codelist', 'target', 'scheme', 'assignment', 'org', 'user', 'template'];
   IH.auditConfigModules = CONFIG;
   function L2(sr, en) { return { sr: sr, en: en }; }
   function s(at, by, entity, ref, a, d) { return { at: at, by: by, entity: entity, ref: ref, action: a, detail: d || null, seed: true }; }

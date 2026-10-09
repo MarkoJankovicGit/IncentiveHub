@@ -162,7 +162,7 @@
       cols: [
         { key: 'st', label: t('c.status'), val: function (p) { return t('pst.' + p.status); }, fval: function (p) { return p.status; }, render: function (p) { return pstPill(p); }, filter: function () { return ['u_toku', 'saglasnost', 'isplaceno'].map(function (k) { return { v: k, l: t('pst.' + k) }; }); } },
         { key: 'p', label: t('ob.colPer'), val: function (p) { return D.periodLabel(p.id); }, fval: function (p) { return p.type; }, render: function (p) { return '<b>' + D.periodLabel(p.id) + '</b>'; }, filter: function () { return [{ v: 'Q', l: t('per.Q') }, { v: 'M', l: t('per.M') }]; } },
-        { key: 'ty', label: t('c.type'), search: false, val: function (p) { return p.type === 'Q' ? t('ob.q') : t('ob.m'); } },
+        { key: 'ty', label: t('c.type'), search: false, val: function (p) { return t('ob.' + p.type.toLowerCase()); } },
         { key: 'stg', label: t('ob.colStage'), search: false, val: function (p) { return stage(p); } },
         { key: 's', label: t('ob.colSch'), search: false, val: function (p) { return schemesOf(p.id).map(function (s) { return D.scheme(s).code; }).join(', '); } },
         { key: 'n', label: t('ob.colN'), num: true, search: false, val: function (p) { return staff(p.id).length; } },

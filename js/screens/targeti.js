@@ -60,12 +60,9 @@
   IH.subjTags = function (x) { return IH.esc(D.subjPtypeName(x.subject)) + ' · ' + IH.esc(segsTxt(x)); };
 
   /* periodi od sledećeg (novi target i nova verzija ne diraju tekući obračun) */
-  var NEXT = {
-    Q: [{ v: '2027-01-01', to: '2027-03-31', l: 'Q1 2027' }, { v: '2027-04-01', to: '2027-06-30', l: 'Q2 2027' }, { v: '2027-07-01', to: '2027-09-30', l: 'Q3 2027' }, { v: '2027-10-01', to: '2027-12-31', l: 'Q4 2027' }],
-    M: [{ v: '2026-11-01', to: '2026-11-30', l: L('Novembar 2026', 'Nov 2026') }, { v: '2026-12-01', to: '2026-12-31', l: L('Decembar 2026', 'Dec 2026') }, { v: '2027-01-01', to: '2027-01-31', l: L('Januar 2027', 'Jan 2027') }, { v: '2027-02-01', to: '2027-02-28', l: L('Februar 2027', 'Feb 2027') }]
-  };
-  function perOpts(type) { return NEXT[type === 'M' ? 'M' : 'Q'].map(function (o) { return { v: o.v, to: o.to, l: IH.L(o.l) }; }); }
-  function firstFrom(type) { return perOpts(type)[0].v; }
+  /* „važi od / do“: planirani periodi izabrane vrste iz kalendara (Podešavanja → Obračunski periodi) */
+  function perOpts(type) { return D.plannedOf(type).map(function (p) { return { v: p.from, to: p.to, l: IH.L(p.label) }; }); }
+  function firstFrom(type) { var o = perOpts(type); return o.length ? o[0].v : null; }
 
   /* ---------- lista ---------- */
   function listPage() {
@@ -81,7 +78,7 @@
         { key: 'pt', label: t('tg.colPt'), val: function (x) { return D.subjPtypeName(x.subject); }, fval: function (x) { return x.subject.ptype || 'mix'; }, filter: function () { return D.ptypes.map(function (p) { return { v: p.id, l: IH.L(p.name) }; }).concat([{ v: 'mix', l: D.ptypeName(null) }]); } },
         { key: 'u', label: t('tg.fUnit'), val: function (x) { return R.measureText(x.subject.ptype, (x.formula || {}).measure); }, fval: function (x) { return (x.formula || {}).measure; }, filter: function () { return R.measureOptions(); } },
         { key: 'seg', label: t('tg.colSeg'), val: function (x) { return segsTxt(x); }, fval: function (x) { return x.subject.segs || []; }, filter: function () { return D.segments.map(function (s) { return { v: s.id, l: IH.L(s.name) }; }); } },
-        { key: 'per', label: t('tg.colPer'), val: function (x) { return t('per.' + x.periodType); }, fval: function (x) { return x.periodType; }, filter: function () { return ['M', 'Q'].map(function (p) { return { v: p, l: t('per.' + p) }; }); } },
+        { key: 'per', label: t('tg.colPer'), val: function (x) { return t('per.' + x.periodType); }, fval: function (x) { return x.periodType; }, filter: function () { return D.periodTypes.map(function (p) { return { v: p.id, l: t('per.' + p.id) }; }); } },
         { key: 'sc', label: t('tg.colScheme'), val: function (x) { return schemesTxt(x); }, fval: function (x) { var l = schemesOfT(x); return l.length ? l.map(function (q) { return q.id; }) : ['-']; }, render: function (x) { var l = schemesOfT(x); return l.length ? IH.esc(l.map(function (q) { return q.code; }).join(', ')) : '<span class="mut">' + t('tg.free') + '</span>'; }, filter: function () { return D.schemes.map(function (s2) { return { v: s2.id, l: s2.code }; }).concat([{ v: '-', l: t('tg.free') }]); } },
         { key: 'from', label: t('tg.colFrom'), search: false, val: function (x) { return x.from; }, render: function (x) { return F.date(x.from); } },
         { key: 'ver', label: t('tg.colVer'), num: true, search: false, val: function (x) { return x.ver; }, render: function (x) { return 'v' + x.ver; } }
@@ -132,8 +129,8 @@
     if (q.kind === 'timski') h += fld(t('tg.fTeam'), ro || m.lock ? rov((q.team || []).map(D.posName).join(' + ')) : seg('tw-team', SELLERS(), q.team || [], true));
     else h += fld(t('tg.fPos'), ro || m.lock ? rov(D.posName(q.pos || 'licni')) : sel('pos', SELLERS(), q.pos || 'licni'));
     h += fld(t('tg.fAsg'), rov(q.kind === 'timski' ? t('tg.asgBr') : t('tg.asgEmp')));
-    h += fld(t('tg.fPer'), ro || m.lock ? rov(t('per.' + q.periodType)) : seg('tw-per', [{ v: 'M', l: t('per.M') }, { v: 'Q', l: t('per.Q') }], q.periodType));
-    h += fld(t('tg.fFrom'), ro ? rov(F.date(q.from)) : sel('from', perOpts(q.periodType).map(function (o) { return { v: o.v, l: o.l + ' (' + F.date(o.v) + ')' }; }), q.from), { req: !ro });
+    h += fld(t('tg.fPer'), ro || m.lock ? rov(t('per.' + q.periodType)) : seg('tw-per', D.activePeriodTypes().map(function (x) { return { v: x.id, l: t('per.' + x.id) }; }), q.periodType));
+    h += fld(t('tg.fFrom'), ro ? rov(q.from ? F.date(q.from) : '') : perOpts(q.periodType).length ? sel('from', perOpts(q.periodType).map(function (o) { return { v: o.v, l: o.l + ' (' + F.date(o.v) + ')' }; }), q.from) : IH.noPeriodsNote(), { req: !ro });
     h += fld(t('tg.fTo'), ro ? rov(q.to ? F.date(q.to) : t('tg.open')) : sel('to', [{ v: '', l: t('tg.open') }].concat(perOpts(q.periodType).map(function (o) { return { v: o.to, l: o.l + ' (' + F.date(o.to) + ')' }; })), q.to || ''));
     h += fld(t('tg.fVer'), rov('v' + (q.ver || 1)));
     if (ro) { h += fld(t('c.status'), rov(t('st2.' + (q.status || 'nacrt')))); var sl = q.id ? schemesOfT(q) : []; h += fld(t('tg.fScheme'), rov(sl.length ? sl.map(function (x) { return IH.L(x.name); }).join(', ') : t('tg.free'))); }
@@ -148,7 +145,7 @@
       var vm = q.value || {}, sumOf = vm.mode === 'zbir';
       h += fld(t('tg.fVal'), ro ? rov(sumOf ? t('tg.vSum') : t('tg.vSet')) : seg('tw-vmode', [{ v: 'zadaje', l: t('tg.vSet') }, { v: 'zbir', l: t('tg.vSum') }], sumOf ? 'zbir' : 'zadaje'));
       if (sumOf) {
-        var opts = IH.targets().filter(function (x) { return x.id !== q.id && x.status !== 'arhiviran' && x.subject && x.subject.ptype === sj.ptype && x.unit === q.unit && (x.kind !== 'timski' || (x.team || []).length === 1); });
+        var opts = IH.targets().filter(function (x) { return x.id !== q.id && x.status !== 'arhiviran' && x.subject && x.subject.ptype === sj.ptype && x.unit === q.unit && D.typeLen(x.periodType) <= D.typeLen(q.periodType) && (x.kind !== 'timski' || (x.team || []).length === 1); });
         h += fld(t('tg.fOf'), ro ? rov((vm.of || []).map(function (id) { var x = D.target(id); return x ? IH.L(x.name) : id; }).join(' + ')) : '<span class="chks">' + opts.map(function (x) { return '<label class="chk" style="margin:0"><input type="checkbox" data-twof="' + x.id + '"' + ((vm.of || []).indexOf(x.id) >= 0 ? ' checked' : '') + '><span>' + IH.esc(IH.L(x.name)) + '</span></label>'; }).join('') + '</span>', { full: true });
       }
     }
@@ -318,7 +315,7 @@
       q.kind === 'timski' && q.value && q.value.mode === 'zbir' ? { label: t('tg.chk7'), state: (q.value.of || []).length ? 'ok' : 'no' } : null,
       q.formula.measure === 'iznos' ? { label: t('tg.chk8'), state: q.subject.ptype === 'kredit' ? 'ok' : 'no', sub: q.subject.ptype === 'kredit' ? null : t('tg.chk8no') } : null,
       q.unit === 'bod' ? { label: t('tg.chk9'), state: q.subject.plist ? 'ok' : 'no' } : null,
-      { label: t('tg.chk5', { d: F.date(q.from) }) },
+      q.from ? { label: t('tg.chk5', { d: F.date(q.from) }) } : { label: t('pe.noPlanned'), state: 'no' },
       { label: t('tg.chk6'), state: 'warn' }
     ].filter(Boolean);
   }

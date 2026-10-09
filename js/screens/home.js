@@ -1,4 +1,4 @@
-/* Incentive Hub — Početna za sve role: prečice gore, dijagrami i „koliko sam od targeta“, projekcije na dnu */
+/* Incentive Hub — Početna za sve role: dijagrami i „koliko sam od targeta“, projekcije na dnu */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt, L = D.L2;
@@ -57,7 +57,6 @@
   function daysLeft(iso) { return Math.max(0, Math.round((Date.parse(iso) - Date.parse(D.TODAY)) / 864e5)); }
   var MON = { sr: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Dec'], en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] };
   function mLabel(m) { return MON[IH.state.lang === 'en' ? 'en' : 'sr'][+m.slice(5, 7) - 1]; }
-  function shortcuts(list) { return '<div class="shortcuts">' + list.map(function (x) { return ui.btn(t('nav.' + x[0]), { icon: x[1], go: x[0] }); }).join('') + '</div>'; }
   /* prodaja po mesecu: krediti (RSD) i računi / kartice (kom) */
   function salesCharts(empIds, months, title) {
     var s = EN.salesByMonth(empIds, months), labels = months.map(mLabel);
@@ -94,7 +93,6 @@
     var compl = IH.stats.openComplaints().length + q3.filter(function (e) { return e.branch !== 'B01' && EN.approval(e.id, '2026-Q3').status === 'prigovor'; }).length;
     var p3 = D.period('2026-Q3');
     var h = ui.header(t('h.morning', { n: first(me.name) }), '', ui.btn(t('nav.izvestaji'), { icon: 'chart', go: 'izvestaji' }));
-    h += shortcuts([['obracun', 'calc'], ['ucitavanje', 'upload'], ['saglasnosti', 'checkc'], ['isplata', 'wallet'], ['katalog', 'box'], ['targeti', 'target'], ['seme', 'layers'], ['organizacija', 'org']]);
     h += '<div class="kpis">' +
       ui.kpi(t('h.kQ3'), F.num(q3tot) + '<span class="u">RSD</span>', t('h.kQ3s', { n: q3.length }), { go: 'obracun' }) +
       ui.kpi(t('h.kSep'), F.num(septot) + '<span class="u">RSD</span>', t('h.kSeps', { n: sep.length }), { go: 'obracun' }) +
@@ -154,7 +152,6 @@
     var complaints = IH.stats.openComplaints(me.id), pend = IH.stats.pendingAssignments();
     var proj = lic.map(function (e) { return { e: e, p: EN.m1(e.id, '2026-Q4', { project: true }), n: EN.m1(e.id, '2026-Q4') }; });
     var h = ui.header(D.branchName(bid), '', ui.btn(t('nav.tim'), { icon: 'users', go: 'tim' }) + ui.btn(t('nav.moj-bonus'), { icon: 'wallet', go: 'moj-bonus' }), IH.esc(D.bank[IH.state.tenant].short) + ' · ' + IH.L(D.region(D.branch(bid).region).name));
-    h += shortcuts([['tim', 'users'], ['targeti-tima', 'target'], ['saglasnosti-tima', 'checkc'], ['prigovori-tima', 'msg'], ['moj-bonus', 'wallet'], ['izvestaji', 'chart']]);
     h += IH.sech(t('h.myTargets', { p: 'Q4 2026' })) + targetCards(m2now, 'tim');
     h += salesCharts(lic.concat(uni).map(function (e) { return e.id; }), ['2026-07', '2026-08', '2026-09', '2026-10'], t('h.salesTeam'));
     var names = tNames();
@@ -203,7 +200,6 @@
     var me = IH.me(), cur = EN.currentPeriod(me.id), last = EN.lastClosed(me.id), di = D.daysInfo(cur);
     var now = EN.result(me.id, cur), pr = EN.result(me.id, cur, { project: true }), lr = EN.result(me.id, last), ap = EN.approval(me.id, last);
     var h = ui.header(t('h.hello', { n: first(me.name) }), '', ui.btn(t('nav.moje-ostvarenje'), { icon: 'activity', go: 'moje-ostvarenje' }), D.posName(me.pos) + ' · ' + IH.esc(D.branchName(me.branch)));
-    h += shortcuts([['moji-targeti', 'target'], ['moje-ostvarenje', 'activity'], ['moj-obracun', 'calc'], ['moja-kartica', 'user']]);
     if (ap.status === 'ceka' || ap.status === 'korigovano') h += '<div class="card" style="border-color:var(--accent-line);background:var(--accent-soft)"><div class="cb" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span class="ai" style="width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--accent);color:var(--on-accent)">' + ic('calc') + '</span><div style="flex:1;min-width:240px"><b style="font-size:15px">' + t('h.consNeeded', { p: D.periodLabel(last) }) + '</b><div class="mut">' + t('h.consNeededS', { d: F.date(D.period(last).deadline), v: F.num(lr.payout) }) + '</div></div>' + ui.btn(t('h.consOpen'), { cls: 'primary', icon: 'arrow', go: 'moj-obracun' }) + '</div></div>';
     h += IH.sech(t('h.myTargets', { p: D.periodLabel(cur) }), '', '<span class="mut">' + t('c.day', { d: di.done, t: di.total }) + '</span>') + targetCards(now, 'moji-targeti');
     var months = me.pos === 'univerzalni' ? ['2026-07', '2026-08', '2026-09', '2026-10'] : ['2026-05', '2026-06', '2026-07', '2026-08', '2026-09', '2026-10'];

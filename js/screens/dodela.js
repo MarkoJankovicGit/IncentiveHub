@@ -65,7 +65,15 @@
   function unitTxt(tg) { return IH.unitTxt(tg.unit); }
   function diffCell(d, unit) { if (Math.abs(d) < 0.5) return '<span class="sum-ok">' + t('d.ok') + '</span>'; return '<span class="sum-bad">' + (d > 0 ? '+' : '−') + fmtU(Math.abs(d), unit) + '</span>'; }
   function parseNum(s) { var n = String(s || '').replace(/[^\d]/g, ''); return n ? +n : 0; }
-  var PERS = function () { return [{ v: '2026-Q4', l: 'Q4 2026' }, { v: '2027-Q1', l: 'Q1 2027' }, { v: '2026-10', l: D.periodLabel('2026-10') }, { v: '2026-11', l: D.periodLabel('2026-11') }]; };
+  /* period dodele: tekući i planirani periodi vrsta koje koriste aktivne šeme (iz kalendara Obračunskih perioda) */
+  function PERS() {
+    var tys = {}, ord = { Y: 0, H: 1, Q: 2, M: 3 };
+    IH.schemes().forEach(function (s) { if (s.status === 'aktivan') tys[s.periodType] = 1; });
+    return D.allPeriods().filter(function (p) { return tys[p.type] && (p.status === 'u_toku' || p.status === 'planiran'); })
+      .sort(function (a, b) { return (a.from < b.from ? -1 : a.from > b.from ? 1 : 0) || ord[a.type] - ord[b.type]; }).map(function (p) { return { v: p.id, l: D.periodLabel(p.id) }; });
+  }
+  function perSel() { var cur = IH.v('asg').per || '2026-Q4'; return '<select class="in" data-asgper="1" style="width:auto;min-width:180px">' + PERS().map(function (o) { return '<option value="' + o.v + '"' + (o.v === cur ? ' selected' : '') + '>' + IH.esc(o.l) + '</option>'; }).join('') + '</select>'; }
+  document.addEventListener('change', function (e) { if (e.target.dataset && e.target.dataset.asgper) { IH.v('asg').per = e.target.value; IH.render(); } });
   IH.asgPeriodLabel = function (p) { return D.periodLabel(p); };
   function editable(per) { return D.isPlanned(per); }
 
@@ -122,7 +130,7 @@
     var acts = ui.btn(t('d.import'), { icon: 'upload', act: 'asg-imp' }) + ui.btn(t('d.newAsg'), { cls: 'primary', icon: 'plus', act: 'asg-new' });
     var grid = IH.grid({
       id: 'asg', exportName: 'Dodele_targeta.xlsx', searchLabel: t('d.fFind'), hidden: ['appr'],
-      toolbarExtra: ui.segf('asg', 'per', PERS()),
+      toolbarExtra: perSel(),
       rows: function () { return planRows(IH.v('asg').per || '2026-Q4'); }, key: function (r) { return r.id; }, label: function (r) { return r.name + ' · ' + IH.L(r.tg.name); }, searchKeys: ['c', 'b'],
       cols: [
         { key: 'st', label: t('c.status'), val: function (r) { return r.st; }, render: function (r) { return ui.st2(r.st) + (r.src === t('d.srcMan') ? ' ' + ui.pill(t('d.srcMan'), 'accent') : ''); }, filter: function () { return ['aktivna', 'na_odobravanju', 'nacrt'].map(function (k) { return { v: k, l: t('st2.' + k) }; }); } },
@@ -183,8 +191,10 @@
   };
 
   /* ---------- čarobnjak nove dodele: target → nosioci → vrednosti → pregled ---------- */
-  var APER = { Q: ['2027-Q1', '2027-Q2'], M: ['2026-11', '2026-12'] };
-  function prevOf(pid) { var p = D.period(pid), all = D.periods.concat(D.planPeriods).filter(function (x) { return x.type === p.type && x.from < p.from; }).sort(function (a, b) { return a.from < b.from ? 1 : -1; }); return all[0] ? all[0].id : null; }
+  /* planirani periodi vrste targeta (dodela važi samo za planirane periode) */
+  function aper(type) { return D.plannedOf(type).slice(0, 8).map(function (p) { return p.id; }); }
+  function noPer() { return '<div class="note warn">' + t('pe.noPlanned') + ' — <a href="#/periodi">' + t('pe.toCal') + '</a></div>'; }
+  function prevOf(pid) { var p = D.period(pid); if (!p) return null; var all = D.allPeriods().filter(function (x) { return x.type === p.type && x.from < p.from; }).sort(function (a, b) { return a.from < b.from ? 1 : -1; }); return all[0] ? all[0].id : null; }
   /* više targeta u jednoj dodeli: isti nosilac i isti period (redovi su nosioci, kolone targeti).
      Nova dodela je izuzetak uz raspodelu (novi zaposleni, premeštaj, korekcija):
      nosilac mora imati target u šemi za period, pregled pokazuje uticaj na nadređeni nivo,
@@ -215,7 +225,7 @@
     var anchor = l.map(D.target).filter(function (x) { return x && (!g0 || grpOf(x) === g0); })[0] || D.target(l[0]);
     l = l.filter(function (id) { var x = D.target(id); return x && anchor && grpOf(x) === grpOf(anchor); });
     a.tgs = l;
-    if (!anchor || grpOf(anchor) !== g0) { a.sel = []; a.vals = {}; if (anchor) a.per = APER[anchor.periodType === 'M' ? 'M' : 'Q'][0]; }
+    if (!anchor || grpOf(anchor) !== g0) { a.sel = []; a.vals = {}; if (anchor) a.per = aper(anchor.periodType)[0] || null; }
     a.sel = selOk().map(function (c) { return c.id; });
   }
 
@@ -270,11 +280,12 @@
   }
   function perSelect(tg) {
     var a = AW();
-    return '<select class="in" data-aw="per">' + APER[tg.periodType === 'M' ? 'M' : 'Q'].map(function (o) { var p = D.period(o); return '<option value="' + o + '"' + (o === a.per ? ' selected' : '') + '>' + IH.esc(D.periodLabel(o)) + ' (' + F.date(p.from) + ' – ' + F.date(p.to) + ')</option>'; }).join('') + '</select>';
+    return '<select class="in" data-aw="per">' + aper(tg.periodType).map(function (o) { var p = D.period(o); return '<option value="' + o + '"' + (o === a.per ? ' selected' : '') + '>' + IH.esc(D.periodLabel(o)) + ' (' + F.date(p.from) + ' – ' + F.date(p.to) + ')</option>'; }).join('') + '</select>';
   }
   function step2() {
     var a = AW(), tgs = awTargets(), tg = tgs[0];
     if (!tg) return '<div class="note warn">' + t('d.pickT') + '</div>';
+    if (!aper(tg.periodType).length) return noPer();
     var ct = ctOf(tg), gid = 'aw-' + ct + '-' + (tg.pos || (tg.team || []).join('-')) + '-' + tg.periodType;
     var cols = [{ key: 'n', label: t('d.colCarrier'), val: function (c) { return c.name; }, render: function (c) { return '<b>' + IH.esc(c.name) + '</b>' + (c.e && c.e.isNew ? ' ' + ui.pill(t('c.new'), 'accent') : ''); } }];
     cols.push({ key: 'br', label: t('d.colBranch'), val: function (c) { return D.branchShort(c.branch); }, fval: function (c) { return c.branch; }, filter: function () { return D.branches.map(function (b) { return { v: b.id, l: D.branchShort(b) }; }); } });
@@ -295,6 +306,7 @@
   function step3() {
     var a = AW(), tgs = awTargets(), sel = selOk(), pv = prevOf(a.per);
     if (!tgs.length) return '<div class="note warn">' + t('d.pickT') + '</div>';
+    if (!D.period(a.per)) return noPer();
     if (!sel.length) return '<div class="note warn">' + t('d.pick') + '</div>';
     var inp = 'style="width:130px;margin-left:auto;display:block" class="in cell tnum"', dash = '<span class="mut">—</span>';
     var th = '<tr><th>' + t('d.colCarrier') + '</th><th>' + t('d.colBranch') + '</th>' + tgs.map(function (tg) { return '<th class="num">' + IH.esc(IH.L(tg.name)) + ' (' + unitTxt(tg) + ')</th>'; }).join('') + '</tr>';
@@ -314,6 +326,7 @@
   function step4() {
     var a = AW(), tgs = awTargets(), tg = tgs[0], sel = selOk(), p = D.period(a.per);
     if (!tg) return '<div class="note warn">' + t('d.pickT') + '</div>';
+    if (!p) return noPer();
     var cl = cells(sel, tgs), emp = ctOf(tg) === 'emp', imp = impact(), ap = apprOf(), dash = '<span class="mut">—</span>';
     var dTxt = function (r, d) { return IH.esc(r.name) + ' · ' + IH.esc(IH.L(r.tg.name)) + ': ' + d; };
     var mism = imp.filter(function (r) { return r.fixed && Math.abs(r.sum - r.before) > 0.5; });
@@ -343,7 +356,7 @@
     return ui.header(t('d.newAsg'), '', '', '<a href="#/dodela-targeta">' + t('d.title') + '</a>' + (crumb ? ' ' + ic('chevr') + ' ' + crumb : '') + (n ? ' <span class="mut">· ' + t('d.selInfo', { n: n }) + '</span>' : '')) +
       ui.wizard({ base: 'dodela-targeta/nova', steps: steps, cur: cur, body: '<div id="aw-body">' + body + '</div>', finishLabel: apprOf().appr.length ? t('d.sendAppr') : t('d.activate'), finishAct: 'asg-save', cancelGo: 'dodela-targeta' });
   }
-  IH.startAssignFor = function (tgId) { var tg = D.target(tgId); IH.form = {}; if (!tg || tg.value && tg.value.mode === 'zbir') { IH.go('dodela-targeta'); return; } IH.form.aw = { tgs: [tgId], sel: [], per: APER[tg.periodType === 'M' ? 'M' : 'Q'][0], vals: {} }; IH.go('dodela-targeta/nova/2'); };
+  IH.startAssignFor = function (tgId) { var tg = D.target(tgId); IH.form = {}; if (!tg || tg.value && tg.value.mode === 'zbir') { IH.go('dodela-targeta'); return; } IH.form.aw = { tgs: [tgId], sel: [], per: aper(tg.periodType)[0], vals: {} }; IH.go('dodela-targeta/nova/2'); };
   document.addEventListener('change', function (e) {
     var d = e.target.dataset || {}; if (!IH.form.aw) return;
     var num = function (s) { return parseFloat(String(s).replace(/\./g, '').replace(',', '.')); };
@@ -355,6 +368,7 @@
   IH.act['asg-save'] = function () {
     var a = AW(), tgs = awTargets(), sel = selOk(), cl = cells(sel, tgs), ap = apprOf();
     if (!tgs.length) { IH.toast(t('d.pickT')); IH.go('dodela-targeta/nova/1'); return; }
+    if (!D.period(a.per)) { IH.toast(t('pe.noPlanned')); return; }
     if (!cl.length) { IH.toast(t('d.pick')); IH.go('dodela-targeta/nova/2'); return; }
     cl.forEach(function (x) {
       var v = newVal(x.c, x.tg), k = D.valKey(x.tg.id, a.per, x.c.c);

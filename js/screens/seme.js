@@ -80,8 +80,9 @@
   IH.schemes = function () { return D.schemes.concat(IH.list('newSchemes')); };
   var baseScheme = D.scheme;
   D.scheme = function (id) { return baseScheme(id) || IH.list('newSchemes').filter(function (s) { return s.id === id; })[0] || IH.schemes().filter(function (s) { return s.code === id; })[0]; };
-  function nowPid(s) { return s.periodType === 'M' ? '2026-10' : '2026-Q4'; }
-  function lastPid(s) { return s.periodType === 'M' ? '2026-09' : '2026-Q3'; }
+  /* tekući period vrste šeme (ako ga nema: prvi planirani) i poslednji zaključeni */
+  function nowPid(s) { var c = D.allPeriods().filter(function (p) { return p.type === s.periodType && p.status === 'u_toku'; })[0] || D.plannedOf(s.periodType)[0]; return c ? c.id : '2026-Q4'; }
+  function lastPid(s) { var c = D.periods.filter(function (p) { return p.type === s.periodType && p.status !== 'u_toku'; }).sort(function (a, b) { return a.from < b.from ? 1 : -1; })[0]; return c ? c.id : nowPid(s); }
   /* verzija koja važi danas; sve verzije; stanje verzije */
   function curVer(s) { return D.schemeVersion(s, nowPid(s)); }
   function vers(s) { return D.schemeVersions(s); }
@@ -341,7 +342,9 @@
     var v = IH.v('ex-' + s.id), staff = staffOf(s);
     if (!staff.length) staff = D.employees.filter(function (e) { return e.pos === s.pos && e.branch; });
     var emp = v.emp || (staff.filter(function (e) { return e.branch === 'B01'; })[0] || staff[0]).id;
-    var pers = s.periodType === 'M' ? ['2026-09', '2026-10', '2026-08'] : ['2026-Q3', '2026-Q4', '2026-Q2'];
+    var pall = D.periods.filter(function (p) { return p.type === s.periodType; }).sort(function (a, b) { return a.from < b.from ? 1 : -1; }), plast = pall.filter(function (p) { return p.status !== 'u_toku'; })[0];
+    var pers = (plast ? [plast] : []).concat(pall.filter(function (p) { return p !== plast; })).slice(0, 3).map(function (p) { return p.id; });
+    if (!pers.length) return '<div class="empty">' + t('sc.exNone') + '</div>';
     var per = v.per || pers[0], proj = D.period(per).status === 'u_toku';
     var inPer = D.schemeVersion(s, per), vs = vers(s), selV = v.ver ? verByNo(s, v.ver) : inPer, sim = selV && selV.v !== inPer.v ? selV : null;
     var sel = '<div class="toolbar" style="border:0;padding:0 0 14px;flex-wrap:wrap;gap:10px"><select class="in" data-f="emp" data-scope="ex-' + s.id + '" style="max-width:340px">' + staff.map(function (e) { return '<option value="' + e.id + '"' + (e.id === emp ? ' selected' : '') + '>' + IH.esc(e.name + ' · ' + D.branchShort(e.branch)) + '</option>'; }).join('') + '</select>' +
@@ -372,7 +375,7 @@
   }
   function nextFromFor(s) {
     var used = vers(s).map(function (v) { return v.from; });
-    var opts = s.periodType === 'M' ? ['2026-11-01', '2026-12-01', '2027-01-01', '2027-02-01', '2027-03-01'] : ['2027-01-01', '2027-04-01', '2027-07-01', '2027-10-01'];
+    var opts = D.plannedOf(s.periodType).map(function (p) { return p.from; }); if (!opts.length) return null;
     return opts.filter(function (o) { return used.indexOf(o) < 0; })[0] || opts[opts.length - 1];
   }
   function makeDraft(mode, srcId) {
@@ -389,7 +392,7 @@
       d.code = mode === 'copy' ? src.code.replace('2026', '2027') + '-K' : (src.pos === 'licni' ? 'BS-LB-2027' : src.pos === 'menadzer' ? 'BS-ME-2027' : 'BS-TU-2027');
       d.name = mode === 'copy' ? { sr: IH.L(src.name) + ' — kopija', en: IH.L(src.name) + ' — copy' } : (src.pos === 'licni' ? L('Savetnik – fizička lica 2027', 'Advisor – private individuals 2027') : src.pos === 'menadzer' ? L('Menadžer ekspoziture 2027', 'Branch manager 2027') : L('Tim ekspoziture 2027', 'Branch team 2027'));
       d.status = 'nacrt'; d.isNew = true;
-      v = Object.assign(v, { v: 1, from: src.periodType === 'M' ? '2026-11-01' : '2027-01-01', to: null, note: L('Početna verzija', 'Initial version') });
+      v = Object.assign(v, { v: 1, from: (D.plannedOf(src.periodType)[0] || {}).from || null, to: null, note: L('Početna verzija', 'Initial version') });
       d.versions = [v];
     }
     return { mode: mode, src: src.id, s: d, v: v, rev: 0 };
@@ -403,18 +406,18 @@
   }
   function inp(sp, val, opts) { opts = opts || {}; return '<input class="in cell" style="width:' + (opts.w || 110) + 'px" data-sp="' + sp + '" data-kind="' + (opts.kind || 'num') + '" value="' + IH.esc(val) + '">'; }
   function wseg(act, list, cur) { return '<div class="seg">' + list.map(function (o) { return '<button type="button" data-act="' + act + '" data-arg="' + o.v + '" class="' + (o.v === cur ? 'on' : '') + '">' + o.l + '</button>'; }).join('') + '</div>'; }
-  function fromOpts(s) { return s.periodType === 'M' ? [{ v: '2026-11-01', l: IH.L(L('Novembar 2026', 'Nov 2026')) }, { v: '2026-12-01', l: IH.L(L('Decembar 2026', 'Dec 2026')) }, { v: '2027-01-01', l: IH.L(L('Januar 2027', 'Jan 2027')) }, { v: '2027-02-01', l: IH.L(L('Februar 2027', 'Feb 2027')) }] : [{ v: '2027-01-01', l: 'Q1 2027' }, { v: '2027-04-01', l: 'Q2 2027' }, { v: '2027-07-01', l: 'Q3 2027' }]; }
+  function fromOpts(s) { return D.plannedOf(s.periodType).map(function (p) { return { v: p.from, l: IH.L(p.label) }; }); }
   function step1() {
     var w = W(), s = w.s, v = w.v, isNew = w.mode !== 'ver';
     var typePick = '<div class="field full"><label class="lab">' + t('w.type') + '</label><div class="opts">' + D.schemeTypes.map(function (ty) { return '<button type="button" class="opt' + ((s.type || 'scorecard') === ty.id ? ' on' : '') + '" data-act="w-type" data-arg="' + ty.id + '"><span class="ri"></span><span><b>' + IH.esc(IH.L(ty.name)) + '</b><small>' + IH.esc(IH.L(ty.d)) + '</small></span></button>'; }).join('') + '</div></div>';
-    var fo = fromOpts(s); if (!fo.some(function (o) { return o.v === v.from; })) fo.unshift({ v: v.from, l: F.date(v.from) });
+    var fo = fromOpts(s); if (v.from && !fo.some(function (o) { return o.v === v.from; })) fo.unshift({ v: v.from, l: F.date(v.from) });
     return '<div class="form-grid g3">' + typePick +
       '<div class="field full"><label class="lab">' + t('w.name') + ' <span class="req">*</span></label><input class="in" data-sp="name" data-kind="l" value="' + IH.esc(IH.L(s.name)) + '"></div>' +
       '<div class="field"><label class="lab">' + t('w.code') + ' <span class="req">*</span></label>' + (isNew ? '<input class="in" data-sp="code" data-kind="str" value="' + IH.esc(s.code) + '">' : '<div class="in ro">' + IH.esc(s.code) + '</div>') + '</div>' +
       '<div class="field"><label class="lab">' + t('w.pos') + '</label>' + (isNew ? '<select class="in" data-sp="pos" data-kind="str">' + ['licni', 'univerzalni', 'menadzer'].map(function (k) { return '<option value="' + k + '"' + (k === s.pos ? ' selected' : '') + '>' + D.posName(k) + '</option>'; }).join('') + '</select>' : '<div class="in ro">' + D.posName(s.pos) + '</div>') + '</div>' +
       (s.pos === 'univerzalni' ? '<div class="field"><label class="lab">' + t('w.calc') + '</label>' + (isNew ? wseg('w-model', [{ v: 'M3', l: t('w.calcTeam') }, { v: 'M1', l: t('w.calcInd') }], s.model) : '<div class="in ro">' + (s.model === 'M1' ? t('w.calcInd') : t('w.calcTeam')) + '</div>') + '</div>' : '') +
-      '<div class="field"><label class="lab">' + t('w.perType') + '</label>' + (isNew ? wseg('w-per', [{ v: 'M', l: t('per.M') }, { v: 'Q', l: t('per.Q') }], s.periodType) : '<div class="in ro">' + t('per.' + s.periodType) + '</div>') + '</div>' +
-      '<div class="field"><label class="lab">' + t('w.from') + '</label><select class="in" data-sp="v.from" data-kind="str">' + fo.map(function (o) { return '<option value="' + o.v + '"' + (o.v === v.from ? ' selected' : '') + '>' + IH.esc(o.l) + ' (' + F.date(o.v) + ')</option>'; }).join('') + '</select></div>' +
+      '<div class="field"><label class="lab">' + t('w.perType') + '</label>' + (isNew ? wseg('w-per', D.activePeriodTypes().map(function (x) { return { v: x.id, l: t('per.' + x.id) }; }), s.periodType) : '<div class="in ro">' + t('per.' + s.periodType) + '</div>') + '</div>' +
+      '<div class="field"><label class="lab">' + t('w.from') + '</label>' + (fo.length ? '<select class="in" data-sp="v.from" data-kind="str">' + fo.map(function (o) { return '<option value="' + o.v + '"' + (o.v === v.from ? ' selected' : '') + '>' + IH.esc(o.l) + ' (' + F.date(o.v) + ')</option>'; }).join('') + '</select>' : IH.noPeriodsNote()) + '</div>' +
       '<div class="field"><label class="lab">' + t('w.to') + '</label><input class="in" data-sp="v.to" data-kind="str" value="' + (v.to ? IH.esc(F.date(v.to)) : '') + '" placeholder="' + IH.L(L('Bez kraja', 'Open-ended')) + '"></div>' +
       '<div class="field"><label class="lab">' + t('w.ver') + '</label><div class="in ro">v' + v.v + '</div></div>' +
       (s.type === 'provizija' ? '<div></div>' : '<div class="field"><label class="lab">' + (s.pos === 'univerzalni' && s.model !== 'M1' ? t('sc.baseM3') : t('w.base')) + '</label><input class="in cell" style="text-align:left" data-sp="v.base" data-kind="num" value="' + F.num(v.base || 0) + '"></div>') +
@@ -562,7 +565,7 @@
   IH.act['w-split'] = function (el) { var w = W(); w.s.teamSplit = el.dataset.arg; w.rev++; IH.render(); };
   IH.act['w-type'] = function (el) { if (el.disabled) return; setType(el.dataset.arg); IH.render(); };
   IH.act['w-model'] = function (el) { var w = W(); if (w.s.model !== el.dataset.arg) { w.s.model = el.dataset.arg; w.s.targets = []; w.s.rules = []; w.s.teamFactor = defaultTF(w.s.pos, w.s.model); w.rev++; } IH.render(); };
-  IH.act['w-per'] = function (el) { var w = W(); if (w.s.periodType !== el.dataset.arg) { w.s.periodType = el.dataset.arg; w.s.targets = []; w.s.rules = []; w.v.from = el.dataset.arg === 'M' ? '2026-11-01' : '2027-01-01'; w.rev++; } IH.render(); };
+  IH.act['w-per'] = function (el) { var w = W(); if (w.s.periodType !== el.dataset.arg) { w.s.periodType = el.dataset.arg; w.s.targets = []; w.s.rules = []; w.v.from = (D.plannedOf(el.dataset.arg)[0] || {}).from || null; w.rev++; } IH.render(); };
   IH.act['w-sctype'] = function (el) { var w = W(); if (el.dataset.arg === 'linear') { if (w.s.scale.type !== 'linear') { w._step = w.s.scale; w.s.scale = { type: 'linear', min: 0.8, cap: 1.2 }; } } else if (w.s.scale.type === 'linear') w.s.scale = w._step || deep(D.SCALES[w.s.periodType === 'M' ? 'M' : 'Q']); w.rev++; IH.render(); };
   IH.act['w-band-add'] = function () { var w = W(), sc = w.s.scale, last = sc[sc.length - 1], prev = sc[sc.length - 2]; var to = prev && prev.to != null ? +(prev.to + 0.2).toFixed(2) : 1.5; sc.splice(sc.length - 1, 0, { to: to, f: last.f }); last.f = +(last.f + 0.2).toFixed(2); w.rev++; IH.render(); };
   IH.act['w-band-rm'] = function (el) { var w = W(); w.s.scale.splice(+el.dataset.arg, 1); w.rev++; IH.render(); };
@@ -573,6 +576,7 @@
   IH.act['sch-copy'] = function (el) { IH.form = {}; IH.go('seme/kopija/' + el.dataset.arg + '/1'); };
   IH.act['sch-edit'] = function (el) { IH.form = {}; IH.go('seme/izmena/' + el.dataset.arg + '/1'); };
   IH.act['w-save'] = function (el) {
+    if (W() && !W().v.from) { IH.toast(t('pe.noPlanned')); return; }
     var w = W(); if (!w) return;
     var s = deep(w.s), v = deep(w.v), draft = el.dataset.arg === 'nacrt';
     if (s.type !== 'provizija') { v.shares = {}; s.targets.forEach(function (tc) { v.shares[tc.key] = tc.share || 0; }); }

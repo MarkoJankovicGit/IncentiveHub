@@ -9,7 +9,7 @@
       { id: 'pocetna', icon: 'home' },
       { g: 'g.admin' }, { id: 'organizacija', icon: 'org', badge: function () { return IH.orgOpenChanges ? IH.orgOpenChanges().length : 0; } },
       { id: 'korisnici', icon: 'shield' }, { id: 'sifarnici', icon: 'list' }, { id: 'sabloni', icon: 'mail' }, { id: 'audit', icon: 'history' },
-      { g: 'g.settings' }, { id: 'katalog', icon: 'box' }, { id: 'targeti', icon: 'target' }, { id: 'dodela-targeta', icon: 'share' }, { id: 'seme', icon: 'layers' },
+      { g: 'g.settings' }, { id: 'periodi', icon: 'calendar' }, { id: 'katalog', icon: 'box' }, { id: 'targeti', icon: 'target' }, { id: 'dodela-targeta', icon: 'share' }, { id: 'seme', icon: 'layers' },
       { g: 'g.ops' }, { id: 'ucitavanje', icon: 'upload', badge: function () { return IH.stats.unmapped().length; } }, { id: 'ostvarenje', icon: 'activity' }, { id: 'obracun', icon: 'calc' },
       { id: 'korekcije', icon: 'edit' }, { id: 'saglasnosti', icon: 'checkc', badge: function () { return IH.stats.approvalCounts('2026-Q3').ceka; } }, { id: 'isplata', icon: 'wallet' },
       { g: 'g.views' }, { id: 'izvestaji', icon: 'chart' }
@@ -101,7 +101,7 @@
     /* podešavanja prikaza */
     h += '<div class="rel"><button class="ibtn" data-pop="pop-view" title="' + t('top.view') + '" aria-label="' + t('top.view') + '">' + ic('palette') + '</button><div class="pop" id="pop-view">';
     h += '<div class="ph2">' + t('top.tenant') + '</div>';
-    h += '<button class="pi' + (IH.state.tenant === 'unicredit-rs' ? ' on' : '') + '" data-act="tenant" data-arg="unicredit-rs"><span class="lm img" style="width:22px;height:22px;border-radius:6px"><img src="img/uc-logo.png" alt="UniCredit"></span><span class="pit"><b>UniCredit Bank Srbija</b><small>#007A91 · #E2001A</small></span></button>';
+    h += '<button class="pi' + (IH.state.tenant === 'unicredit-rs' ? ' on' : '') + '" data-act="tenant" data-arg="unicredit-rs"><span class="lm img" style="width:22px;height:22px;border-radius:6px"><img src="img/uc-logo.png" alt="UniCredit"></span><span class="pit"><b>UniCredit Bank Srbija</b><small>#E2001A</small></span></button>';
     h += '<button class="pi' + (IH.state.tenant === 'dex-neutral' ? ' on' : '') + '" data-act="tenant" data-arg="dex-neutral"><span class="lm" style="width:22px;height:22px;border-radius:6px;background:#1F3A5F;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:700">DB</span><span class="pit"><b>' + t('top.neutral') + '</b><small>#2B5C8A</small></span></button>';
     h += '<div class="sep"></div><div class="ph2">' + t('top.mode') + '</div><div class="row"><div class="seg">' + ['light', 'dark', 'system'].map(function (m) { return '<button data-act="mode" data-arg="' + m + '" class="' + (IH.state.mode === m ? 'on' : '') + '">' + t('top.' + m) + '</button>'; }).join('') + '</div></div>';
     h += '<div class="sep"></div><button class="pi" data-act="reset">' + ic('reset') + '<span class="pit"><b>' + t('top.reset') + '</b></span></button></div></div>';

@@ -138,9 +138,76 @@
     { id: '2027-Q1', type: 'Q', from: '2027-01-01', to: '2027-03-31', label: 'Q1 2027', status: 'planiran' },
     { id: '2027-Q2', type: 'Q', from: '2027-04-01', to: '2027-06-30', label: 'Q2 2027', status: 'planiran' }
   ];
-  D.period = function (id) { return D.periods.filter(function (p) { return p.id === id; })[0] || D.planPeriods.filter(function (p) { return p.id === id; })[0]; };
+  /* ---------- vrste perioda (Podešavanja → Obračunski periodi → Vrste perioda) ----------
+     months = trajanje; lock / deadline / pay = dana posle kraja perioda: zaključavanje podataka, rok za saglasnost, isplata.
+     Pravila važe za nove periode; postojeći periodi čuvaju svoje rokove. */
+  D.periodTypes = [
+    { id: 'M', months: 1, lock: 3, deadline: 18, pay: 25, active: true },
+    { id: 'Q', months: 3, lock: 5, deadline: 22, pay: 30, active: true },
+    { id: 'H', months: 6, lock: 7, deadline: 25, pay: 35, active: true },
+    { id: 'Y', months: 12, lock: 10, deadline: 30, pay: 45, active: true }
+  ];
+  D.periodType = function (id) {
+    var b = D.periodTypes.filter(function (x) { return x.id === id; })[0]; if (!b) return null;
+    var e = ((IH.state && IH.state.data && IH.state.data.periodTypeEdits) || {})[id];
+    return e ? Object.assign({}, b, e) : b;
+  };
+  D.activePeriodTypes = function () { return D.periodTypes.map(function (x) { return D.periodType(x.id); }).filter(function (x) { return x.active; }); };
+  D.typeLen = function (id) { var x = D.periodTypes.filter(function (y) { return y.id === id; })[0]; return x ? x.months : 0; };
+
+  /* ---------- kalendar perioda ----------
+     zaključeni i tekući periodi (D.periods), planirani iz podataka (D.planPeriods) i generisani u ekranu Obračunski periodi (state.newPeriods);
+     izmene rokova (state.periodEdits) upisuju se u sam period, pa ih vide svi ekrani (obračun, saglasnosti, isplata, obaveštenja). */
+  var MN = [['Januar', 'Jan'], ['Februar', 'Feb'], ['Mart', 'Mar'], ['April', 'Apr'], ['Maj', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Avgust', 'Aug'], ['Septembar', 'Sep'], ['Oktobar', 'Oct'], ['Novembar', 'Nov'], ['Decembar', 'Dec']];
+  function addD(iso, n) { var d = new Date(iso + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
+  function lastDay(y, m) { return new Date(Date.UTC(y, m, 0)).toISOString().slice(0, 10); }
+  function pad(n) { return ('0' + n).slice(-2); }
+  function planDates(p, r) { var ty = r || D.periodType(p.type) || {}; return { lockBy: addD(p.to, ty.lock || 0), deadline: addD(p.to, ty.deadline || 0), payDate: addD(p.to, ty.pay || 0) }; }
+  D.planDates = planDates;
+  var PMAP = null, PLIST = null, PSIG = null, PDATA = null, ORIG = {};
+  function rebuild() {
+    var d = (IH.state && IH.state.data) || {}, gen = d.newPeriods || [], ed = d.periodEdits || {};
+    PLIST = D.periods.concat(D.planPeriods).concat(gen); PMAP = {};
+    PLIST.forEach(function (p) {
+      var base = gen.indexOf(p) < 0;
+      if (base && !ORIG[p.id]) {
+        var o = { lockBy: p.lockBy, deadline: p.deadline, payDate: p.payDate, note: p.note };
+        if (p.status === 'planiran' || p.status === 'u_toku') { var pd = planDates(p); ['lockBy', 'deadline', 'payDate'].forEach(function (k) { if (!o[k]) o[k] = pd[k]; }); }
+        if (p.status === 'saglasnost' && !o.payDate && !p.paidAt) o.payDate = planDates(p).payDate;
+        ORIG[p.id] = o;
+      }
+      if (base) Object.assign(p, ORIG[p.id]);
+      if (ed[p.id]) Object.assign(p, ed[p.id]);
+      PMAP[p.id] = p;
+    });
+    PDATA = d; PSIG = gen.length + ':' + (d._pv || 0);
+  }
+  function ensure() { var d = (IH.state && IH.state.data) || {}; if (!PMAP || d !== PDATA || PSIG !== (d.newPeriods || []).length + ':' + (d._pv || 0)) rebuild(); }
+  D.allPeriods = function () { ensure(); return PLIST; };
+  D.period = function (id) { ensure(); return PMAP[id]; };
   D.isPlanned = function (id) { var p = D.period(id); return !!p && p.status === 'planiran'; };
   D.periodLabel = function (id) { var p = D.period(id); return p ? IH.L(p.label) : id; };
+  /* planirani periodi vrste (za „važi od“, dodelu i raspodelu) */
+  D.plannedOf = function (type) { return D.allPeriods().filter(function (p) { return p.type === type && p.status === 'planiran'; }).sort(function (a, b) { return a.from < b.from ? -1 : 1; }); };
+  /* kraći periodi unutar dužeg (meseci kvartala, kvartali polugodišta…) */
+  D.subPeriods = function (pid, type) { var p = D.period(pid); if (!p) return []; return D.allPeriods().filter(function (x) { return x.type === type && x.from >= p.from && x.to <= p.to; }).sort(function (a, b) { return a.from < b.from ? -1 : 1; }).map(function (x) { return x.id; }); };
+  /* generisanje perioda za godinu (postojeći se preskaču; rokovi po pravilima vrste) */
+  D.genPeriods = function (year, types, rules) {
+    var out = [], have = {}, y = String(year);
+    D.allPeriods().forEach(function (p) { have[p.id] = 1; });
+    types.forEach(function (ty) {
+      var len = D.typeLen(ty); if (!len) return;
+      for (var i = 0; i < 12 / len; i++) {
+        var m0 = i * len + 1, m1 = m0 + len - 1;
+        var id = ty === 'M' ? y + '-' + pad(m0) : ty === 'Q' ? y + '-Q' + (i + 1) : ty === 'H' ? y + '-H' + (i + 1) : y;
+        if (have[id]) continue;
+        var label = ty === 'M' ? L(MN[m0 - 1][0] + ' ' + y, MN[m0 - 1][1] + ' ' + y) : ty === 'Q' ? 'Q' + (i + 1) + ' ' + y : ty === 'H' ? L((i + 1) + '. polugodište ' + y, 'H' + (i + 1) + ' ' + y) : L('Godina ' + y, 'Year ' + y);
+        var np = { id: id, type: ty, from: y + '-' + pad(m0) + '-01', to: lastDay(+y, m1), label: label, status: 'planiran', gen: true };
+        out.push(Object.assign(np, planDates(np, rules && rules[ty])));
+      }
+    });
+    return out;
+  };
   function days(a, b) { return Math.round((Date.parse(b) - Date.parse(a)) / 864e5) + 1; }
   D.elapsed = function (pid) { /* udeo proteklog perioda (za tekuće periode) */
     var p = D.period(pid);
@@ -148,10 +215,10 @@
     return days(p.from, D.DATA_AS_OF) / days(p.from, p.to);
   };
   D.daysInfo = function (pid) { var p = D.period(pid); return { done: Math.min(days(p.from, D.DATA_AS_OF), days(p.from, p.to)), total: days(p.from, p.to) }; };
-  /* meseci unutar kvartala */
+  /* meseci unutar perioda (samo zaključeni i tekući) */
   D.monthsIn = function (pid) { var p = D.period(pid); return D.periods.filter(function (x) { return x.type === 'M' && x.from >= p.from && x.to <= p.to; }).map(function (x) { return x.id; }); };
-  /* svi meseci kvartala, uključujući planirane */
-  D.monthsOfQ = function (pid) { var p = D.period(pid); return D.periods.concat(D.planPeriods).filter(function (x) { return x.type === 'M' && x.from >= p.from && x.to <= p.to; }).map(function (x) { return x.id; }); };
+  /* svi meseci perioda, uključujući planirane */
+  D.monthsOfQ = function (pid) { return D.subPeriods(pid, 'M'); };
 
   /* ---------- grupe klijenata, vrste proizvoda ---------- */
   D.segments = [
@@ -484,7 +551,7 @@
     var vm = t.value || {};
     if (vm.mode === 'zbir') return (vm.of || []).reduce(function (a, oid) {
       var o = D.target(oid); if (!o) return a;
-      var pids = o.periodType === 'M' && p.type === 'Q' ? D.monthsOfQ(p.id) : [p.id];
+      var pids = D.typeLen(o.periodType) < D.typeLen(p.type) ? D.subPeriods(p.id, o.periodType) : [p.id];
       return a + pids.reduce(function (x, m) { return x + D.val(oid, m, { branch: bid }); }, 0);
     }, 0);
     if (D.SEED_TEAM[t.id] != null && p.type === 'M') return D.teamTarget(bid, p.id, t.id);
@@ -644,14 +711,18 @@
   };
 
   /* pristup stavkama */
+  function longP(pid) { var p = D.period(pid); return !!p && (p.type === 'H' || p.type === 'Y'); }
+  function cat(l) { return [].concat.apply([], l); }
   D.itemsM1 = function (empId, pid) {
     if (D.isPlanned(pid)) return [];
+    if (longP(pid)) return cat(D.subPeriods(pid, 'Q').map(function (q) { return D.itemsM1(empId, q); }));
     var k = 'm1|' + empId + '|' + pid;
     if (!CACHE[k]) CACHE[k] = D.genM1(D.emp(empId), pid);
     return CACHE[k];
   };
   D.itemsM3 = function (bid, pid) {
     if (D.isPlanned(pid)) return [];
+    if (longP(pid)) return cat(D.subPeriods(pid, 'M').map(function (m) { return D.itemsM3(bid, m); }));
     var k = 'm3|' + bid + '|' + pid;
     if (!CACHE[k]) CACHE[k] = D.genM3(bid, pid);
     return CACHE[k];
@@ -667,6 +738,7 @@
     var k = 'all|' + pid;
     if (CACHE[k]) return CACHE[k];
     var out = [], p = D.period(pid);
+    if (longP(pid)) return (CACHE[k] = cat(D.subPeriods(pid, 'Q').concat(D.subPeriods(pid, 'M')).map(D.allItems)));
     if (p.type === 'Q') D.employees.forEach(function (e) { if (e.pos === 'licni') out = out.concat(D.itemsM1(e.id, pid)); });
     else D.branches.forEach(function (b) { out = out.concat(D.itemsM3(b.id, pid)); });
     CACHE[k] = out;

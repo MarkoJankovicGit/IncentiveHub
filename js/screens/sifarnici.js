@@ -110,27 +110,6 @@
       create: 'type-new'
     },
     {
-      code: 'TIP_PERIODA', name: { sr: 'Tipovi perioda', en: 'Period types' }, desc: { sr: 'Period merenja i obračuna: trajanje, cut-off i rok za saglasnost zaposlenih', en: 'Measurement and calculation period: length, cut-off and employee consent deadline' },
-      items: function () { return R.periodTypes.map(function (p) { return { id: p.id, name: p.name, p: p }; }); },
-      cols: [
-        { key: 'len', label: t('s.colLen'), val: function (r) { return IH.L(r.p.len); } },
-        { key: 'cut', label: t('s.colCutoff'), num: true, val: function (r) { return r.p.cutoff; } },
-        { key: 'cons', label: t('s.colConsent'), num: true, val: function (r) { return r.p.consent; } }
-      ],
-      used: function (r) { return usedTargets(function (x) { return x.periodType === r.id; }); }
-    },
-    {
-      code: 'KALENDAR_PERIODA', name: { sr: 'Kalendar obračunskih perioda', en: 'Calculation period calendar' }, desc: { sr: 'Konkretni periodi sa datumima i stanjem obračuna', en: 'Concrete periods with dates and calculation state' },
-      items: function () { return D.periods.map(function (p) { return { id: p.id, name: p.label, p: p }; }); },
-      cols: [
-        { key: 'ty', label: t('s.colType'), val: function (r) { return t('per.' + r.p.type); }, filter: function () { return [{ v: t('per.M'), l: t('per.M') }, { v: t('per.Q'), l: t('per.Q') }]; } },
-        { key: 'from', label: t('s.colFrom'), val: function (r) { return r.p.from; }, render: function (r) { return F.date(r.p.from); } },
-        { key: 'to', label: t('s.colTo'), val: function (r) { return r.p.to; }, render: function (r) { return F.date(r.p.to); } },
-        { key: 'state', label: t('s.colPerSt'), val: function (r) { return t('pst.' + r.p.status); }, render: function (r) { return ui.pill(t('pst.' + r.p.status), r.p.status === 'isplaceno' ? 'gray' : r.p.status === 'u_toku' ? 'accent' : 'warning'); }, filter: function () { return ['u_toku', 'saglasnost', 'isplaceno'].map(function (k) { return { v: t('pst.' + k), l: t('pst.' + k) }; }); } }
-      ],
-      used: function (r) { return r.p.status === 'u_toku' ? 1 : 0; }, locked: true
-    },
-    {
       code: 'MERA', name: { sr: 'Mere', en: 'Measures' }, desc: { sr: 'Polje koje se agregira u formuli merenja targeta', en: 'Field aggregated in the target measurement formula' },
       items: function () { return R.measures.map(function (m) { return { id: m.id, name: m.name, m: m }; }); },
       cols: [{ key: 'unit', label: t('s.colUnit'), val: function (r) { return r.m.unit; } }],

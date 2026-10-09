@@ -63,11 +63,7 @@
     { id: 'nova', name: L('Nova prodaja', 'New sale'), sign: '+', def: true },
     { id: 'storno', name: L('Storno', 'Reversal'), sign: '−', def: false, d: L('Povlačenje priznate prodaje', 'Withdrawal of a recognised sale') }
   ];
-  R.periodTypes = [
-    { id: 'M', name: L('Mesec', 'Month'), len: L('1 mesec', '1 month'), cutoff: 3, consent: 10 },
-    { id: 'Q', name: L('Kvartal', 'Quarter'), len: L('3 meseca', '3 months'), cutoff: 5, consent: 10 },
-    { id: 'Y', name: L('Godina', 'Year'), len: L('12 meseci', '12 months'), cutoff: 10, consent: 15 }
-  ];
+  R.periodTypes = D.periodTypes;
   R.units = [{ id: 'kom', name: L('Količina (kom)', 'Quantity (pcs)') }, { id: 'RSD', name: L('Novac (RSD)', 'Money (RSD)') }];
 
   /* ---------- šabloni uslova ----------

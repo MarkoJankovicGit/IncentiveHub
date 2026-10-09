@@ -21,7 +21,8 @@
     'bl.colTarget': 'Target', 'bl.colCarrier': 'Carrier', 'bl.colScheme': 'Scheme', 'bl.hVer': 'Version v{v} in force from {d}', 'bl.hNew': 'Points list created'
   });
 
-  var FROMS = [{ v: '2026-11-01', l: L('Novembar 2026', 'Nov 2026') }, { v: '2026-12-01', l: L('Decembar 2026', 'Dec 2026') }, { v: '2027-01-01', l: L('Q1 2027', 'Q1 2027') }, { v: '2027-04-01', l: L('Q2 2027', 'Q2 2027') }];
+  /* „važi od“: početak planiranog meseca iz kalendara (Obračunski periodi) */
+  function FROMS() { var l = D.plannedOf('M'); if (!l.length) l = D.allPeriods().filter(function (p) { return p.status === 'planiran'; }); var seen = {}; return l.filter(function (p) { if (seen[p.from]) return false; seen[p.from] = 1; return true; }).map(function (p) { return { v: p.from, l: p.label }; }); }
   var QUEUE = [
     { name: L('Računi – fizička lica', 'Accounts – private individuals'), items: [{ p: 'P02', b: 2 }, { p: 'P03', b: 3 }, { p: 'P04', b: 4 }] },
     { name: L('Krediti – preduzetnici', 'Loans – entrepreneurs'), items: [] }
@@ -119,7 +120,7 @@
   function formHtml(x, m) {
     var ro = m.ro, h = '<div class="form-grid g3">';
     h += fld(t('bl.fName'), ro ? rov(IH.L(x.name)) : '<input class="in" data-pl="name" value="' + IH.esc(IH.L(x.name)) + '">', { full: true, req: !ro });
-    h += fld(t('bl.fFrom'), ro ? rov(F.date(x.from)) : '<select class="in" data-pl="from">' + FROMS.map(function (o) { return '<option value="' + o.v + '"' + (o.v === x.from ? ' selected' : '') + '>' + IH.esc(IH.L(o.l)) + ' (' + F.date(o.v) + ')</option>'; }).join('') + '</select>', { req: !ro });
+    h += fld(t('bl.fFrom'), ro ? rov(F.date(x.from)) : '<select class="in" data-pl="from">' + FROMS().map(function (o) { return '<option value="' + o.v + '"' + (o.v === x.from ? ' selected' : '') + '>' + IH.esc(IH.L(o.l)) + ' (' + F.date(o.v) + ')</option>'; }).join('') + '</select>', { req: !ro });
     h += fld(t('bl.fVer'), rov('v' + x.v));
     if (ro) { h += fld(t('c.status'), rov(t('st2.' + (x.status || 'aktivan')))); h += fld(t('bl.colPt'), rov(D.subjPtypeName({ plist: x.id }))); h += fld(t('bl.colSeg'), rov(segsTxt({ plist: x.id }))); }
     if (m.edit) h += fld(t('bl.fReason'), '<input class="in" data-pl="reason" value="' + IH.esc(x.reason || '') + '" placeholder="' + IH.esc(IH.L(L('Nova bodovna politika za 2027.', 'New points policy for 2027'))) + '">', { full: true, req: true });
