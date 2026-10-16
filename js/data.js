@@ -1,5 +1,5 @@
-/* Incentive Hub — mock podaci v2
-   Katalog: 3 grupe klijenata (fizička lica, preduzetnici, poljoprivrednici) × 3 vrste proizvoda (računi, kartice, krediti),
+/* Incentive Hub - mock podaci v2
+   Katalog: 3 segmenta (fizička lica, preduzetnici, poljoprivrednici) × 3 vrste proizvoda (računi, kartice, krediti),
    iz Kataloga proizvoda UniCredit Bank Srbija u primeni od 24.08.2026. Generator prodaje je determinističan. */
 (function () {
   'use strict';
@@ -25,16 +25,16 @@
     { id: 'R2', name: L('Region Sever', 'North Region'), head: 'D002' },
     { id: 'R3', name: L('Region Istok/Zapad/Jug', 'East/West/South Region'), head: 'D003' }
   ];
-  /* f: interni parametar generatora demo podataka (veličina ekspoziture) — ne prikazuje se */
+  /* f: interni parametar generatora demo podataka (veličina ekspoziture) - ne prikazuje se */
   D.branches = [
-    { id: 'B01', code: 'EKS-1101', region: 'R1', city: 'Beograd', addr: 'Novi Beograd – Jurija Gagarina 12', anon: 'Ekspozitura Beograd 1', f: 1.0, focus: true, prime: true, nL: 5, nU: 4, phone: '011 3204 100' },
-    { id: 'B02', code: 'EKS-1124', region: 'R1', city: 'Beograd', addr: 'Beograd – Dorćol, Višnjićeva 18', anon: 'Ekspozitura Beograd 2', f: 0.7, opened: '2026-03-16', nL: 3, nU: 3, phone: '011 3204 240' },
-    { id: 'B03', code: 'EKS-1107', region: 'R1', city: 'Beograd', addr: 'Beograd – Voždovac, Vojvode Stepe 74', anon: 'Ekspozitura Beograd 3', f: 0.9, prime: true, nL: 4, nU: 4, phone: '011 3204 170' },
-    { id: 'B04', code: 'EKS-2101', region: 'R2', city: 'Novi Sad', addr: 'Novi Sad – Narodnih heroja 3', anon: 'Ekspozitura Novi Sad 1', f: 1.0, prime: true, nL: 5, nU: 4, phone: '021 4895 100' },
-    { id: 'B05', code: 'EKS-2203', region: 'R2', city: 'Subotica', addr: 'Subotica – Park Rajhl Ferenca 7', anon: 'Ekspozitura Subotica', f: 0.75, nL: 3, nU: 3, phone: '024 6710 300' },
-    { id: 'B06', code: 'EKS-3101', region: 'R3', city: 'Niš', addr: 'Niš – Bulevar dr Zorana Đinđića 15', anon: 'Ekspozitura Niš 1', f: 0.85, prime: true, nL: 4, nU: 4, phone: '018 5042 100' },
-    { id: 'B07', code: 'EKS-3205', region: 'R3', city: 'Kragujevac', addr: 'Kragujevac – Kralja Petra I 23', anon: 'Ekspozitura Kragujevac', f: 0.8, nL: 4, nU: 3, phone: '034 3368 200' },
-    { id: 'B08', code: 'EKS-3311', region: 'R3', city: 'Čačak', addr: 'Čačak – Kursulina 1', anon: 'Ekspozitura Čačak', f: 0.7, nL: 3, nU: 3, phone: '032 3493 500' }
+    { id: 'B01', code: 'EKS-1101', region: 'R1', city: 'Beograd', addr: 'Novi Beograd - Jurija Gagarina 12', anon: 'Ekspozitura Beograd 1', f: 1.0, focus: true, prime: true, nL: 5, nU: 4, phone: '011 3204 100' },
+    { id: 'B02', code: 'EKS-1124', region: 'R1', city: 'Beograd', addr: 'Beograd - Dorćol, Višnjićeva 18', anon: 'Ekspozitura Beograd 2', f: 0.7, opened: '2026-03-16', nL: 3, nU: 3, phone: '011 3204 240' },
+    { id: 'B03', code: 'EKS-1107', region: 'R1', city: 'Beograd', addr: 'Beograd - Voždovac, Vojvode Stepe 74', anon: 'Ekspozitura Beograd 3', f: 0.9, prime: true, nL: 4, nU: 4, phone: '011 3204 170' },
+    { id: 'B04', code: 'EKS-2101', region: 'R2', city: 'Novi Sad', addr: 'Novi Sad - Narodnih heroja 3', anon: 'Ekspozitura Novi Sad 1', f: 1.0, prime: true, nL: 5, nU: 4, phone: '021 4895 100' },
+    { id: 'B05', code: 'EKS-2203', region: 'R2', city: 'Subotica', addr: 'Subotica - Park Rajhl Ferenca 7', anon: 'Ekspozitura Subotica', f: 0.75, nL: 3, nU: 3, phone: '024 6710 300' },
+    { id: 'B06', code: 'EKS-3101', region: 'R3', city: 'Niš', addr: 'Niš - Bulevar dr Zorana Đinđića 15', anon: 'Ekspozitura Niš 1', f: 0.85, prime: true, nL: 4, nU: 4, phone: '018 5042 100' },
+    { id: 'B07', code: 'EKS-3205', region: 'R3', city: 'Kragujevac', addr: 'Kragujevac - Kralja Petra I 23', anon: 'Ekspozitura Kragujevac', f: 0.8, nL: 4, nU: 3, phone: '034 3368 200' },
+    { id: 'B08', code: 'EKS-3311', region: 'R3', city: 'Čačak', addr: 'Čačak - Kursulina 1', anon: 'Ekspozitura Čačak', f: 0.7, nL: 3, nU: 3, phone: '032 3493 500' }
   ];
   D.branch = function (id) { return D.branches.filter(function (b) { return b.id === id; })[0]; };
   D.branchName = function (b) {
@@ -47,8 +47,8 @@
     if (typeof b === 'string') b = D.branch(b);
     if (!b) return '';
     if (IH.state.tenant !== 'unicredit-rs') return b.anon;
-    var p = b.addr.split(' – '), c = p[0];
-    return D.branches.filter(function (x) { return x.addr.split(' – ')[0] === c; }).length > 1 ? c + ' – ' + p[1].split(',')[0] : c;
+    var p = b.addr.split(' - '), c = p[0];
+    return D.branches.filter(function (x) { return x.addr.split(' - ')[0] === c; }).length > 1 ? c + ' - ' + p[1].split(',')[0] : c;
   };
   D.region = function (id) { return D.regions.filter(function (r) { return r.id === id; })[0]; };
 
@@ -84,7 +84,7 @@
   emp({ id: 'A001', hr: 'HR-35671', name: 'Dragana Milošević', pos: 'admin', since: '2017-10-02', phone: '+381 63 101 3050', born: '1986-10-30' });
   emp({ id: 'V001', hr: 'HR-36190', name: 'Vladimir Tomić', pos: 'kontroling', since: '2018-04-23', phone: '+381 63 101 3140', born: '1983-12-11' });
 
-  /* ostale ekspoziture — deterministički generisana imena */
+  /* ostale ekspoziture - deterministički generisana imena */
   var FN = ['Aleksandar', 'Marija', 'Milan', 'Jovana', 'Dragan', 'Tijana', 'Nenad', 'Sanja', 'Ivan', 'Maja', 'Dejan', 'Katarina', 'Miloš', 'Nataša', 'Bojan', 'Sofija', 'Nemanja', 'Teodora', 'Uroš', 'Mina', 'Filip', 'Kristina', 'Vuk', 'Snežana', 'Dušan', 'Bojana', 'Lazar', 'Jasmina', 'Đorđe', 'Andrijana', 'Vladan', 'Ljiljana', 'Igor', 'Danijela', 'Goran', 'Aleksandra', 'Srđan', 'Vesna', 'Ognjen', 'Milena', 'Rade', 'Nevena', 'Saša', 'Gorana', 'Mihajlo', 'Ivona', 'Predrag', 'Zorana', 'Darko', 'Olivera', 'Stevan', 'Biljana', 'Marko', 'Svetlana', 'Pavle', 'Jelisaveta', 'Strahinja', 'Anđela'];
   var LN = ['Petrović', 'Stojanović', 'Todorović', 'Živković', 'Kovačević', 'Lukić', 'Mitrović', 'Radović', 'Vasić', 'Savić', 'Obradović', 'Gajić', 'Božić', 'Filipović', 'Perić', 'Babić', 'Antić', 'Mladenović', 'Stevanović', 'Milenković', 'Krstić', 'Lazarević', 'Đukić', 'Zorić', 'Nedeljković', 'Ćirić', 'Marić', 'Jovičić', 'Rakić', 'Ignjatović', 'Bogdanović', 'Pantić', 'Milovanović', 'Aleksić', 'Arsić', 'Dimitrijević', 'Spasić', 'Cvetković', 'Matić', 'Bošković', 'Grujić', 'Tasić', 'Veljković', 'Nešić', 'Đurić', 'Jakovljević', 'Mihajlović', 'Ristović', 'Stamenković', 'Zdravković', 'Pejić', 'Lalić', 'Sretenović', 'Vidović', 'Knežević', 'Mićić', 'Prodanović', 'Šarić'];
   var nameIdx = 0, hrNo = 52000;
@@ -131,12 +131,7 @@
   /* planirani periodi: za njih se dodeljuju targeti i važe nove verzije, ali još nema prodaja ni obračuna */
   D.planPeriods = [
     { id: '2026-11', type: 'M', from: '2026-11-01', to: '2026-11-30', label: L('Novembar 2026', 'Nov 2026'), status: 'planiran' },
-    { id: '2026-12', type: 'M', from: '2026-12-01', to: '2026-12-31', label: L('Decembar 2026', 'Dec 2026'), status: 'planiran' },
-    { id: '2027-01', type: 'M', from: '2027-01-01', to: '2027-01-31', label: L('Januar 2027', 'Jan 2027'), status: 'planiran' },
-    { id: '2027-02', type: 'M', from: '2027-02-01', to: '2027-02-28', label: L('Februar 2027', 'Feb 2027'), status: 'planiran' },
-    { id: '2027-03', type: 'M', from: '2027-03-01', to: '2027-03-31', label: L('Mart 2027', 'Mar 2027'), status: 'planiran' },
-    { id: '2027-Q1', type: 'Q', from: '2027-01-01', to: '2027-03-31', label: 'Q1 2027', status: 'planiran' },
-    { id: '2027-Q2', type: 'Q', from: '2027-04-01', to: '2027-06-30', label: 'Q2 2027', status: 'planiran' }
+    { id: '2026-12', type: 'M', from: '2026-12-01', to: '2026-12-31', label: L('Decembar 2026', 'Dec 2026'), status: 'planiran' }
   ];
   /* ---------- vrste perioda (Podešavanja → Obračunski periodi → Vrste perioda) ----------
      months = trajanje; lock / deadline / pay = dana posle kraja perioda: zaključavanje podataka, rok za saglasnost, isplata.
@@ -220,7 +215,7 @@
   /* svi meseci perioda, uključujući planirane */
   D.monthsOfQ = function (pid) { return D.subPeriods(pid, 'M'); };
 
-  /* ---------- grupe klijenata, vrste proizvoda ---------- */
+  /* ---------- segmenti, vrste proizvoda ---------- */
   D.segments = [
     { id: 'FL', name: L('Fizička lica', 'Private individuals'), short: L('Fizička lica', 'Individuals') },
     { id: 'PR', name: L('Preduzetnici', 'Entrepreneurs'), short: L('Preduzetnici', 'Entrepreneurs') },
@@ -251,71 +246,30 @@
       conds: [
         { tpl: 'T-STATUS', attr: 'status_ugovora', op: 'eq', value: 'isplacen', effect: 'uslov' },
         { tpl: 'T-EXCLUDE', attr: 'izvor_refi', op: 'ne', value: 'interni', effect: 'iskljucenje' },
-        { tpl: 'T-MORTGAGE', attr: 'datum_hipoteke', op: 'within', window: { n: 90, unit: 'd', from: 'datum_isplate' }, when: 'hipoteka_potrebna', effect: 'odlozeno' },
-        { tpl: 'T-NO-PREPAY', attr: 'datum_prevremene_otplate', op: 'not_within', window: { n: 90, unit: 'd', from: 'datum_isplate' }, effect: 'storno' },
         { tpl: 'T-STAFF', attr: 'klijent_zaposleni', op: 'eq', value: false, effect: 'iskljucenje' }
       ]
     }
   ];
   D.ptype = function (id) { return D.ptypes.filter(function (p) { return p.id === id; })[0]; };
   D.ptypeName = function (id) { if (!id) return IH.L(L('Više vrsta proizvoda', 'Several product types')); var p = D.ptype(id); return p ? IH.L(p.name) : id; };
-  /* jedinica: komadi, iznos (RSD) ili bodovi */
-  IH.unitTxt = function (u) { return u === 'RSD' ? 'RSD' : u === 'bod' ? IH.t('u.bod') : IH.t('u.kom'); };
-  /* predmet targeta: bodovni target može obuhvatiti više vrsta proizvoda (ptype prazan, proizvodi navedeni) */
+  /* jedinica: komadi ili iznos (RSD) */
+  IH.unitTxt = function (u) { return u === 'RSD' ? 'RSD' : IH.t('u.kom'); };
+  /* proizvodi i vrste proizvoda iz predmeta targeta */
   D.subjProducts = function (sj) {
-    sj = D.resolveSubj(sj); if (!sj) return [];
+    if (!sj) return [];
     var ps = IH.products ? IH.products() : D.products;
     return ps.filter(function (p) { return p.status === 'aktivan' && (!sj.ptype || p.ptype === sj.ptype) && (!(sj.segs && sj.segs.length) || sj.segs.indexOf(p.seg) >= 0) && (!(sj.products && sj.products.length) || sj.products.indexOf(p.id) >= 0); });
   };
   D.subjPtypes = function (sj) {
-    sj = D.resolveSubj(sj); if (!sj) return [];
+    if (!sj) return [];
     if (sj.ptype) return [sj.ptype];
     var o = {}; (sj.products || []).forEach(function (id) { var p = D.product(id); if (p) o[p.ptype] = 1; });
     return D.ptypes.map(function (x) { return x.id; }).filter(function (id) { return o[id]; });
   };
-  D.subjPtypeName = function (sj) { var l = D.subjPtypes(sj); return l.length ? l.map(D.ptypeName).join(', ') : '—'; };
-  /* bodovi proizvoda u bodovnom targetu */
-  D.ptsOf = function (t, productId) { var sj = D.resolveSubj(t && t.subject), p = sj && sj.points; return p && p[productId] != null ? p[productId] : 0; };
-  /* bodovna lista (Katalog proizvoda → Bodovne liste): verzija koja važi u periodu (bez perioda: na današnji dan; planirana lista: prva verzija) */
-  D.pointListAt = function (id, pid) {
-    var l = D.pointList ? D.pointList(id) : null; if (!l) return null;
-    var at = pid && D.period(pid) ? D.period(pid).from : D.TODAY;
-    var vs = l.versions.slice().sort(function (a, b) { return a.from < b.from ? -1 : a.from > b.from ? 1 : a.v - b.v; });
-    var ok = vs.filter(function (v) { return v.from <= at; });
-    return ok.length ? ok[ok.length - 1] : vs[0];
-  };
-  /* predmet bodovnog targeta: proizvodi, bodovi, grupe i vrsta proizvoda dolaze iz bodovne liste */
-  var PLC = {};
-  D.resolveSubj = function (sj, pid) {
-    if (!sj || !sj.plist || sj._pl) return sj;
-    var v = D.pointListAt(sj.plist, pid); if (!v) return sj;
-    var k = sj.plist + '|' + v.v + '|' + v.from + '|' + v.items.map(function (i) { return i.p + ':' + i.b; }).join(','), c = PLC[k];
-    if (!c) {
-      var points = {}, segs = [], pts = {};
-      v.items.forEach(function (i) { points[i.p] = i.b; var p = D.product(i.p); if (p) { if (segs.indexOf(p.seg) < 0) segs.push(p.seg); pts[p.ptype] = 1; } });
-      segs.sort(function (a, b) { return ['FL', 'PR', 'PO'].indexOf(a) - ['FL', 'PR', 'PO'].indexOf(b); });
-      var ptl = D.ptypes.map(function (x) { return x.id; }).filter(function (id) { return pts[id]; });
-      c = PLC[k] = { products: v.items.map(function (i) { return i.p; }), points: points, segs: segs, ptype: ptl.length === 1 ? ptl[0] : null, _pl: k, _plv: v.v };
-    }
-    return Object.assign({}, sj, c);
-  };
-  /* uslovi priznavanja za više vrsta proizvoda: podrazumevani uslovi svake vrste, uslov važi za vrste u „pt“; isti uslov se spaja */
-  function condKey(c) { var o = Object.assign({}, c); delete o.pt; return JSON.stringify(o); }
-  D.mixConds = function (pts, base) {
-    var out = (base || []).map(function (c) { return JSON.parse(JSON.stringify(c)); });
-    pts.forEach(function (pt) {
-      var p = D.ptype(pt); if (!p) return;
-      p.conds.forEach(function (c0) {
-        var c = JSON.parse(JSON.stringify(c0)), k = condKey(c), hit = out.filter(function (x) { return condKey(x) === k; })[0];
-        if (hit) { if (hit.pt && hit.pt.indexOf(pt) < 0) hit.pt.push(pt); }
-        else { c.pt = [pt]; out.push(c); }
-      });
-    });
-    return out;
-  };
-  /* obračunska kategorija = grupa klijenata × vrsta proizvoda */
+  D.subjPtypeName = function (sj) { var l = D.subjPtypes(sj); return l.length ? l.map(D.ptypeName).join(', ') : '-'; };
+  /* obračunska kategorija = segment × vrsta proizvoda */
   D.categories = [];
-  D.segments.forEach(function (s) { D.ptypes.forEach(function (p) { D.categories.push({ id: s.id + '-' + p.code, seg: s.id, ptype: p.id, group: p.id, name: { sr: p.name.sr + ' – ' + s.name.sr.toLowerCase(), en: p.name.en + ' – ' + s.name.en.toLowerCase() } }); }); });
+  D.segments.forEach(function (s) { D.ptypes.forEach(function (p) { D.categories.push({ id: s.id + '-' + p.code, seg: s.id, ptype: p.id, group: p.id, name: { sr: p.name.sr + ' - ' + s.name.sr.toLowerCase(), en: p.name.en + ' - ' + s.name.en.toLowerCase() } }); }); });
   D.cat = function (id) { return D.categories.filter(function (c) { return c.id === id; })[0]; };
   D.catOf = function (seg, ptype) { return seg + '-' + D.ptype(ptype).code; };
 
@@ -331,106 +285,106 @@
   }
   var EKS = L('Ekspozitura', 'Branch'), EKSMB = L('Ekspozitura, mobilna aplikacija', 'Branch, mobile app'), RES = L('Rezidenti i nerezidenti', 'Residents and non-residents');
   var MEN = L('Menice, jemstvo, administrativna zabrana', 'Bills of exchange, guarantor, salary assignment');
-  var KRD_FIZ = L('Promenljiva: 3M Belibor + 0,3–23% · fiksna 1,3–30% godišnje', 'Variable: 3M Belibor + 0.3–23% · fixed 1.3–30% p.a.');
-  var NAK_KRD = L('Obrada zahteva 0–5%, održavanje 0–2%', 'Processing 0–5%, maintenance 0–2%');
-  var PR_KAM = L('Promenljiva: 3M Belibor + 0,3–19% · fiksna RSD 2,9–29,99%', 'Variable: 3M Belibor + 0.3–19% · fixed RSD 2.9–29.99%');
+  var KRD_FIZ = L('Promenljiva: 3M Belibor + 0,3-23% · fiksna 1,3-30% godišnje', 'Variable: 3M Belibor + 0.3-23% · fixed 1.3-30% p.a.');
+  var NAK_KRD = L('Obrada zahteva 0-5%, održavanje 0-2%', 'Processing 0-5%, maintenance 0-2%');
+  var PR_KAM = L('Promenljiva: 3M Belibor + 0,3-19% · fiksna RSD 2,9-29,99%', 'Variable: 3M Belibor + 0.3-19% · fixed RSD 2.9-29.99%');
   var PR_OBZ = L('Menice, hipoteka, zaloga, jemstvo, vinkulirana polisa', 'Bills of exchange, mortgage, pledge, guarantor, assigned policy');
-  var PO_KAM = L('Promenljiva: 6M Belibor + 0,3–30% · fiksna 2,9–30% godišnje', 'Variable: 6M Belibor + 0.3–30% · fixed 2.9–30% p.a.');
+  var PO_KAM = L('Promenljiva: 6M Belibor + 0,3-30% · fiksna 2,9-30% godišnje', 'Variable: 6M Belibor + 0.3-30% · fixed 2.9-30% p.a.');
   var PO_OBZ = L('Menice, administrativna zabrana, hipoteka, zaloga, jemstvo', 'Bills of exchange, salary assignment, mortgage, pledge, guarantor');
-  var NAK_PR = L('Obrada zahteva 0–5%, održavanje 0–5%', 'Processing 0–5%, maintenance 0–5%');
+  var NAK_PR = L('Obrada zahteva 0-5%, održavanje 0-5%', 'Processing 0-5%, maintenance 0-5%');
   D.products = [
-    /* fizička lica — računi */
+    /* fizička lica - računi */
     pr('P01', 'FL', 'racun', L('Osnovni', 'Basic'), 'Platni račun sa osnovnim uslugama', L('Platni račun sa osnovnim uslugama', 'Basic payment account'), ['RAC-OSN-01'],
-      { valuta: 'RSD', naknada: L('Vođenje računa 0–500 RSD mesečno', 'Account fee 0–500 RSD monthly'), kanal: EKSMB, klijenti: RES }, { w: 10 }),
+      { valuta: 'RSD', naknada: L('Vođenje računa 0-500 RSD mesečno', 'Account fee 0-500 RSD monthly'), kanal: EKSMB, klijenti: RES }, { w: 10 }),
     pr('P02', 'FL', 'racun', L('Paket', 'Package'), 'Paket račun Standard', L('Paket račun Standard', 'Standard package account'), ['PKG-STD-01', 'PKG-STD-02'],
-      { valuta: 'RSD', naknada: L('Vođenje računa 0–500 RSD mesečno', 'Account fee 0–500 RSD monthly'), kanal: EKSMB, klijenti: L('Rezidenti i studenti (do 26 g. bez naknade)', 'Residents and students (free up to age 26)') }, { w: 45 }),
+      { valuta: 'RSD', naknada: L('Vođenje računa 0-500 RSD mesečno', 'Account fee 0-500 RSD monthly'), kanal: EKSMB, klijenti: L('Rezidenti i studenti (do 26 g. bez naknade)', 'Residents and students (free up to age 26)') }, { w: 45 }),
     pr('P03', 'FL', 'racun', L('Paket', 'Package'), 'Paket račun Gold', L('Paket račun Gold', 'Gold package account'), ['PKG-GLD-01'],
-      { valuta: 'RSD', naknada: L('Vođenje računa 0–1.000 RSD mesečno', 'Account fee 0–1,000 RSD monthly'), kanal: EKS, klijenti: RES }, { w: 25 }),
+      { valuta: 'RSD', naknada: L('Vođenje računa 0-1.000 RSD mesečno', 'Account fee 0-1,000 RSD monthly'), kanal: EKS, klijenti: RES }, { w: 25 }),
     pr('P04', 'FL', 'racun', L('Paket', 'Package'), 'Paket račun Prime', L('Paket račun Prime', 'Prime package account'), ['PKG-PRM-01'],
-      { valuta: 'RSD', naknada: L('Vođenje računa 0–5.000 RSD mesečno', 'Account fee 0–5,000 RSD monthly'), kanal: EKS, klijenti: RES }, { w: 6, from: '2026-05-13', ver: 1 }),
+      { valuta: 'RSD', naknada: L('Vođenje računa 0-5.000 RSD mesečno', 'Account fee 0-5,000 RSD monthly'), kanal: EKS, klijenti: RES }, { w: 6, from: '2026-05-13', ver: 1 }),
     pr('P05', 'FL', 'racun', L('Paket', 'Package'), 'Paket račun Senior plus', L('Paket račun Senior plus', 'Senior plus package account'), ['PKG-SNR-01'],
-      { valuta: 'RSD', naknada: L('Vođenje računa 0–500 RSD mesečno', 'Account fee 0–500 RSD monthly'), kanal: EKS, klijenti: L('Rezidenti, penzioneri', 'Residents, pensioners') }, { w: 14 }),
+      { valuta: 'RSD', naknada: L('Vođenje računa 0-500 RSD mesečno', 'Account fee 0-500 RSD monthly'), kanal: EKS, klijenti: L('Rezidenti, penzioneri', 'Residents, pensioners') }, { w: 14 }),
     pr('P06', 'FL', 'racun', L('Devizni', 'Foreign currency'), 'Devizni tekući račun', L('Devizni tekući račun', 'Foreign currency account'), ['RAC-DEV-01'],
-      { valuta: 'EUR, USD, CHF, GBP, SEK, CAD, AUD, JPY, NOK, DKK', kamata: L('EUR 0,0–0,6% fiksna, godišnja', 'EUR 0.0–0.6% fixed p.a.'), naknada: L('0–45 RSD mesečno', '0–45 RSD monthly'), kanal: EKS, klijenti: RES }, { w: 10 }),
-    /* fizička lica — kartice */
+      { valuta: 'EUR, USD, CHF, GBP, SEK, CAD, AUD, JPY, NOK, DKK', kamata: L('EUR 0,0-0,6% fiksna, godišnja', 'EUR 0.0-0.6% fixed p.a.'), naknada: L('0-45 RSD mesečno', '0-45 RSD monthly'), kanal: EKS, klijenti: RES }, { w: 10 }),
+    /* fizička lica - kartice */
     pr('P07', 'FL', 'kartica', L('Debitna', 'Debit'), 'DinaCard debitna kartica', L('DinaCard debitna kartica', 'DinaCard debit card'), ['DC-DNA-01'],
-      { valuta: 'RSD', rok: L('5 godina', '5 years'), naknada: L('Naknade za transakcije na ATM 0–5.000 RSD', 'ATM transaction fees 0–5,000 RSD'), kanal: EKSMB, klijenti: RES }, { w: 20 }),
+      { valuta: 'RSD', rok: L('5 godina', '5 years'), naknada: L('Naknade za transakcije na ATM 0-5.000 RSD', 'ATM transaction fees 0-5,000 RSD'), kanal: EKSMB, klijenti: RES }, { w: 20 }),
     pr('P08', 'FL', 'kartica', L('Debitna', 'Debit'), 'Mastercard debitna kartica', L('Mastercard debitna kartica', 'Mastercard debit card'), ['DC-MC-01'],
-      { valuta: L('RSD / EUR / USD / GBP / CHF', 'RSD / EUR / USD / GBP / CHF'), rok: L('5 godina', '5 years'), naknada: L('Članarina i ostale naknade 0–5.000 RSD', 'Membership and other fees 0–5,000 RSD'), kanal: EKSMB, klijenti: RES }, { w: 25 }),
+      { valuta: L('RSD / EUR / USD / GBP / CHF', 'RSD / EUR / USD / GBP / CHF'), rok: L('5 godina', '5 years'), naknada: L('Članarina i ostale naknade 0-5.000 RSD', 'Membership and other fees 0-5,000 RSD'), kanal: EKSMB, klijenti: RES }, { w: 25 }),
     pr('P09', 'FL', 'kartica', L('Debitna', 'Debit'), 'Mastercard Gold debitna kartica', L('Mastercard Gold debitna kartica', 'Mastercard Gold debit card'), ['DC-MCG-01'],
-      { valuta: L('RSD / EUR / USD / GBP / CHF', 'RSD / EUR / USD / GBP / CHF'), rok: L('5 godina', '5 years'), naknada: L('Članarina i ostale naknade 0–5.000 RSD', 'Membership and other fees 0–5,000 RSD'), kanal: EKS, klijenti: L('Korisnici paketa Gold', 'Gold package clients') }, { w: 8 }),
+      { valuta: L('RSD / EUR / USD / GBP / CHF', 'RSD / EUR / USD / GBP / CHF'), rok: L('5 godina', '5 years'), naknada: L('Članarina i ostale naknade 0-5.000 RSD', 'Membership and other fees 0-5,000 RSD'), kanal: EKS, klijenti: L('Korisnici paketa Gold', 'Gold package clients') }, { w: 8 }),
     pr('P10', 'FL', 'kartica', L('Debitna', 'Debit'), 'Mastercard World Elite debitna kartica', L('Mastercard World Elite debitna kartica', 'Mastercard World Elite debit card'), ['DC-MWE-01'],
-      { valuta: L('RSD / EUR / USD / GBP / CHF', 'RSD / EUR / USD / GBP / CHF'), rok: L('5 godina', '5 years'), naknada: L('Članarina i ostale naknade 0–5.000 RSD', 'Membership and other fees 0–5,000 RSD'), kanal: EKS, klijenti: L('Korisnici paketa Prime', 'Prime package clients') }, { w: 3 }),
+      { valuta: L('RSD / EUR / USD / GBP / CHF', 'RSD / EUR / USD / GBP / CHF'), rok: L('5 godina', '5 years'), naknada: L('Članarina i ostale naknade 0-5.000 RSD', 'Membership and other fees 0-5,000 RSD'), kanal: EKS, klijenti: L('Korisnici paketa Prime', 'Prime package clients') }, { w: 3 }),
     pr('P11', 'FL', 'kartica', L('Debitna', 'Debit'), 'Visa Gold debitna kartica', L('Visa Gold debitna kartica', 'Visa Gold debit card'), ['DC-VG-01'],
-      { valuta: 'RSD', rok: L('5 godina', '5 years'), naknada: L('0–250 RSD mesečno', '0–250 RSD monthly'), kanal: EKS, klijenti: L('Korisnici paketa Gold', 'Gold package clients') }, { w: 5 }),
+      { valuta: 'RSD', rok: L('5 godina', '5 years'), naknada: L('0-250 RSD mesečno', '0-250 RSD monthly'), kanal: EKS, klijenti: L('Korisnici paketa Gold', 'Gold package clients') }, { w: 5 }),
     pr('P12', 'FL', 'kartica', L('Debitna', 'Debit'), 'Visa Platinum debitna kartica', L('Visa Platinum debitna kartica', 'Visa Platinum debit card'), ['DC-VP-01'],
-      { valuta: 'RSD', rok: L('5 godina', '5 years'), naknada: L('0–1.200 RSD mesečno', '0–1,200 RSD monthly'), kanal: EKS, klijenti: L('Korisnici paketa Prime', 'Prime package clients') }, { w: 2 }),
+      { valuta: 'RSD', rok: L('5 godina', '5 years'), naknada: L('0-1.200 RSD mesečno', '0-1,200 RSD monthly'), kanal: EKS, klijenti: L('Korisnici paketa Prime', 'Prime package clients') }, { w: 2 }),
     pr('P13', 'FL', 'kartica', L('Kreditna', 'Credit'), 'Flexia Mastercard kreditna kartica', L('Flexia Mastercard kreditna kartica', 'Flexia Mastercard credit card'), ['CC-FLX-01', 'CC-FLX-MB'],
-      { valuta: 'RSD', rok: L('3 godine', '3 years'), iznos: L('Limit 50.000–1.000.000 RSD (mobilna aplikacija do 200.000)', 'Limit 50,000–1,000,000 RSD (mobile app up to 200,000)'), kamata: L('5–15% godišnje, fiksna', '5–15% p.a., fixed'), naknada: L('Otplata 5% ili min. 600 RSD; plaćanje na rate 0–2.000 RSD', 'Repayment 5% or min. 600 RSD; instalments 0–2,000 RSD'), obezbedjenje: L('Menica, depozit, jemstvo (u mobilnoj aplikaciji bez obezbeđenja)', 'Bill of exchange, deposit, guarantor (none in mobile app)'), kanal: EKSMB, klijenti: RES }, { w: 30 }),
+      { valuta: 'RSD', rok: L('3 godine', '3 years'), iznos: L('Limit 50.000-1.000.000 RSD (mobilna aplikacija do 200.000)', 'Limit 50,000-1,000,000 RSD (mobile app up to 200,000)'), kamata: L('5-15% godišnje, fiksna', '5-15% p.a., fixed'), naknada: L('Otplata 5% ili min. 600 RSD; plaćanje na rate 0-2.000 RSD', 'Repayment 5% or min. 600 RSD; instalments 0-2,000 RSD'), obezbedjenje: L('Menica, depozit, jemstvo (u mobilnoj aplikaciji bez obezbeđenja)', 'Bill of exchange, deposit, guarantor (none in mobile app)'), kanal: EKSMB, klijenti: RES }, { w: 30 }),
     pr('P14', 'FL', 'kartica', L('Kreditna', 'Credit'), 'Mastercard Platinum kreditna kartica', L('Mastercard Platinum kreditna kartica', 'Mastercard Platinum credit card'), ['CC-PLT-01'],
-      { valuta: 'RSD', rok: L('3 godine', '3 years'), iznos: L('Limit od 500.000 RSD, prema kreditnoj sposobnosti', 'Limit from 500,000 RSD, by creditworthiness'), kamata: L('5–15% godišnje, fiksna', '5–15% p.a., fixed'), naknada: L('Otplata 5% ili min. 5.000 RSD', 'Repayment 5% or min. 5,000 RSD'), obezbedjenje: L('Menica, depozit, jemstvo', 'Bill of exchange, deposit, guarantor'), kanal: EKS, klijenti: L('Korisnici paketa Prime', 'Prime package clients') }, { w: 5 }),
+      { valuta: 'RSD', rok: L('3 godine', '3 years'), iznos: L('Limit od 500.000 RSD, prema kreditnoj sposobnosti', 'Limit from 500,000 RSD, by creditworthiness'), kamata: L('5-15% godišnje, fiksna', '5-15% p.a., fixed'), naknada: L('Otplata 5% ili min. 5.000 RSD', 'Repayment 5% or min. 5,000 RSD'), obezbedjenje: L('Menica, depozit, jemstvo', 'Bill of exchange, deposit, guarantor'), kanal: EKS, klijenti: L('Korisnici paketa Prime', 'Prime package clients') }, { w: 5 }),
     pr('P15', 'FL', 'kartica', L('Kreditna', 'Credit'), 'DinaCard kreditna kartica', L('DinaCard kreditna kartica', 'DinaCard credit card'), ['CC-DNA-01'],
-      { valuta: 'RSD', rok: L('3 godine', '3 years'), iznos: L('Limit od 50.000 RSD', 'Limit from 50,000 RSD'), kamata: L('5–15% godišnje, fiksna', '5–15% p.a., fixed'), naknada: L('Otplata 33,33%, 16,67%, 8,33% ili min. 500 RSD', 'Repayment 33.33%, 16.67%, 8.33% or min. 500 RSD'), kanal: EKS, klijenti: RES }, { w: 0, status: 'neaktivan', to: '2026-06-30', note: L('Privremeno nije u ponudi (izmena sistema za odobravanje)', 'Temporarily withdrawn (approval system change)') }),
-    /* fizička lica — krediti */
+      { valuta: 'RSD', rok: L('3 godine', '3 years'), iznos: L('Limit od 50.000 RSD', 'Limit from 50,000 RSD'), kamata: L('5-15% godišnje, fiksna', '5-15% p.a., fixed'), naknada: L('Otplata 33,33%, 16,67%, 8,33% ili min. 500 RSD', 'Repayment 33.33%, 16.67%, 8.33% or min. 500 RSD'), kanal: EKS, klijenti: RES }, { w: 0, status: 'neaktivan', to: '2026-06-30', note: L('Privremeno nije u ponudi (izmena sistema za odobravanje)', 'Temporarily withdrawn (approval system change)') }),
+    /* fizička lica - krediti */
     pr('P16', 'FL', 'kredit', L('Gotovinski', 'Cash'), 'Gotovinski kredit u RSD sa osiguranjem', L('Gotovinski kredit u RSD sa osiguranjem', 'RSD cash loan with insurance'), ['KK-OSG-RSD'],
-      { valuta: 'RSD', rok: L('6–71 mesec', '6–71 months'), iznos: L('Prema kreditnoj sposobnosti i uslovima osiguravača', 'By creditworthiness and insurer terms'), kamata: KRD_FIZ, naknada: NAK_KRD, obezbedjenje: L('Menice, jemstvo, polisa osiguranja kredita, administrativna zabrana', 'Bills of exchange, guarantor, loan insurance policy, salary assignment'), kanal: EKSMB, klijenti: L('Zaposleni i penzioneri', 'Employees and pensioners') }, { w: 35, amt: [250000, 900000] }),
+      { valuta: 'RSD', rok: L('6-71 mesec', '6-71 months'), iznos: L('Prema kreditnoj sposobnosti i uslovima osiguravača', 'By creditworthiness and insurer terms'), kamata: KRD_FIZ, naknada: NAK_KRD, obezbedjenje: L('Menice, jemstvo, polisa osiguranja kredita, administrativna zabrana', 'Bills of exchange, guarantor, loan insurance policy, salary assignment'), kanal: EKSMB, klijenti: L('Zaposleni i penzioneri', 'Employees and pensioners') }, { w: 35, amt: [250000, 900000] }),
     pr('P17', 'FL', 'kredit', L('Gotovinski', 'Cash'), 'Gotovinski kredit u RSD bez osiguranja', L('Gotovinski kredit u RSD bez osiguranja', 'RSD cash loan without insurance'), ['KK-RSD-36', 'KK-RSD-60'],
-      { valuta: 'RSD', rok: L('6–71 mesec', '6–71 months'), iznos: L('Prema kreditnoj sposobnosti', 'By creditworthiness'), kamata: KRD_FIZ, naknada: NAK_KRD, obezbedjenje: MEN, kanal: EKSMB, klijenti: L('Zaposleni i penzioneri do 65 g.', 'Employees and pensioners up to 65') }, { w: 25, amt: [200000, 800000] }),
+      { valuta: 'RSD', rok: L('6-71 mesec', '6-71 months'), iznos: L('Prema kreditnoj sposobnosti', 'By creditworthiness'), kamata: KRD_FIZ, naknada: NAK_KRD, obezbedjenje: MEN, kanal: EKSMB, klijenti: L('Zaposleni i penzioneri do 65 g.', 'Employees and pensioners up to 65') }, { w: 25, amt: [200000, 800000] }),
     pr('P18', 'FL', 'kredit', L('Gotovinski', 'Cash'), 'Gotovinski kredit sa depozitom', L('Gotovinski kredit sa depozitom', 'Cash loan with deposit'), ['KK-DEP-01'],
-      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('6–71 mesec', '6–71 months'), kamata: L('Fiksna 0,6–20% godišnje', 'Fixed 0.6–20% p.a.'), naknada: NAK_KRD, obezbedjenje: L('Garantni depozit 100–200% iznosa kredita', 'Guarantee deposit 100–200% of the loan'), kanal: EKS, klijenti: RES }, { w: 2, amt: [400000, 2000000] }),
+      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('6-71 mesec', '6-71 months'), kamata: L('Fiksna 0,6-20% godišnje', 'Fixed 0.6-20% p.a.'), naknada: NAK_KRD, obezbedjenje: L('Garantni depozit 100-200% iznosa kredita', 'Guarantee deposit 100-200% of the loan'), kanal: EKS, klijenti: RES }, { w: 2, amt: [400000, 2000000] }),
     pr('P19', 'FL', 'kredit', L('Refinansiranje', 'Refinancing'), 'Kredit za refinansiranje sa osiguranjem', L('Kredit za refinansiranje sa osiguranjem', 'Refinancing loan with insurance'), ['KK-REF-OSG'],
-      { valuta: 'RSD', rok: L('6–71 mesec', '6–71 months'), kamata: KRD_FIZ, naknada: NAK_KRD, obezbedjenje: L('Menice, jemstvo, polisa osiguranja kredita', 'Bills of exchange, guarantor, loan insurance policy'), kanal: EKS, klijenti: L('Zaposleni i penzioneri', 'Employees and pensioners') }, { w: 15, amt: [400000, 1500000], ref: true }),
+      { valuta: 'RSD', rok: L('6-71 mesec', '6-71 months'), kamata: KRD_FIZ, naknada: NAK_KRD, obezbedjenje: L('Menice, jemstvo, polisa osiguranja kredita', 'Bills of exchange, guarantor, loan insurance policy'), kanal: EKS, klijenti: L('Zaposleni i penzioneri', 'Employees and pensioners') }, { w: 15, amt: [400000, 1500000], ref: true }),
     pr('P20', 'FL', 'kredit', L('Refinansiranje', 'Refinancing'), 'Kredit za refinansiranje bez osiguranja', L('Kredit za refinansiranje bez osiguranja', 'Refinancing loan without insurance'), ['KK-REF-01'],
-      { valuta: 'RSD', rok: L('6–71 mesec', '6–71 months'), kamata: L('Promenljiva: 3M Belibor + 0,3–19,5% · fiksna 1,5–30%', 'Variable: 3M Belibor + 0.3–19.5% · fixed 1.5–30%'), naknada: NAK_KRD, obezbedjenje: MEN, kanal: EKS, klijenti: L('Zaposleni i penzioneri do 65 g.', 'Employees and pensioners up to 65') }, { w: 8, amt: [300000, 1200000], ref: true }),
+      { valuta: 'RSD', rok: L('6-71 mesec', '6-71 months'), kamata: L('Promenljiva: 3M Belibor + 0,3-19,5% · fiksna 1,5-30%', 'Variable: 3M Belibor + 0.3-19.5% · fixed 1.5-30%'), naknada: NAK_KRD, obezbedjenje: MEN, kanal: EKS, klijenti: L('Zaposleni i penzioneri do 65 g.', 'Employees and pensioners up to 65') }, { w: 8, amt: [300000, 1200000], ref: true }),
     pr('P21', 'FL', 'kredit', L('Potrošački', 'Consumer'), 'Potrošački kredit u RSD', L('Potrošački kredit u RSD', 'RSD consumer loan'), ['PK-RSD-01'],
-      { valuta: 'RSD', rok: L('6–71 mesec', '6–71 months'), kamata: L('Promenljiva: 3M Belibor + 0,3–20% · fiksna prva 24 meseca 1,5–35%', 'Variable: 3M Belibor + 0.3–20% · fixed first 24 months 1.5–35%'), naknada: NAK_KRD, obezbedjenje: MEN, kanal: EKS, klijenti: L('Zaposleni i penzioneri', 'Employees and pensioners') }, { w: 6, amt: [100000, 500000] }),
+      { valuta: 'RSD', rok: L('6-71 mesec', '6-71 months'), kamata: L('Promenljiva: 3M Belibor + 0,3-20% · fiksna prva 24 meseca 1,5-35%', 'Variable: 3M Belibor + 0.3-20% · fixed first 24 months 1.5-35%'), naknada: NAK_KRD, obezbedjenje: MEN, kanal: EKS, klijenti: L('Zaposleni i penzioneri', 'Employees and pensioners') }, { w: 6, amt: [100000, 500000] }),
     pr('P22', 'FL', 'kredit', L('Potrošački', 'Consumer'), 'Kredit za energetsku efikasnost', L('Kredit za energetsku efikasnost', 'Energy efficiency loan'), ['EE-RSD-01'],
-      { valuta: 'RSD', rok: L('6–71 mesec', '6–71 months'), kamata: KRD_FIZ, naknada: NAK_KRD, obezbedjenje: MEN, kanal: EKS, klijenti: L('Zaposleni i penzioneri', 'Employees and pensioners') }, { w: 3, amt: [250000, 900000] }),
+      { valuta: 'RSD', rok: L('6-71 mesec', '6-71 months'), kamata: KRD_FIZ, naknada: NAK_KRD, obezbedjenje: MEN, kanal: EKS, klijenti: L('Zaposleni i penzioneri', 'Employees and pensioners') }, { w: 3, amt: [250000, 900000] }),
     pr('P23', 'FL', 'kredit', L('Auto', 'Car'), 'Auto kredit u RSD', L('Auto kredit u RSD', 'RSD car loan'), ['AK-RSD-01'],
-      { valuta: 'RSD', rok: L('12–71 mesec', '12–71 months'), kamata: L('Promenljiva: 3M Belibor + 0,3–19,5%', 'Variable: 3M Belibor + 0.3–19.5%'), naknada: NAK_KRD, obezbedjenje: L('Menice, kasko osiguranje, zaloga nad vozilom, jemstvo', 'Bills of exchange, comprehensive insurance, vehicle pledge, guarantor'), kanal: EKS, klijenti: RES }, { w: 2, amt: [800000, 2500000] }),
+      { valuta: 'RSD', rok: L('12-71 mesec', '12-71 months'), kamata: L('Promenljiva: 3M Belibor + 0,3-19,5%', 'Variable: 3M Belibor + 0.3-19.5%'), naknada: NAK_KRD, obezbedjenje: L('Menice, kasko osiguranje, zaloga nad vozilom, jemstvo', 'Bills of exchange, comprehensive insurance, vehicle pledge, guarantor'), kanal: EKS, klijenti: RES }, { w: 2, amt: [800000, 2500000] }),
     pr('P24', 'FL', 'kredit', L('Stambeni', 'Housing'), 'Stambeni kredit osiguran kod NKOSK', L('Stambeni kredit osiguran kod NKOSK', 'NKOSK-insured housing loan'), ['SK-NKOSK-EUR', 'SK-NKOSK-RSD'],
-      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('5–20 godina (RSD), 5–30 godina (EUR)', '5–20 years (RSD), 5–30 years (EUR)'), iznos: L('Do 90% kupoprodajne vrednosti', 'Up to 90% of the purchase price'), kamata: L('EUR: promenljiva 6M Euribor + 0,5–10% · fiksna 1–10%', 'EUR: variable 6M Euribor + 0.5–10% · fixed 1–10%'), naknada: L('Troškovi procene, osiguranja, NKOSK premije', 'Valuation, insurance and NKOSK premium costs'), obezbedjenje: L('Hipoteka I reda, osiguranje života i nepokretnosti, NKOSK', 'First-rank mortgage, life and property insurance, NKOSK'), kanal: EKS, klijenti: RES }, { w: 1, amt: [3000000, 6000000] }),
+      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('5-20 godina (RSD), 5-30 godina (EUR)', '5-20 years (RSD), 5-30 years (EUR)'), iznos: L('Do 90% kupoprodajne vrednosti', 'Up to 90% of the purchase price'), kamata: L('EUR: promenljiva 6M Euribor + 0,5-10% · fiksna 1-10%', 'EUR: variable 6M Euribor + 0.5-10% · fixed 1-10%'), naknada: L('Troškovi procene, osiguranja, NKOSK premije', 'Valuation, insurance and NKOSK premium costs'), obezbedjenje: L('Hipoteka I reda, osiguranje života i nepokretnosti, NKOSK', 'First-rank mortgage, life and property insurance, NKOSK'), kanal: EKS, klijenti: RES }, { w: 1, amt: [3000000, 6000000] }),
     pr('P25', 'FL', 'kredit', L('Stambeni', 'Housing'), 'Stambeni kredit bez osiguranja NKOSK', L('Stambeni kredit bez osiguranja NKOSK', 'Housing loan without NKOSK insurance'), ['SK-EUR-01'],
-      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('5–20 godina (RSD), 5–30 godina (EUR)', '5–20 years (RSD), 5–30 years (EUR)'), iznos: L('Do 90% kupoprodajne vrednosti', 'Up to 90% of the purchase price'), kamata: L('EUR: promenljiva 6M Euribor + 0,5–15% · fiksna 1–10%', 'EUR: variable 6M Euribor + 0.5–15% · fixed 1–10%'), obezbedjenje: L('Hipoteka I reda, osiguranje života i nepokretnosti', 'First-rank mortgage, life and property insurance'), kanal: EKS, klijenti: RES }, { w: 1, amt: [3000000, 5000000] }),
+      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('5-20 godina (RSD), 5-30 godina (EUR)', '5-20 years (RSD), 5-30 years (EUR)'), iznos: L('Do 90% kupoprodajne vrednosti', 'Up to 90% of the purchase price'), kamata: L('EUR: promenljiva 6M Euribor + 0,5-15% · fiksna 1-10%', 'EUR: variable 6M Euribor + 0.5-15% · fixed 1-10%'), obezbedjenje: L('Hipoteka I reda, osiguranje života i nepokretnosti', 'First-rank mortgage, life and property insurance'), kanal: EKS, klijenti: RES }, { w: 1, amt: [3000000, 5000000] }),
     pr('P26', 'FL', 'kredit', L('Stambeni', 'Housing'), 'Kredit za adaptaciju i rekonstrukciju', L('Kredit za adaptaciju i rekonstrukciju', 'Renovation loan'), ['SK-ADP-01'],
-      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('5–10 godina', '5–10 years'), iznos: L('Od 500.000 RSD / 5.000 EUR', 'From 500,000 RSD / 5,000 EUR'), kamata: L('Promenljiva: 6M Belibor + 1–20% (RSD), 6M Euribor + 0,5–10% (EUR)', 'Variable: 6M Belibor + 1–20% (RSD), 6M Euribor + 0.5–10% (EUR)'), obezbedjenje: L('Hipoteka I reda, osiguranje', 'First-rank mortgage, insurance'), kanal: EKS, klijenti: RES }, { w: 1, amt: [500000, 2000000] }),
+      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('5-10 godina', '5-10 years'), iznos: L('Od 500.000 RSD / 5.000 EUR', 'From 500,000 RSD / 5,000 EUR'), kamata: L('Promenljiva: 6M Belibor + 1-20% (RSD), 6M Euribor + 0,5-10% (EUR)', 'Variable: 6M Belibor + 1-20% (RSD), 6M Euribor + 0.5-10% (EUR)'), obezbedjenje: L('Hipoteka I reda, osiguranje', 'First-rank mortgage, insurance'), kanal: EKS, klijenti: RES }, { w: 1, amt: [500000, 2000000] }),
     pr('P27', 'FL', 'kredit', L('Prekoračenje', 'Overdraft'), 'Dozvoljeno prekoračenje', L('Dozvoljeno prekoračenje', 'Overdraft'), ['OD-ZAP-01', 'OD-PEN-01'],
-      { valuta: 'RSD', rok: L('Do 36 meseci', 'Up to 36 months'), iznos: L('Do visine jedne zarade ili penzije (digitalno do 200.000 RSD bez menice)', 'Up to one salary or pension (digital up to 200,000 RSD without a bill of exchange)'), kamata: L('Fiksna 0–19% godišnje', 'Fixed 0–19% p.a.'), obezbedjenje: L('Menice, jemstvo', 'Bills of exchange, guarantor'), kanal: EKSMB, klijenti: L('Zaposleni i penzioneri', 'Employees and pensioners') }, { w: 8, amt: [50000, 150000] }),
-    /* preduzetnici — računi */
+      { valuta: 'RSD', rok: L('Do 36 meseci', 'Up to 36 months'), iznos: L('Do visine jedne zarade ili penzije (digitalno do 200.000 RSD bez menice)', 'Up to one salary or pension (digital up to 200,000 RSD without a bill of exchange)'), kamata: L('Fiksna 0-19% godišnje', 'Fixed 0-19% p.a.'), obezbedjenje: L('Menice, jemstvo', 'Bills of exchange, guarantor'), kanal: EKSMB, klijenti: L('Zaposleni i penzioneri', 'Employees and pensioners') }, { w: 8, amt: [50000, 150000] }),
+    /* preduzetnici - računi */
     pr('P28', 'PR', 'racun', L('Paket', 'Package'), 'Paket račun Pro Standard', L('Paket račun Pro Standard', 'Pro Standard package account'), ['PRO-STD-01'],
-      { valuta: 'RSD', naknada: L('Promenljiva, 0–2.000 RSD mesečno', 'Variable, 0–2,000 RSD monthly'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 40 }),
+      { valuta: 'RSD', naknada: L('Promenljiva, 0-2.000 RSD mesečno', 'Variable, 0-2,000 RSD monthly'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 40 }),
     pr('P29', 'PR', 'racun', L('Paket', 'Package'), 'Paket račun Pro Gold', L('Paket račun Pro Gold', 'Pro Gold package account'), ['PRO-GLD-01'],
-      { valuta: 'RSD', naknada: L('Promenljiva, 0–2.000 RSD mesečno', 'Variable, 0–2,000 RSD monthly'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 30 }),
+      { valuta: 'RSD', naknada: L('Promenljiva, 0-2.000 RSD mesečno', 'Variable, 0-2,000 RSD monthly'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 30 }),
     pr('P30', 'PR', 'racun', L('Paket', 'Package'), 'Paket račun Pro Prestige', L('Paket račun Pro Prestige', 'Pro Prestige package account'), ['PRO-PRS-01'],
-      { valuta: 'RSD', naknada: L('Promenljiva, 0–2.000 RSD mesečno', 'Variable, 0–2,000 RSD monthly'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 10 }),
+      { valuta: 'RSD', naknada: L('Promenljiva, 0-2.000 RSD mesečno', 'Variable, 0-2,000 RSD monthly'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 10 }),
     pr('P31', 'PR', 'racun', L('Devizni', 'Foreign currency'), 'Devizni tekući račun za preduzetnike', L('Devizni tekući račun za preduzetnike', 'Entrepreneur foreign currency account'), ['PRO-DEV-01'],
       { valuta: 'EUR, USD, CHF, GBP, SEK, CAD, AUD', naknada: L('Održavanje samo ako klijent nema paket račun', 'Maintenance only without a package account'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 20 }),
-    /* preduzetnici — kartice */
+    /* preduzetnici - kartice */
     pr('P32', 'PR', 'kartica', L('Debitna', 'Debit'), 'DinaCard poslovna debitna kartica', L('DinaCard poslovna debitna kartica', 'DinaCard business debit card'), ['BC-DNA-01'],
       { valuta: 'RSD', rok: L('5 godina', '5 years'), naknada: L('ATM UCB bez naknade; druge banke 2%, min. 150 RSD', 'UCB ATM free; other banks 2%, min. 150 RSD'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 25 }),
     pr('P33', 'PR', 'kartica', L('Debitna', 'Debit'), 'Mastercard Business debitna kartica', L('Mastercard Business debitna kartica', 'Mastercard Business debit card'), ['BC-MB-01'],
       { valuta: L('RSD / EUR / USD / GBP / CHF', 'RSD / EUR / USD / GBP / CHF'), rok: L('5 godina', '5 years'), naknada: L('ATM UCB bez naknade; druge banke 2%, min. 150 RSD / 4 EUR', 'UCB ATM free; other banks 2%, min. 150 RSD / 4 EUR'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 35 }),
     pr('P34', 'PR', 'kartica', L('Debitna', 'Debit'), 'Mastercard World Business debitna kartica', L('Mastercard World Business debitna kartica', 'Mastercard World Business debit card'), ['BC-MWB-01'],
-      { valuta: L('RSD / EUR / USD / GBP / CHF', 'RSD / EUR / USD / GBP / CHF'), rok: L('5 godina', '5 years'), naknada: L('Članarina; ostale naknade 0–15.000 RSD', 'Membership; other fees 0–15,000 RSD'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 10 }),
+      { valuta: L('RSD / EUR / USD / GBP / CHF', 'RSD / EUR / USD / GBP / CHF'), rok: L('5 godina', '5 years'), naknada: L('Članarina; ostale naknade 0-15.000 RSD', 'Membership; other fees 0-15,000 RSD'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 10 }),
     pr('P35', 'PR', 'kartica', L('Debitna', 'Debit'), 'Prepaid nedopunjiva kartica', L('Prepaid nedopunjiva kartica', 'Non-reloadable prepaid card'), ['BC-PRE-01'],
       { valuta: 'RSD', rok: L('Do 3 godine', 'Up to 3 years'), naknada: L('Zamena plastike, reklamacije', 'Card replacement, disputes'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 5 }),
     pr('P36', 'PR', 'kartica', L('Kreditna', 'Credit'), 'Mastercard Business charge kartica', L('Mastercard Business charge kartica', 'Mastercard Business charge card'), ['BCC-CHG-01'],
-      { valuta: 'RSD', rok: L('Do 24 meseca', 'Up to 24 months'), iznos: L('Limit 20.000–2.300.000 RSD', 'Limit 20,000–2,300,000 RSD'), kamata: L('25% godišnje, fiksna', '25% p.a., fixed'), naknada: L('Otplata 100% u celosti; gotovina 2%, min. 250 RSD', 'Repayment 100%; cash 2%, min. 250 RSD'), obezbedjenje: L('Menica, depozit, jemstvo, solidarni dužnik', 'Bill of exchange, deposit, guarantor, co-debtor'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 15 }),
+      { valuta: 'RSD', rok: L('Do 24 meseca', 'Up to 24 months'), iznos: L('Limit 20.000-2.300.000 RSD', 'Limit 20,000-2,300,000 RSD'), kamata: L('25% godišnje, fiksna', '25% p.a., fixed'), naknada: L('Otplata 100% u celosti; gotovina 2%, min. 250 RSD', 'Repayment 100%; cash 2%, min. 250 RSD'), obezbedjenje: L('Menica, depozit, jemstvo, solidarni dužnik', 'Bill of exchange, deposit, guarantor, co-debtor'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 15 }),
     pr('P37', 'PR', 'kartica', L('Kreditna', 'Credit'), 'Mastercard Business revolving kartica', L('Mastercard Business revolving kartica', 'Mastercard Business revolving card'), ['BCC-REV-01'],
-      { valuta: 'RSD', rok: L('Do 24 meseca', 'Up to 24 months'), iznos: L('Limit 20.000–2.300.000 RSD', 'Limit 20,000–2,300,000 RSD'), kamata: L('25% godišnje, fiksna', '25% p.a., fixed'), naknada: L('Otplata 10% ili min. 10.000 RSD', 'Repayment 10% or min. 10,000 RSD'), obezbedjenje: L('Menica, depozit, jemstvo, solidarni dužnik', 'Bill of exchange, deposit, guarantor, co-debtor'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 10 }),
-    /* preduzetnici — krediti */
+      { valuta: 'RSD', rok: L('Do 24 meseca', 'Up to 24 months'), iznos: L('Limit 20.000-2.300.000 RSD', 'Limit 20,000-2,300,000 RSD'), kamata: L('25% godišnje, fiksna', '25% p.a., fixed'), naknada: L('Otplata 10% ili min. 10.000 RSD', 'Repayment 10% or min. 10,000 RSD'), obezbedjenje: L('Menica, depozit, jemstvo, solidarni dužnik', 'Bill of exchange, deposit, guarantor, co-debtor'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 10 }),
+    /* preduzetnici - krediti */
     pr('P38', 'PR', 'kredit', L('Obrtna sredstva', 'Working capital'), 'Kredit za obrtna sredstva', L('Kredit za obrtna sredstva', 'Working capital loan'), ['PR-OBS-01'],
       { valuta: L('RSD ili RSD indeksiran u EUR', 'RSD or EUR-indexed RSD'), rok: L('Do 36 meseci, grejs do 6 meseci', 'Up to 36 months, grace up to 6 months'), iznos: L('Do 300.000 EUR / 36.000.000 RSD', 'Up to 300,000 EUR / 36,000,000 RSD'), kamata: PR_KAM, naknada: NAK_PR, obezbedjenje: PR_OBZ, kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 40, amt: [1000000, 6000000] }),
     pr('P39', 'PR', 'kredit', L('Obrtna sredstva', 'Working capital'), 'Kredit za trajna obrtna sredstva', L('Kredit za trajna obrtna sredstva', 'Permanent working capital loan'), ['PR-TOS-01'],
       { valuta: L('RSD ili RSD indeksiran u EUR', 'RSD or EUR-indexed RSD'), rok: L('Do 36 meseci, grejs do 6 meseci', 'Up to 36 months, grace up to 6 months'), iznos: L('Do 300.000 EUR / 36.000.000 RSD', 'Up to 300,000 EUR / 36,000,000 RSD'), kamata: PR_KAM, naknada: NAK_PR, obezbedjenje: PR_OBZ, kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 15, amt: [2000000, 8000000] }),
     pr('P40', 'PR', 'kredit', L('Investicioni', 'Investment'), 'Investicioni kredit za mašine i opremu', L('Investicioni kredit za mašine i opremu', 'Investment loan for machinery and equipment'), ['PR-INV-MO'],
-      { valuta: L('RSD ili RSD indeksiran u EUR', 'RSD or EUR-indexed RSD'), rok: L('1–10 godina, grejs do 12 meseci', '1–10 years, grace up to 12 months'), iznos: L('Do 300.000 EUR', 'Up to 300,000 EUR'), kamata: L('Promenljiva: 3M Belibor + 0,3–19% · fiksna RSD 2,9–19%', 'Variable: 3M Belibor + 0.3–19% · fixed RSD 2.9–19%'), naknada: NAK_PR, obezbedjenje: PR_OBZ, kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 15, amt: [3000000, 15000000] }),
+      { valuta: L('RSD ili RSD indeksiran u EUR', 'RSD or EUR-indexed RSD'), rok: L('1-10 godina, grejs do 12 meseci', '1-10 years, grace up to 12 months'), iznos: L('Do 300.000 EUR', 'Up to 300,000 EUR'), kamata: L('Promenljiva: 3M Belibor + 0,3-19% · fiksna RSD 2,9-19%', 'Variable: 3M Belibor + 0.3-19% · fixed RSD 2.9-19%'), naknada: NAK_PR, obezbedjenje: PR_OBZ, kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 15, amt: [3000000, 15000000] }),
     pr('P41', 'PR', 'kredit', L('Investicioni', 'Investment'), 'Investicioni kredit za poslovni prostor', L('Investicioni kredit za poslovni prostor', 'Investment loan for business premises'), ['PR-INV-PP'],
-      { valuta: L('RSD ili RSD indeksiran u EUR', 'RSD or EUR-indexed RSD'), rok: L('1–10 godina, grejs do 12 meseci', '1–10 years, grace up to 12 months'), iznos: L('Do 300.000 EUR', 'Up to 300,000 EUR'), kamata: L('Promenljiva: 3M Belibor + 0,3–19% · fiksna RSD 2,9–19%', 'Variable: 3M Belibor + 0.3–19% · fixed RSD 2.9–19%'), naknada: NAK_PR, obezbedjenje: PR_OBZ, kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 5, amt: [5000000, 20000000] }),
+      { valuta: L('RSD ili RSD indeksiran u EUR', 'RSD or EUR-indexed RSD'), rok: L('1-10 godina, grejs do 12 meseci', '1-10 years, grace up to 12 months'), iznos: L('Do 300.000 EUR', 'Up to 300,000 EUR'), kamata: L('Promenljiva: 3M Belibor + 0,3-19% · fiksna RSD 2,9-19%', 'Variable: 3M Belibor + 0.3-19% · fixed RSD 2.9-19%'), naknada: NAK_PR, obezbedjenje: PR_OBZ, kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 5, amt: [5000000, 20000000] }),
     pr('P42', 'PR', 'kredit', L('Sa depozitom', 'Deposit-backed'), 'Kredit sa 100% depozita', L('Kredit sa 100% depozita', '100% deposit-backed loan'), ['PR-DEP-01'],
       { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('Do 36 meseci', 'Up to 36 months'), kamata: L('Fiksna, prema depozitu', 'Fixed, per deposit'), obezbedjenje: L('Namenski depozit 100%', 'Dedicated 100% deposit'), kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 5, amt: [500000, 3000000] }),
     pr('P43', 'PR', 'kredit', L('Prekoračenje', 'Overdraft'), 'Dozvoljeno prekoračenje za preduzetnike', L('Dozvoljeno prekoračenje za preduzetnike', 'Entrepreneur overdraft'), ['PR-OD-BIZ', 'PR-OD-POS'],
-      { valuta: 'RSD', rok: L('Do 12 meseci', 'Up to 12 months'), iznos: L('BIZ minus prema prometu zarada; POS minus do 1.000.000 RSD; do 40.000 EUR', 'BIZ minus by salary turnover; POS minus up to 1,000,000 RSD; up to 40,000 EUR'), kamata: L('Promenljiva: 3M Belibor + 0,3–19% · fiksna 2,9–19%', 'Variable: 3M Belibor + 0.3–19% · fixed 2.9–19%'), naknada: L('Obrada zahteva 0–5%', 'Processing 0–5%'), obezbedjenje: PR_OBZ, kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 20, amt: [300000, 1500000] }),
+      { valuta: 'RSD', rok: L('Do 12 meseci', 'Up to 12 months'), iznos: L('BIZ minus prema prometu zarada; POS minus do 1.000.000 RSD; do 40.000 EUR', 'BIZ minus by salary turnover; POS minus up to 1,000,000 RSD; up to 40,000 EUR'), kamata: L('Promenljiva: 3M Belibor + 0,3-19% · fiksna 2,9-19%', 'Variable: 3M Belibor + 0.3-19% · fixed 2.9-19%'), naknada: L('Obrada zahteva 0-5%', 'Processing 0-5%'), obezbedjenje: PR_OBZ, kanal: EKS, klijenti: L('Preduzetnici', 'Entrepreneurs') }, { w: 20, amt: [300000, 1500000] }),
     /* poljoprivrednici */
     pr('P44', 'PO', 'racun', L('Osnovni', 'Basic'), 'Tekući račun za poljoprivrednika', L('Tekući račun za poljoprivrednika', 'Farmer current account'), ['AGR-RAC-01'],
       { valuta: 'RSD', naknada: L('Vođenje računa prema tarifi', 'Account fee per tariff'), kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 100 }),
@@ -438,18 +392,18 @@
       { valuta: 'RSD', rok: L('5 godina', '5 years'), kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 60 }),
     pr('P46', 'PO', 'kartica', L('Debitna', 'Debit'), 'Mastercard debitna kartica za poljoprivrednike', L('Mastercard debitna kartica za poljoprivrednike', 'Mastercard farmer debit card'), ['AGR-DC-MC'],
       { valuta: L('RSD / EUR', 'RSD / EUR'), rok: L('5 godina', '5 years'), kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 40 }),
-    pr('P47', 'PO', 'kredit', L('Obrtna sredstva', 'Working capital'), 'Kredit za obrtna sredstva – poljoprivreda', L('Kredit za obrtna sredstva – poljoprivreda', 'Agricultural working capital loan'), ['AGR-OBS-01'],
+    pr('P47', 'PO', 'kredit', L('Obrtna sredstva', 'Working capital'), 'Kredit za obrtna sredstva - poljoprivreda', L('Kredit za obrtna sredstva - poljoprivreda', 'Agricultural working capital loan'), ['AGR-OBS-01'],
       { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('Do 36 meseci, grejs do 6 meseci', 'Up to 36 months, grace up to 6 months'), iznos: L('Od 2.000 EUR', 'From 2,000 EUR'), kamata: PO_KAM, naknada: NAK_PR, obezbedjenje: PO_OBZ, kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 35, amt: [500000, 3000000] }),
-    pr('P48', 'PO', 'kredit', L('Obrtna sredstva', 'Working capital'), 'Kredit za trajno obrtna sredstva – poljoprivreda', L('Kredit za trajno obrtna sredstva – poljoprivreda', 'Agricultural permanent working capital loan'), ['AGR-TOS-01'],
-      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('25–36 meseci, grejs do 6 meseci', '25–36 months, grace up to 6 months'), iznos: L('Od 2.000 EUR', 'From 2,000 EUR'), kamata: PO_KAM, naknada: NAK_PR, obezbedjenje: PO_OBZ, kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 10, amt: [1000000, 4000000] }),
-    pr('P49', 'PO', 'kredit', L('Investicioni', 'Investment'), 'Kredit za osnovna sredstva – poljoprivreda', L('Kredit za osnovna sredstva – poljoprivreda', 'Agricultural fixed assets loan'), ['AGR-OSN-01'],
+    pr('P48', 'PO', 'kredit', L('Obrtna sredstva', 'Working capital'), 'Kredit za trajno obrtna sredstva - poljoprivreda', L('Kredit za trajno obrtna sredstva - poljoprivreda', 'Agricultural permanent working capital loan'), ['AGR-TOS-01'],
+      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('25-36 meseci, grejs do 6 meseci', '25-36 months, grace up to 6 months'), iznos: L('Od 2.000 EUR', 'From 2,000 EUR'), kamata: PO_KAM, naknada: NAK_PR, obezbedjenje: PO_OBZ, kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 10, amt: [1000000, 4000000] }),
+    pr('P49', 'PO', 'kredit', L('Investicioni', 'Investment'), 'Kredit za osnovna sredstva - poljoprivreda', L('Kredit za osnovna sredstva - poljoprivreda', 'Agricultural fixed assets loan'), ['AGR-OSN-01'],
       { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('Do 60 meseci, grejs do 6 meseci', 'Up to 60 months, grace up to 6 months'), iznos: L('Od 2.000 EUR', 'From 2,000 EUR'), kamata: PO_KAM, naknada: NAK_PR, obezbedjenje: PO_OBZ, kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 15, amt: [1000000, 6000000] }),
     pr('P50', 'PO', 'kredit', L('Investicioni', 'Investment'), 'Kredit za poljoprivrednu mehanizaciju', L('Kredit za poljoprivrednu mehanizaciju', 'Agricultural machinery loan'), ['AGR-MEH-01'],
       { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('Do 120 meseci, grejs do 6 meseci', 'Up to 120 months, grace up to 6 months'), iznos: L('Od 2.000 EUR', 'From 2,000 EUR'), kamata: PO_KAM, naknada: NAK_PR, obezbedjenje: PO_OBZ, kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 20, amt: [2000000, 10000000] }),
     pr('P51', 'PO', 'kredit', L('Investicioni', 'Investment'), 'Kredit za kupovinu poljoprivrednog zemljišta', L('Kredit za kupovinu poljoprivrednog zemljišta', 'Agricultural land purchase loan'), ['AGR-ZEM-01'],
-      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('Do 180 meseci, grejs do 6 meseci', 'Up to 180 months, grace up to 6 months'), iznos: L('Od 2.000 EUR', 'From 2,000 EUR'), kamata: L('Promenljiva: 6M Belibor / Euribor + 0,3–30% · fiksna EUR 0,14–30%', 'Variable: 6M Belibor / Euribor + 0.3–30% · fixed EUR 0.14–30%'), naknada: NAK_PR, obezbedjenje: PO_OBZ, kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 10, amt: [2000000, 8000000] }),
+      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('Do 180 meseci, grejs do 6 meseci', 'Up to 180 months, grace up to 6 months'), iznos: L('Od 2.000 EUR', 'From 2,000 EUR'), kamata: L('Promenljiva: 6M Belibor / Euribor + 0,3-30% · fiksna EUR 0,14-30%', 'Variable: 6M Belibor / Euribor + 0.3-30% · fixed EUR 0.14-30%'), naknada: NAK_PR, obezbedjenje: PO_OBZ, kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 10, amt: [2000000, 8000000] }),
     pr('P52', 'PO', 'kredit', L('Investicioni', 'Investment'), 'Kredit za poljoprivredne objekte', L('Kredit za poljoprivredne objekte', 'Agricultural buildings loan'), ['AGR-OBJ-01'],
-      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('Do 120 meseci, grejs do 6 meseci', 'Up to 120 months, grace up to 6 months'), iznos: L('Od 2.000 EUR', 'From 2,000 EUR'), kamata: L('Promenljiva: 6M Belibor / Euribor + 0,3–30% · fiksna EUR 0,14–30%', 'Variable: 6M Belibor / Euribor + 0.3–30% · fixed EUR 0.14–30%'), naknada: NAK_PR, obezbedjenje: PO_OBZ, kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 10, amt: [3000000, 12000000] })
+      { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('Do 120 meseci, grejs do 6 meseci', 'Up to 120 months, grace up to 6 months'), iznos: L('Od 2.000 EUR', 'From 2,000 EUR'), kamata: L('Promenljiva: 6M Belibor / Euribor + 0,3-30% · fiksna EUR 0,14-30%', 'Variable: 6M Belibor / Euribor + 0.3-30% · fixed EUR 0.14-30%'), naknada: NAK_PR, obezbedjenje: PO_OBZ, kanal: EKS, klijenti: L('Registrovana poljoprivredna gazdinstva', 'Registered agricultural holdings') }, { w: 10, amt: [3000000, 12000000] })
   ];
   D.product = function (id) { return D.products.filter(function (p) { return p.id === id; })[0]; };
   D.productName = function (p) {
@@ -462,9 +416,9 @@
   D.products.forEach(function (p) { p.codes.forEach(function (c) { D.codeIdx[c] = p.id; }); });
   /* šifre iz DWH-a koje nisu mapirane */
   D.unmappedCodes = [
-    { code: 'KK-RSD-PROMO-Q3', first: '2026-09-26', desc: L('Gotovinski kredit – jesenja akcija (nova šifra u core sistemu)', 'Cash loan – autumn promo (new core code)'), suggest: 'P17' },
+    { code: 'KK-RSD-PROMO-Q3', first: '2026-09-26', desc: L('Gotovinski kredit - jesenja akcija (nova šifra u core sistemu)', 'Cash loan - autumn promo (new core code)'), suggest: 'P17' },
     { code: 'CC-FLX-APP', first: '2026-10-09', desc: L('Flexia kartica ugovorena u mobilnoj aplikaciji', 'Flexia card contracted in the mobile app'), suggest: 'P13' },
-    { code: 'PRO-GLD-02', first: '2026-10-14', desc: L('Pro Gold paket – nova varijanta', 'Pro Gold package – new variant'), suggest: 'P29' }
+    { code: 'PRO-GLD-02', first: '2026-10-14', desc: L('Pro Gold paket - nova varijanta', 'Pro Gold package - new variant'), suggest: 'P29' }
   ];
   D.codeDesc = function (code) { var u = D.unmappedCodes.filter(function (x) { return x.code === code; })[0]; return u ? IH.L(u.desc) : code; };
 
@@ -493,15 +447,15 @@
   };
   /* eksplicitni storno scenariji: [emp, period, vrsta, iznos, datum, opis] */
   D.stornoPlan = [
-    ['E1002', '2026-Q3', 'kredit', 650000, '2026-08-21', L('Prevremena otplata u roku od 90 dana', 'Early repayment within 90 days')],
+    ['E1002', '2026-Q3', 'kredit', 650000, '2026-08-21', L('Klijent odustao od ugovora u roku od 14 dana', 'Client withdrew from the contract within 14 days')],
     ['E1002', '2026-Q3', 'racun', 0, '2026-09-11', L('Račun zatvoren u roku od 90 dana', 'Account closed within 90 days')],
-    ['E1005', '2026-Q2', 'kredit', 900000, '2026-05-19', L('Prevremena otplata u roku od 90 dana', 'Early repayment within 90 days')],
-    ['E1005', '2026-Q2', 'kredit', 600000, '2026-06-03', L('Prevremena otplata u roku od 90 dana', 'Early repayment within 90 days')],
+    ['E1005', '2026-Q2', 'kredit', 900000, '2026-05-19', L('Klijent odustao od ugovora u roku od 14 dana', 'Client withdrew from the contract within 14 days')],
+    ['E1005', '2026-Q2', 'kredit', 600000, '2026-06-03', L('Klijent odustao od ugovora u roku od 14 dana', 'Client withdrew from the contract within 14 days')],
     ['E1005', '2026-Q2', 'racun', 0, '2026-06-17', L('Račun zatvoren u roku od 90 dana', 'Account closed within 90 days')],
     ['E1005', '2026-Q2', 'racun', 0, '2026-06-24', L('Račun zatvoren u roku od 90 dana', 'Account closed within 90 days')],
     ['E1005', '2026-Q2', 'kartica', 0, '2026-06-26', L('Kartica otkazana u roku od 6 meseci', 'Card cancelled within 6 months')],
     ['E1003', '2026-Q3', 'kartica', 0, '2026-09-02', L('Kartica otkazana u roku od 6 meseci', 'Card cancelled within 6 months')],
-    ['E1004', '2026-Q3', 'kredit', 400000, '2026-08-07', L('Prevremena otplata u roku od 90 dana', 'Early repayment within 90 days')]
+    ['E1004', '2026-Q3', 'kredit', 400000, '2026-08-07', L('Klijent odustao od ugovora u roku od 14 dana', 'Client withdrew from the contract within 14 days')]
   ];
 
   /* ---------- targeti po zaposlenom ---------- */
@@ -536,7 +490,6 @@
   };
   function empVal(t, p, empId) {
     var e = D.emp(empId); if (!e) return 0;
-    if (p.id === '2027-Q1' && D.M1_KEY[t.id] && D.bankerTarget27) return D.bankerTarget27(empId, D.M1_KEY[t.id]);
     var b = D.branch(branchAt(e, p.to > D.DATA_AS_OF ? D.DATA_AS_OF : p.to));
     var v = (D.SEED_IND[t.id] != null ? D.SEED_IND[t.id] : (t.base || 0)) * (b ? b.f : 1);
     var ex = D.exceptionFor(empId, p.id, t.id);
@@ -545,7 +498,6 @@
   }
   function branchVal(t, p, bid) {
     if (t.kind !== 'timski') {
-      if (p.id === '2027-Q1' && D.M1_KEY[t.id] && D.branchTarget27) return D.branchTarget27(bid, D.M1_KEY[t.id]);
       return D.branchStaff(bid, t.pos || 'licni').reduce(function (a, e) { return a + D.val(t.id, p.id, { emp: e.id }); }, 0);
     }
     var vm = t.value || {};
@@ -558,10 +510,10 @@
     var f = (D.branch(bid) || {}).f || 1;
     return D.roundT((t.base || 0) * f, t.unit);
   }
-  /* kompatibilnost: vrednost po ključu šeme savetnika (T1–T3) */
+  /* kompatibilnost: vrednost po ključu šeme savetnika (T1-T3) */
   D.targetFor = function (empId, pid, key) { var tg = D.targetByKey('S-M1', key); return tg ? D.val(tg.id, pid, { emp: empId }) : 0; };
   D.exceptions = [
-    { emp: 'E1006', period: '2026-Q3', targets: ['TG-101', 'TG-102', 'TG-103'], factor: 2 / 3, reason: L('Premeštaj iz Dorćola 01.08. — target za 2 od 3 meseca', 'Transfer from Dorćol on Aug 1 — target for 2 of 3 months'), by: 'A001', at: '2026-07-28T11:20' }
+    { emp: 'E1006', period: '2026-Q3', targets: ['TG-101', 'TG-102', 'TG-103'], factor: 2 / 3, reason: L('Premeštaj iz Dorćola 01.08. - target za 2 od 3 meseca', 'Transfer from Dorćol on Aug 1 - target for 2 of 3 months'), by: 'A001', at: '2026-07-28T11:20' }
   ];
   D.exceptionFor = function (empId, pid, tid) {
     return D.exceptions.filter(function (x) { return x.emp === empId && x.period === pid && x.targets.indexOf(tid) >= 0; })[0];
@@ -573,7 +525,7 @@
     var tg = D.target(tid);
     return D.roundT(D.SEED_TEAM[tid] * b.f * (n / 4), tg ? tg.unit : 'kom');
   };
-  /* kompatibilnost: po ključu šeme tima (K1–K3) i šeme menadžera (T1–T3) */
+  /* kompatibilnost: po ključu šeme tima (K1-K3) i šeme menadžera (T1-T3) */
   D.teamTargetM3 = function (bid, pid, k) { var tg = D.targetByKey('S-M3', k); return tg ? D.val(tg.id, pid, { branch: bid }) : 0; };
   D.branchTarget = function (bid, pid, k) { var tg = D.targetByKey('S-M2', k); return tg ? D.val(tg.id, pid, { branch: bid }) : 0; };
 
@@ -632,7 +584,7 @@
   function stornoOf(empId, pid, ptype) { return D.stornoPlan.filter(function (s) { return s[0] === empId && s[1] === pid && s[2] === ptype; }); }
 
   /* prodaje koje (još) ne ispunjavaju uslove priznavanja (prikaz u Dnevnom ostvarenju, ne ulaze u ostvarenje);
-     posebna sekvenca slučajnih brojeva — postojeće stavke se ne menjaju */
+     posebna sekvenca slučajnih brojeva - postojeće stavke se ne menjaju */
   function extraItems(e, pid, seq, segs) {
     var p = D.period(pid), r = rng('extra|' + e.id + '|' + pid), out = [], dates = rangeOf(pid, e), run = p.status === 'u_toku';
     if (!dates.length) return out;
@@ -649,7 +601,7 @@
       if (refi.length && r() < 0.5) { var pr = refi[Math.floor(r() * refi.length)]; add({ ptype: 'kredit', seg: 'FL', product: pr, amount: Math.round((400000 + r() * 900000) / 10000) * 10000, fail: 'T-EXCLUDE' }); }
     }
     if (!run && r() < 0.4) add({ ptype: r() < 0.5 ? 'racun' : 'kartica', fail: 'T-STAFF', dates: early });
-    if (run && segs.indexOf('FL') >= 0 && r() < 0.6) { var sk = D.products.filter(function (x) { return x.seg === 'FL' && x.ptype === 'kredit' && /^SK-/.test(x.codes[0]) && x.status === 'aktivan'; }); if (sk.length) add({ ptype: 'kredit', seg: 'FL', product: sk[Math.floor(r() * sk.length)], amount: Math.round((6000000 + r() * 6000000) / 100000) * 100000, fail: 'T-MORTGAGE', dates: late }); }
+    if (run && segs.indexOf('FL') >= 0 && r() < 0.6) { var sk = D.products.filter(function (x) { return x.seg === 'FL' && x.ptype === 'kredit' && /^SK-/.test(x.codes[0]) && x.status === 'aktivan'; }); if (sk.length) add({ ptype: 'kredit', seg: 'FL', product: sk[Math.floor(r() * sk.length)], amount: Math.round((6000000 + r() * 6000000) / 100000) * 100000, fail: 'T-STATUS', dates: late }); }
     return out;
   }
 
@@ -669,7 +621,7 @@
     D.stornoPlan.forEach(function (s) {
       if (s[0] === e.id && s[1] === pid) add({ ptype: s[2], amount: s[3], type: 'storno', date: s[4], note: s[5] });
     });
-    if (!D.plan.M1[e.id] && D.period(pid).status !== 'u_toku' && r() < 0.5) add({ ptype: 'kredit', amount: Math.round((200000 + r() * 500000) / 10000) * 10000, type: 'storno', note: L('Prevremena otplata u roku od 90 dana', 'Early repayment within 90 days') });
+    if (!D.plan.M1[e.id] && D.period(pid).status !== 'u_toku' && r() < 0.5) add({ ptype: 'kredit', amount: Math.round((200000 + r() * 500000) / 10000) * 10000, type: 'storno', note: L('Klijent odustao od ugovora u roku od 14 dana', 'Client withdrew from the contract within 14 days') });
     /* nemapirane stavke (nova šifra iz core sistema) */
     if (pid === '2026-Q3') {
       if (e.id === 'E1002') items.push(mkItem(r, e, pid, ++n, { dates: dates, date: '2026-09-29', product: D.product('P17'), code: 'KK-RSD-PROMO-Q3', amount: 950000, unmapped: true }));
@@ -681,7 +633,7 @@
     return items;
   };
 
-  /* tim univerzalnih bankara: sve tri grupe klijenata, mesečno */
+  /* tim univerzalnih bankara: sva tri segmenta, mesečno */
   D.genM3 = function (bid, pid) {
     var b = D.branch(bid), r = rng('m3|' + bid + '|' + pid), p = D.period(pid);
     var members = D.branchStaff(bid, 'univerzalni').filter(function (e) { return e.since <= (p.status === 'u_toku' ? D.DATA_AS_OF : p.to); });

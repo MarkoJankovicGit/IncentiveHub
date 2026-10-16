@@ -1,4 +1,4 @@
-/* Incentive Hub — layout i komponente (stil: Markov šablon, mockup v3) */
+/* Incentive Hub - layout i komponente (stil: Markov šablon, mockup v3) */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{margin:0;font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
@@ -97,6 +97,19 @@ button.kpi:hover{border-color:var(--accent-line)}
 .kpi b{display:block;font-size:22px;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:-.3px;margin-top:2px;white-space:nowrap}
 .kpi b .u{font-size:13px;font-weight:600;color:var(--mut);margin-left:3px}
 .kpi .d{font-size:12px;color:var(--mut);margin-top:2px}
+/* prečice na početnoj: iste širine, naziv i broj, strelica dole desno */
+.kpis.nav{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:900px){.kpis.nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi.nav b{overflow:hidden;text-overflow:ellipsis}
+.kpi.nav{position:relative;padding:12px 10px 12px 12px}
+.kpis.nav{gap:10px}
+.kpi.nav small{letter-spacing:.03em}
+.kpi.nav b{font-size:20px;margin-right:16px}
+.kpi.nav b .u{font-size:12px;margin-left:2px}
+.kpi.nav .d{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-right:16px}
+.kpi.nav .kgo{position:absolute;right:8px;bottom:12px;color:var(--mut);display:flex}
+.kpi.nav:hover .kgo{color:var(--accent)}
+.kpi.nav .kgo .i{width:14px;height:14px}
 .kpi .d .up{color:var(--success);font-weight:600}
 .kpi .d .dn{color:var(--danger);font-weight:600}
 .kpi.hl{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
@@ -123,6 +136,11 @@ textarea.in{min-height:84px;resize:vertical}
 .in::placeholder{color:var(--ghost);font-style:italic}
 .in.guided{background-image:linear-gradient(var(--accent-soft),var(--accent-soft));background-size:3px 100%;background-repeat:no-repeat}
 .in.filled{background-image:none}
+/* predložena vrednost pri kreiranju (dok je korisnik ne promeni ili potvrdi) */
+.in.sug,select.in.sug,textarea.in.sug{color:var(--ghost);font-style:italic}
+.seg.sug button{font-style:italic}
+.seg.sug button.on{background:var(--line-2);color:var(--ghost);box-shadow:inset 0 0 0 1px var(--line)}
+.opts.sug .opt{font-style:italic}.opts.sug .opt.on{border-color:var(--line);background:var(--line-2)}.opts.sug .opt.on b,.opts.sug .opt.on small{color:var(--ghost)}.opts.sug .opt.on .ri{border-color:var(--ghost);background:var(--ghost)}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
 .seg button{border:0;background:none;padding:6px 12px;color:var(--ink-2);font-size:12.5px}
 .seg button+button{border-left:1px solid var(--line)}

@@ -1,4 +1,4 @@
-/* Incentive Hub — DEX standard tabelarnog ekrana
+/* Incentive Hub - DEX standard tabelarnog ekrana
    toolbar (pretraga, očisti filtere, napredna pretraga | kreiraj, izvoz, kolone) · # · status toggle ·
    sort/filter u zaglavlju · sticky akcije desno · broj redova + paginacija */
 (function () {
@@ -7,17 +7,17 @@
   var G = IH.grids = {};
 
   IH.addStrings({
-    'g.search': 'Naziv', 'g.clear': 'Očisti filtere', 'g.adv': 'Napredna pretraga', 'g.cols': 'Prikaz kolona', 'g.export': 'Izvoz u Excel', 'g.of': '{a}–{b} od {n}', 'g.rows': 'redova',
+    'g.search': 'Naziv', 'g.clear': 'Očisti filtere', 'g.adv': 'Napredna pretraga', 'g.cols': 'Prikaz kolona', 'g.export': 'Izvoz u Excel', 'g.of': '{a}-{b} od {n}', 'g.rows': 'redova',
     'g.sortAsc': 'Rastuće', 'g.sortDesc': 'Opadajuće', 'g.all': 'Sve', 'g.apply': 'Primeni', 'g.reset': 'Poništi', 'g.empty': 'Nema rezultata za zadate kriterijume',
     'g.selAll': 'Izaberi sve', 'g.selected': 'Izabrano: {n}', 'g.selected1': 'Izabrano: {n}', 'g.selNone': 'poništi izbor', 'g.aDetails': 'Detalji', 'g.aItems': 'Stavke', 'g.aHistory': 'Istorija', 'g.aEdit': 'Izmeni', 'g.aDelete': 'Obriši', 'g.aCopy': 'Kopiraj', 'g.aDeact': 'Deaktiviraj',
-    'g.on': 'Aktivno', 'g.off': 'Neaktivno', 'g.stOn': '{n} je aktiviran', 'g.stOff': '{n} je deaktiviran', 'g.histTitle': 'Istorija izmena — {n}',
-    'g.delTitle': 'Brisanje zapisa', 'g.delTxt': 'Zapis „{n}“ biće trajno uklonjen iz šifarnika. Ako se koristi u targetima ili šemama, umesto brisanja koristite deaktivaciju.', 'g.delUsed': 'Zapis se koristi na {n} mesta — brisanje nije dozvoljeno, može samo deaktivacija.', 'g.deleted': 'Zapis „{n}“ je obrisan'
+    'g.on': 'Aktivno', 'g.off': 'Neaktivno', 'g.stOn': '{n} je aktiviran', 'g.stOff': '{n} je deaktiviran', 'g.histTitle': 'Istorija izmena - {n}',
+    'g.delTitle': 'Brisanje zapisa', 'g.delTxt': 'Zapis „{n}“ biće trajno uklonjen iz šifarnika. Ako se koristi u targetima ili šemama, umesto brisanja koristite deaktivaciju.', 'g.delUsed': 'Zapis se koristi na {n} mesta - brisanje nije dozvoljeno, može samo deaktivacija.', 'g.deleted': 'Zapis „{n}“ je obrisan'
   }, {
-    'g.search': 'Name', 'g.clear': 'Clear filters', 'g.adv': 'Advanced search', 'g.cols': 'Columns', 'g.export': 'Export to Excel', 'g.of': '{a}–{b} of {n}', 'g.rows': 'rows',
+    'g.search': 'Name', 'g.clear': 'Clear filters', 'g.adv': 'Advanced search', 'g.cols': 'Columns', 'g.export': 'Export to Excel', 'g.of': '{a}-{b} of {n}', 'g.rows': 'rows',
     'g.sortAsc': 'Ascending', 'g.sortDesc': 'Descending', 'g.all': 'All', 'g.apply': 'Apply', 'g.reset': 'Reset', 'g.empty': 'No results for the given criteria',
     'g.selAll': 'Select all', 'g.selected': 'Selected: {n}', 'g.selected1': 'Selected: {n}', 'g.selNone': 'clear selection', 'g.aDetails': 'Details', 'g.aItems': 'Items', 'g.aHistory': 'History', 'g.aEdit': 'Edit', 'g.aDelete': 'Delete', 'g.aCopy': 'Copy', 'g.aDeact': 'Deactivate',
-    'g.on': 'Active', 'g.off': 'Inactive', 'g.stOn': '{n} activated', 'g.stOff': '{n} deactivated', 'g.histTitle': 'Change history — {n}',
-    'g.delTitle': 'Delete record', 'g.delTxt': 'Record "{n}" will be permanently removed from the code list. If it is used in targets or schemes, deactivate it instead.', 'g.delUsed': 'The record is used in {n} places — it cannot be deleted, only deactivated.', 'g.deleted': 'Record "{n}" deleted'
+    'g.on': 'Active', 'g.off': 'Inactive', 'g.stOn': '{n} activated', 'g.stOff': '{n} deactivated', 'g.histTitle': 'Change history - {n}',
+    'g.delTitle': 'Delete record', 'g.delTxt': 'Record "{n}" will be permanently removed from the code list. If it is used in targets or schemes, deactivate it instead.', 'g.delUsed': 'The record is used in {n} places - it cannot be deleted, only deactivated.', 'g.deleted': 'Record "{n}" deleted'
   });
 
   /* ikonice akcija */
@@ -77,7 +77,7 @@
     var h = '<div class="grid-tbl"><table class="t gt"><thead><tr><th class="gnum">#</th>' + (sel ? '<th class="gsel">' + (cfg.select.single ? '' : '<input type="checkbox" data-gselall="' + cfg.id + '"' + (allOn ? ' checked' : '') + ' title="' + t('g.selAll') + '">') + '</th>' : '');
     cols.forEach(function (c) {
       var sorted = v.sort === c.key, fActive = v.f && v.f[c.key] != null && v.f[c.key] !== '';
-      h += '<th class="' + (c.num ? 'num ' : '') + (c.nw !== false ? 'nw' : '') + '"' + (c.w ? ' style="width:' + c.w + '"' : '') + '><span class="gth">' + c.label +
+      h += '<th class="' + (c.num ? 'num ' : '') + (c.nw !== false ? 'nw' : '') + '"' + (c.w || c.minw ? ' style="' + (c.w ? 'width:' + c.w + ';' : '') + (c.minw ? 'min-width:' + c.minw + ';' : '') + '"' : '') + '><span class="gth">' + c.label +
         (c.sort !== false ? '<button class="gsort' + (sorted ? ' on' : '') + '" data-act="g-sort" data-arg="' + cfg.id + '|' + c.key + '" title="' + t(sorted && v.dir !== 'desc' ? 'g.sortDesc' : 'g.sortAsc') + '">' + (sorted ? (v.dir === 'desc' ? '↓' : '↑') : '⇅') + '</button>' : '') +
         (c.filter ? '<span class="rel"><button class="gflt' + (fActive ? ' on' : '') + '" data-pop="gp-' + cfg.id + '-' + c.key + '" title="Filter">' + ic('filter') + '</button><div class="pop gpop" id="gp-' + cfg.id + '-' + c.key + '">' +
           [{ v: '', l: t('g.all') }].concat(c.filter()).map(function (o) { var on = String((v.f || {})[c.key] == null ? '' : v.f[c.key]) === String(o.v); return '<button class="pi' + (on ? ' on' : '') + '" data-act="g-filter" data-arg="' + cfg.id + '|' + c.key + '|' + IH.esc(o.v) + '"><span class="pit"><b style="font-weight:' + (on ? 600 : 400) + '">' + IH.esc(o.l) + '</b></span>' + (on ? ic('check') : '') + '</button>'; }).join('') + '</div></span>' : '') +
@@ -105,29 +105,32 @@
     h += '</tbody></table></div>';
     var from = rows.length ? (page - 1) * size + 1 : 0, to = Math.min(rows.length, page * size);
     var selRow = sel && cfg.select.single && sel.length ? cfg.rows().filter(function (r) { return cfg.key(r) === sel[0]; })[0] : null;
-    h += '<div class="gfoot">' + (sel ? '<div class="gselc">' + (cfg.select.single ? t('g.selected1', { n: selRow && cfg.label ? '<b>' + IH.esc(cfg.label(selRow)) + '</b>' : '—' }) : t('g.selected', { n: sel.length }) + (sel.length ? ' · <button class="lnk" data-act="g-selnone" data-arg="' + cfg.id + '">' + t('g.selNone') + '</button>' : '')) + '</div>' : '') + '<div class="gsize"><select class="in" data-gsize="' + cfg.id + '">' + [10, 25, 50, 100].map(function (n) { return '<option' + (n === size ? ' selected' : '') + '>' + n + '</option>'; }).join('') + '</select><span class="mut">' + t('g.of', { a: from, b: to, n: rows.length }) + '</span></div>' +
+    h += '<div class="gfoot">' + (sel ? '<div class="gselc">' + (cfg.select.single ? t('g.selected1', { n: selRow && cfg.label ? '<b>' + IH.esc(cfg.label(selRow)) + '</b>' : '-' }) : t('g.selected', { n: sel.length }) + (sel.length ? ' · <button class="lnk" data-act="g-selnone" data-arg="' + cfg.id + '">' + t('g.selNone') + '</button>' : '')) + '</div>' : '') + '<div class="gsize"><select class="in" data-gsize="' + cfg.id + '">' + [10, 25, 50, 100].map(function (n) { return '<option' + (n === size ? ' selected' : '') + '>' + n + '</option>'; }).join('') + '</select><span class="mut">' + t('g.of', { a: from, b: to, n: rows.length }) + '</span></div>' +
       '<div class="gpages"><button class="gpg" data-act="g-page" data-arg="' + cfg.id + '|' + (page - 1) + '"' + (page === 1 ? ' disabled' : '') + '>' + ic('chevl') + '</button>' +
       pager(page, pages).map(function (p) { return p === '…' ? '<span class="gell">…</span>' : '<button class="gpg' + (p === page ? ' on' : '') + '" data-act="g-page" data-arg="' + cfg.id + '|' + p + '">' + p + '</button>'; }).join('') +
       '<button class="gpg" data-act="g-page" data-arg="' + cfg.id + '|' + (page + 1) + '"' + (page === pages ? ' disabled' : '') + '>' + ic('chevr') + '</button></div><div></div></div>';
     return h;
   }
 
+  /* tabela nije u početnom stanju (pretraga, filteri, sort, broj redova, kolone) - tada dugme za poništavanje svetli */
+  function hideKey(h) { return Object.keys(h || {}).filter(function (k) { return h[k]; }).sort().join(','); }
+  function dirty(cfg) { var v = IH.v(cfg.id); return !!(v.q || (v.f && Object.keys(v.f).some(function (k) { return v.f[k] != null && v.f[k] !== ''; })) || v.sort || v.size || hideKey(v.hide) !== (cfg.hidden || []).slice().sort().join(',')); }
   /* glavni render: vraća HTML, registruje konfiguraciju */
   IH.grid = function (cfg) {
     G[cfg.id] = cfg;
     var v = IH.v(cfg.id);
     if (!v.hide && cfg.hidden) { v.hide = {}; cfg.hidden.forEach(function (k) { v.hide[k] = true; }); }
-    var hasF = v.q || (v.f && Object.keys(v.f).some(function (k) { return v.f[k] != null && v.f[k] !== ''; }));
+    var hasF = dirty(cfg);
     var tb = '<div class="gtool"><label class="sbox gsearch">' + ic('search') + '<input type="search" data-gq="' + cfg.id + '" value="' + IH.esc(v.q || '') + '" placeholder="' + IH.esc(cfg.searchLabel || t('g.search')) + '"></label>' +
       '<button class="gtb' + (hasF ? ' on' : '') + '" data-act="g-clear" data-arg="' + cfg.id + '" title="' + t('g.clear') + '">' + ic('filter') + '<span class="gx">×</span></button>' +
-      '<button class="gtb" data-act="g-adv" data-arg="' + cfg.id + '" title="' + t('g.adv') + '">' + ic('search') + '</button>' +
+      (cfg.noAdv ? '' : '<button class="gtb" data-act="g-adv" data-arg="' + cfg.id + '" title="' + t('g.adv') + '">' + ic('search') + '</button>') +
       (cfg.toolbarExtra || '') + '<span class="sp"></span>' +
       (cfg.create ? ui.btn(cfg.create.label, { cls: 'primary', icon: 'plus', act: cfg.create.act, arg: cfg.create.arg }) : '') +
       '<button class="gtb" data-act="export" data-arg="' + IH.esc(cfg.exportName || (cfg.id + '.xlsx')) + '" title="' + t('g.export') + '">' + ic('download') + '</button>' +
       '<span class="rel"><button class="gtb" data-pop="gp-' + cfg.id + '-cols2" title="' + t('g.cols') + '">' + ic('grid') + '</button><div class="pop gpop" id="gp-' + cfg.id + '-cols2">' + '<div class="ph2">' + t('g.cols') + '</div>' + cfg.cols.map(function (c) { return '<label class="pi" style="cursor:pointer"><input type="checkbox" data-gcol="' + cfg.id + '|' + c.key + '"' + ((v.hide || {})[c.key] ? '' : ' checked') + ' style="accent-color:var(--accent)"><span class="pit"><b style="font-weight:500">' + c.label + '</b></span></label>'; }).join('') + '</div></span></div>';
     return '<section class="card gcard">' + tb + '<div id="gb-' + cfg.id + '">' + bodyHtml(cfg) + '</div></section>';
   };
-  IH.gridRefresh = function (id) { var cfg = G[id]; if (cfg) IH.swap('gb-' + id, bodyHtml(cfg)); };
+  IH.gridRefresh = function (id) { var cfg = G[id]; if (!cfg) return; IH.swap('gb-' + id, bodyHtml(cfg)); var cb = document.querySelector('.gtb[data-act="g-clear"][data-arg="' + id + '"]'); if (cb) cb.classList.toggle('on', dirty(cfg)); };
   /* izbor redova (čekiranje) */
   function setSel(cfg, list) { cfg.select.set(list); IH.gridRefresh(cfg.id); if (cfg.select.onChange) cfg.select.onChange(list); }
   function toggleSel(id, key, on) { var cfg = G[id]; if (!cfg || !cfg.select) return; if (cfg.select.single && !on) return; if (cfg.select.disabled) { var row = cfg.rows().filter(function (r) { return cfg.key(r) === key; })[0]; if (row && cfg.select.disabled(row)) { if (cfg.select.disabledMsg) IH.toast(cfg.select.disabledMsg(row)); return; } } var l = cfg.select.get().slice(), i = l.indexOf(key); if (on && i < 0) l.push(key); if (!on && i >= 0) l.splice(i, 1); if (cfg.select.single && on) l = [key]; setSel(cfg, l); }
@@ -163,7 +166,14 @@
     var p = el.dataset.arg.split('|'), v = IH.v(p[0]); v.f = v.f || {}; v.f[p[1]] = p.slice(2).join('|'); v.page = 1;
     IH.closePops(); IH.render();
   };
-  IH.act['g-clear'] = function (el) { var v = IH.v(el.dataset.arg); v.q = ''; v.f = {}; v.page = 1; IH.render(); };
+  /* poništavanje filtera: početno stanje tabele; tabela u prozoru se iscrtava ponovo na mestu, a prozor naprednog filtera se zatvara */
+  IH.act['g-clear'] = function (el) {
+    var id = el.dataset.arg, v = IH.v(id); v.q = ''; v.f = {}; v.page = 1; delete v.sort; delete v.dir; delete v.size; delete v.hide;
+    var body = document.getElementById('gb-' + id), card = body && body.closest('.gcard');
+    if (card && card.closest('#ovl') && G[id]) { card.outerHTML = IH.grid(G[id]); return; }
+    if (el.closest('#ovl')) IH.closeModal();
+    IH.render();
+  };
   IH.act['g-page'] = function (el) { var p = el.dataset.arg.split('|'), v = IH.v(p[0]); v.page = +p[1]; IH.gridRefresh(p[0]); };
   IH.act['g-status'] = function (el) {
     var p = el.dataset.arg.split('|'), cfg = G[p[0]]; if (!cfg || !cfg.onStatus) return;

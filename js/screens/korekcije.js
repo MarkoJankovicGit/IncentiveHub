@@ -1,4 +1,4 @@
-/* Incentive Hub — Korekcije podataka iz DWH-a
+/* Incentive Hub - Korekcije podataka iz DWH-a
    Tok: pronađi prodaju → Koriguj (DWH vrednost pored ispravke) → razlog → efekat → sačuvaj.
    Propuštena prodaja: Dodaj prodaju. Iznos direktno na bonus: sa obračunskog lista zaposlenog. */
 (function () {
@@ -7,14 +7,14 @@
 
   IH.addStrings({
     'kr.title': 'Korekcije', 'kr.tItems': 'Prodaje iz DWH-a', 'kr.tHist': 'Istorija korekcija', 'kr.add': 'Dodaj prodaju koja nedostaje', 'kr.edit': 'Koriguj',
-    'kr.paidNote': 'Isplaćeni periodi se ne menjaju — prodaja koja nedostaje u isplaćenom periodu dodaje se kao nova, a razlika ide kroz tekući period.',
+    'kr.paidNote': 'Isplaćeni periodi se ne menjaju - prodaja koja nedostaje u isplaćenom periodu dodaje se kao nova, a razlika ide kroz tekući period.',
     'kr.colId': 'Korekcija', 'kr.colKind': 'Vrsta', 'kr.colEmp': 'Zaposleni', 'kr.colPer': 'Period', 'kr.colWhat': 'Šta je ispravljeno', 'kr.colEff': 'Efekat na bonus', 'kr.colReason': 'Razlog', 'kr.colBy': 'Uneo', 'kr.colSeller': 'Prodavac', 'kr.colAt': 'Datum',
     'kk.izmena': 'Ispravka prodaje', 'kk.linija': 'Dodata prodaja', 'kk.iznos': 'Iznos na bonus', 'kk.kroz': 'Dodata prodaja (isplaćen period)',
     'ks.primenjena': 'Primenjena', 'ks.ceka': 'Čeka ponovni obračun', 'ks.stornirana': 'Stornirana', 'kr.via': 'kroz {p}',
     'kc.title': 'Korekcija prodaje', 'kc.field': 'Polje', 'kc.dwh': 'Iz DWH-a', 'kc.fix': 'Ispravka', 'kc.seller': 'Prodavac', 'kc.type': 'Vrsta prodaje', 'kc.amount': 'Iznos (RSD)', 'kc.count': 'Uračunavanje', 'kc.in': 'Uračunaj', 'kc.out': 'Isključi',
     'kc.reason': 'Razlog', 'kc.note': 'Obrazloženje', 'kc.doc': 'Prilog', 'kc.docReq': 'obavezan za ovaj razlog', 'kc.attach': 'Priloži', 'kc.effect': 'Efekat na bonus', 'kc.noChange': 'Izmenite bar jedno polje u koloni Ispravka',
-    'kc.pRun': 'Period je u toku — ispravka važi odmah.', 'kc.pLocked': 'Period je zaključen — ispravka ulazi pri ponovnom obračunu, a zaposleni ponovo daje saglasnost.', 'kc.pPaid': 'Period je isplaćen — razlika se obračunava i isplaćuje kao posebna stavka u {c}.',
-    'kc.effRun': 'projekcija do kraja perioda', 'kc.effLock': 'posle ponovnog obračuna', 'kc.effPaid': 'Razlika za {p}: {b} → {a} — iznos {d} ulazi u {c} kao posebna stavka, van limita.',
+    'kc.pRun': 'Period je u toku - ispravka važi odmah.', 'kc.pLocked': 'Period je zaključen - ispravka ulazi pri ponovnom obračunu, a zaposleni ponovo daje saglasnost.', 'kc.pPaid': 'Period je isplaćen - razlika se obračunava i isplaćuje kao posebna stavka u {c}.',
+    'kc.effRun': 'projekcija do kraja perioda', 'kc.effLock': 'posle ponovnog obračuna', 'kc.effPaid': 'Razlika za {p}: {b} → {a} - iznos {d} ulazi u {c} kao posebna stavka, van limita.',
     'kc.save': 'Sačuvaj korekciju', 'kc.saved': 'Korekcija {k} je sačuvana', 'kc.before': 'Pre', 'kc.after': 'Posle', 'kc.diff': 'Razlika',
     'ka.title': 'Dodavanje prodaje koja nedostaje', 'ka.emp': 'Prodavac', 'ka.per': 'Period', 'ka.prod': 'Proizvod', 'ka.code': 'Šifra', 'ka.date': 'Datum prodaje', 'ka.contract': 'Ugovor', 'ka.client': 'Klijent',
     'km.title': 'Iznos na bonus', 'km.amount': 'Iznos (RSD, minus za umanjenje)',
@@ -22,14 +22,14 @@
     'kr.sum': '{n} korekcija u otvorenim periodima · neto efekat {d}', 'kr.ref': 'odnosi se na {p}', 'kr.added': 'Dodata prodaja'
   }, {
     'kr.title': 'Corrections', 'kr.tItems': 'DWH sales', 'kr.tHist': 'Correction history', 'kr.add': 'Add a missing sale', 'kr.edit': 'Correct',
-    'kr.paidNote': 'Paid periods are never changed — a sale missing from a paid period is added as new and the difference goes through the current period.',
+    'kr.paidNote': 'Paid periods are never changed - a sale missing from a paid period is added as new and the difference goes through the current period.',
     'kr.colId': 'Correction', 'kr.colKind': 'Type', 'kr.colEmp': 'Employee', 'kr.colPer': 'Period', 'kr.colWhat': 'What was fixed', 'kr.colEff': 'Bonus effect', 'kr.colReason': 'Reason', 'kr.colBy': 'Entered by', 'kr.colSeller': 'Seller', 'kr.colAt': 'Date',
     'kk.izmena': 'Sale fix', 'kk.linija': 'Added sale', 'kk.iznos': 'Bonus amount', 'kk.kroz': 'Added sale (paid period)',
     'ks.primenjena': 'Applied', 'ks.ceka': 'Awaiting recalculation', 'ks.stornirana': 'Reversed', 'kr.via': 'via {p}',
     'kc.title': 'Correct sale', 'kc.field': 'Field', 'kc.dwh': 'From DWH', 'kc.fix': 'Correction', 'kc.seller': 'Seller', 'kc.type': 'Sale type', 'kc.amount': 'Amount (RSD)', 'kc.count': 'Counting', 'kc.in': 'Count', 'kc.out': 'Exclude',
     'kc.reason': 'Reason', 'kc.note': 'Explanation', 'kc.doc': 'Attachment', 'kc.docReq': 'required for this reason', 'kc.attach': 'Attach', 'kc.effect': 'Bonus effect', 'kc.noChange': 'Change at least one field in the Correction column',
-    'kc.pRun': 'The period is in progress — the fix applies immediately.', 'kc.pLocked': 'The period is locked — the fix counts at recalculation and the employee consents again.', 'kc.pPaid': 'The period is paid — the difference is calculated and paid as a separate line in {c}.',
-    'kc.effRun': 'projection to period end', 'kc.effLock': 'after recalculation', 'kc.effPaid': 'Difference for {p}: {b} → {a} — amount {d} goes into {c} as a separate line, outside the limit.',
+    'kc.pRun': 'The period is in progress - the fix applies immediately.', 'kc.pLocked': 'The period is locked - the fix counts at recalculation and the employee consents again.', 'kc.pPaid': 'The period is paid - the difference is calculated and paid as a separate line in {c}.',
+    'kc.effRun': 'projection to period end', 'kc.effLock': 'after recalculation', 'kc.effPaid': 'Difference for {p}: {b} → {a} - amount {d} goes into {c} as a separate line, outside the limit.',
     'kc.save': 'Save correction', 'kc.saved': 'Correction {k} saved', 'kc.before': 'Before', 'kc.after': 'After', 'kc.diff': 'Difference',
     'ka.title': 'Add a missing sale', 'ka.emp': 'Seller', 'ka.per': 'Period', 'ka.prod': 'Product', 'ka.code': 'Code', 'ka.date': 'Sale date', 'ka.contract': 'Contract', 'ka.client': 'Client',
     'km.title': 'Bonus amount', 'km.amount': 'Amount (RSD, minus to reduce)',
@@ -42,11 +42,11 @@
     var a = D.branchStaff('B03', 'licni')[1], b = D.branchStaff('B04', 'licni')[0], c = D.branchStaff('B02', 'univerzalni')[0], d = D.branchStaff('B02', 'licni')[0];
     var dup = D.itemsOf(b.id, '2026-Q3').filter(function (i) { return i.ptype === 'kredit' && i.type === 'nova'; })[0];
     D.corrSeed = [
-      { id: 'KOR-0098', kind: 'linija', emp: a.id, period: '2026-Q3', seed: true, at: '2026-10-05T16:40', by: 'A001', reason: 'KASNI_PODACI', note: L('Kredit isplaćen 30.09. stigao u DWH 03.10. — uključen pre obračuna Q3', 'Loan disbursed Sep 30 reached DWH on Oct 3 — included before the Q3 run'),
+      { id: 'KOR-0098', kind: 'linija', emp: a.id, period: '2026-Q3', seed: true, at: '2026-10-05T16:40', by: 'A001', reason: 'KASNI_PODACI', note: L('Kredit isplaćen 30.09. stigao u DWH 03.10. - uključen pre obračuna Q3', 'Loan disbursed Sep 30 reached DWH on Oct 3 - included before the Q3 run'),
         item: { id: 'TX-K0098', date: '2026-09-30', emp: a.id, branch: a.branch, period: '2026-Q3', product: 'P16', code: 'KK-OSG-RSD', seg: 'FL', ptype: 'kredit', cat: 'FL-KRD', type: 'nova', amount: 850000, client: 'Klijent ••6120', contract: 'UG-2698812', source: 'KOREKCIJA', status: 'priznato' } },
-      { id: 'KOR-0099', kind: 'izmena', emp: b.id, period: '2026-Q3', seed: true, at: '2026-10-04T11:05', by: 'A001', reason: 'GRESKA_U_IZVORU', note: L('Isti kredit dva puta u feed-u (incident DWH-2214) — duplikat isključen', 'Same loan twice in the feed (incident DWH-2214) — duplicate excluded'), item: dup, changes: { status: 'iskljuceno' } },
+      { id: 'KOR-0099', kind: 'izmena', emp: b.id, period: '2026-Q3', seed: true, at: '2026-10-04T11:05', by: 'A001', reason: 'GRESKA_U_IZVORU', note: L('Isti kredit dva puta u feed-u (incident DWH-2214) - duplikat isključen', 'Same loan twice in the feed (incident DWH-2214) - duplicate excluded'), item: dup, changes: { status: 'iskljuceno' } },
       { id: 'KOR-0100', kind: 'iznos', emp: c.id, period: '2026-09', seed: true, at: '2026-10-04T09:30', by: 'A001', reason: 'GRESKA_U_IZVORU', amount: -4000, note: L('Dvostruko evidentiran račun (dve šifre za isti ugovor)', 'Account recorded twice (two codes for one contract)') },
-      { id: 'KOR-0101', kind: 'iznos', emp: d.id, period: '2026-Q4', refPeriod: '2026-Q2', seed: true, at: '2026-10-08T13:10', by: 'A001', reason: 'KASNI_PODACI', amount: 6250, note: L('Kreditna kartica iz juna stigla posle isplate Q2 — razlika obračunata kroz Q4', 'Credit card from June arrived after the Q2 payout — difference paid through Q4'),
+      { id: 'KOR-0101', kind: 'iznos', emp: d.id, period: '2026-Q4', refPeriod: '2026-Q2', seed: true, at: '2026-10-08T13:10', by: 'A001', reason: 'KASNI_PODACI', amount: 6250, note: L('Kreditna kartica iz juna stigla posle isplate Q2 - razlika obračunata kroz Q4', 'Credit card from June arrived after the Q2 payout - difference paid through Q4'),
         line: { id: 'TX-K0101', date: '2026-06-29', emp: d.id, branch: d.branch, period: '2026-Q2', product: 'P13', code: 'CC-FLX-01', seg: 'FL', ptype: 'kartica', cat: 'FL-KRT', type: 'nova', amount: 0, client: 'Klijent ••3307', contract: 'UG-2647730', source: 'KOREKCIJA', status: 'priznato' } }
     ];
   })();
@@ -213,13 +213,13 @@
       '<div class="field full"><label class="lab">' + t('ka.prod') + '</label><select class="in" data-kc="prod">' + prods.map(function (p) { return '<option value="' + p.id + '"' + (p.id === f.prod ? ' selected' : '') + '>' + IH.esc(D.productName(p) + ' · ' + D.segName(p.seg)) + '</option>'; }).join('') + '</select></div>' +
       '<div class="field"><label class="lab">' + t('ka.code') + '</label><select class="in" data-kc="code">' + pr.codes.map(function (c) { return '<option' + (c === f.code ? ' selected' : '') + '>' + c + '</option>'; }).join('') + '</select></div>' +
       '<div class="field"><label class="lab">' + t('kc.type') + '</label><select class="in" data-kc="type">' + ['nova'].map(function (x) { return '<option value="' + x + '"' + (x === f.type ? ' selected' : '') + '>' + t('ct.' + x) + '</option>'; }).join('') + '</select></div>' +
-      '<div class="field"><label class="lab">' + t('kc.amount') + '</label><input class="in tnum" data-kc="amount" value="' + (pr.unit === 'RSD' && f.amount ? F.num(f.amount) : '') + '"' + (pr.unit === 'RSD' ? '' : ' disabled placeholder="— (' + t('u.kom') + ')"') + '></div>' +
+      '<div class="field"><label class="lab">' + t('kc.amount') + '</label><input class="in tnum" data-kc="amount" value="' + (pr.unit === 'RSD' && f.amount ? F.num(f.amount) : '') + '"' + (pr.unit === 'RSD' ? '' : ' disabled placeholder="- (' + t('u.kom') + ')"') + '></div>' +
       '<div class="field"><label class="lab">' + t('ka.contract') + '</label><input class="in" data-kc="contract" value="' + IH.esc(f.contract) + '"></div>' +
       '<div class="field"><label class="lab">' + t('ka.client') + '</label><input class="in" data-kc="client" value="' + IH.esc(f.client) + '"></div></div>' +
       perNote(f.pid, f.emp) + '<div style="height:10px"></div>' + reasonBlock(f) + effTable(rec.refPeriod ? [{ e: f.emp, b: pay(f.emp, rec.period), a: pay(f.emp, rec.period) + rec.amount }] : preview(rec), rec.period, rec);
   }
   IH.openAddItem = function (preset) {
-    IH.form = { kc: Object.assign({ mode: 'add', emp: 'E1002', pid: '2026-Q2', prod: 'P16', code: 'KK-OSG-RSD', type: 'nova', amount: 740000, date: '2026-06-30', contract: 'UG-2649917', client: 'Klijent ••8812', reason: 'KASNI_PODACI', note: IH.L(L('Kredit isplaćen 30.06, u DWH stigao 02.07. — posle zaključavanja Q2.', 'Loan disbursed Jun 30, reached DWH on Jul 2 — after the Q2 lock.')), doc: null }, preset || {}) };
+    IH.form = { kc: Object.assign({ mode: 'add', emp: 'E1002', pid: '2026-Q2', prod: 'P16', code: 'KK-OSG-RSD', type: 'nova', amount: 740000, date: '2026-06-30', contract: 'UG-2649917', client: 'Klijent ••8812', reason: 'KASNI_PODACI', note: IH.L(L('Kredit isplaćen 30.06, u DWH stigao 02.07. - posle zaključavanja Q2.', 'Loan disbursed Jun 30, reached DWH on Jul 2 - after the Q2 lock.')), doc: null }, preset || {}) };
     IH.modal({ title: t('ka.title'), wide: true, body: '<div id="kc-body">' + addBody() + '</div>', foot: ui.btn(t('c.cancel'), { act: 'modal-close' }) + ui.btn(t('kc.save'), { cls: 'primary', icon: 'check', act: 'kc-save' }) });
   };
   IH.act['kc-add'] = function () { IH.openAddItem(); };
@@ -288,11 +288,11 @@
         { key: 'p', label: t('os.colItem'), nw: false, val: function (r) { return r.it.product ? D.productName(r.it.product) : r.it.code; }, render: function (r) { return r.it.product ? IH.esc(D.productName(r.it.product)) : '<span class="mut">' + IH.esc(r.it.code) + '</span>'; } },
         { key: 'pt', label: t('os.colPt'), val: function (r) { return r.it.ptype ? D.ptypeName(r.it.ptype) : ''; }, fval: function (r) { return r.it.ptype || ''; }, filter: function () { return D.ptypes.map(function (x) { return { v: x.id, l: IH.L(x.name) }; }); } },
         { key: 'ty', label: t('kc.type'), val: function (r) { return t('ct.' + r.it.type); }, fval: function (r) { return r.it.type; }, filter: function () { return ['nova', 'storno'].map(function (k) { return { v: k, l: t('ct.' + k) }; }); } },
-        { key: 'a', label: t('os.colAmt'), num: true, search: false, val: function (r) { return r.it.amount || 0; }, render: function (r) { return r.it.amount ? (r.corr && r.corr.changes && r.corr.changes.amount != null ? '<s class="mut">' + F.num(r.raw.amount) + '</s> ' : '') + F.num(r.it.amount) : '<span class="mut">—</span>'; } },
+        { key: 'a', label: t('os.colAmt'), num: true, search: false, val: function (r) { return r.it.amount || 0; }, render: function (r) { return r.it.amount ? (r.corr && r.corr.changes && r.corr.changes.amount != null ? '<s class="mut">' + F.num(r.raw.amount) + '</s> ' : '') + F.num(r.it.amount) : '<span class="mut">-</span>'; } },
         { key: 'q', label: t('ka.contract'), val: function (r) { return r.it.contract || ''; }, sort: false },
         { key: 'cl', label: t('ka.client'), val: function (r) { return r.it.client || ''; } },
         { key: 'code', label: t('it.code'), val: function (r) { return r.it.code; } },
-        { key: 'k', label: t('kr.colId'), val: function (r) { return r.corr ? r.corr.id : ''; }, render: function (r) { return r.corr ? IH.esc(r.corr.id) : '<span class="mut">—</span>'; } }
+        { key: 'k', label: t('kr.colId'), val: function (r) { return r.corr ? r.corr.id : ''; }, render: function (r) { return r.corr ? IH.esc(r.corr.id) : '<span class="mut">-</span>'; } }
       ],
       actions: [
         { type: 'edit', title: t('kr.edit'), act: 'kc-edit', kind: 'acc', arg: function (r) { return r.emp0 + '|' + pid + '|' + r.id; }, show: function (r) { return r.raw.source !== 'KOREKCIJA' && r.st !== 'nemapirano'; } },
@@ -347,7 +347,7 @@
         ui.table([{ key: 'f', label: t('kc.field') }, { key: 'b', label: t('kc.dwh') }, { key: 'a', label: t('kc.fix') }], rr.map(function (x) { return { f: t(x[0]), b: IH.esc(x[1]), a: x[1] !== x[2] ? '<b style="color:var(--accent)">' + IH.esc(x[2]) + '</b>' : IH.esc(x[2]) }; }), { compact: true });
     } else if (it) {
       h += '<div class="lab" style="margin-top:8px">' + t('kr.added') + '</div>' + ui.table([{ key: 'd', label: t('c.date') }, { key: 'p', label: t('c.product') }, { key: 'ty', label: t('kc.type') }, { key: 'a', label: t('os.colAmt'), num: true }, { key: 'u', label: t('ka.contract') }],
-        [{ d: F.date(it.date), p: IH.esc(D.productName(it.product)), ty: t('ct.' + it.type), a: it.amount ? F.num(it.amount) : '—', u: IH.esc(it.contract) }], { compact: true });
+        [{ d: F.date(it.date), p: IH.esc(D.productName(it.product)), ty: t('ct.' + it.type), a: it.amount ? F.num(it.amount) : '-', u: IH.esc(it.contract) }], { compact: true });
     }
     return h + '<div style="height:12px"></div>' + effTable(ef, c.period);
   }
@@ -360,7 +360,7 @@
   };
   IH.act['kor-rev'] = function (el) {
     var c = find(el.dataset.arg); IH.form = {};
-    IH.modal({ title: t('kr.rev') + ' — ' + c.id, body: '<p style="margin-top:0">' + t('kr.revTxt', { k: c.id, p: D.periodLabel(c.period) }) + '</p>' + ui.field('kr_rn', t('kr.revNote'), t('kr.revSug'), { type: 'textarea' }),
+    IH.modal({ title: t('kr.rev') + ' - ' + c.id, body: '<p style="margin-top:0">' + t('kr.revTxt', { k: c.id, p: D.periodLabel(c.period) }) + '</p>' + ui.field('kr_rn', t('kr.revNote'), t('kr.revSug'), { type: 'textarea' }),
       foot: ui.btn(t('c.cancel'), { act: 'modal-close' }) + ui.btn(t('kr.rev'), { cls: 'danger', icon: 'trash', act: 'kor-rev-ok', arg: c.id }) });
   };
   IH.act['kor-rev-ok'] = function (el) {

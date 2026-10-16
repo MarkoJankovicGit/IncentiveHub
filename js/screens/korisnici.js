@@ -1,4 +1,4 @@
-/* Incentive Hub — Korisnici i role: korisnici iz HR-a, uloge sa akcijama po modulu (kreiranje, izmena, pregled) */
+/* Incentive Hub - Korisnici i role: korisnici iz HR-a, uloge sa akcijama po modulu (kreiranje, izmena, pregled) */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt, L = D.L2;
@@ -8,9 +8,9 @@
     'ur.admin': 'Administrator', 'ur.manager': 'Menadžer', 'ur.employee': 'Zaposleni', 'ur.viewer': 'Posmatrač',
     'us.colUser': 'Korisnik', 'us.colUname': 'Korisničko ime', 'us.colPos': 'Pozicija', 'us.colRole': 'Uloga', 'us.colScope': 'Obuhvat podataka', 'us.colUnit': 'Org. jedinica', 'us.colLast': 'Poslednja prijava', 'us.never': 'nije se prijavljivao',
     'usc.bank': 'Cela banka', 'usc.region': 'Region: {r}', 'usc.branch': 'Ekspozitura: {b}', 'usc.own': 'Sopstveni podaci', 'usc.sections': 'Odobreni izveštaji ({n})',
-    'us.deact': 'Deaktivacija korisnika — {n}', 'us.deactDate': 'Važi od', 'us.deactReason': 'Razlog', 'us.deactSug': 'Odlazak iz banke (HR)', 'us.deactDone': 'Korisnik {n} je deaktiviran', 'us.react': 'Korisnik {n} je ponovo aktivan', 'us.planned': 'deaktivacija {d}',
-    'us.edit': 'Izmena korisnika — {n}', 'us.view': 'Korisnik — {n}', 'us.roleRule': 'Uloga po pravilu (pozicija)', 'us.extraRole': 'Dodatna uloga', 'us.none': 'Bez dodatne uloge', 'us.saved': 'Izmena za {n} je sačuvana', 'us.search': 'Ime, korisničko ime, HR broj',
-    'rl.colName': 'Naziv', 'rl.colCreated': 'Datum kreiranja', 'rl.colMod': 'Datum izmene', 'rl.colActs': 'Akcija', 'rl.colUsers': 'Korisnika', 'rl.new': 'Kreiraj novu ulogu', 'rl.editT': 'Izmena uloge — {n}', 'rl.viewT': 'Uloga — {n}',
+    'us.deact': 'Deaktivacija korisnika - {n}', 'us.deactDate': 'Važi od', 'us.deactReason': 'Razlog', 'us.deactSug': 'Odlazak iz banke (HR)', 'us.deactDone': 'Korisnik {n} je deaktiviran', 'us.react': 'Korisnik {n} je ponovo aktivan', 'us.planned': 'deaktivacija {d}',
+    'us.edit': 'Izmena korisnika - {n}', 'us.view': 'Korisnik - {n}', 'us.roleRule': 'Uloga po poziciji', 'us.role': 'Uloga', 'us.byPos': 'po poziciji', 'us.manual': 'ručno', 'us.extraRole': 'Dodatna uloga', 'us.none': 'Bez dodatne uloge', 'us.saved': 'Izmena za {n} je sačuvana', 'us.search': 'Ime, korisničko ime, HR broj',
+    'rl.colName': 'Naziv', 'rl.colCreated': 'Datum kreiranja', 'rl.colMod': 'Datum izmene', 'rl.colActs': 'Akcija', 'rl.colUsers': 'Korisnika', 'rl.new': 'Kreiraj novu ulogu', 'rl.editT': 'Izmena uloge - {n}', 'rl.viewT': 'Uloga - {n}',
     'rl.name': 'Naziv uloge', 'rl.namePh': 'Unesite naziv uloge', 'rl.addActs': 'Dodaj akcije za ovu ulogu', 'rl.searchAct': 'Pretraga akcija', 'rl.all': 'Označi sve', 'rl.none': 'Poništi sve', 'rl.cancel': 'Poništi', 'rl.save': 'Sačuvaj',
     'rl.saved': 'Uloga „{n}“ je sačuvana', 'rl.needName': 'Unesite naziv uloge', 'rl.delT': 'Brisanje uloge', 'rl.delUsed': 'Uloga je dodeljena {n} korisnika i ne može da se obriše.', 'rl.delTxt': 'Uloga „{n}“ biće obrisana.', 'rl.deleted': 'Uloga „{n}“ je obrisana', 'rl.noHit': 'Nema akcija za „{q}“', 'rl.search': 'Naziv'
   }, {
@@ -18,9 +18,9 @@
     'ur.admin': 'Administrator', 'ur.manager': 'Manager', 'ur.employee': 'Employee', 'ur.viewer': 'Viewer',
     'us.colUser': 'User', 'us.colUname': 'Username', 'us.colPos': 'Position', 'us.colRole': 'Role', 'us.colScope': 'Data scope', 'us.colUnit': 'Org. unit', 'us.colLast': 'Last sign-in', 'us.never': 'never signed in',
     'usc.bank': 'Whole bank', 'usc.region': 'Region: {r}', 'usc.branch': 'Branch: {b}', 'usc.own': 'Own data', 'usc.sections': 'Approved reports ({n})',
-    'us.deact': 'Deactivate user — {n}', 'us.deactDate': 'Effective from', 'us.deactReason': 'Reason', 'us.deactSug': 'Leaving the bank (HR)', 'us.deactDone': 'User {n} deactivated', 'us.react': 'User {n} active again', 'us.planned': 'deactivation {d}',
-    'us.edit': 'Edit user — {n}', 'us.view': 'User — {n}', 'us.roleRule': 'Role by rule (position)', 'us.extraRole': 'Additional role', 'us.none': 'No additional role', 'us.saved': 'Changes for {n} saved', 'us.search': 'Name, username, HR number',
-    'rl.colName': 'Name', 'rl.colCreated': 'Created', 'rl.colMod': 'Modified', 'rl.colActs': 'Actions', 'rl.colUsers': 'Users', 'rl.new': 'Create new role', 'rl.editT': 'Edit role — {n}', 'rl.viewT': 'Role — {n}',
+    'us.deact': 'Deactivate user - {n}', 'us.deactDate': 'Effective from', 'us.deactReason': 'Reason', 'us.deactSug': 'Leaving the bank (HR)', 'us.deactDone': 'User {n} deactivated', 'us.react': 'User {n} active again', 'us.planned': 'deactivation {d}',
+    'us.edit': 'Edit user - {n}', 'us.view': 'User - {n}', 'us.roleRule': 'Role by position', 'us.role': 'Role', 'us.byPos': 'by position', 'us.manual': 'manual', 'us.extraRole': 'Additional role', 'us.none': 'No additional role', 'us.saved': 'Changes for {n} saved', 'us.search': 'Name, username, HR number',
+    'rl.colName': 'Name', 'rl.colCreated': 'Created', 'rl.colMod': 'Modified', 'rl.colActs': 'Actions', 'rl.colUsers': 'Users', 'rl.new': 'Create new role', 'rl.editT': 'Edit role - {n}', 'rl.viewT': 'Role - {n}',
     'rl.name': 'Role name', 'rl.namePh': 'Enter the role name', 'rl.addActs': 'Add actions for this role', 'rl.searchAct': 'Search actions', 'rl.all': 'Select all', 'rl.none': 'Clear all', 'rl.cancel': 'Cancel', 'rl.save': 'Save',
     'rl.saved': 'Role "{n}" saved', 'rl.needName': 'Enter the role name', 'rl.delT': 'Delete role', 'rl.delUsed': 'The role is assigned to {n} users and cannot be deleted.', 'rl.delTxt': 'Role "{n}" will be deleted.', 'rl.deleted': 'Role "{n}" deleted', 'rl.noHit': 'No actions for "{q}"', 'rl.search': 'Name'
   });
@@ -33,9 +33,9 @@
     M('korisnici', L('Korisnici i role', 'Users and roles'), [['pristup', L('Pristup meniju', 'Menu access')], ['pregled', L('Pregled korisnika', 'View users')], ['izmena', L('Izmena korisnika', 'Edit user')], ['deaktivacija', L('Deaktivacija korisnika', 'Deactivate user')], ['uloge', L('Pregled uloga', 'View roles')], ['ulogaNova', L('Kreiranje uloge', 'Create role')], ['ulogaIzmena', L('Izmena uloge', 'Edit role')], ['ulogaBrisanje', L('Brisanje uloge', 'Delete role')]]),
     M('sifarnici', L('Šifarnici', 'Code lists'), [['pristup', L('Pristup meniju', 'Menu access')], ['pregled', L('Pregled šifarnika', 'View code lists')], ['novi', L('Kreiranje šifarnika', 'Create code list')], ['stavkaNova', L('Kreiranje stavke', 'Create item')], ['stavkaIzmena', L('Izmena stavke', 'Edit item')], ['stavkaBrisanje', L('Brisanje stavke', 'Delete item')], ['status', L('Aktivacija i deaktivacija', 'Activate and deactivate')]]),
     M('sabloni', L('Šabloni obaveštenja', 'Notification templates'), [['pristup', L('Pristup meniju', 'Menu access')], ['pregled', L('Pregled šablona', 'View templates')], ['izmena', L('Izmena šablona', 'Edit template')], ['okidaci', L('Izmena okidača slanja', 'Edit sending triggers')], ['status', L('Uključivanje i isključivanje', 'Switch on and off')]]),
-    M('audit', L('Audit trag', 'Audit trail'), [['pristup', L('Pristup meniju', 'Menu access')], ['pregled', L('Pregled zapisa', 'View records')], ['izvoz', L('Izvoz', 'Export')]]),
+    M('audit', L('Audit log', 'Audit log'), [['pristup', L('Pristup meniju', 'Menu access')], ['pregled', L('Pregled zapisa', 'View records')], ['izvoz', L('Izvoz', 'Export')]]),
     M('periodi', L('Obračunski periodi', 'Calculation periods'), [['pristup', L('Pristup meniju', 'Menu access')], ['pregled', L('Pregled kalendara', 'View calendar')], ['generisanje', L('Generisanje perioda', 'Generate periods')], ['rokovi', L('Izmena rokova', 'Edit deadlines')], ['brisanje', L('Brisanje planiranog perioda', 'Delete planned period')], ['vrste', L('Izmena vrsta perioda', 'Edit period types')]]),
-    M('katalog', L('Katalog proizvoda', 'Product catalogue'), [['pristup', L('Pristup meniju', 'Menu access')], ['pregled', L('Pregled proizvoda', 'View products')], ['novi', L('Kreiranje proizvoda', 'Create product')], ['izmena', L('Izmena proizvoda', 'Edit product')], ['status', L('Deaktivacija proizvoda', 'Deactivate product')], ['mapiranje', L('Mapiranje šifara', 'Map codes')], ['uvoz', L('Uvoz kataloga', 'Import catalogue')], ['izvoz', L('Izvoz', 'Export')], ['bodovi', L('Bodovne liste — pregled', 'Points lists — view')], ['bodoviIzmena', L('Bodovne liste — kreiranje i izmena', 'Points lists — create and edit')]]),
+    M('katalog', L('Katalog proizvoda', 'Product catalogue'), [['pristup', L('Pristup meniju', 'Menu access')], ['pregled', L('Pregled proizvoda', 'View products')], ['novi', L('Kreiranje proizvoda', 'Create product')], ['izmena', L('Izmena proizvoda', 'Edit product')], ['status', L('Deaktivacija proizvoda', 'Deactivate product')], ['mapiranje', L('Mapiranje šifara', 'Map codes')], ['uvoz', L('Uvoz kataloga', 'Import catalogue')], ['izvoz', L('Izvoz', 'Export')]]),
     M('targeti', L('Targeti', 'Targets'), [['pristup', L('Pristup meniju', 'Menu access')], ['pregled', L('Pregled targeta', 'View targets')], ['novi', L('Kreiranje targeta', 'Create target')], ['izmena', L('Izmena targeta', 'Edit target')], ['verzija', L('Nova verzija targeta', 'New target version')], ['arhiva', L('Arhiviranje targeta', 'Archive target')], ['simulacija', L('Simulacija uslova', 'Condition simulation')]]),
     M('dodela', L('Dodela targeta', 'Target assignment'), [['pristup', L('Pristup meniju', 'Menu access')], ['pregled', L('Pregled dodela', 'View assignments')], ['nova', L('Nova dodela', 'New assignment')], ['izmena', L('Izmena dodele', 'Edit assignment')], ['raspodela', L('Raspodela po ekspozituri', 'Branch split')], ['slanje', L('Slanje na odobrenje', 'Submit for approval')], ['uvoz', L('Uvoz iz fajla', 'Import from file')], ['izvoz', L('Izvoz', 'Export')]]),
     M('seme', L('Bonus šeme', 'Bonus schemes'), [['pristup', L('Pristup meniju', 'Menu access')], ['pregled', L('Pregled šema', 'View schemes')], ['nova', L('Kreiranje šeme', 'Create scheme')], ['verzija', L('Nova verzija šeme', 'New scheme version')], ['arhiva', L('Arhiviranje šeme', 'Archive scheme')], ['primer', L('Primer obračuna', 'Calculation example')], ['raspored', L('Raspoređivanje zaposlenih', 'Assign employees')], ['izvoz', L('Izvoz', 'Export')]]),
@@ -62,7 +62,7 @@
   var POSROLE = { admin: 'ADMIN', menadzer: 'MGR', regionalni: 'REG', licni: 'EMP', univerzalni: 'EMP', kontroling: 'VIEW' };
   function roles() { return SEED.concat(IH.list('newRoles')).filter(function (r) { return !IH.map('roleDel')[r.id]; }).map(function (r) { var e = IH.map('roleEdits')[r.id]; return e ? Object.assign({}, r, e) : r; }); }
   function role(id) { return roles().filter(function (r) { return r.id === id; })[0]; }
-  function usersOfRole(r) { return D.employees.filter(function (e) { return POSROLE[e.pos] === r.id || extra(e) === r.id; }).length; }
+  function usersOfRole(r) { return D.employees.filter(function (e) { return mainRole(e) === r.id || extra(e) === r.id; }).length; }
   var REPMAP = { r1: 'ostvarenje-ekspozitura', r2: 'ostvarenje-zaposleni', r3: 'prodaja-proizvodi', r4: 'isplate', r5: 'trosak', r6: 'korekcije-prigovori', r7: 'katalog', r8: 'audit-podesavanja', r9: 'pristupi' };
   function viewerSections() { var r = role('VIEW'); if (!r) return []; return Object.keys(REPMAP).filter(function (k) { return r.acts.indexOf('izvestaji.' + k) >= 0; }).map(function (k) { return REPMAP[k]; }); }
   IH.viewerSections = viewerSections;
@@ -71,7 +71,10 @@
   var ROLE = { admin: 'admin', menadzer: 'manager', regionalni: 'manager', licni: 'employee', univerzalni: 'employee', kontroling: 'viewer' };
   function users() { return D.employees.filter(function (e) { return ROLE[e.pos]; }); }
   function uname(e) { var p = e.name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'dj').split(' '); return p[0] + '.' + p[p.length - 1]; }
-  function roleOf(e) { return ROLE[e.pos]; }
+  /* glavna uloga: po poziciji (pravilo) ili ručno dodeljena u izmeni korisnika */
+  function mainRole(e) { var m = (IH.map('userRole')[e.id] || {}).role; return m && role(m) ? m : POSROLE[e.pos]; }
+  function manual(e) { return mainRole(e) !== POSROLE[e.pos]; }
+  function roleOf(e) { var r = role(mainRole(e)); return (r && r.key) || ROLE[e.pos]; }
   function extra(e) { return (IH.map('userExtra')[e.id] || {}).role || null; }
   function scopeOf(e) {
     var r = roleOf(e);
@@ -93,8 +96,9 @@
     return leave ? { planned: true, from: leave.eff, reason: L('Odlazak iz banke (HR)', 'Leaving the bank (HR)') } : null;
   }
   function active(e) { var o = offOf(e); return !o || (o.planned && o.from >= D.TODAY); }
-  function roleName(e) { var r = role(POSROLE[e.pos]); return r ? IH.L(r.name) : t('ur.' + roleOf(e)); }
-  function rolePill(e) { return ui.pill(roleName(e), { admin: 'danger', manager: 'accent', employee: 'gray', viewer: 'info' }[roleOf(e)]) + (extra(e) && role(extra(e)) ? ' ' + ui.pill(IH.L(role(extra(e)).name), 'warning') : ''); }
+  function roleName(e) { var r = role(mainRole(e)); return r ? IH.L(r.name) : t('ur.' + roleOf(e)); }
+  function ruleName(e) { var r = role(POSROLE[e.pos]); return r ? IH.L(r.name) : t('ur.' + ROLE[e.pos]); }
+  function rolePill(e) { return ui.pill(roleName(e), { admin: 'danger', manager: 'accent', employee: 'gray', viewer: 'info' }[roleOf(e)] || 'gray') + (manual(e) ? ' <span class="mut">' + t('us.manual') + '</span>' : '') + (extra(e) && role(extra(e)) ? ' ' + ui.pill(IH.L(role(extra(e)).name), 'warning') : ''); }
   function usersTab() {
     return IH.grid({
       id: 'us', exportName: 'Korisnici.xlsx', searchLabel: t('us.search'), hidden: ['un'],
@@ -106,7 +110,7 @@
         { key: 'un', label: t('us.colUname'), val: function (e) { return uname(e); } },
         { key: 'hr', label: 'HR', val: function (e) { return e.hr; } },
         { key: 'p', label: t('us.colPos'), val: function (e) { return D.posName(e.pos); }, fval: function (e) { return e.pos; }, filter: function () { return Object.keys(ROLE).map(function (k) { return { v: k, l: D.posName(k) }; }); } },
-        { key: 'r', label: t('us.colRole'), val: function (e) { return roleName(e); }, fval: function (e) { return POSROLE[e.pos]; }, render: rolePill, filter: function () { return roles().map(function (r) { return { v: r.id, l: IH.L(r.name) }; }); } },
+        { key: 'r', label: t('us.colRole'), val: function (e) { return roleName(e); }, fval: function (e) { return mainRole(e); }, render: rolePill, filter: function () { return roles().map(function (r) { return { v: r.id, l: IH.L(r.name) }; }); } },
         { key: 's', label: t('us.colScope'), val: function (e) { return scopeOf(e); } },
         { key: 'b', label: t('us.colUnit'), val: function (e) { return e.branch ? D.branchShort(e.branch) : e.region ? IH.L(D.region(e.region).name) : IH.L(L('Centrala', 'Head office')); }, fval: function (e) { return e.branch || e.region || 'HQ'; }, filter: function () { return D.branches.map(function (b) { return { v: b.id, l: D.branchShort(b) }; }).concat([{ v: 'HQ', l: IH.L(L('Centrala', 'Head office')) }]); } },
         { key: 'l', label: t('us.colLast'), search: false, val: function (e) { return lastLogin(e) || ''; }, render: function (e) { var l = lastLogin(e); return l ? F.dt(l) : '<span class="mut">' + t('us.never') + '</span>'; } }
@@ -117,11 +121,12 @@
   }
   function userFields(e, edit) {
     var st = function (f) { f.type = 'static'; return f; };
-    var opts = [{ v: '', l: t('us.none') }].concat(roles().filter(function (r) { return r.id !== POSROLE[e.pos]; }).map(function (r) { return { v: r.id, l: IH.L(r.name) }; }));
+    var opts = [{ v: '', l: t('us.none') }].concat(roles().filter(function (r) { return r.id !== mainRole(e); }).map(function (r) { return { v: r.id, l: IH.L(r.name) }; }));
+    var ropts = roles().map(function (r) { return { v: r.id, l: IH.L(r.name) + (r.id === POSROLE[e.pos] ? ' (' + t('us.byPos') + ')' : '') }; });
     return [
       st({ k: 'ue_name', label: t('us.colUser'), value: e.name }), st({ k: 'ue_un', label: t('us.colUname'), value: uname(e) }),
       st({ k: 'ue_hr', label: 'HR', value: e.hr }), st({ k: 'ue_pos', label: t('us.colPos'), value: D.posName(e.pos) }),
-      st({ k: 'ue_role', label: t('us.roleRule'), value: roleName(e) }), st({ k: 'ue_scope', label: t('us.colScope'), value: scopeOf(e) }),
+      { k: 'ue_role', label: t('us.role'), type: 'select', options: ropts, value: mainRole(e) }, st({ k: 'ue_rule', label: t('us.roleRule'), value: ruleName(e) }), st({ k: 'ue_scope', label: t('us.colScope'), value: scopeOf(e) }),
       { k: 'ue_x', label: t('us.extraRole'), type: 'select', options: opts, value: extra(e) || '' },
       st({ k: 'ue_last', label: t('us.colLast'), value: lastLogin(e) ? F.dt(lastLogin(e)) : t('us.never') })
     ];
@@ -143,7 +148,11 @@
     IH.modal({ title: t('us.edit', { n: IH.esc(e.name) }), body: ui.form(userFields(e, true)), foot: ui.btn(t('c.cancel'), { act: 'modal-close' }) + ui.btn(t('c.save'), { cls: 'primary', icon: 'check', act: 'us-edit-go', arg: e.id }) });
   };
   IH.act['us-edit-go'] = function (el) {
-    var e = D.emp(el.dataset.arg), v = (document.getElementById('fld-ue_x') || {}).value || '';
+    var e = D.emp(el.dataset.arg), v = (document.getElementById('fld-ue_x') || {}).value || '', mr = (document.getElementById('fld-ue_role') || {}).value || mainRole(e), was = mainRole(e);
+    if (mr && mr !== POSROLE[e.pos]) IH.map('userRole')[e.id] = { role: mr, by: IH.me().id, at: IH.now() }; else delete IH.map('userRole')[e.id];
+    var rn = function (id, lg) { var r = role(id), n = r && r.name; return !n ? id : typeof n === 'string' ? n : (n[lg] || n.sr); };
+    if (mr !== was) IH.audit('user', e.id, { sr: 'Promenjena uloga korisnika', en: 'User role changed' }, { sr: rn(was, 'sr') + ' → ' + rn(mr, 'sr') + (mr !== POSROLE[e.pos] ? ' (ručno)' : ' (po poziciji)'), en: rn(was, 'en') + ' → ' + rn(mr, 'en') + (mr !== POSROLE[e.pos] ? ' (manual)' : ' (by position)') });
+    if (v === mr) v = '';
     if (v) IH.map('userExtra')[e.id] = { role: v }; else delete IH.map('userExtra')[e.id];
     IH.audit('user', e.id, { sr: 'Izmenjena dodatna uloga', en: 'Additional role changed' }, { sr: v && role(v) ? IH.L(role(v).name) : t('us.none'), en: v && role(v) ? IH.L(role(v).name) : 'none' });
     IH.save(); IH.closeModal(); IH.render(); IH.toast(t('us.saved', { n: IH.esc(e.name) }));
@@ -151,7 +160,7 @@
   IH.act['us-hist'] = function (el) {
     var e = D.emp(el.dataset.arg), h = IH.auditFor('user', e.id).slice();
     var l = lastLogin(e); if (l) h.push({ at: l, by: e.id, action: L('Prijava', 'Sign-in') });
-    h.push({ at: (e.since < '2025-12-01' ? '2025-12-01' : e.since) + 'T05:04', by: null, action: { sr: 'Korisnik kreiran iz HR mastera — uloga ' + roleName(e), en: 'User created from HR master — role ' + roleName(e) } });
+    h.push({ at: (e.since < '2025-12-01' ? '2025-12-01' : e.since) + 'T05:04', by: null, action: { sr: 'Korisnik kreiran iz HR mastera - uloga ' + roleName(e), en: 'User created from HR master - role ' + roleName(e) } });
     IH.showHistory(e.name, h.sort(function (a, b) { return a.at < b.at ? 1 : -1; }));
   };
 
@@ -202,7 +211,7 @@
     var sel = {}; (r ? r.acts : []).forEach(function (a) { sel[a] = true; });
     IH.form = { role: { id: r ? r.id : null, name: r ? IH.L(r.name) : '', sel: sel, open: {}, q: '', ro: mode === 'view' } };
     var title = mode === 'view' ? t('rl.viewT', { n: IH.esc(IH.L(r.name)) }) : mode === 'edit' ? t('rl.editT', { n: IH.esc(IH.L(r.name)) }) : t('rl.new');
-    IH.modal({ title: title, wide: true, body: '<div id="role-body">' + roleBody() + '</div>', foot: mode === 'view' ? ui.btn(t('g.aEdit'), { icon: 'edit', act: 'role-edit', arg: r.id }) + ui.btn(t('c.close'), { act: 'modal-close' }) : ui.btn(t('rl.cancel'), { act: 'modal-close' }) + ui.btn(t('rl.save'), { cls: 'primary', icon: 'check', act: 'role-save' }) });
+    IH.modal({ title: title, wide: true, sug: mode === 'new', body: '<div id="role-body">' + roleBody() + '</div>', foot: mode === 'view' ? ui.btn(t('g.aEdit'), { icon: 'edit', act: 'role-edit', arg: r.id }) + ui.btn(t('c.close'), { act: 'modal-close' }) : ui.btn(t('rl.cancel'), { act: 'modal-close' }) + ui.btn(t('rl.save'), { cls: 'primary', icon: 'check', act: 'role-save' }) });
   }
   IH.act['role-new'] = function () { openRole(null, 'new'); };
   IH.act['role-view'] = function (el) { var r = role(el.dataset.arg); if (r) openRole(r, 'view'); };

@@ -1,4 +1,4 @@
-/* Incentive Hub — jezgro: stanje, i18n, formatiranje, ikonice, router, komponente, vođeno unošenje */
+/* Incentive Hub - jezgro: stanje, i18n, formatiranje, ikonice, router, komponente, vođeno unošenje */
 (function () {
   'use strict';
   var IH = window.IH = window.IH || {};
@@ -37,7 +37,7 @@
   IH.fmt = {
     num: function (n, dec) {
       dec = dec || 0;
-      if (n == null || isNaN(n)) return '–';
+      if (n == null || isNaN(n)) return '-';
       var neg = n < 0; n = Math.abs(n);
       var fixed = n.toFixed(dec).split('.');
       var sr = IH.state.lang === 'sr';
@@ -51,14 +51,14 @@
       return IH.fmt.num(n);
     },
     pct: function (x, dec) {
-      if (x == null || isNaN(x)) return '–';
+      if (x == null || isNaN(x)) return '-';
       var v = x * 100;
       /* blizu okruglog praga (80, 85, 100…) prikaži decimalu, da 99,5% ne izgleda kao 100% */
       if (dec == null) { var r = Math.round(v); dec = r % 5 === 0 && Math.abs(v - r) >= 0.05 ? 1 : 0; }
       return IH.fmt.num(v, dec) + '%';
     },
     date: function (iso) {
-      if (!iso) return '–';
+      if (!iso) return '-';
       var p = iso.slice(0, 10).split('-');
       if (IH.state.lang === 'sr') return p[2] + '.' + p[1] + '.' + p[0] + '.';
       var m = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+p[1] - 1];
@@ -139,7 +139,7 @@
     try {
       var raw = window.localStorage.getItem(KEY);
       if (raw) Object.assign(IH.state, JSON.parse(raw));
-    } catch (e) { /* storage nedostupan — radi u memoriji */ }
+    } catch (e) { /* storage nedostupan - radi u memoriji */ }
   };
   IH.save = function () {
     try { window.localStorage.setItem(KEY, JSON.stringify(IH.state)); } catch (e) { }
@@ -193,6 +193,8 @@
       opts = opts || {};
       var tag = opts.go ? 'button' : 'div';
       var go = opts.go ? ' data-go="' + opts.go + '"' : '';
+      /* prečica (nav): naziv, broj i opis u jednom redu, strelica dole desno */
+      if (opts.nav) return '<' + tag + ' class="kpi nav"' + go + '><small>' + label + '</small><b>' + value + '</b>' + (opts.desc ? '<div class="d">' + opts.desc + '</div>' : '') + (opts.go ? '<span class="kgo">' + IH.icon('arrow') + '</span>' : '') + '</' + tag + '>';
       return '<' + tag + ' class="kpi' + (opts.hl ? ' hl' : '') + '"' + go + '><small>' + label + '</small><b>' + value + '</b>' + (sub ? '<div class="d">' + sub + '</div>' : '') + '</' + tag + '>';
     },
     card: function (title, body, opts) {
@@ -201,7 +203,7 @@
       return '<section class="card' + (opts.cls ? ' ' + opts.cls : '') + '">' + head + '<div class="cb' + (opts.flush ? ' flush' : '') + '">' + body + '</div></section>';
     },
     header: function (title, desc, actions, crumb) {
-      /* opis ispod naslova se ne prikazuje — ekran mora biti čist */
+      /* opis ispod naslova se ne prikazuje - ekran mora biti čist */
       return '<div class="ph"><div class="pt">' + (crumb ? '<div class="crumb">' + crumb + '</div>' : '') + '<h1>' + title + '</h1></div>' + (actions ? '<div class="acts">' + actions + '</div>' : '') + '</div>';
     },
     btn: function (label, opts) {
@@ -269,7 +271,9 @@
     var ov = document.getElementById('ovl');
     ov.innerHTML = '<div class="mod' + (o.wide ? ' wide' : '') + '" role="dialog" aria-modal="true"><div class="mod-h"><h3>' + o.title + '</h3><button class="x" data-act="modal-close" aria-label="Zatvori">×</button></div><div class="mod-b">' + o.body + '</div>' + (o.foot ? '<div class="mod-f">' + o.foot + '</div>' : '') + '</div>';
     ov.classList.add('on');
+    if (o.sug) ov.dataset.sug = '1'; else delete ov.dataset.sug;
     IH.guided.bind(ov);
+    if (IH.sug) IH.sug.apply();
     var f = ov.querySelector('input,select,textarea,button.btn');
     if (f && o.focus !== false) setTimeout(function () { f.focus(); }, 30);
   };
@@ -302,7 +306,7 @@
     fillAll: function (root) {
       (root || document).querySelectorAll('[data-sug]').forEach(IH.guided.fill);
     },
-    bind: function (root) { /* event delegation na dokumentu — ovde ništa, ostavljeno radi kompatibilnosti */ }
+    bind: function (root) { /* event delegation na dokumentu - ovde ništa, ostavljeno radi kompatibilnosti */ }
   };
   document.addEventListener('keydown', function (e) {
     var el = e.target;
@@ -362,6 +366,34 @@
   });
 
   IH.act['modal-close'] = function () { IH.closeModal(); };
-  IH.act['fill-form'] = function (el) { IH.guided.fillAll(el.closest('.mod') || el.closest('.card') || document); };
-  IH.act['soon'] = function (el) { IH.toast(IH.t('c.soon') + (el.dataset.arg ? ' — ' + IH.esc(el.dataset.arg) : '')); };
+  IH.act['fill-form'] = function (el) { var root = el.closest('.mod') || el.closest('.card') || document; IH.guided.fillAll(root); IH.sug.acceptAll(root); };
+
+  /* ---------- predložene vrednosti pri kreiranju ----------
+     U formama za kreiranje (rute .../novi, nova, novo, kopija i modali otvoreni sa sug:true) prepopunjene vrednosti su predlog:
+     sive i italic dok ih korisnik ne promeni ili potvrdi („Popuni predlogom“). Izmena postojećeg zapisa nije predlog. */
+  IH.sug = (function () {
+    var T = {}, F = null;
+    function touched() { if (IH.form !== F) { T = {}; F = IH.form; } return T; }
+    function createRoute() { return /^#\/[^?]*\/(novi|nova|novo|kopija)(\/|$)/.test(location.hash); }
+    function scopeOf(el) { var m = el.closest('#ovl'); if (m) return m.dataset.sug ? 'm:' + ((m.querySelector('.mod-h h3') || {}).textContent || '') : null; return el.closest('#main') && createRoute() ? 'p:' + location.hash.replace(/\/\d+$/, '') : null; }
+    function key(el) {
+      if (el.classList.contains('seg') || el.classList.contains('opts')) { var b = el.querySelector('button'); if (!b) return null; var a = b.dataset.arg || '', i = a.lastIndexOf('|'); return 'seg:' + (b.dataset.act || '') + ':' + (i >= 0 ? a.slice(0, i) : ''); }
+      var d = el.dataset, k = el.id || Object.keys(d).filter(function (x) { return x !== 'sug'; }).map(function (x) { return x + '=' + d[x]; }).join('&');
+      return k ? el.tagName + ':' + k : null;
+    }
+    function fields(root) { return root.querySelectorAll('.in:not(.ro), .seg, .opts'); }
+    function mark(el) { var s = scopeOf(el), k = s && key(el); if (k) { touched()[s + '|' + k] = 1; el.classList.remove('sug'); } }
+    function apply() {
+      var t = touched();
+      [document.getElementById('main'), document.getElementById('ovl')].forEach(function (root) {
+        if (!root) return;
+        fields(root).forEach(function (el) { var s = scopeOf(el), k = s && key(el); el.classList.toggle('sug', !!k && !t[s + '|' + k]); });
+      });
+    }
+    document.addEventListener('input', function (e) { if (e.target.closest && e.target.closest('.in')) mark(e.target); }, true);
+    document.addEventListener('change', function (e) { if (e.target.closest && e.target.closest('.in')) mark(e.target); }, true);
+    document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('.seg button, .opts button'); if (b) mark(b.closest('.seg, .opts')); }, true);
+    return { apply: apply, acceptAll: function (root) { fields(root).forEach(mark); } };
+  })();
+  IH.act['soon'] = function (el) { IH.toast(IH.t('c.soon') + (el.dataset.arg ? ' - ' + IH.esc(el.dataset.arg) : '')); };
 })();

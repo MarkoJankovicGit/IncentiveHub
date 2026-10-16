@@ -1,4 +1,4 @@
-/* Incentive Hub — pravila između targeta u bonus šemi
+/* Incentive Hub - pravila između targeta u bonus šemi
    Pravilo = šablon (šifarnik) + parametri; rečenica se generiše iz parametara.
    Šabloni: umanjenje, pojačanje, uslov ekspoziture, najmanje N od M, otključavanje, matrica dva targeta, kap po targetu.
    Isti obrazac kao uslovi priznavanja u targetu: izbor iz liste sa definicijom, rečenica sa poljima za unos. */
@@ -8,7 +8,7 @@
   var V = IH.veze = {};
 
   IH.addStrings({
-    'v.title': 'Pravila između targeta', 'v.none': 'Nema pravila — svaki target se isplaćuje nezavisno', 'v.add': 'Dodaj pravilo', 'v.pickT': 'Dodaj pravilo između targeta', 'v.pickGo': 'Dodaj izabrano',
+    'v.title': 'Pravila između targeta', 'v.none': 'Nema pravila - svaki target se isplaćuje nezavisno', 'v.add': 'Dodaj pravilo', 'v.pickT': 'Dodaj pravilo između targeta', 'v.pickGo': 'Dodaj izabrano',
     'v.all': 'sve targete', 'v.allT': 'svih targeta', 'v.colRule': 'Pravilo', 'v.colText': 'Šta važi', 'v.from': 'od {p}', 'v.rowsA': 'Ostvarenje: {a}', 'v.colsB': 'Ostvarenje: {b}', 'v.and': 'i',
     'v.t.umanjenje': 'Ako je {a} ispod {x}, isplata za {b} se množi sa {f}',
     'v.t.pojacanje': 'Ako je {a} najmanje {x}, isplata za {b} se množi sa {f}',
@@ -17,14 +17,14 @@
     'v.t.otkljucavanje': '{b} se isplaćuje tek kada je {a} najmanje {x}',
     'v.t.matrica': 'Isplata za {b} se množi ponderom iz tabele {a} × {c}',
     'v.t.kap': 'Isplata za {b} je najviše {k} iznosa na 100% ostvarenja',
-    'v.r.umanjenjeOn': '{a} {p} — ispod {x}: isplata za {b} × {f}', 'v.r.umanjenjeOff': '{a} {p} — najmanje {x}, nema umanjenja',
-    'v.r.pojacanjeOn': '{a} {p} — najmanje {x}: isplata za {b} × {f}', 'v.r.pojacanjeOff': '{a} {p} — ispod {x}, nema pojačanja',
-    'v.r.timskiOn': 'Ekspozitura: {a} {p} — ispod {x}: isplata za {b} × {f}', 'v.r.timskiOff': 'Ekspozitura: {a} {p} — najmanje {x}, nema umanjenja',
-    'v.r.nodmOn': 'Na {x} ili više: {c} od {m} targeta (potrebno {n}) — isplata za {b} × {f}', 'v.r.nodmOff': 'Na {x} ili više: {c} od {m} targeta (potrebno {n})',
-    'v.r.otkljucavanjeOn': '{a} {p} — ispod {x}: {b} se ne isplaćuje', 'v.r.otkljucavanjeOff': '{a} {p} — {b} je otključan',
+    'v.r.umanjenjeOn': '{a} {p} - ispod {x}: isplata za {b} × {f}', 'v.r.umanjenjeOff': '{a} {p} - najmanje {x}, nema umanjenja',
+    'v.r.pojacanjeOn': '{a} {p} - najmanje {x}: isplata za {b} × {f}', 'v.r.pojacanjeOff': '{a} {p} - ispod {x}, nema pojačanja',
+    'v.r.timskiOn': 'Ekspozitura: {a} {p} - ispod {x}: isplata za {b} × {f}', 'v.r.timskiOff': 'Ekspozitura: {a} {p} - najmanje {x}, nema umanjenja',
+    'v.r.nodmOn': 'Na {x} ili više: {c} od {m} targeta (potrebno {n}) - isplata za {b} × {f}', 'v.r.nodmOff': 'Na {x} ili više: {c} od {m} targeta (potrebno {n})',
+    'v.r.otkljucavanjeOn': '{a} {p} - ispod {x}: {b} se ne isplaćuje', 'v.r.otkljucavanjeOff': '{a} {p} - {b} je otključan',
     'v.r.matrica': '{a} {pa} × {c} {pb} → ponder {f}', 'v.r.kap': '{b}: najviše {k} iznosa na 100%',
     'v.n.umanjenje': 'Umanjenje', 'v.n.pojacanje': 'Pojačanje', 'v.n.timski': 'Uslov ekspoziture', 'v.n.nodm': 'Najmanje N od M targeta', 'v.n.otkljucavanje': 'Otključavanje', 'v.n.matrica': 'Matrica dva targeta', 'v.n.kap': 'Kap po targetu',
-    'v.d.umanjenje': 'Ako jedan target ne dostigne prag, isplata za druge izabrane targete se množi faktorom manjim od 1 (npr. 0,5 — pola). Čuva balans između targeta.',
+    'v.d.umanjenje': 'Ako jedan target ne dostigne prag, isplata za druge izabrane targete se množi faktorom manjim od 1 (npr. 0,5 - pola). Čuva balans između targeta.',
     'v.d.pojacanje': 'Ako jedan target dostigne prag, isplata za druge izabrane targete se množi faktorom većim od 1 (npr. 1,2). Nagrađuje kombinaciju prodaje.',
     'v.d.timski': 'Isplata pojedinca zavisi od ostvarenja ekspozitura na timskom targetu. Ako ekspozitura ne dostigne prag, isplata za izabrane targete se množi faktorom.',
     'v.d.nodm': 'Najmanje N targeta iz šeme mora dostići prag. Ako ih je manje, isplata za izabrane targete se množi faktorom.',
@@ -32,7 +32,7 @@
     'v.d.matrica': 'Ponder zavisi od kombinacije ostvarenja dva targeta: tabela opsega ostvarenja prvog targeta (redovi) i drugog targeta (kolone).',
     'v.d.kap': 'Isplata za target ne može preći zadati procenat iznosa koji pripada targetu na 100% ostvarenja, bez obzira na skalu i pojačanja.'
   }, {
-    'v.title': 'Rules between targets', 'v.none': 'No rules — each target is paid independently', 'v.add': 'Add rule', 'v.pickT': 'Add a rule between targets', 'v.pickGo': 'Add selected',
+    'v.title': 'Rules between targets', 'v.none': 'No rules - each target is paid independently', 'v.add': 'Add rule', 'v.pickT': 'Add a rule between targets', 'v.pickGo': 'Add selected',
     'v.all': 'all targets', 'v.allT': 'all targets', 'v.colRule': 'Rule', 'v.colText': 'What applies', 'v.from': 'from {p}', 'v.rowsA': 'Achievement: {a}', 'v.colsB': 'Achievement: {b}', 'v.and': 'and',
     'v.t.umanjenje': 'If {a} is below {x}, the payout for {b} is multiplied by {f}',
     'v.t.pojacanje': 'If {a} is at least {x}, the payout for {b} is multiplied by {f}',
@@ -41,14 +41,14 @@
     'v.t.otkljucavanje': '{b} is paid only once {a} is at least {x}',
     'v.t.matrica': 'The payout for {b} is multiplied by the factor from the {a} × {c} table',
     'v.t.kap': 'The payout for {b} is at most {k} of the amount at 100% achievement',
-    'v.r.umanjenjeOn': '{a} {p} — below {x}: payout for {b} × {f}', 'v.r.umanjenjeOff': '{a} {p} — at least {x}, no reduction',
-    'v.r.pojacanjeOn': '{a} {p} — at least {x}: payout for {b} × {f}', 'v.r.pojacanjeOff': '{a} {p} — below {x}, no boost',
-    'v.r.timskiOn': 'Branch: {a} {p} — below {x}: payout for {b} × {f}', 'v.r.timskiOff': 'Branch: {a} {p} — at least {x}, no reduction',
-    'v.r.nodmOn': 'At {x} or more: {c} of {m} targets ({n} required) — payout for {b} × {f}', 'v.r.nodmOff': 'At {x} or more: {c} of {m} targets ({n} required)',
-    'v.r.otkljucavanjeOn': '{a} {p} — below {x}: {b} is not paid', 'v.r.otkljucavanjeOff': '{a} {p} — {b} is unlocked',
+    'v.r.umanjenjeOn': '{a} {p} - below {x}: payout for {b} × {f}', 'v.r.umanjenjeOff': '{a} {p} - at least {x}, no reduction',
+    'v.r.pojacanjeOn': '{a} {p} - at least {x}: payout for {b} × {f}', 'v.r.pojacanjeOff': '{a} {p} - below {x}, no boost',
+    'v.r.timskiOn': 'Branch: {a} {p} - below {x}: payout for {b} × {f}', 'v.r.timskiOff': 'Branch: {a} {p} - at least {x}, no reduction',
+    'v.r.nodmOn': 'At {x} or more: {c} of {m} targets ({n} required) - payout for {b} × {f}', 'v.r.nodmOff': 'At {x} or more: {c} of {m} targets ({n} required)',
+    'v.r.otkljucavanjeOn': '{a} {p} - below {x}: {b} is not paid', 'v.r.otkljucavanjeOff': '{a} {p} - {b} is unlocked',
     'v.r.matrica': '{a} {pa} × {c} {pb} → factor {f}', 'v.r.kap': '{b}: at most {k} of the amount at 100%',
     'v.n.umanjenje': 'Reduction', 'v.n.pojacanje': 'Boost', 'v.n.timski': 'Branch condition', 'v.n.nodm': 'At least N of M targets', 'v.n.otkljucavanje': 'Unlock', 'v.n.matrica': 'Two-target matrix', 'v.n.kap': 'Cap per target',
-    'v.d.umanjenje': 'If one target misses the threshold, the payout for the other selected targets is multiplied by a factor below 1 (e.g. 0.5 — half). Keeps the targets in balance.',
+    'v.d.umanjenje': 'If one target misses the threshold, the payout for the other selected targets is multiplied by a factor below 1 (e.g. 0.5 - half). Keeps the targets in balance.',
     'v.d.pojacanje': 'If one target reaches the threshold, the payout for the other selected targets is multiplied by a factor above 1 (e.g. 1.2). Rewards the sales combination.',
     'v.d.timski': 'The individual payout depends on the branch achievement of a team target. If the branch misses the threshold, the payout for the selected targets is multiplied by the factor.',
     'v.d.nodm': 'At least N targets of the scheme must reach the threshold. If fewer do, the payout for the selected targets is multiplied by the factor.',
@@ -87,7 +87,7 @@
     return '<span class="' + (good ? 'sum-ok' : 'sum-bad') + '">' + t('v.r.' + tpl + (on ? 'On' : 'Off'), p) + '</span>';
   };
   /* tabela matrice (pregled ili izmena) */
-  function rangeLabels(bounds) { var out = [], lo = 0; bounds.forEach(function (b) { out.push((lo ? F.pct(lo) + ' – ' : '< ') + F.pct(b)); lo = b; }); out.push('≥ ' + F.pct(lo)); out[0] = '< ' + F.pct(bounds[0]); return out; }
+  function rangeLabels(bounds) { var out = [], lo = 0; bounds.forEach(function (b) { out.push((lo ? F.pct(lo) + ' - ' : '< ') + F.pct(b)); lo = b; }); out.push('≥ ' + F.pct(lo)); out[0] = '< ' + F.pct(bounds[0]); return out; }
   V.matrix = function (s, r, edit, idx, hit) {
     var ra = rangeLabels(r.ra), rb = rangeLabels(r.rb);
     var head = '<tr><th>' + IH.esc(nameOf(s, r.a)) + ' \\ ' + IH.esc(nameOf(s, r.b)) + '</th>' + rb.map(function (l, j) { return '<th class="num">' + (edit && j < r.rb.length ? '&lt; <input class="in cell" style="width:58px" data-vr="' + idx + '" data-vf="rb.' + j + '" value="' + F.num(r.rb[j] * 100) + '">%' : l) + '</th>'; }).join('') + '</tr>';

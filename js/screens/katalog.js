@@ -1,4 +1,4 @@
-/* Incentive Hub — Katalog proizvoda (Administrator): proizvodi iz kataloga banke, mapiranje šifara, uvoz */
+/* Incentive Hub - Katalog proizvoda (Administrator): proizvodi iz kataloga banke, mapiranje šifara, uvoz */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt;
@@ -6,19 +6,19 @@
   IH.addStrings({
     'k.title': 'Katalog proizvoda', 'k.tProd': 'Proizvodi', 'k.tMap': 'Mapiranje šifara',
     'k.new': 'Novi proizvod', 'k.search': 'Naziv ili šifra',
-    'k.colProd': 'Proizvod', 'k.colSeg': 'Grupa klijenata', 'k.colPt': 'Vrsta proizvoda', 'k.colSub': 'Podvrsta', 'k.colUnit': 'Jedinica', 'k.colCodes': 'Šifra', 'k.colFrom': 'Važi od', 'k.colVer': 'Verzija',
-    'k.basic': 'Osnovni podaci', 'k.ucName': 'Naziv u banci', 'k.gName': 'Generički naziv', 'k.seg': 'Grupa klijenata', 'k.pt': 'Vrsta proizvoda', 'k.sub': 'Podvrsta',
+    'k.colProd': 'Proizvod', 'k.colSeg': 'Segment', 'k.colPt': 'Vrsta proizvoda', 'k.colSub': 'Podvrsta', 'k.colUnit': 'Jedinica', 'k.colCodes': 'Šifra', 'k.colFrom': 'Važi od', 'k.colVer': 'Verzija',
+    'k.basic': 'Osnovni podaci', 'k.ucName': 'Naziv u banci', 'k.gName': 'Generički naziv', 'k.seg': 'Segment', 'k.pt': 'Vrsta proizvoda', 'k.sub': 'Podvrsta',
     'k.bankAttrs': 'Karakteristike iz kataloga banke', 'k.attrs': 'Dodatni atributi', 'k.cat': 'Obračunska kategorija', 'k.unitM': 'Jedinica merenja', 'k.codes': 'Šifre iz core sistema', 'k.codeDesc': 'Opis', 'k.mappedFrom': 'Mapirano od',
     'k.usage': 'Gde se koristi', 'k.sales': 'Prodaja po kvartalu', 'k.items': 'prodaja', 'k.uTarget': 'Target', 'k.uScheme': 'Šema',
     'k.deactTitle': 'Deaktivacija proizvoda', 'k.deactCheck': 'Provera upotrebe', 'k.deactFrom': 'Deaktivacija važi od', 'k.deactDone': 'Proizvod {p} biće deaktiviran od {d}', 'k.deactPlanned': 'Deaktivacija od {d}',
-    'k.uTargets': '{n} targeta obuhvata ovaj proizvod', 'k.uItems': '{n} prodaja u tekućim periodima', 'k.uOpen': 'Obračun Q3 je u saglasnostima — ne menja se',
+    'k.uTargets': '{n} targeta obuhvata ovaj proizvod', 'k.uItems': '{n} prodaja u tekućim periodima', 'k.uOpen': 'Obračun Q3 je u saglasnostima - ne menja se',
     'k.formNew': 'Novi proizvod', 'k.formCopy': 'Kopija proizvoda', 'k.formEdit': 'Izmena proizvoda', 'k.view': 'Pregled proizvoda',
     'k.fCodes': 'Šifre iz core sistema', 'k.fCodesH': 'Više šifara odvojite zarezom', 'k.fFrom': 'Važi od', 'k.fTo': 'Važi do', 'k.fReason': 'Razlog izmene', 'k.fEff': 'Primena izmene',
-    'k.created': 'Proizvod {p} je kreiran', 'k.updated': 'Proizvod {p} je izmenjen — nova verzija v{v}',
+    'k.created': 'Proizvod {p} je kreiran', 'k.updated': 'Proizvod {p} je izmenjen - nova verzija v{v}',
     'k.mAll': 'Sve', 'k.mOpen': 'Nemapirane', 'k.mDone': 'Mapirane', 'k.colSrcCode': 'Šifra iz izvora', 'k.colFirst': 'Prvo pojavljivanje', 'k.colItems': 'Prodaja', 'k.mapBtn': 'Mapiraj', 'k.mapped': 'Mapirano', 'k.waiting': 'Čeka mapiranje',
     'k.mapTitle': 'Mapiranje šifre {c}', 'k.mapProd': 'Proizvod', 'k.mapFrom': 'Mapiranje važi od', 'k.mapEffect': 'Efekat na obračun',
     'k.mapEffNow': '{n} prodaja iz tekućih perioda ulazi u ostvarenje odmah', 'k.mapEffClosed': '{n} prodaja iz zaključenog Q3 ulazi pri ponovnom obračunu Q3',
-    'k.mapDone': 'Šifra {c} mapirana na {p} — {n} prodaja više nije na čekanju',
+    'k.mapDone': 'Šifra {c} mapirana na {p} - {n} prodaja više nije na čekanju',
     'k.impTitle': 'Uvoz kataloga iz Excela', 'k.impS1': 'Fajl', 'k.impS2': 'Pregled promena', 'k.impS3': 'Potvrda',
     'k.impTemplate': 'Preuzmi šablon', 'k.impFile': 'Katalog_izmene_2026-10.xlsx', 'k.impRead': '6 redova pročitano · 1 list',
     'k.impRow': 'Red', 'k.impAction': 'Akcija', 'k.impChange': 'Promena', 'k.impRes': 'Rezultat',
@@ -26,23 +26,23 @@
     'k.impSum': '{a} novih · {b} izmena · {c} bez promene · {d} sa greškom', 'k.impConfirm': 'Potvrdi uvoz ({n} redova)', 'k.impDone': 'Uvoz završen: {n} redova primenjeno, 1 odbijen red je u izveštaju o greškama',
     'k.impErr': 'Vrsta proizvoda „Lizing“ ne postoji', 'k.impNoChange': 'Vrednosti su iste kao u katalogu',
     'k.histCreated': 'Kreiran proizvod', 'k.histCode': 'Dodata šifra {c}', 'k.histCat': 'Usklađeno sa katalogom banke od 24.08.2026.', 'k.histDeact': 'Privremeno povučen iz ponude', 'k.histPrime': 'Novi Prime paket', 'k.histPrimeD': 'Uveden 13.05.2026.',
-    'k.noTargets': 'Nijedan target ne obuhvata ovaj proizvod', 'k.back': 'Nazad', 'k.usageT': 'Gde se koristi — {p}'
+    'k.noTargets': 'Nijedan target ne obuhvata ovaj proizvod', 'k.back': 'Nazad', 'k.usageT': 'Gde se koristi - {p}'
   }, {
     'k.title': 'Product catalogue', 'k.tProd': 'Products', 'k.tMap': 'Code mapping',
     'k.new': 'New product', 'k.search': 'Name or code',
-    'k.colProd': 'Product', 'k.colSeg': 'Client group', 'k.colPt': 'Product type', 'k.colSub': 'Subtype', 'k.colUnit': 'Unit', 'k.colCodes': 'Code', 'k.colFrom': 'Valid from', 'k.colVer': 'Version',
-    'k.basic': 'Basic data', 'k.ucName': 'Bank name', 'k.gName': 'Generic name', 'k.seg': 'Client group', 'k.pt': 'Product type', 'k.sub': 'Subtype',
+    'k.colProd': 'Product', 'k.colSeg': 'Segment', 'k.colPt': 'Product type', 'k.colSub': 'Subtype', 'k.colUnit': 'Unit', 'k.colCodes': 'Code', 'k.colFrom': 'Valid from', 'k.colVer': 'Version',
+    'k.basic': 'Basic data', 'k.ucName': 'Bank name', 'k.gName': 'Generic name', 'k.seg': 'Segment', 'k.pt': 'Product type', 'k.sub': 'Subtype',
     'k.bankAttrs': 'Characteristics from the bank catalogue', 'k.attrs': 'Additional attributes', 'k.cat': 'Calculation category', 'k.unitM': 'Unit of measure', 'k.codes': 'Core system codes', 'k.codeDesc': 'Description', 'k.mappedFrom': 'Mapped since',
     'k.usage': 'Where used', 'k.sales': 'Sales per quarter', 'k.items': 'sales', 'k.uTarget': 'Target', 'k.uScheme': 'Scheme',
     'k.deactTitle': 'Deactivate product', 'k.deactCheck': 'Usage check', 'k.deactFrom': 'Deactivation effective from', 'k.deactDone': 'Product {p} will be deactivated from {d}', 'k.deactPlanned': 'Deactivation from {d}',
-    'k.uTargets': '{n} targets cover this product', 'k.uItems': '{n} sales in current periods', 'k.uOpen': 'Q3 calculation is in consents — not changed',
+    'k.uTargets': '{n} targets cover this product', 'k.uItems': '{n} sales in current periods', 'k.uOpen': 'Q3 calculation is in consents - not changed',
     'k.formNew': 'New product', 'k.formCopy': 'Copy of product', 'k.formEdit': 'Edit product', 'k.view': 'Product',
     'k.fCodes': 'Core system codes', 'k.fCodesH': 'Separate multiple codes with commas', 'k.fFrom': 'Valid from', 'k.fTo': 'Valid to', 'k.fReason': 'Reason for change', 'k.fEff': 'Apply change',
-    'k.created': 'Product {p} created', 'k.updated': 'Product {p} updated — new version v{v}',
+    'k.created': 'Product {p} created', 'k.updated': 'Product {p} updated - new version v{v}',
     'k.mAll': 'All', 'k.mOpen': 'Unmapped', 'k.mDone': 'Mapped', 'k.colSrcCode': 'Source code', 'k.colFirst': 'First seen', 'k.colItems': 'Sales', 'k.mapBtn': 'Map', 'k.mapped': 'Mapped', 'k.waiting': 'Awaiting mapping',
     'k.mapTitle': 'Map code {c}', 'k.mapProd': 'Product', 'k.mapFrom': 'Mapping valid from', 'k.mapEffect': 'Effect on calculation',
     'k.mapEffNow': '{n} sales from current periods enter achievement immediately', 'k.mapEffClosed': '{n} sales from locked Q3 enter when Q3 is recalculated',
-    'k.mapDone': 'Code {c} mapped to {p} — {n} sales no longer waiting',
+    'k.mapDone': 'Code {c} mapped to {p} - {n} sales no longer waiting',
     'k.impTitle': 'Catalogue import from Excel', 'k.impS1': 'File', 'k.impS2': 'Change preview', 'k.impS3': 'Confirm',
     'k.impTemplate': 'Download template', 'k.impFile': 'Katalog_izmene_2026-10.xlsx', 'k.impRead': '6 rows read · 1 sheet',
     'k.impRow': 'Row', 'k.impAction': 'Action', 'k.impChange': 'Change', 'k.impRes': 'Result',
@@ -50,7 +50,7 @@
     'k.impSum': '{a} new · {b} changes · {c} unchanged · {d} with errors', 'k.impConfirm': 'Confirm import ({n} rows)', 'k.impDone': 'Import complete: {n} rows applied, 1 rejected row is in the error report',
     'k.impErr': 'Product type "Leasing" does not exist', 'k.impNoChange': 'Values are the same as in the catalogue',
     'k.histCreated': 'Product created', 'k.histCode': 'Code {c} added', 'k.histCat': 'Aligned with the bank catalogue of Aug 24, 2026', 'k.histDeact': 'Temporarily withdrawn from offer', 'k.histPrime': 'New Prime package', 'k.histPrimeD': 'Introduced May 13, 2026',
-    'k.noTargets': 'No target covers this product', 'k.back': 'Back', 'k.usageT': 'Where used — {p}'
+    'k.noTargets': 'No target covers this product', 'k.back': 'Back', 'k.usageT': 'Where used - {p}'
   });
 
   /* ---------- efektivni katalog (osnova + izmene iz demo-a) ---------- */
@@ -105,8 +105,7 @@
     var codes = {}; IH.stats.unmapped().forEach(function (i) { codes[i.code] = 1; });
     return ui.rtabs('katalog', [
       { id: '', label: t('k.tProd'), cnt: IH.products().filter(function (p) { return p.status === 'aktivan'; }).length },
-      { id: 'mapiranje', label: t('k.tMap'), cnt: Object.keys(codes).length || null, warn: true },
-      { id: 'bodovi', label: t('k.tPts'), cnt: D.pointLists().filter(function (x) { return x.status === 'aktivan'; }).length }
+      { id: 'mapiranje', label: t('k.tMap'), cnt: Object.keys(codes).length || null, warn: true }
     ], cur);
   }
   function header() { return ui.header(t('k.title'), '', ui.btn(t('c.import'), { icon: 'upload', go: 'katalog/uvoz/1' })); }
@@ -120,12 +119,12 @@
       searchKeys: ['n', 'codes'],
       rowCls: function (p) { return p.status === 'aktivan' ? '' : 'muted'; },
       cols: [
-        { key: 'st', label: t('c.status'), type: 'status', val: function (p) { return p.status === 'aktivan'; }, fval: function (p) { return p.status === 'aktivan' ? 'on' : 'off'; }, filter: function () { return [{ v: 'on', l: t('c.active') }, { v: 'off', l: t('c.inactive') }]; } },
-        { key: 'n', label: t('k.colProd'), nw: false, val: function (p) { return D.productName(p); }, render: function (p) { return '<b>' + IH.esc(D.productName(p)) + '</b>' + (p.deactFrom ? ' ' + ui.pill(t('k.deactPlanned', { d: F.date(p.deactFrom) }), 'warning') : '') + (p.isNew ? ' ' + ui.pill(t('c.new'), 'accent') : ''); } },
+        { key: 'st', label: t('c.status'), type: 'status', w: '70px', val: function (p) { return p.status === 'aktivan'; }, fval: function (p) { return p.status === 'aktivan' ? 'on' : 'off'; }, filter: function () { return [{ v: 'on', l: t('c.active') }, { v: 'off', l: t('c.inactive') }]; } },
+        { key: 'n', label: t('k.colProd'), nw: false, minw: '340px', val: function (p) { return D.productName(p); }, render: function (p) { return '<b>' + IH.esc(D.productName(p)) + '</b>' + (p.deactFrom ? ' ' + ui.pill(t('k.deactPlanned', { d: F.date(p.deactFrom) }), 'warning') : '') + (p.isNew ? ' ' + ui.pill(t('c.new'), 'accent') : ''); } },
         { key: 'seg', label: t('k.colSeg'), val: function (p) { return D.segName(p.seg); }, fval: function (p) { return p.seg; }, filter: function () { return D.segments.map(function (s) { return { v: s.id, l: IH.L(s.name) }; }); } },
         { key: 'pt', label: t('k.colPt'), val: function (p) { return D.ptypeName(p.ptype); }, fval: function (p) { return p.ptype; }, filter: function () { return D.ptypes.map(function (x) { return { v: x.id, l: IH.L(x.name) }; }); } },
         { key: 'sub', label: t('k.colSub'), val: function (p) { return subName(p); }, filter: function () { return subsOf().map(function (s) { return { v: s, l: s }; }); } },
-        { key: 'unit', label: t('k.colUnit'), val: function (p) { return p.unit === 'RSD' ? 'RSD' : t('u.kom'); } },
+        { key: 'unit', label: t('k.colUnit'), w: '80px', val: function (p) { return p.unit === 'RSD' ? 'RSD' : t('u.kom'); } },
         { key: 'codes', label: t('k.colCodes'), val: function (p) { return p.codes.join(' '); }, render: function (p) { return IH.esc(p.codes[0]) + (p.codes.length > 1 ? ' <span class="mut">+' + (p.codes.length - 1) + '</span>' : ''); } },
         { key: 'from', label: t('k.colFrom'), val: function (p) { return p.from; }, render: function (p) { return F.date(p.from); } },
         { key: 'ver', label: t('k.colVer'), num: true, search: false, val: function (p) { return p.ver; }, render: function (p) { return 'v' + p.ver; } }
@@ -149,7 +148,7 @@
   IH.act['prod-hist'] = function (el) { var p = D.product(el.dataset.arg); IH.showHistory(D.productName(p), historyOf(p)); };
   IH.act['prod-usage'] = function (el) {
     var p = D.product(el.dataset.arg), u = usage(p);
-    IH.modal({ title: t('k.usageT', { p: IH.esc(D.productName(p)) }), wide: true, body: u.targets.length ? ui.table([{ key: 'a', label: t('k.uTarget') }, { key: 'k', label: t('tg.colKind') }, { key: 'b', label: t('k.uScheme') }], u.targets.map(function (x) { var s = x.scheme ? D.scheme(x.scheme) : null; return { a: '<a href="#/targeti/' + x.id + '" data-act="modal-close">' + IH.esc(IH.L(x.name)) + '</a>', k: x.kind === 'timski' ? t('k.team') : t('k.ind'), b: s ? IH.esc(IH.L(s.name)) : '<span class="mut">—</span>' }; }), { compact: true }) : '<div class="empty">' + t('k.noTargets') + '</div>', foot: ui.btn(t('c.close'), { act: 'modal-close' }) });
+    IH.modal({ title: t('k.usageT', { p: IH.esc(D.productName(p)) }), wide: true, body: u.targets.length ? ui.table([{ key: 'a', label: t('k.uTarget') }, { key: 'k', label: t('tg.colKind') }, { key: 'b', label: t('k.uScheme') }], u.targets.map(function (x) { var s = x.scheme ? D.scheme(x.scheme) : null; return { a: '<a href="#/targeti/' + x.id + '" data-act="modal-close">' + IH.esc(IH.L(x.name)) + '</a>', k: x.kind === 'timski' ? t('k.team') : t('k.ind'), b: s ? IH.esc(IH.L(s.name)) : '<span class="mut">-</span>' }; }), { compact: true }) : '<div class="empty">' + t('k.noTargets') + '</div>', foot: ui.btn(t('c.close'), { act: 'modal-close' }) });
   };
 
   /* ---------- forma proizvoda: ista za pregled, izmenu, kopiju i novi ---------- */
@@ -217,9 +216,9 @@
   /* ---------- novi / kopija / izmena ---------- */
   var L = D.L2;
   var QUEUE = [
-    { name: 'Gotovinski kredit za klijente partnerskih kompanija', gname: L('Gotovinski kredit – partnerske kompanije', 'Cash loan – partner companies'), seg: 'FL', ptype: 'kredit', sub: L('Gotovinski', 'Cash'), unit: 'RSD', codes: ['KK-PRT-60', 'KK-PRT-84'], from: '2026-11-01', attrs: { valuta: 'RSD', rok: L('6–71 mesec', '6–71 months'), kamata: L('Fiksna 1,3–25% godišnje', 'Fixed 1.3–25% p.a.'), naknada: L('Obrada zahteva 0–3%', 'Processing 0–3%'), obezbedjenje: L('Menice, administrativna zabrana', 'Bills of exchange, salary assignment'), kanal: L('Ekspozitura', 'Branch'), klijenti: L('Zaposleni u partnerskim kompanijama', 'Employees of partner companies') }, w: 5, amt: [300000, 1200000] },
-    { name: 'Zeleni stambeni kredit', gname: L('Zeleni stambeni kredit', 'Green housing loan'), seg: 'FL', ptype: 'kredit', sub: L('Stambeni', 'Housing'), unit: 'RSD', codes: ['SK-GRN-300'], from: '2027-01-01', attrs: { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('5–30 godina', '5–30 years'), kamata: L('EUR: 6M Euribor + 0,5–8%', 'EUR: 6M Euribor + 0.5–8%'), obezbedjenje: L('Hipoteka I reda, energetski pasoš A ili B', 'First-rank mortgage, energy certificate A or B'), kanal: L('Ekspozitura', 'Branch'), klijenti: L('Rezidenti', 'Residents') }, w: 1, amt: [3000000, 6000000] },
-    { name: 'Mastercard Gold Business debitna kartica', gname: L('Mastercard Gold Business debitna kartica', 'Mastercard Gold Business debit card'), seg: 'PR', ptype: 'kartica', sub: L('Debitna', 'Debit'), unit: 'kom', codes: ['BC-MGB-01'], from: '2026-11-01', attrs: { valuta: L('RSD / EUR', 'RSD / EUR'), rok: L('5 godina', '5 years'), naknada: L('Članarina; ostale naknade 0–15.000 RSD', 'Membership; other fees 0–15,000 RSD'), kanal: L('Ekspozitura', 'Branch'), klijenti: L('Preduzetnici', 'Entrepreneurs') }, w: 5 }
+    { name: 'Gotovinski kredit za klijente partnerskih kompanija', gname: L('Gotovinski kredit - partnerske kompanije', 'Cash loan - partner companies'), seg: 'FL', ptype: 'kredit', sub: L('Gotovinski', 'Cash'), unit: 'RSD', codes: ['KK-PRT-60', 'KK-PRT-84'], from: '2026-11-01', attrs: { valuta: 'RSD', rok: L('6-71 mesec', '6-71 months'), kamata: L('Fiksna 1,3-25% godišnje', 'Fixed 1.3-25% p.a.'), naknada: L('Obrada zahteva 0-3%', 'Processing 0-3%'), obezbedjenje: L('Menice, administrativna zabrana', 'Bills of exchange, salary assignment'), kanal: L('Ekspozitura', 'Branch'), klijenti: L('Zaposleni u partnerskim kompanijama', 'Employees of partner companies') }, w: 5, amt: [300000, 1200000] },
+    { name: 'Zeleni stambeni kredit', gname: L('Zeleni stambeni kredit', 'Green housing loan'), seg: 'FL', ptype: 'kredit', sub: L('Stambeni', 'Housing'), unit: 'RSD', codes: ['SK-GRN-300'], from: '2027-01-01', attrs: { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('5-30 godina', '5-30 years'), kamata: L('EUR: 6M Euribor + 0,5-8%', 'EUR: 6M Euribor + 0.5-8%'), obezbedjenje: L('Hipoteka I reda, energetski pasoš A ili B', 'First-rank mortgage, energy certificate A or B'), kanal: L('Ekspozitura', 'Branch'), klijenti: L('Rezidenti', 'Residents') }, w: 1, amt: [3000000, 6000000] },
+    { name: 'Mastercard Gold Business debitna kartica', gname: L('Mastercard Gold Business debitna kartica', 'Mastercard Gold Business debit card'), seg: 'PR', ptype: 'kartica', sub: L('Debitna', 'Debit'), unit: 'kom', codes: ['BC-MGB-01'], from: '2026-11-01', attrs: { valuta: L('RSD / EUR', 'RSD / EUR'), rok: L('5 godina', '5 years'), naknada: L('Članarina; ostale naknade 0-15.000 RSD', 'Membership; other fees 0-15,000 RSD'), kanal: L('Ekspozitura', 'Branch'), klijenti: L('Preduzetnici', 'Entrepreneurs') }, w: 5 }
   ];
   function nextId() { var n = D.products.length + IH.list('newProducts').length + 1; while (D.product('P' + n)) n++; return 'P' + n; }
   function draftFor(mode, srcId) {
@@ -275,7 +274,7 @@
         { key: 'st', label: t('c.status'), val: function (r) { return r.open ? 0 : 1; }, fval: function (r) { return r.open ? 'open' : 'done'; }, render: function (r) { return r.open ? ui.pill(t('k.waiting'), 'warning') : ui.pill(t('k.mapped'), 'success'); }, filter: function () { return [{ v: 'open', l: t('k.waiting') }, { v: 'done', l: t('k.mapped') }]; } },
         { key: 'code', label: t('k.colSrcCode'), val: function (r) { return r.code; } },
         { key: 'desc', label: t('k.codeDesc'), nw: false, val: function (r) { return r.desc; } },
-        { key: 'prod', label: t('k.mapProd'), val: function (r) { return r.prod ? D.productName(r.prod) : ''; }, render: function (r) { return r.prod ? '<b>' + IH.esc(D.productName(r.prod)) + '</b>' : '<span class="mut">—</span>'; } },
+        { key: 'prod', label: t('k.mapProd'), val: function (r) { return r.prod ? D.productName(r.prod) : ''; }, render: function (r) { return r.prod ? '<b>' + IH.esc(D.productName(r.prod)) + '</b>' : '<span class="mut">-</span>'; } },
         { key: 'seg', label: t('k.colSeg'), val: function (r) { return r.prod ? D.segName(D.product(r.prod).seg) : ''; }, fval: function (r) { return r.prod ? D.product(r.prod).seg : ''; }, filter: function () { return D.segments.map(function (s) { return { v: s.id, l: IH.L(s.name) }; }); } },
         { key: 'pt', label: t('k.colPt'), val: function (r) { return r.prod ? D.ptypeName(D.product(r.prod).ptype) : ''; }, fval: function (r) { return r.prod ? D.product(r.prod).ptype : ''; }, filter: function () { return D.ptypes.map(function (x) { return { v: x.id, l: IH.L(x.name) }; }); } },
         { key: 'first', label: t('k.colFirst'), val: function (r) { return r.first; }, render: function (r) { return F.date(r.first); } },
@@ -317,12 +316,12 @@
 
   /* ---------- uvoz iz Excela (3 koraka) ---------- */
   var IMP = [
-    { r: 2, a: 'new', n: L('Kredit za energetsku efikasnost – preduzetnici', 'Energy efficiency loan – entrepreneurs'), ch: L('Preduzetnici · Krediti · PR-EE-60', 'Entrepreneurs · Loans · PR-EE-60'), res: 'ok' },
+    { r: 2, a: 'new', n: L('Kredit za energetsku efikasnost - preduzetnici', 'Energy efficiency loan - entrepreneurs'), ch: L('Preduzetnici · Krediti · PR-EE-60', 'Entrepreneurs · Loans · PR-EE-60'), res: 'ok' },
     { r: 3, a: 'new', n: L('Mastercard Gold Business debitna kartica', 'Mastercard Gold Business debit card'), ch: L('Preduzetnici · Kartice · BC-MGB-01', 'Entrepreneurs · Cards · BC-MGB-01'), res: 'ok' },
     { r: 4, a: 'edit', n: L('Gotovinski kredit u RSD bez osiguranja', 'RSD cash loan without insurance'), ch: L('Šifre: + KK-RSD-84', 'Codes: + KK-RSD-84'), old: 'KK-RSD-36, KK-RSD-60', res: 'ok', id: 'P17' },
     { r: 5, a: 'edit', n: L('Paket račun Pro Gold', 'Pro Gold package account'), ch: L('Šifre: + PRO-GLD-02', 'Codes: + PRO-GLD-02'), old: 'PRO-GLD-01', res: 'ok', id: 'P29' },
     { r: 6, a: 'edit', n: L('Dozvoljeno prekoračenje', 'Overdraft'), ch: L('Vrsta: Krediti', 'Type: Loans'), res: 'skip', id: 'P27' },
-    { r: 7, a: 'err', n: L('Lizing vozila – preporuka', 'Vehicle leasing – referral'), ch: L('Vrsta proizvoda: Lizing', 'Product type: Leasing'), res: 'err' }
+    { r: 7, a: 'err', n: L('Lizing vozila - preporuka', 'Vehicle leasing - referral'), ch: L('Vrsta proizvoda: Lizing', 'Product type: Leasing'), res: 'err' }
   ];
   function importPage(step) {
     var cur = Math.max(0, Math.min(2, (+step || 1) - 1));
@@ -348,9 +347,9 @@
       var n = IMP.filter(function (x) { return x.res === 'ok'; }).length;
       body = ui.checks([
         { label: IH.L({ sr: 'Struktura fajla i obavezne kolone', en: 'File structure and mandatory columns' }) },
-        { label: IH.L({ sr: 'Grupe klijenata i vrste proizvoda postoje', en: 'Client groups and product types exist' }), state: 'warn', sub: t('k.impErr') + ' (red 7)' },
+        { label: IH.L({ sr: 'Segmenti i vrste proizvoda postoje', en: 'Segments and product types exist' }), state: 'warn', sub: t('k.impErr') + ' (red 7)' },
         { label: IH.L({ sr: 'Šifre iz core sistema nisu već dodeljene drugom proizvodu', en: 'Core codes are not assigned to another product' }) },
-        { label: IH.L({ sr: 'Izmene važe od 01.11.2026. — obračuni Q3 se ne menjaju', en: 'Changes valid from Nov 1, 2026 — Q3 calculations do not change' }) }
+        { label: IH.L({ sr: 'Izmene važe od 01.11.2026. - obračuni Q3 se ne menjaju', en: 'Changes valid from Nov 1, 2026 - Q3 calculations do not change' }) }
       ]) + '<div class="hr"></div><div class="big-amt">' + n + '<span class="u">' + IH.L({ sr: 'redova za primenu', en: 'rows to apply' }) + '</span></div>';
     }
     var foot = '<div class="wz-foot"><span class="left">' + t('wz.step', { a: cur + 1, b: 3 }) + '</span>' + ui.btn(t('c.cancel'), { go: 'katalog' }) + (cur > 0 ? ui.btn(t('c.back'), { icon: 'chevl', go: 'katalog/uvoz/' + cur }) : '') +
@@ -363,7 +362,7 @@
     var np = IH.list('newProducts');
     if (!np.some(function (p) { return p.copyOf === 'import'; })) {
       var id1 = nextId();
-      np.push({ id: id1, name: 'Kredit za energetsku efikasnost – preduzetnici', gname: L('Kredit za energetsku efikasnost – preduzetnici', 'Energy efficiency loan – entrepreneurs'), seg: 'PR', ptype: 'kredit', cat: 'PR-KRD', sub: L('Investicioni', 'Investment'), unit: 'RSD', codes: ['PR-EE-60'], from: '2026-11-01', ver: 1, status: 'aktivan', isNew: true, createdAt: IH.now(), copyOf: 'import', attrs: { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('Do 60 meseci', 'Up to 60 months') }, w: 3, amt: [1000000, 5000000] });
+      np.push({ id: id1, name: 'Kredit za energetsku efikasnost - preduzetnici', gname: L('Kredit za energetsku efikasnost - preduzetnici', 'Energy efficiency loan - entrepreneurs'), seg: 'PR', ptype: 'kredit', cat: 'PR-KRD', sub: L('Investicioni', 'Investment'), unit: 'RSD', codes: ['PR-EE-60'], from: '2026-11-01', ver: 1, status: 'aktivan', isNew: true, createdAt: IH.now(), copyOf: 'import', attrs: { valuta: L('RSD ili EUR', 'RSD or EUR'), rok: L('Do 60 meseci', 'Up to 60 months') }, w: 3, amt: [1000000, 5000000] });
       np.push({ id: 'P' + (+id1.slice(1) + 1), name: 'Mastercard Gold Business debitna kartica', gname: L('Mastercard Gold Business debitna kartica', 'Mastercard Gold Business debit card'), seg: 'PR', ptype: 'kartica', cat: 'PR-KRT', sub: L('Debitna', 'Debit'), unit: 'kom', codes: ['BC-MGB-01'], from: '2026-11-01', ver: 1, status: 'aktivan', isNew: true, createdAt: IH.now(), copyOf: 'import', attrs: { valuta: L('RSD / EUR', 'RSD / EUR'), rok: L('5 godina', '5 years') }, w: 5 });
       var e = IH.map('prodEdits');
       e.P17 = Object.assign({}, e.P17, { codes: ['KK-RSD-36', 'KK-RSD-60', 'KK-RSD-84'], ver: 3 });
@@ -381,7 +380,6 @@
       var a = p[0];
       if (!a) return listPage();
       if (a === 'mapiranje') return mapPage();
-      if (a === 'bodovi') return IH.pointsPage(p.slice(1));
       if (a === 'uvoz') return importPage(p[1]);
       if (a === 'novi') return formPage('new');
       if (a === 'kopija') return formPage('copy', p[1]);

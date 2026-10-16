@@ -1,4 +1,4 @@
-/* Incentive Hub — okvir aplikacije: meni, topbar, router, pokretanje */
+/* Incentive Hub - okvir aplikacije: meni, topbar, router, pokretanje */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon;
@@ -68,7 +68,7 @@
       var um = IH.stats.unmapped().length, ac = IH.stats.approvalCounts('2026-Q3');
       list = list.map(function (n) {
         if (n.id === 'N-A1') return Object.assign({}, n, { text: { sr: 'Noćni uvoz iz DWH završen: 1.284 stavke, ' + um + ' nemapiranih ukupno', en: 'Nightly DWH import done: 1,284 items, ' + um + ' unmapped in total' } });
-        if (n.id === 'N-A3') return Object.assign({}, n, { text: { sr: 'Rok za saglasnost Q3 ističe 22.10. — ' + ac.ceka + ' obračuna bez odgovora', en: 'Q3 consent deadline Oct 22 — ' + ac.ceka + ' statements unanswered' } });
+        if (n.id === 'N-A3') return Object.assign({}, n, { text: { sr: 'Rok za saglasnost Q3 ističe 22.10. - ' + ac.ceka + ' obračuna bez odgovora', en: 'Q3 consent deadline Oct 22 - ' + ac.ceka + ' statements unanswered' } });
         return n;
       });
     }
@@ -118,7 +118,7 @@
     ['admin', 'manager', 'employee', 'viewer'].forEach(function (r) {
       var e = D.emp(D.personas[r].emp);
       var sub = e.branch ? D.posName(e.pos) + ' · ' + D.branchName(e.branch) : D.posName(e.pos);
-      h += '<button class="pi' + (IH.state.role === r ? ' on' : '') + '" data-act="role" data-arg="' + r + '">' + IH.ui.avatar(e.name) + '<span class="pit"><b>' + t('role.' + r) + ' — ' + IH.esc(e.name) + '</b><small>' + IH.esc(sub) + '</small></span></button>';
+      h += '<button class="pi' + (IH.state.role === r ? ' on' : '') + '" data-act="role" data-arg="' + r + '">' + IH.ui.avatar(e.name) + '<span class="pit"><b>' + t('role.' + r) + ' - ' + IH.esc(e.name) + '</b><small>' + IH.esc(sub) + '</small></span></button>';
     });
     h += '</div></div>';
     h += '</header>';
@@ -147,10 +147,13 @@
     try { body = def && def.render ? def.render(cur.params) : wip(cur.id); }
     catch (err) { console.error(err); body = '<div class="note warn">' + IH.esc(err.message) + '</div>'; }
     var navId = def && def.nav ? def.nav : cur.id;
-    var root = document.getElementById('app');
+    var root = document.getElementById('app'), sideEl = root.querySelector('.side'), sideTop = sideEl ? sideEl.scrollTop : 0;
     root.innerHTML = '<div class="app">' + sidebar(navId) + '<div class="main">' + topbar() + '<main class="wrap' + (lastRoute !== cur.raw ? ' screen-enter' : '') + '" id="main">' + body + '</main></div></div>';
+    /* meni se ne vraća na vrh pri prelasku na drugu stranu */
+    var sideNew = root.querySelector('.side'); if (sideNew && sideTop) sideNew.scrollTop = sideTop;
     if (def && def.mount) def.mount(document.getElementById('main'), cur.params);
     document.title = (def && def.title ? def.title() : t('nav.' + cur.id)) + ' · ' + t('app.name');
+    if (IH.sug) IH.sug.apply();
     if (lastRoute !== cur.raw) window.scrollTo(0, 0);
     lastRoute = cur.raw;
   };

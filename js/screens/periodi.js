@@ -1,6 +1,6 @@
-/* Incentive Hub — Obračunski periodi (Podešavanja)
+/* Incentive Hub - Obračunski periodi (Podešavanja)
    Kalendar perioda (mesečni, kvartalni, polugodišnji, godišnji) i vrste perioda sa podrazumevanim rokovima.
-   Na periode se oslanjaju: targeti i šeme (vrsta perioda, važi od), dodela i raspodela (izbor perioda), bodovne liste (važi od),
+   Na periode se oslanjaju: targeti i šeme (vrsta perioda, važi od), dodela i raspodela (izbor perioda), 
    timski target kao zbir (kraći periodi unutar dužeg), obračun, saglasnosti, isplata i obaveštenja (rokovi).
    Status perioda menja proces (obračun, saglasnost, isplata), ne ručna izmena. */
 (function () {
@@ -10,39 +10,41 @@
   IH.addStrings({
     'nav.periodi': 'Obračunski periodi', 'pe.title': 'Obračunski periodi', 'pe.tCal': 'Kalendar perioda', 'pe.tTypes': 'Vrste perioda',
     'pe.gen': 'Generiši periode', 'pe.search': 'Period', 'pe.colPer': 'Period', 'pe.colType': 'Vrsta', 'pe.colYear': 'Godina', 'pe.colFrom': 'Od', 'pe.colTo': 'Do',
-    'pe.colLock': 'Zaključavanje podataka', 'pe.colDeadline': 'Rok za saglasnost', 'pe.colPay': 'Isplata', 'pe.colUsed': 'Šeme', 'pe.colNote': 'Napomena', 'pe.colCalc': 'Obračun poslat',
+    'pe.colLock': 'Datum obračuna', 'pe.colDeadline': 'Rok za saglasnost', 'pe.colPay': 'Kraj obračuna', 'pe.colUsed': 'Šeme', 'pe.colNote': 'Napomena', 'pe.colCalc': 'Obračun poslat',
     'pe.genT': 'Generisanje perioda', 'pe.year': 'Godina', 'pe.types': 'Vrste perioda', 'pe.genN': 'Novi periodi: {n}', 'pe.genSkip': 'Već postoji: {n}', 'pe.genGo': 'Generiši ({n})', 'pe.genNone': 'Svi periodi izabranih vrsta za ovu godinu već postoje',
-    'pe.genDone': 'Kreirano {n} perioda za {y}', 'pe.genRules': 'Rokovi i isplata — dana posle kraja perioda', 'pe.days': 'dana', 'pe.genShift': 'Rok za saglasnost i isplata koji padnu na vikend pomeraju se na ponedeljak', 'pe.colFromTo': 'Od – do', 'pe.badRow': 'Datumi nisu u ispravnom redosledu', 'pe.genBad': 'Ispravite datume označenih perioda', 'pe.weekend': 'Pada na vikend', 'pe.editT': 'Rokovi perioda — {p}', 'pe.viewT': 'Period — {p}', 'pe.saved': 'Rokovi perioda {p} su sačuvani', 'pe.bad': 'Rokovi nisu sačuvani: {r}',
-    'pe.badOrder': 'redosled mora biti: kraj perioda ≤ zaključavanje podataka ≤ rok za saglasnost ≤ isplata', 'pe.badPast': 'rok za saglasnost ne može biti pre današnjeg dana',
+    'pe.genDone': 'Kreirano {n} perioda za {y}', 'pe.genRules': 'Rokovi - dana posle kraja perioda', 'pe.days': 'dana', 'pe.genShift': 'Rok za saglasnost i kraj obračuna koji padnu na vikend pomeraju se na ponedeljak', 'pe.colFromTo': 'Od - do', 'pe.badRow': 'Datumi nisu u ispravnom redosledu', 'pe.genBad': 'Ispravite datume označenih perioda', 'pe.weekend': 'Pada na vikend', 'pe.editT': 'Rokovi perioda - {p}', 'pe.viewT': 'Period - {p}', 'pe.saved': 'Rokovi perioda {p} su sačuvani', 'pe.bad': 'Rokovi nisu sačuvani: {r}',
+    'pe.badOrder': 'redosled mora biti: kraj perioda ≤ datum obračuna ≤ rok za saglasnost ≤ kraj obračuna', 'pe.badPast': 'rok za saglasnost ne može biti pre današnjeg dana',
     'pe.del': 'Obriši period', 'pe.delT': 'Brisanje perioda {p}', 'pe.delTxt': 'Period se briše iz kalendara.', 'pe.delWarn': 'Za ovaj period važe šeme: {s}. Posle brisanja za njega neće biti dodele ni obračuna.',
     'pe.deleted': 'Period {p} je obrisan', 'pe.delUsed': 'Period se ne može obrisati: ima dodeljene vrednosti targeta',
-    'pe.tyLen': 'Trajanje', 'pe.tyMonths': '{n} mes.', 'pe.tyDays': '+{n} dana', 'pe.tyActive': 'U upotrebi', 'pe.tyUsed': 'Šeme · targeti', 'pe.tyEditT': 'Vrsta perioda — {n}',
-    'pe.tyLock': 'Zaključavanje podataka (dana posle kraja)', 'pe.tyDeadline': 'Rok za saglasnost (dana posle kraja)', 'pe.tyPay': 'Isplata (dana posle kraja)', 'pe.tyHint': 'Važi za nove periode; postojeći periodi zadržavaju svoje rokove',
-    'pe.tySaved': 'Vrsta perioda „{n}“ je sačuvana', 'pe.tyNoOff': 'Vrsta se koristi u aktivnim šemama ili targetima i ne može se isključiti', 'pe.tyBad': 'mora važiti: zaključavanje ≤ rok za saglasnost ≤ isplata',
+    'pe.tyLen': 'Trajanje', 'pe.tyMonths': '{n} mes.', 'pe.tyDays': '+{n} dana', 'pe.tyActive': 'U upotrebi', 'pe.tyUsed': 'Šeme · targeti', 'pe.tyEditT': 'Vrsta perioda - {n}',
+    'pe.tyLock': 'Datum obračuna (dana posle kraja)', 'pe.tyDeadline': 'Rok za saglasnost (dana posle kraja)', 'pe.tyPay': 'Kraj obračuna (dana posle kraja)', 'pe.tyHint': 'Važi za nove periode; postojeći periodi zadržavaju svoje rokove',
+    'pe.tySaved': 'Vrsta perioda „{n}“ je sačuvana', 'pe.tyNoOff': 'Vrsta se koristi u aktivnim šemama ili targetima i ne može se isključiti', 'pe.tyBad': 'mora važiti: datum obračuna ≤ rok za saglasnost ≤ kraj obračuna',
     'pe.noPlanned': 'Nema planiranih perioda ove vrste', 'pe.toCal': 'Obračunski periodi', 'sc.exNone': 'Primer obračuna je dostupan kada postoji tekući ili zaključen period ove vrste',
-    'pst.planiran': 'Planiran', 'ob.h': 'Polugodište', 'ob.y': 'Godina', 'am.period': 'Obračunski periodi'
+    'pst.planiran': 'Planiran', 'pst.zavrsen': 'Završen', 'ob.h': 'Polugodište', 'ob.y': 'Godina', 'am.period': 'Obračunski periodi'
   }, {
     'nav.periodi': 'Calculation periods', 'pe.title': 'Calculation periods', 'pe.tCal': 'Period calendar', 'pe.tTypes': 'Period types',
     'pe.gen': 'Generate periods', 'pe.search': 'Period', 'pe.colPer': 'Period', 'pe.colType': 'Type', 'pe.colYear': 'Year', 'pe.colFrom': 'From', 'pe.colTo': 'To',
-    'pe.colLock': 'Data lock', 'pe.colDeadline': 'Consent deadline', 'pe.colPay': 'Payout', 'pe.colUsed': 'Schemes', 'pe.colNote': 'Note', 'pe.colCalc': 'Statement sent',
+    'pe.colLock': 'Calculation date', 'pe.colDeadline': 'Consent deadline', 'pe.colPay': 'Calculation end', 'pe.colUsed': 'Schemes', 'pe.colNote': 'Note', 'pe.colCalc': 'Statement sent',
     'pe.genT': 'Generate periods', 'pe.year': 'Year', 'pe.types': 'Period types', 'pe.genN': 'New periods: {n}', 'pe.genSkip': 'Already exist: {n}', 'pe.genGo': 'Generate ({n})', 'pe.genNone': 'All periods of the selected types already exist for this year',
-    'pe.genDone': '{n} periods created for {y}', 'pe.genRules': 'Deadlines and payout — days after period end', 'pe.days': 'days', 'pe.genShift': 'A consent deadline or payout falling on a weekend moves to Monday', 'pe.colFromTo': 'From – to', 'pe.badRow': 'Dates are not in the correct order', 'pe.genBad': 'Fix the dates of the marked periods', 'pe.weekend': 'Falls on a weekend', 'pe.editT': 'Period deadlines — {p}', 'pe.viewT': 'Period — {p}', 'pe.saved': 'Deadlines of period {p} saved', 'pe.bad': 'Deadlines not saved: {r}',
-    'pe.badOrder': 'the order must be: period end ≤ data lock ≤ consent deadline ≤ payout', 'pe.badPast': 'the consent deadline cannot be before today',
+    'pe.genDone': '{n} periods created for {y}', 'pe.genRules': 'Deadlines - days after period end', 'pe.days': 'days', 'pe.genShift': 'A consent deadline or calculation end falling on a weekend moves to Monday', 'pe.colFromTo': 'From - to', 'pe.badRow': 'Dates are not in the correct order', 'pe.genBad': 'Fix the dates of the marked periods', 'pe.weekend': 'Falls on a weekend', 'pe.editT': 'Period deadlines - {p}', 'pe.viewT': 'Period - {p}', 'pe.saved': 'Deadlines of period {p} saved', 'pe.bad': 'Deadlines not saved: {r}',
+    'pe.badOrder': 'the order must be: period end ≤ calculation date ≤ consent deadline ≤ calculation end', 'pe.badPast': 'the consent deadline cannot be before today',
     'pe.del': 'Delete period', 'pe.delT': 'Delete period {p}', 'pe.delTxt': 'The period is removed from the calendar.', 'pe.delWarn': 'Schemes apply to this period: {s}. After deletion there will be no assignment or calculation for it.',
     'pe.deleted': 'Period {p} deleted', 'pe.delUsed': 'The period cannot be deleted: it has assigned target values',
-    'pe.tyLen': 'Length', 'pe.tyMonths': '{n} mo.', 'pe.tyDays': '+{n} days', 'pe.tyActive': 'In use', 'pe.tyUsed': 'Schemes · targets', 'pe.tyEditT': 'Period type — {n}',
-    'pe.tyLock': 'Data lock (days after end)', 'pe.tyDeadline': 'Consent deadline (days after end)', 'pe.tyPay': 'Payout (days after end)', 'pe.tyHint': 'Applies to new periods; existing periods keep their deadlines',
-    'pe.tySaved': 'Period type “{n}” saved', 'pe.tyNoOff': 'The type is used by active schemes or targets and cannot be switched off', 'pe.tyBad': 'must hold: data lock ≤ consent deadline ≤ payout',
+    'pe.tyLen': 'Length', 'pe.tyMonths': '{n} mo.', 'pe.tyDays': '+{n} days', 'pe.tyActive': 'In use', 'pe.tyUsed': 'Schemes · targets', 'pe.tyEditT': 'Period type - {n}',
+    'pe.tyLock': 'Calculation date (days after end)', 'pe.tyDeadline': 'Consent deadline (days after end)', 'pe.tyPay': 'Calculation end (days after end)', 'pe.tyHint': 'Applies to new periods; existing periods keep their deadlines',
+    'pe.tySaved': 'Period type “{n}” saved', 'pe.tyNoOff': 'The type is used by active schemes or targets and cannot be switched off', 'pe.tyBad': 'must hold: calculation date ≤ consent deadline ≤ calculation end',
     'pe.noPlanned': 'No planned periods of this type', 'pe.toCal': 'Calculation periods', 'sc.exNone': 'The calculation example is available once there is a current or closed period of this type',
-    'pst.planiran': 'Planned', 'ob.h': 'Half-year', 'ob.y': 'Year', 'am.period': 'Calculation periods'
+    'pst.planiran': 'Planned', 'pst.zavrsen': 'Finished', 'ob.h': 'Half-year', 'ob.y': 'Year', 'am.period': 'Calculation periods'
   });
 
   var ORD = { Y: 0, H: 1, Q: 2, M: 3 }, YEARS = ['2027', '2028'];
   function yearOf(p) { return p.from.slice(0, 4); }
   function lockOf(p) { return p.lockedAt ? p.lockedAt.slice(0, 10) : p.lockBy; }
   function payOf(p) { return p.paidAt || p.payDate; }
-  function dOr(v) { return v ? F.date(String(v).slice(0, 10)) : '<span class="mut">—</span>'; }
-  function pill(p) { return ui.pill(t('pst.' + p.status), { planiran: 'gray', u_toku: 'accent', saglasnost: 'warning', zakljucan: 'info', isplaceno: 'success' }[p.status] || 'gray'); }
+  function dOr(v) { return v ? F.date(String(v).slice(0, 10)) : '<span class="mut">-</span>'; }
+  /* status perioda u kalendaru: planiran, u toku (i dok traju obračun i saglasnosti), završen (isplaćen); faze obračuna su u ekranu Obračun */
+  function stOf(p) { return p.status === 'planiran' ? 'planiran' : p.status === 'isplaceno' ? 'zavrsen' : 'u_toku'; }
+  function pill(p) { var s = stOf(p); return ui.pill(t('pst.' + s), { planiran: 'gray', u_toku: 'accent', zavrsen: 'success' }[s]); }
   function canEdit(p) { return p.status === 'planiran' || p.status === 'u_toku' || p.status === 'saglasnost'; }
   /* šeme koje važe za period: aktivne, iste vrste perioda, prva verzija počinje najkasnije sa periodom */
   function schemesFor(p) { return IH.schemes().filter(function (s) { if (s.status !== 'aktivan' || s.periodType !== p.type) return false; var vs = D.schemeVersions(s); return vs.length && vs[0].from <= p.from; }); }
@@ -59,7 +61,7 @@
       rows: function () { return D.allPeriods().slice().sort(function (a, b) { return yearOf(b) - yearOf(a) || (a.from < b.from ? -1 : a.from > b.from ? 1 : 0) || ORD[a.type] - ORD[b.type]; }); },
       key: function (p) { return p.id; }, label: function (p) { return IH.L(p.label); }, searchKeys: ['n'],
       cols: [
-        { key: 'st', label: t('c.status'), val: function (p) { return p.status; }, render: pill, filter: function () { return ['planiran', 'u_toku', 'saglasnost', 'isplaceno'].map(function (k) { return { v: k, l: t('pst.' + k) }; }); } },
+        { key: 'st', label: t('c.status'), val: function (p) { return t('pst.' + stOf(p)); }, fval: stOf, render: pill, filter: function () { return ['planiran', 'u_toku', 'zavrsen'].map(function (k) { return { v: k, l: t('pst.' + k) }; }); } },
         { key: 'n', label: t('pe.colPer'), val: function (p) { return IH.L(p.label); }, render: function (p) { return '<b>' + IH.esc(IH.L(p.label)) + '</b>'; } },
         { key: 'ty', label: t('pe.colType'), val: function (p) { return t('per.' + p.type); }, fval: function (p) { return p.type; }, filter: function () { return D.periodTypes.map(function (x) { return { v: x.id, l: t('per.' + x.id) }; }); } },
         { key: 'y', label: t('pe.colYear'), val: yearOf, fval: yearOf, filter: function () { var o = {}; D.allPeriods().forEach(function (p) { o[yearOf(p)] = 1; }); return Object.keys(o).sort().reverse().map(function (y) { return { v: y, l: y }; }); } },
@@ -68,7 +70,7 @@
         { key: 'lock', label: t('pe.colLock'), search: false, val: lockOf, render: function (p) { return dOr(lockOf(p)); } },
         { key: 'dl', label: t('pe.colDeadline'), search: false, val: function (p) { return p.deadline || ''; }, render: function (p) { return dOr(p.deadline); } },
         { key: 'pay', label: t('pe.colPay'), search: false, val: payOf, render: function (p) { return dOr(payOf(p)); } },
-        { key: 'sc', label: t('pe.colUsed'), val: function (p) { return schemesFor(p).map(function (s) { return s.code; }).join(', '); }, render: function (p) { var l = schemesFor(p); return l.length ? '<span title="' + IH.esc(l.map(function (s) { return IH.L(s.name); }).join(', ')) + '">' + l.length + '</span>' : '<span class="mut">—</span>'; } }
+        { key: 'sc', label: t('pe.colUsed'), val: function (p) { return schemesFor(p).map(function (s) { return s.code; }).join(', '); }, render: function (p) { var l = schemesFor(p); return l.length ? '<span title="' + IH.esc(l.map(function (s) { return IH.L(s.name); }).join(', ')) + '">' + l.length + '</span>' : '<span class="mut">-</span>'; } }
       ],
       actions: [
         { type: 'details', title: t('g.aDetails'), act: 'pe-view' },
@@ -81,25 +83,25 @@
   }
   function viewFields(p) {
     return [
-      { k: 'pv_n', label: t('pe.colPer'), value: IH.L(p.label) }, { k: 'pv_t', label: t('pe.colType'), value: t('per.' + p.type) }, { k: 'pv_s', label: t('c.status'), value: t('pst.' + p.status) },
-      { k: 'pv_f', label: t('pe.colFrom'), value: F.date(p.from) }, { k: 'pv_to', label: t('pe.colTo'), value: F.date(p.to) }, { k: 'pv_sc', label: t('pe.colUsed'), value: schemesFor(p).map(function (s) { return IH.L(s.name); }).join(', ') || '—' }
+      { k: 'pv_n', label: t('pe.colPer'), value: IH.L(p.label) }, { k: 'pv_t', label: t('pe.colType'), value: t('per.' + p.type) }, { k: 'pv_s', label: t('c.status'), value: t('pst.' + stOf(p)) },
+      { k: 'pv_f', label: t('pe.colFrom'), value: F.date(p.from) }, { k: 'pv_to', label: t('pe.colTo'), value: F.date(p.to) }, { k: 'pv_sc', label: t('pe.colUsed'), value: schemesFor(p).map(function (s) { return IH.L(s.name); }).join(', ') || '-' }
     ];
   }
   IH.act['pe-view'] = function (el) {
     var p = D.period(el.dataset.arg); if (!p) return;
     var f = viewFields(p).concat([
-      { k: 'pv_l', label: t('pe.colLock'), value: lockOf(p) ? F.date(lockOf(p).slice(0, 10)) : '—' }, { k: 'pv_d', label: t('pe.colDeadline'), value: p.deadline ? F.date(p.deadline) : '—' },
-      { k: 'pv_p', label: t('pe.colPay'), value: payOf(p) ? F.date(payOf(p)) : '—' }, { k: 'pv_no', label: t('pe.colNote'), value: p.note ? IH.L(p.note) : '', full: true }
+      { k: 'pv_l', label: t('pe.colLock'), value: lockOf(p) ? F.date(lockOf(p).slice(0, 10)) : '-' }, { k: 'pv_d', label: t('pe.colDeadline'), value: p.deadline ? F.date(p.deadline) : '-' },
+      { k: 'pv_p', label: t('pe.colPay'), value: payOf(p) ? F.date(payOf(p)) : '-' }, { k: 'pv_no', label: t('pe.colNote'), value: p.note ? IH.L(p.note) : '', full: true }
     ]);
     IH.modal({ title: t('pe.viewT', { p: IH.esc(IH.L(p.label)) }), wide: true, body: ui.form(f, { readonly: true, cols: 3 }), foot: (canEdit(p) ? ui.btn(t('c.edit'), { icon: 'edit', act: 'pe-edit', arg: p.id }) : '') + ui.btn(t('c.close'), { act: 'modal-close' }) });
   };
-  /* izmena rokova: planiran i tekući — svi rokovi; saglasnost u toku — produženje roka i datum isplate */
+  /* izmena rokova: planiran i tekući - svi rokovi; saglasnost u toku - produženje roka i datum isplate */
   IH.act['pe-edit'] = function (el) {
     var p = D.period(el.dataset.arg); if (!p || !canEdit(p)) return;
     IH.closeModal(); IH.form = {};
     var sag = p.status === 'saglasnost';
     var f = viewFields(p).concat([
-      sag ? { k: 'pe_l', label: t('pe.colLock'), type: 'static', value: lockOf(p) ? F.date(lockOf(p).slice(0, 10)) : '—' } : { k: 'pe_l', label: t('pe.colLock'), type: 'date', value: lockOf(p) || '' },
+      sag ? { k: 'pe_l', label: t('pe.colLock'), type: 'static', value: lockOf(p) ? F.date(lockOf(p).slice(0, 10)) : '-' } : { k: 'pe_l', label: t('pe.colLock'), type: 'date', value: lockOf(p) || '' },
       { k: 'pe_d', label: t('pe.colDeadline'), type: 'date', value: p.deadline || '' }, { k: 'pe_p', label: t('pe.colPay'), type: 'date', value: p.payDate || '' },
       { k: 'pe_no', label: t('pe.colNote'), value: p.note ? IH.L(p.note) : '', full: true }
     ]).map(function (x) { if (/^pv_/.test(x.k)) x.type = 'static'; return x; });
@@ -117,8 +119,8 @@
     if (!sag) ch.lockBy = lock;
     var old = { l: lockOf(p), d: p.deadline, p: p.payDate };
     IH.map('periodEdits')[p.id] = Object.assign({}, IH.map('periodEdits')[p.id], ch);
-    var txt = [old.l !== lock && !sag ? IH.L(L('zaključavanje ', 'data lock ')) + F.date(lock) : null, old.d !== dl ? IH.L(L('rok za saglasnost ', 'consent deadline ')) + F.date(dl) : null, old.p !== pay ? IH.L(L('isplata ', 'payout ')) + F.date(pay) : null].filter(Boolean).join(' · ') || IH.L(L('napomena', 'note'));
-    IH.audit('period', p.id, { sr: 'Izmenjeni rokovi perioda ' + IH.L(p.label), en: 'Period deadlines changed — ' + IH.L(p.label) }, { sr: txt, en: txt });
+    var txt = [old.l !== lock && !sag ? IH.L(L('datum obračuna ', 'calculation date ')) + F.date(lock) : null, old.d !== dl ? IH.L(L('rok za saglasnost ', 'consent deadline ')) + F.date(dl) : null, old.p !== pay ? IH.L(L('kraj obračuna ', 'calculation end ')) + F.date(pay) : null].filter(Boolean).join(' · ') || IH.L(L('napomena', 'note'));
+    IH.audit('period', p.id, { sr: 'Izmenjeni rokovi perioda ' + IH.L(p.label), en: 'Period deadlines changed - ' + IH.L(p.label) }, { sr: txt, en: txt });
     bump(); IH.closeModal(); IH.render(); IH.toast(t('pe.saved', { p: IH.esc(IH.L(p.label)) }));
   };
   IH.act['pe-hist'] = function (el) {
@@ -178,7 +180,7 @@
     var date = function (p, f) { return '<input type="date" class="in cell" style="width:150px' + (isWeekend(p[f]) && f !== 'lockBy' ? ';border-color:var(--warning)' : '') + '" data-pgo="' + p.id + '|' + f + '" value="' + p[f] + '"' + (isWeekend(p[f]) && f !== 'lockBy' ? ' title="' + IH.esc(t('pe.weekend')) + '"' : '') + '>'; };
     h += '<div class="fsec"><h3>' + t('pe.genN', { n: list.length }) + (exist > 0 ? ' · ' + t('pe.genSkip', { n: exist }) : '') + '</h3>' +
       ui.table([{ key: 'n', label: t('pe.colPer') }, { key: 'ft', label: t('pe.colFromTo') }, { key: 'l', label: t('pe.colLock') }, { key: 'd', label: t('pe.colDeadline') }, { key: 'p', label: t('pe.colPay') }],
-        list.map(function (p) { return { n: '<b>' + IH.esc(IH.L(p.label)) + '</b>' + (p.bad ? '<div class="sum-bad" style="font-size:11.5px;font-weight:500">' + t('pe.badRow') + '</div>' : ''), ft: '<span class="nw">' + F.date(p.from) + ' – ' + F.date(p.to) + '</span>', l: date(p, 'lockBy'), d: date(p, 'deadline'), p: date(p, 'payDate') }; }), { compact: true }) + '</div>';
+        list.map(function (p) { return { n: '<b>' + IH.esc(IH.L(p.label)) + '</b>' + (p.bad ? '<div class="sum-bad" style="font-size:11.5px;font-weight:500">' + t('pe.badRow') + '</div>' : ''), ft: '<span class="nw">' + F.date(p.from) + ' - ' + F.date(p.to) + '</span>', l: date(p, 'lockBy'), d: date(p, 'deadline'), p: date(p, 'payDate') }; }), { compact: true }) + '</div>';
     return h;
   }
   function genFoot() {
@@ -191,7 +193,7 @@
     D.periodTypes.forEach(function (x) { var ty = D.periodType(x.id); rules[x.id] = { lock: ty.lock, deadline: ty.deadline, pay: ty.pay }; });
     var y = YEARS.filter(function (yy) { return D.genPeriods(yy, types).length; })[0] || YEARS[0];
     IH.form = { pg: { y: y, types: types, rules: rules, ov: {}, shift: true } };
-    IH.modal({ title: t('pe.genT'), wide: true, body: '<div id="pe-gen-body">' + genBody() + '</div>', foot: '<span id="pe-gen-foot" style="display:flex;gap:8px">' + genFoot() + '</span>' });
+    IH.modal({ title: t('pe.genT'), wide: true, sug: true, body: '<div id="pe-gen-body">' + genBody() + '</div>', foot: '<span id="pe-gen-foot" style="display:flex;gap:8px">' + genFoot() + '</span>' });
   };
   document.addEventListener('change', function (e) {
     var d = e.target.dataset || {}, g = IH.form && IH.form.pg; if (!g) return;
@@ -253,12 +255,12 @@
     if (!(lock <= dl && dl <= pay)) { IH.toast(t('pe.bad', { r: t('pe.tyBad') })); return; }
     IH.map('periodTypeEdits')[x.id] = { active: act, lock: lock, deadline: dl, pay: pay };
     var txt = (act ? IH.L(L('u upotrebi', 'in use')) : IH.L(L('isključena', 'switched off'))) + ' · +' + lock + ' / +' + dl + ' / +' + pay;
-    IH.audit('period', 'TYPE-' + x.id, { sr: 'Izmenjena vrsta perioda ' + t('per.' + x.id), en: 'Period type changed — ' + t('per.' + x.id) }, { sr: txt, en: txt });
+    IH.audit('period', 'TYPE-' + x.id, { sr: 'Izmenjena vrsta perioda ' + t('per.' + x.id), en: 'Period type changed - ' + t('per.' + x.id) }, { sr: txt, en: txt });
     bump(); IH.closeModal(); IH.render(); IH.toast(t('pe.tySaved', { n: t('per.' + x.id) }));
   };
 
   /* poruka kada za izabranu vrstu nema planiranih perioda (targeti, šeme, dodela) */
-  IH.noPeriodsNote = function () { return '<div class="in ro"><span class="mut">' + t('pe.noPlanned') + ' — </span><a href="#/periodi">' + t('pe.toCal') + '</a></div>'; };
+  IH.noPeriodsNote = function () { return '<div class="in ro"><span class="mut">' + t('pe.noPlanned') + ' - </span><a href="#/periodi">' + t('pe.toCal') + '</a></div>'; };
 
   IH.route('periodi', { title: function () { return t('pe.title'); }, render: function (p) { return p[0] === 'vrste' ? typesPage() : calPage(); } });
 })();

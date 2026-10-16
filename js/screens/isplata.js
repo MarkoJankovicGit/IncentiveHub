@@ -1,4 +1,4 @@
-/* Incentive Hub — Saglasnosti (Administrator) i Isplata: batch za sistem zarada, izvoz, potvrda prijema, zaključavanje perioda */
+/* Incentive Hub - Saglasnosti (Administrator) i Isplata: batch za sistem zarada, izvoz, potvrda prijema, zaključavanje perioda */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt;
@@ -6,30 +6,30 @@
   IH.addStrings({
     'sg.title': 'Saglasnosti', 'sg.desc': 'Statusi obračunskih listova po periodu. Zaposleni daje saglasnost ili prigovor (prigovor rešava menadžer); po isteku roka obračun dobija automatsku saglasnost. Obračune sa saglasnošću odobravate za isplatu.',
     'sg.deadline': 'Rok za saglasnost {d}', 'sg.left': 'još {x} dana', 'sg.passed': 'rok istekao', 'sg.remind': 'Pošalji podsetnik ({n})', 'sg.auto': 'Primeni automatsku saglasnost ({n})', 'sg.autoOff': 'Dostupno po isteku roka {d}', 'sg.approve': 'Odobri za isplatu ({n})',
-    'sg.reminded': 'Podsetnik poslat za {n} obračuna', 'sg.autoDone': '{n} obračuna dobilo je automatsku saglasnost', 'sg.apprT': 'Odobravanje za isplatu — {p}', 'sg.apprTxt': '{n} obračuna sa saglasnošću (ukupno {a}) biće odobreno i spremno za batch isplate. Obračuni sa prigovorom ili bez odgovora ne ulaze.', 'sg.apprDone': '{n} obračuna odobreno za isplatu',
+    'sg.reminded': 'Podsetnik poslat za {n} obračuna', 'sg.autoDone': '{n} obračuna dobilo je automatsku saglasnost', 'sg.apprT': 'Odobravanje za isplatu - {p}', 'sg.apprTxt': '{n} obračuna sa saglasnošću (ukupno {a}) biće odobreno i spremno za batch isplate. Obračuni sa prigovorom ili bez odgovora ne ulaze.', 'sg.apprDone': '{n} obračuna odobreno za isplatu',
     'sg.byBr': 'Po ekspozituri', 'sg.colEmp': 'Zaposleni', 'sg.colBr': 'Ekspozitura', 'sg.colPay': 'Iznos', 'sg.colSt': 'Status', 'sg.colAt': 'Odgovor', 'sg.colMgr': 'Menadžer', 'sg.pctOk': 'Saglasnih',
-    'ip.title': 'Isplata', 'ip.desc': 'Odobreni iznosi idu u sistem zarada banke kao batch: svaka linija ima šifru vrste primanja i mesto troška. Posle potvrde prijema period se trajno zaključava. Negativan iznos se nikad ne šalje — prenosi se u sledeći obračun.',
+    'ip.title': 'Isplata', 'ip.desc': 'Odobreni iznosi idu u sistem zarada banke kao batch: svaka linija ima šifru vrste primanja i mesto troška. Posle potvrde prijema period se trajno zaključava. Negativan iznos se nikad ne šalje - prenosi se u sledeći obračun.',
     'ip.colPer': 'Period', 'ip.colReady': 'Spremno', 'ip.colAmt': 'Iznos (RSD)', 'ip.colBatch': 'Batch', 'ip.colPaid': 'Isplaćeno', 'ip.colPend': 'Ne ulazi još',
     'ips.spremno': 'Spremno za batch', 'ips.delimicno': 'Delimično spremno', 'ips.ceka': 'Čeka saglasnosti', 'ips.batch': 'Batch u toku', 'ips.isplaceno': 'Isplaćeno', 'ips.u_toku': 'Period u toku',
     'bs.kreiran': 'Kreiran', 'bs.izvezen': 'Izvezen u sistem zarada', 'bs.potvrdjen': 'Potvrđen prijem',
     'ip.fAppr': 'Odobreno', 'ip.fBatch': 'Batch', 'ip.fExp': 'Izvoz', 'ip.fConf': 'Potvrda prijema', 'ip.fLock': 'Zaključan period',
-    'ip.create': 'Kreiraj batch ({n})', 'ip.apprCreate': 'Odobri i kreiraj batch ({n})', 'ip.apprInfo': '{n} obračuna ima saglasnost zaposlenog — kreiranjem batch-a odobravaju se za isplatu u istom koraku.', 'ip.export': 'Izvezi fajl za sistem zarada', 'ip.confirm': 'Potvrdi prijem', 'ip.approveFirst': '{n} obračuna ima saglasnost, ali nije odobreno', 'ip.goAppr': 'Odobri u Saglasnostima',
-    'ip.lines': 'Linije za isplatu', 'ip.colWage': 'Vrsta primanja', 'ip.colCc': 'Mesto troška', 'ip.excl': 'Ne ulazi u batch', 'ip.exclWhy': 'Razlog', 'ip.zero': '0 RSD — ne šalje se', 'ip.carry': 'negativan saldo {a} prenet u sledeći obračun',
-    'ip.created': 'Batch {b} kreiran: {n} linija, {a}', 'ip.exported': 'Fajl {f} izvezen', 'ip.confT': 'Potvrda prijema — {b}', 'ip.confNo': 'Broj potvrde iz sistema zarada', 'ip.confDate': 'Datum isplate', 'ip.confTxt': 'Posle potvrde obračuni dobijaju status Isplaćeno, a period se trajno zaključava: korekcije idu samo kroz tekući period.', 'ip.confDone': 'Batch {b} potvrđen — {p} je isplaćen i zaključan',
+    'ip.create': 'Kreiraj batch ({n})', 'ip.apprCreate': 'Odobri i kreiraj batch ({n})', 'ip.apprInfo': '{n} obračuna ima saglasnost zaposlenog - kreiranjem batch-a odobravaju se za isplatu u istom koraku.', 'ip.export': 'Izvezi fajl za sistem zarada', 'ip.confirm': 'Potvrdi prijem', 'ip.approveFirst': '{n} obračuna ima saglasnost, ali nije odobreno', 'ip.goAppr': 'Odobri u Saglasnostima',
+    'ip.lines': 'Linije za isplatu', 'ip.colWage': 'Vrsta primanja', 'ip.colCc': 'Mesto troška', 'ip.excl': 'Ne ulazi u batch', 'ip.exclWhy': 'Razlog', 'ip.zero': '0 RSD - ne šalje se', 'ip.carry': 'negativan saldo {a} prenet u sledeći obračun',
+    'ip.created': 'Batch {b} kreiran: {n} linija, {a}', 'ip.exported': 'Fajl {f} izvezen', 'ip.confT': 'Potvrda prijema - {b}', 'ip.confNo': 'Broj potvrde iz sistema zarada', 'ip.confDate': 'Datum isplate', 'ip.confTxt': 'Posle potvrde obračuni dobijaju status Isplaćeno, a period se trajno zaključava: korekcije idu samo kroz tekući period.', 'ip.confDone': 'Batch {b} potvrđen - {p} je isplaćen i zaključan',
     'ip.batches': 'Batch-evi', 'ip.file': 'Fajl', 'ip.confirmNo': 'Potvrda', 'ip.total': 'Ukupno'
   }, {
     'sg.title': 'Consents', 'sg.desc': 'Statement statuses per period. The employee consents or files a complaint (the manager decides); after the deadline the statement is auto-consented. You approve consented statements for payout.',
     'sg.deadline': 'Consent deadline {d}', 'sg.left': '{x} days left', 'sg.passed': 'deadline passed', 'sg.remind': 'Send reminder ({n})', 'sg.auto': 'Apply auto-consent ({n})', 'sg.autoOff': 'Available after the deadline {d}', 'sg.approve': 'Approve for payout ({n})',
-    'sg.reminded': 'Reminder sent for {n} statements', 'sg.autoDone': '{n} statements auto-consented', 'sg.apprT': 'Approve for payout — {p}', 'sg.apprTxt': '{n} consented statements (total {a}) will be approved and ready for the payout batch. Statements with a complaint or no reply are not included.', 'sg.apprDone': '{n} statements approved for payout',
+    'sg.reminded': 'Reminder sent for {n} statements', 'sg.autoDone': '{n} statements auto-consented', 'sg.apprT': 'Approve for payout - {p}', 'sg.apprTxt': '{n} consented statements (total {a}) will be approved and ready for the payout batch. Statements with a complaint or no reply are not included.', 'sg.apprDone': '{n} statements approved for payout',
     'sg.byBr': 'By branch', 'sg.colEmp': 'Employee', 'sg.colBr': 'Branch', 'sg.colPay': 'Amount', 'sg.colSt': 'Status', 'sg.colAt': 'Reply', 'sg.colMgr': 'Manager', 'sg.pctOk': 'Consented',
-    'ip.title': 'Payout', 'ip.desc': 'Approved amounts go to the bank payroll as a batch: each line has an earnings type code and a cost centre. After receipt is confirmed the period is permanently locked. A negative amount is never sent — it carries over to the next statement.',
+    'ip.title': 'Payout', 'ip.desc': 'Approved amounts go to the bank payroll as a batch: each line has an earnings type code and a cost centre. After receipt is confirmed the period is permanently locked. A negative amount is never sent - it carries over to the next statement.',
     'ip.colPer': 'Period', 'ip.colReady': 'Ready', 'ip.colAmt': 'Amount (RSD)', 'ip.colBatch': 'Batch', 'ip.colPaid': 'Paid', 'ip.colPend': 'Not yet included',
     'ips.spremno': 'Ready for batch', 'ips.delimicno': 'Partly ready', 'ips.ceka': 'Awaiting consents', 'ips.batch': 'Batch in progress', 'ips.isplaceno': 'Paid', 'ips.u_toku': 'Period in progress',
     'bs.kreiran': 'Created', 'bs.izvezen': 'Exported to payroll', 'bs.potvrdjen': 'Receipt confirmed',
     'ip.fAppr': 'Approved', 'ip.fBatch': 'Batch', 'ip.fExp': 'Export', 'ip.fConf': 'Receipt', 'ip.fLock': 'Period locked',
-    'ip.create': 'Create batch ({n})', 'ip.apprCreate': 'Approve and create batch ({n})', 'ip.apprInfo': '{n} statements have employee consent — creating the batch approves them for payout in the same step.', 'ip.export': 'Export payroll file', 'ip.confirm': 'Confirm receipt', 'ip.approveFirst': '{n} statements are consented but not approved', 'ip.goAppr': 'Approve in Consents',
-    'ip.lines': 'Payout lines', 'ip.colWage': 'Earnings type', 'ip.colCc': 'Cost centre', 'ip.excl': 'Not in the batch', 'ip.exclWhy': 'Reason', 'ip.zero': 'RSD 0 — not sent', 'ip.carry': 'negative balance {a} carried to the next statement',
-    'ip.created': 'Batch {b} created: {n} lines, {a}', 'ip.exported': 'File {f} exported', 'ip.confT': 'Confirm receipt — {b}', 'ip.confNo': 'Payroll confirmation number', 'ip.confDate': 'Payment date', 'ip.confTxt': 'After confirmation statements become Paid and the period is permanently locked: corrections go only through the current period.', 'ip.confDone': 'Batch {b} confirmed — {p} is paid and locked',
+    'ip.create': 'Create batch ({n})', 'ip.apprCreate': 'Approve and create batch ({n})', 'ip.apprInfo': '{n} statements have employee consent - creating the batch approves them for payout in the same step.', 'ip.export': 'Export payroll file', 'ip.confirm': 'Confirm receipt', 'ip.approveFirst': '{n} statements are consented but not approved', 'ip.goAppr': 'Approve in Consents',
+    'ip.lines': 'Payout lines', 'ip.colWage': 'Earnings type', 'ip.colCc': 'Cost centre', 'ip.excl': 'Not in the batch', 'ip.exclWhy': 'Reason', 'ip.zero': 'RSD 0 - not sent', 'ip.carry': 'negative balance {a} carried to the next statement',
+    'ip.created': 'Batch {b} created: {n} lines, {a}', 'ip.exported': 'File {f} exported', 'ip.confT': 'Confirm receipt - {b}', 'ip.confNo': 'Payroll confirmation number', 'ip.confDate': 'Payment date', 'ip.confTxt': 'After confirmation statements become Paid and the period is permanently locked: corrections go only through the current period.', 'ip.confDone': 'Batch {b} confirmed - {p} is paid and locked',
     'ip.batches': 'Batches', 'ip.file': 'File', 'ip.confirmNo': 'Confirmation', 'ip.total': 'Total'
   });
 
@@ -73,8 +73,8 @@
         { key: 'b', label: t('sg.colBr'), val: function (e) { return D.branchShort(e.branch); }, fval: function (e) { return e.branch; }, filter: function () { return D.branches.map(function (b) { return { v: b.id, l: D.branchShort(b) }; }); } },
         { key: 'mgr', label: t('sg.colMgr'), val: function (e) { return (D.emp(e.mgr) || {}).name || ''; } },
         { key: 'pay', label: t('sg.colPay'), num: true, search: false, val: function (e) { return pay(e, pid); }, render: function (e) { var a = EN.approval(e.id, pid); return F.num(pay(e, pid)) + (a.prev != null ? ' <span class="mut">(' + IH.L({ sr: 'bilo ', en: 'was ' }) + F.num(a.prev) + ')</span>' : ''); } },
-        { key: 'at', label: t('sg.colAt'), search: false, val: function (e) { return EN.approval(e.id, pid).at || ''; }, render: function (e) { var a = EN.approval(e.id, pid); return a.at ? F.dt(a.at) : '<span class="mut">—</span>'; } },
-        { key: 'cp', label: t('st.prigovor'), search: false, val: function (e) { var c = IH.complaintFor(e.id, pid); return c ? c.id : ''; }, render: function (e) { var c = IH.complaintFor(e.id, pid); return c ? c.id + ' <span class="mut">· ' + t('pst2.' + c.status) + '</span>' : '<span class="mut">—</span>'; } }
+        { key: 'at', label: t('sg.colAt'), search: false, val: function (e) { return EN.approval(e.id, pid).at || ''; }, render: function (e) { var a = EN.approval(e.id, pid); return a.at ? F.dt(a.at) : '<span class="mut">-</span>'; } },
+        { key: 'cp', label: t('st.prigovor'), search: false, val: function (e) { var c = IH.complaintFor(e.id, pid); return c ? c.id : ''; }, render: function (e) { var c = IH.complaintFor(e.id, pid); return c ? c.id + ' <span class="mut">· ' + t('pst2.' + c.status) + '</span>' : '<span class="mut">-</span>'; } }
       ],
       actions: [
         { icon: 'calc', title: t('pt.stmt'), act: 'g-go', arg: function (e) { return 'obracun/' + pid + '/' + e.id; } },
@@ -112,7 +112,7 @@
   IH.route('saglasnosti', { title: function () { return t('sg.title'); }, render: sgPage });
 
   /* ================= ISPLATA ================= */
-  function wageOf(e, kind) { var w = IH.codeItems('VRSTA_PRIMANJA').filter(function (x) { return x.id === kind; })[0]; return w ? w.x.wage : '—'; }
+  function wageOf(e, kind) { var w = IH.codeItems('VRSTA_PRIMANJA').filter(function (x) { return x.id === kind; })[0]; return w ? w.x.wage : '-'; }
   function linesOf(e, pid) {
     var r = EN.result(e.id, pid); if (!r) return [];
     var prior = r.priorAdj || 0, main = r.payout - Math.max(0, prior), kind = e.pos === 'licni' ? 'BON_PROD' : 'BON_TIM', out = [];
@@ -145,10 +145,10 @@
         { key: 'st', label: t('c.status'), val: function (p) { return t('ips.' + stateOf(p.id)); }, fval: function (p) { return stateOf(p.id); }, render: function (p) { return ipPill(stateOf(p.id)); }, filter: function () { return ['spremno', 'delimicno', 'ceka', 'batch', 'isplaceno', 'u_toku'].map(function (k) { return { v: k, l: t('ips.' + k) }; }); } },
         { key: 'p', label: t('ip.colPer'), val: function (p) { return D.periodLabel(p.id); }, render: function (p) { return '<b>' + D.periodLabel(p.id) + '</b>'; } },
         { key: 'ty', label: t('c.type'), search: false, val: function (p) { return t('ob.' + p.type.toLowerCase()); } },
-        { key: 'r', label: t('ip.colReady'), num: true, search: false, val: function (p) { var ib = inBatch(p.id); return staff(p.id).filter(function (e) { return !ib[e.id] && EN.approval(e.id, p.id).status === 'odobreno'; }).length; }, render: function (p) { if (stateOf(p.id) === 'u_toku' || stateOf(p.id) === 'isplaceno') return '<span class="mut">—</span>'; var ib = inBatch(p.id), st = staff(p.id).filter(function (e) { return !ib[e.id]; }); return st.filter(function (e) { return EN.approval(e.id, p.id).status === 'odobreno'; }).length + ' / ' + st.length; } },
-        { key: 'a', label: t('ip.colAmt'), num: true, search: false, val: function (p) { return staff(p.id).reduce(function (a, e) { return a + pay(e, p.id); }, 0); }, render: function (p) { return stateOf(p.id) === 'u_toku' ? '<span class="mut">—</span>' : F.num(staff(p.id).reduce(function (a, e) { return a + pay(e, p.id); }, 0)); } },
-        { key: 'b', label: t('ip.colBatch'), search: false, val: function (p) { return batches(p.id).map(function (b) { return b.id; }).join(' '); }, render: function (p) { var bs = batches(p.id); return bs.length ? bs.map(function (b) { return b.id + ' <span class="mut">(' + t('bs.' + b.status) + ')</span>'; }).join(', ') : '<span class="mut">—</span>'; } },
-        { key: 'pd', label: t('ip.colPaid'), search: false, val: function (p) { return p.paidAt || ''; }, render: function (p) { return p.paidAt ? F.date(p.paidAt) : '<span class="mut">—</span>'; } }
+        { key: 'r', label: t('ip.colReady'), num: true, search: false, val: function (p) { var ib = inBatch(p.id); return staff(p.id).filter(function (e) { return !ib[e.id] && EN.approval(e.id, p.id).status === 'odobreno'; }).length; }, render: function (p) { if (stateOf(p.id) === 'u_toku' || stateOf(p.id) === 'isplaceno') return '<span class="mut">-</span>'; var ib = inBatch(p.id), st = staff(p.id).filter(function (e) { return !ib[e.id]; }); return st.filter(function (e) { return EN.approval(e.id, p.id).status === 'odobreno'; }).length + ' / ' + st.length; } },
+        { key: 'a', label: t('ip.colAmt'), num: true, search: false, val: function (p) { return staff(p.id).reduce(function (a, e) { return a + pay(e, p.id); }, 0); }, render: function (p) { return stateOf(p.id) === 'u_toku' ? '<span class="mut">-</span>' : F.num(staff(p.id).reduce(function (a, e) { return a + pay(e, p.id); }, 0)); } },
+        { key: 'b', label: t('ip.colBatch'), search: false, val: function (p) { return batches(p.id).map(function (b) { return b.id; }).join(' '); }, render: function (p) { var bs = batches(p.id); return bs.length ? bs.map(function (b) { return b.id + ' <span class="mut">(' + t('bs.' + b.status) + ')</span>'; }).join(', ') : '<span class="mut">-</span>'; } },
+        { key: 'pd', label: t('ip.colPaid'), search: false, val: function (p) { return p.paidAt || ''; }, render: function (p) { return p.paidAt ? F.date(p.paidAt) : '<span class="mut">-</span>'; } }
       ],
       actions: [{ type: 'details', title: t('g.aDetails'), act: 'g-go', arg: function (p) { return 'isplata/' + p.id; }, show: function (p) { return stateOf(p.id) !== 'u_toku'; } }]
     });
@@ -160,10 +160,10 @@
     var open = bs.filter(function (b) { return b.status !== 'potvrdjen'; })[0];
     var fl = ui.flow([
       { label: t('ip.fAppr'), sub: (ready.length + Object.keys(ib).length) + ' / ' + staff(pid).length, state: ready.length || bs.length ? 'done' : 'run' },
-      { label: t('ip.fBatch'), sub: bs.length ? bs[bs.length - 1].id : '—', state: bs.length ? 'done' : ready.length ? 'run' : '' },
-      { label: t('ip.fExp'), sub: open ? (open.exportedAt ? F.dt(open.exportedAt) : '—') : bs.length ? F.dt(bs[bs.length - 1].exportedAt) : '—', state: open ? (open.status === 'kreiran' ? 'run' : 'done') : bs.length ? 'done' : '' },
-      { label: t('ip.fConf'), sub: open ? '—' : bs.length ? bs[bs.length - 1].confirm : '—', state: open ? (open.status === 'izvezen' ? 'run' : '') : bs.length ? 'done' : '' },
-      { label: t('ip.fLock'), sub: p.status === 'isplaceno' ? F.date(p.paidAt) : '—', state: p.status === 'isplaceno' ? 'done' : '' }
+      { label: t('ip.fBatch'), sub: bs.length ? bs[bs.length - 1].id : '-', state: bs.length ? 'done' : ready.length ? 'run' : '' },
+      { label: t('ip.fExp'), sub: open ? (open.exportedAt ? F.dt(open.exportedAt) : '-') : bs.length ? F.dt(bs[bs.length - 1].exportedAt) : '-', state: open ? (open.status === 'kreiran' ? 'run' : 'done') : bs.length ? 'done' : '' },
+      { label: t('ip.fConf'), sub: open ? '-' : bs.length ? bs[bs.length - 1].confirm : '-', state: open ? (open.status === 'izvezen' ? 'run' : '') : bs.length ? 'done' : '' },
+      { label: t('ip.fLock'), sub: p.status === 'isplaceno' ? F.date(p.paidAt) : '-', state: p.status === 'isplaceno' ? 'done' : '' }
     ]);
     var acts = '';
     if (open && open.status === 'kreiran') acts = ui.btn(t('ip.export'), { cls: 'primary', icon: 'download', act: 'ip-exp', arg: open.id });
@@ -178,8 +178,8 @@
     var excl = rest.filter(function (e) { return showEmps.indexOf(e) < 0; }).map(function (e) { var r = EN.result(e.id, pid), a = EN.approval(e.id, pid); return { e: IH.esc(e.name), w: !r || !r.payout ? t('ip.zero') + (r && r.carryOut ? ' · ' + t('ip.carry', { a: F.rsd(r.carryOut) }) : '') : IH.ui.status(a.status), a: F.num(r ? r.payout : 0) }; });
     var ex = excl.length ? ui.card(t('ip.excl') + ' · ' + excl.length, ui.table([{ key: 'e', label: t('sg.colEmp') }, { key: 'w', label: t('ip.exclWhy') }, { key: 'a', label: t('ip.colAmt'), num: true }], excl, { compact: true }), { flush: true }) : '';
     var bt = bs.length ? ui.card(t('ip.batches'), ui.table([{ key: 'b', label: 'Batch' }, { key: 'k', label: t('bs.kreiran') }, { key: 's', label: t('c.status') }, { key: 'n', label: IH.L({ sr: 'Linija', en: 'Lines' }), num: true }, { key: 'f', label: t('ip.file') }, { key: 'c', label: t('ip.confirmNo') }, { key: 'd', label: t('ip.colPaid') }],
-      bs.map(function (b) { return { b: '<b>' + b.id + '</b>', k: F.dt(b.createdAt), s: ui.pill(t('bs.' + b.status), b.status === 'potvrdjen' ? 'success' : 'accent'), n: b.emps.length, f: b.exportedAt ? b.file : '—', c: b.confirm || '—', d: b.paidAt ? F.date(b.paidAt) : '—' }; }), { compact: true }), { flush: true }) : '';
-    return ui.header(t('ip.title') + ' — ' + D.periodLabel(pid) + ' ' + ipPill(s), '', acts, '<a href="#/isplata">' + t('ip.title') + '</a> ' + ic('chevr') + ' ' + D.periodLabel(pid)) + ui.card('', fl) + warn + bt + '<div class="grid g-main">' + lt + '<div>' + ex + '</div></div>';
+      bs.map(function (b) { return { b: '<b>' + b.id + '</b>', k: F.dt(b.createdAt), s: ui.pill(t('bs.' + b.status), b.status === 'potvrdjen' ? 'success' : 'accent'), n: b.emps.length, f: b.exportedAt ? b.file : '-', c: b.confirm || '-', d: b.paidAt ? F.date(b.paidAt) : '-' }; }), { compact: true }), { flush: true }) : '';
+    return ui.header(t('ip.title') + ' - ' + D.periodLabel(pid) + ' ' + ipPill(s), '', acts, '<a href="#/isplata">' + t('ip.title') + '</a> ' + ic('chevr') + ' ' + D.periodLabel(pid)) + ui.card('', fl) + warn + bt + '<div class="grid g-main">' + lt + '<div>' + ex + '</div></div>';
   }
   IH.act['ip-go-sg'] = function (el) { IH.v('sg').per = el.dataset.arg; IH.go('saglasnosti'); };
   IH.act['ip-create'] = function (el) {

@@ -1,9 +1,9 @@
-/* Incentive Hub — rasporedi šema (ko je na kojoj šemi): tabela, modal „Rasporedi“, izmena, kraj važenja; odobravanje (Menadžer) */
+/* Incentive Hub - rasporedi šema (ko je na kojoj šemi): tabela, modal „Rasporedi“, izmena, kraj važenja; odobravanje (Menadžer) */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt, L = D.L2;
 
-  /* novi zaposleni iz noćnog uvoza (OC1) — još nema raspoređenu šemu */
+  /* novi zaposleni iz noćnog uvoza (OC1) - još nema raspoređenu šemu */
   if (!D.emp('E3001')) {
     var mina = { id: 'E3001', hr: 'HR-53904', name: 'Mina Krstić', pos: 'univerzalni', branch: 'B01', since: '2026-10-20', mgr: D.branchManager('B01').id, isNew: true, phone: '+381 64 509 7731', born: '1999-02-17' };
     D.employees.push(mina); D._empIdx[mina.id] = mina;
@@ -17,26 +17,26 @@
   D.assignments.forEach(function (a) { if (a.id === 'RS-P001') { a.change = { kind: 'ukidanje_izuzetka', exc: 'PREMESTAJ', from: '2026-Q3', to: '2026-Q4' }; } });
 
   IH.addStrings({
-    'ra.title': 'Raspoređivanje šema', 'ra.assign': 'Rasporedi', 'ra.assignTitle': 'Raspoređivanje šeme', 'ra.noScheme': '{n} zaposleni bez raspoređene šeme', 'ra.noSchemeS': '{l} — bez šeme se bonus ne obračunava',
+    'ra.title': 'Raspoređivanje šema', 'ra.assign': 'Rasporedi', 'ra.assignTitle': 'Raspoređivanje šeme', 'ra.noScheme': '{n} zaposleni bez raspoređene šeme', 'ra.noSchemeS': '{l} - bez šeme se bonus ne obračunava',
     'ra.colEmp': 'Zaposleni', 'ra.colPos': 'Pozicija', 'ra.colBranch': 'Ekspozitura', 'ra.colScheme': 'Šema', 'ra.colFrom': 'Važi od', 'ra.colTo': 'Važi do', 'ra.colExc': 'Izuzeci', 'ra.colAppr': 'Odobrava', 'ra.open': 'bez kraja', 'ra.mgr': 'Menadžer', 'ra.since': 'U organizaciji od', 'ra.cur': 'Trenutna šema',
     'st2.bez_seme': 'Bez šeme', 'st2.vracen': 'Vraćen na doradu', 'st2.zamenjen': 'Zamenjen', 'st2.zavrsen': 'Završen',
-    'ra.find': 'Ime zaposlenog', 'ra.pick': 'Izaberite bar jednog zaposlenog', 'ra.posOnly': 'Šema važi za poziciju {p} — prikazani su zaposleni te pozicije',
-    'ra.overlapOk': 'Nema postojećeg rasporeda u periodu — jedan zaposleni ima jednu šemu', 'ra.overlap': 'Postojeći raspored {s} važi od {d} — novi ga zamenjuje', 'ra.gOverlap': '{n} postojećih rasporeda biće zamenjeno od {d}',
+    'ra.find': 'Ime zaposlenog', 'ra.pick': 'Izaberite bar jednog zaposlenog', 'ra.posOnly': 'Šema važi za poziciju {p} - prikazani su zaposleni te pozicije',
+    'ra.overlapOk': 'Nema postojećeg rasporeda u periodu - jedan zaposleni ima jednu šemu', 'ra.overlap': 'Postojeći raspored {s} važi od {d} - novi ga zamenjuje', 'ra.gOverlap': '{n} postojećih rasporeda biće zamenjeno od {d}',
     'ex.factor': 'Faktor (×)', 'ex.fixed': 'Fiksna vrednost', 'ex.prorata': 'Proracija po danima', 'ra.excNone': 'Bez izuzetaka',
-    'ra.comment': 'Napomena za menadžera', 'ra.send': 'Pošalji na odobrenje', 'ra.sent': 'Raspored za {n} poslat na odobrenje — {m}', 'ra.sentG': 'Rasporedi za {n} zaposlenih poslati na odobrenje — {m}',
+    'ra.comment': 'Napomena za menadžera', 'ra.send': 'Pošalji na odobrenje', 'ra.sent': 'Raspored za {n} poslat na odobrenje - {m}', 'ra.sentG': 'Rasporedi za {n} zaposlenih poslati na odobrenje - {m}',
     'ra.editTitle': 'Izmena rasporeda', 'ra.apply': 'Primena', 'ra.reasonChange': 'Razlog promene',
     'ra.endTitle': 'Kraj važenja rasporeda', 'ra.endDate': 'Važi do', 'ra.endReason': 'Razlog prestanka', 'ra.ended': 'Raspored za {n} važi do {d}',
     'ra.detTitle': 'Raspored', 'ra.resend': 'Pošalji ponovo',
     'ro.title': 'Rasporedi na odobravanju', 'ro.colChange': 'Promena', 'ro.colSent': 'Poslao', 'ro.approve': 'Odobri', 'ro.return': 'Vrati na doradu', 'ro.review': 'Pregled rasporeda', 'ro.approved': 'Raspored za {n} je odobren i aktivan od {d}', 'ro.returned': 'Raspored za {n} vraćen administratoru',
     'ro.before': 'Pre', 'ro.after': 'Posle', 'ro.element': 'Element', 'ro.reason': 'Razlog vraćanja', 'ro.excEnd': 'Ukidanje izuzetka „{r}“ od {p}', 'ro.newAsg': 'Novi raspored od {d}', 'ro.replace': 'Zamena šeme od {d}', 'ro.change': 'Izmena rasporeda od {d}', 'ro.end': 'Kraj važenja {d}'
   }, {
-    'ra.title': 'Scheme assignment', 'ra.assign': 'Assign', 'ra.assignTitle': 'Assign scheme', 'ra.noScheme': '{n} employee without a scheme', 'ra.noSchemeS': '{l} — no bonus is calculated without a scheme',
+    'ra.title': 'Scheme assignment', 'ra.assign': 'Assign', 'ra.assignTitle': 'Assign scheme', 'ra.noScheme': '{n} employee without a scheme', 'ra.noSchemeS': '{l} - no bonus is calculated without a scheme',
     'ra.colEmp': 'Employee', 'ra.colPos': 'Position', 'ra.colBranch': 'Branch', 'ra.colScheme': 'Scheme', 'ra.colFrom': 'Valid from', 'ra.colTo': 'Valid to', 'ra.colExc': 'Exceptions', 'ra.colAppr': 'Approver', 'ra.open': 'open-ended', 'ra.mgr': 'Manager', 'ra.since': 'In organisation since', 'ra.cur': 'Current scheme',
     'st2.bez_seme': 'No scheme', 'st2.vracen': 'Returned', 'st2.zamenjen': 'Replaced', 'st2.zavrsen': 'Ended',
-    'ra.find': 'Employee name', 'ra.pick': 'Choose at least one employee', 'ra.posOnly': 'The scheme applies to position {p} — employees of that position are shown',
-    'ra.overlapOk': 'No existing assignment in the period — one scheme per employee', 'ra.overlap': 'Existing assignment {s} valid from {d} — the new one replaces it', 'ra.gOverlap': '{n} existing assignments will be replaced from {d}',
+    'ra.find': 'Employee name', 'ra.pick': 'Choose at least one employee', 'ra.posOnly': 'The scheme applies to position {p} - employees of that position are shown',
+    'ra.overlapOk': 'No existing assignment in the period - one scheme per employee', 'ra.overlap': 'Existing assignment {s} valid from {d} - the new one replaces it', 'ra.gOverlap': '{n} existing assignments will be replaced from {d}',
     'ex.factor': 'Factor (×)', 'ex.fixed': 'Fixed value', 'ex.prorata': 'Pro rata by days', 'ra.excNone': 'No exceptions',
-    'ra.comment': 'Note for the manager', 'ra.send': 'Submit for approval', 'ra.sent': 'Assignment for {n} submitted for approval — {m}', 'ra.sentG': 'Assignments for {n} employees submitted for approval — {m}',
+    'ra.comment': 'Note for the manager', 'ra.send': 'Submit for approval', 'ra.sent': 'Assignment for {n} submitted for approval - {m}', 'ra.sentG': 'Assignments for {n} employees submitted for approval - {m}',
     'ra.editTitle': 'Edit assignment', 'ra.apply': 'Apply', 'ra.reasonChange': 'Reason for change',
     'ra.endTitle': 'End assignment', 'ra.endDate': 'Valid to', 'ra.endReason': 'End reason', 'ra.ended': 'Assignment for {n} valid until {d}',
     'ra.detTitle': 'Assignment', 'ra.resend': 'Resubmit',
@@ -74,7 +74,7 @@
   function excText(x) {
     var el = x.target === 'BAZA' ? IH.L(L('Osnova', 'Base')) : (x.targets || [x.target]).map(function (k) { var tg = D.target(k) || D.targetByKey('S-M1', k); return tg ? IH.L(tg.name) : k; }).join(', ');
     var val = x.type === 'prorata' ? x.num + '/' + x.den : x.type === 'fixed' ? F.num(x.value) : '×' + F.num(x.factor != null ? x.factor : x.value, 2);
-    return el + ' · ' + t('ex.' + (x.type || 'factor')) + ' ' + val + ' · ' + D.periodLabel(x.period) + ' — ' + reasonName('RAZLOG_IZUZETKA', x.reasonCode || 'PREMESTAJ');
+    return el + ' · ' + t('ex.' + (x.type || 'factor')) + ' ' + val + ' · ' + D.periodLabel(x.period) + ' - ' + reasonName('RAZLOG_IZUZETKA', x.reasonCode || 'PREMESTAJ');
   }
   function dateIn(id, def) { var el = document.getElementById(id), m = el && String(el.value).match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/); return m ? m[3] + '-' + ('0' + m[2]).slice(-2) + '-' + ('0' + m[1]).slice(-2) : def; }
   function prevDay(iso) { var d = new Date(Date.parse(iso) - 864e5); return d.toISOString().slice(0, 10); }
@@ -97,7 +97,7 @@
         { key: 'e', label: t('ra.colEmp'), val: function (a) { return D.emp(a.emp).name; }, render: function (a) { return '<b>' + IH.esc(D.emp(a.emp).name) + '</b>'; } },
         { key: 'pos', label: t('ra.colPos'), val: function (a) { return D.posName(D.emp(a.emp).pos); }, fval: function (a) { return D.emp(a.emp).pos; }, filter: function () { return ['licni', 'univerzalni', 'menadzer'].map(function (k) { return { v: k, l: D.posName(k) }; }); } },
         { key: 'b', label: t('ra.colBranch'), val: function (a) { return D.branchShort(D.emp(a.emp).branch); }, fval: function (a) { return D.emp(a.emp).branch; }, filter: function () { return D.branches.map(function (b) { return { v: b.id, l: D.branchShort(b) }; }); } },
-        { key: 's', label: t('ra.colScheme'), val: function (a) { return a.scheme ? D.scheme(a.scheme).code : ''; }, fval: function (a) { return a.scheme || '-'; }, render: function (a) { if (!a.scheme) return '<span class="mut">—</span>'; var s = D.scheme(a.scheme); return '<a href="#/seme/' + s.id + '">' + IH.esc(IH.L(s.name)) + '</a>'; }, filter: function () { return D.schemes.map(function (s) { return { v: s.id, l: s.code }; }).concat([{ v: '-', l: t('st2.bez_seme') }]); } },
+        { key: 's', label: t('ra.colScheme'), val: function (a) { return a.scheme ? D.scheme(a.scheme).code : ''; }, fval: function (a) { return a.scheme || '-'; }, render: function (a) { if (!a.scheme) return '<span class="mut">-</span>'; var s = D.scheme(a.scheme); return '<a href="#/seme/' + s.id + '">' + IH.esc(IH.L(s.name)) + '</a>'; }, filter: function () { return D.schemes.map(function (s) { return { v: s.id, l: s.code }; }).concat([{ v: '-', l: t('st2.bez_seme') }]); } },
         { key: 'f', label: t('ra.colFrom'), val: function (a) { return a.from; }, render: function (a) { return F.date(a.from); } },
         { key: 'to', label: t('ra.colTo'), val: function (a) { return a.to || ''; }, render: function (a) { return a.to ? F.date(a.to) : '<span class="mut">' + t('ra.open') + '</span>'; } },
         { key: 'x', label: t('ra.colExc'), num: true, search: false, val: function (a) { return excOf(a).length; } },
@@ -186,7 +186,7 @@
   function openAssign() {
     var r = RA(), s = D.scheme(r.scheme);
     var grid = IH.grid({
-      id: 'ras-pick', exportName: 'Zaposleni.xlsx', searchLabel: t('ra.find'), actions: [],
+      id: 'ras-pick', exportName: 'Zaposleni.xlsx', searchLabel: t('ra.find'), actions: [], noAdv: true,
       rows: function () { return D.employees.filter(function (e) { return e.branch && e.pos === s.pos; }).sort(function (a, b) { return (curAsg(b.id) ? 0 : 1) - (curAsg(a.id) ? 0 : 1); }); },
       key: function (e) { return e.id; }, label: function (e) { return e.name; }, searchKeys: ['e'],
       select: { get: function () { return RA().sel; }, set: function (l) { RA().sel = l; }, onChange: function () { IH.swap('ras-note', noteHtml()); } },
@@ -200,14 +200,14 @@
     });
     var sug = r.sel.length === 1 && D.emp(r.sel[0]).since > '2026-10-01' ? F.date(D.emp(r.sel[0]).since) : '01.11.2026.';
     IH.modal({
-      title: t('ra.assignTitle') + ' · ' + IH.esc(IH.L(s.name)), wide: true,
+      title: t('ra.assignTitle') + ' · ' + IH.esc(IH.L(s.name)), wide: true, sug: true,
       body: '<div class="note">' + t('ra.posOnly', { p: D.posName(s.pos) }) + '</div>' + grid + '<div class="form-grid" style="margin-top:14px">' + ui.field('ra_from', t('ra.colFrom'), sug, { req: true }) + ui.field('ra_note', t('ra.comment'), IH.L(L('Prelazak na šemu od početka perioda.', 'Move to the scheme from the start of the period.'))) + '</div><div id="ras-note">' + noteHtml() + '</div>',
       foot: ui.btn(t('c.cancel'), { act: 'modal-close' }) + ui.btn(t('ra.send'), { cls: 'primary', icon: 'send', act: 'ras-send' })
     });
   }
   function noteHtml() {
     var r = RA(), n = r.sel.filter(function (id) { return curAsg(id); }).length;
-    return n ? '<div class="note warn" style="margin:0">' + t('ra.gOverlap', { n: n, d: '—' }) + '</div>' : '<div class="note" style="margin:0">' + t('ra.overlapOk') + '</div>';
+    return n ? '<div class="note warn" style="margin:0">' + t('ra.gOverlap', { n: n, d: '-' }) + '</div>' : '<div class="note" style="margin:0">' + t('ra.overlapOk') + '</div>';
   }
   IH.act['ras-send'] = function () {
     var r = RA(), s = D.scheme(r.scheme); if (!r.sel.length) { IH.toast(t('ra.pick')); return; }
@@ -236,13 +236,13 @@
     var e = D.emp(a.emp), rows = [];
     if (a.change && a.change.kind === 'ukidanje_izuzetka') {
       var exc = D.exceptions.filter(function (x) { return x.emp === e.id; })[0];
-      rows.push({ el: t('ra.colExc'), b: IH.esc(exc ? excText(Object.assign({ type: 'factor', targets: exc.targets, value: exc.factor, period: exc.period, reasonCode: 'PREMESTAJ' })) : '—'), a: '<span class="mut">' + t('ra.excNone') + '</span>' });
+      rows.push({ el: t('ra.colExc'), b: IH.esc(exc ? excText(Object.assign({ type: 'factor', targets: exc.targets, value: exc.factor, period: exc.period, reasonCode: 'PREMESTAJ' })) : '-'), a: '<span class="mut">' + t('ra.excNone') + '</span>' });
       D.TKEYS.forEach(function (k) { var x = D.targetByKey('S-M1', k); rows.push({ el: IH.esc(IH.L(x.name)), b: F.unit(D.targetFor(e.id, '2026-Q3', k), x.unit) + ' <span class="mut">(Q3)</span>', a: '<b>' + F.unit(D.targetFor(e.id, '2026-Q4', k), x.unit) + '</b> <span class="mut">(Q4)</span>' }); });
     } else {
       var prev = a.replaces ? findA(a.replaces) : null;
-      rows.push({ el: t('ra.colScheme'), b: prev ? IH.esc(IH.L(D.scheme(prev.scheme).name)) : '—', a: '<b>' + IH.esc(IH.L(D.scheme(a.scheme).name)) + '</b>' });
-      rows.push({ el: t('ra.colFrom'), b: prev ? F.date(prev.from) : '—', a: '<b>' + F.date(a.from) + '</b>' });
-      rows.push({ el: t('ra.colExc'), b: '—', a: (a.exceptions || []).map(excText).map(IH.esc).join('; ') || '—' });
+      rows.push({ el: t('ra.colScheme'), b: prev ? IH.esc(IH.L(D.scheme(prev.scheme).name)) : '-', a: '<b>' + IH.esc(IH.L(D.scheme(a.scheme).name)) + '</b>' });
+      rows.push({ el: t('ra.colFrom'), b: prev ? F.date(prev.from) : '-', a: '<b>' + F.date(a.from) + '</b>' });
+      rows.push({ el: t('ra.colExc'), b: '-', a: (a.exceptions || []).map(excText).map(IH.esc).join('; ') || '-' });
     }
     return ui.table([{ key: 'el', label: t('ro.element') }, { key: 'b', label: t('ro.before') }, { key: 'a', label: t('ro.after') }], rows, { compact: true });
   }

@@ -1,4 +1,4 @@
-/* Incentive Hub — dijagrami (SVG, bez biblioteka) i forme za pregled/izmenu */
+/* Incentive Hub - dijagrami (SVG, bez biblioteka) i forme za pregled/izmenu */
 (function () {
   'use strict';
   var IH = window.IH, t = IH.t, ui = IH.ui, F = IH.fmt;
@@ -91,7 +91,7 @@
     return '<div class="tcard2' + (o.go ? ' click' : '') + '"' + (o.go ? ' data-go="' + o.go + '"' : '') + '>' + ui.ring(o.pct, { size: 70 }) + '<div class="tc-b"><b>' + IH.esc(o.name) + '</b><div class="tc-v">' + fmtU(o.ach) + ' <span class="mut">' + t('h.of') + ' ' + fmtU(o.target) + '</span></div><div class="tc-g ' + (gap > 0 ? '' : 'ok') + '">' + line + '</div>' + next + '</div></div>';
   };
 
-  /* forma za pregled i izmenu — isti raspored; readonly prikazuje vrednosti u istim poljima */
+  /* forma za pregled i izmenu - isti raspored; readonly prikazuje vrednosti u istim poljima */
   ui.form = function (fields, o) {
     o = o || {};
     var h = '<div class="form-grid' + (o.cols === 3 ? ' g3' : o.cols === 1 ? ' g1' : '') + '">';
@@ -103,7 +103,7 @@
       if (o.readonly || f.type === 'static') {
         if (f.type === 'toggle') disp = val ? t('c.yes') : t('c.no');
         else if (f.type === 'select' && f.options) { var op = f.options.filter(function (x) { return String(typeof x === 'string' ? x : x.v) === String(val); })[0]; if (op) disp = typeof op === 'string' ? op : op.l; }
-        ctl = '<div class="in ro' + (f.type === 'textarea' ? ' ta' : '') + '" id="' + id + '">' + (disp === '' ? '<span class="mut">—</span>' : IH.esc(disp)) + '</div>';
+        ctl = '<div class="in ro' + (f.type === 'textarea' ? ' ta' : '') + '" id="' + id + '">' + (disp === '' ? '<span class="mut">-</span>' : IH.esc(disp)) + '</div>';
       } else if (f.type === 'toggle') {
         var on = IH.form[f.k] != null ? IH.form[f.k] : !!val;
         ctl = '<div style="display:flex;align-items:center;gap:10px;min-height:36px"><button type="button" class="tg' + (on ? ' on' : '') + '" data-act="tg" data-arg="' + f.k + '" aria-pressed="' + on + '"><i></i></button><span class="mut">' + (f.hint || '') + '</span></div>';

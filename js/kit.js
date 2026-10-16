@@ -1,4 +1,4 @@
-/* Incentive Hub — zajednički alati za ekrane: filteri, tabovi, čarobnjak, audit, forme */
+/* Incentive Hub - zajednički alati za ekrane: filteri, tabovi, čarobnjak, audit, forme */
 (function () {
   'use strict';
   var IH = window.IH, t = IH.t, ic = IH.icon, ui = IH.ui;
@@ -59,7 +59,7 @@
     if (IH.refreshers[p[0]]) IH.refreshers[p[0]](); else IH.render();
   };
   /* osveži deo ekrana bez gubitka fokusa */
-  IH.swap = function (id, html) { var el = document.getElementById(id); if (el) el.innerHTML = html; };
+  IH.swap = function (id, html) { var el = document.getElementById(id); if (el) el.innerHTML = html; if (IH.sug) IH.sug.apply(); };
 
   /* tabovi kao rute */
   ui.rtabs = function (base, tabs, cur) {
@@ -151,13 +151,13 @@
   };
 
   IH.addStrings({
-    'wz.step': 'Korak {a} od {b}', 'wz.hint': 'Zasivljena polja su predlog — Tab ili dvoklik popunjava', 'c.import': 'Uvoz iz Excela', 'c.edit': 'Izmeni', 'c.copy': 'Kopiraj', 'c.deactivate': 'Deaktiviraj',
+    'wz.step': 'Korak {a} od {b}', 'wz.hint': 'Zasivljena polja su predlog - Tab ili dvoklik popunjava', 'c.import': 'Uvoz iz Excela', 'c.edit': 'Izmeni', 'c.copy': 'Kopiraj', 'c.deactivate': 'Deaktiviraj',
     'c.history': 'Istorija izmena', 'c.versions': 'Verzije', 'c.usage': 'Gde se koristi', 'c.validFrom': 'Važi od', 'c.validTo': 'Važi do', 'c.version': 'Verzija', 'c.all2': 'Svi', 'c.active': 'Aktivni', 'c.inactive': 'Neaktivni',
     'c.confirm': 'Potvrdi', 'c.new': 'Novo', 'c.code': 'Šifra', 'c.name': 'Naziv', 'c.desc': 'Opis', 'c.unit': 'Jedinica', 'c.results': '{n} rezultata', 'c.saved': 'Sačuvano', 'c.draft': 'Nacrt', 'c.approved': 'Odobreno', 'c.pending': 'Čeka odobrenje',
     'c.sendApproval': 'Pošalji na odobrenje', 'c.saveDraft': 'Sačuvaj nacrt', 'c.now': 'Sa trenutnim dejstvom', 'c.nextPeriod': 'Od narednog perioda', 'c.chooseFile': 'Izaberi fajl', 'c.dropFile': 'Prevucite Excel fajl ovde ili',
     'st2.aktivan': 'Aktivan', 'st2.neaktivan': 'Neaktivan', 'st2.nacrt': 'Nacrt', 'st2.arhiviran': 'Arhiviran', 'st2.na_odobravanju': 'Na odobravanju', 'st2.odobreno': 'Odobreno', 'st2.aktivna': 'Aktivna', 'st2.zamenjena': 'Zamenjena'
   }, {
-    'wz.step': 'Step {a} of {b}', 'wz.hint': 'Greyed fields are suggestions — Tab or double-click fills', 'c.import': 'Import from Excel', 'c.edit': 'Edit', 'c.copy': 'Copy', 'c.deactivate': 'Deactivate',
+    'wz.step': 'Step {a} of {b}', 'wz.hint': 'Greyed fields are suggestions - Tab or double-click fills', 'c.import': 'Import from Excel', 'c.edit': 'Edit', 'c.copy': 'Copy', 'c.deactivate': 'Deactivate',
     'c.history': 'Change history', 'c.versions': 'Versions', 'c.usage': 'Where used', 'c.validFrom': 'Valid from', 'c.validTo': 'Valid to', 'c.version': 'Version', 'c.all2': 'All', 'c.active': 'Active', 'c.inactive': 'Inactive',
     'c.confirm': 'Confirm', 'c.new': 'New', 'c.code': 'Code', 'c.name': 'Name', 'c.desc': 'Description', 'c.unit': 'Unit', 'c.results': '{n} results', 'c.saved': 'Saved', 'c.draft': 'Draft', 'c.approved': 'Approved', 'c.pending': 'Awaiting approval',
     'c.sendApproval': 'Submit for approval', 'c.saveDraft': 'Save draft', 'c.now': 'Effective immediately', 'c.nextPeriod': 'From next period', 'c.chooseFile': 'Choose file', 'c.dropFile': 'Drop an Excel file here or',

@@ -1,4 +1,4 @@
-/* Incentive Hub — Dodela i raspodela targeta (Administrator) i Targeti tima (Menadžer)
+/* Incentive Hub - Dodela i raspodela targeta (Administrator) i Targeti tima (Menadžer)
    Plan vrednosti u tri nivoa: regija → ekspozitura → zaposleni.
    Individualni target: regija se raspodeljuje na ekspoziture, ekspozitura na zaposlene; vrednost ekspoziture je zbir zaposlenih.
    Timski target: vrednost se zadaje ekspozituri ili je zbir dodela drugih targeta (definiše se u targetu).
@@ -13,52 +13,52 @@
     'd.srcCasc': 'Raspodela', 'd.srcMan': 'Ručno', 'd.srcImp': 'Uvoz', 'd.srcExc': 'Izuzetak', 'd.srcPlan': 'Plan banke', 'd.srcReg': 'Raspodela regije', 'd.srcSum': 'Zbir',
     'd.carrEmp': 'Zaposleni', 'd.carrTeam': 'Tim', 'd.carrBranch': 'Ekspozitura', 'd.carrRegion': 'Regija', 'd.fFind': 'Ime, ekspozitura',
     'd.w1': 'Targeti', 'd.w2': 'Nosioci', 'd.w3': 'Vrednosti', 'd.w4': 'Pregled i aktivacija', 'd.fCarr': 'Nosioci', 'd.colCarriers': 'Broj nosilaca', 'd.colPrev': 'Vrednost u {p}', 'd.vals': 'Vrednosti po nosiocu',
-    'd.links': 'Veze u bonus šemi', 'd.noLinks': 'Target ne zavisi od drugih targeta i drugi targeti ne zavise od njega', 'd.linkCond': 'Pravilo', 'd.chk1': 'Izabrani su nosioci', 'd.chk2': 'Svaki nosilac ima vrednost veću od nule', 'd.chk3': 'Važi od {d} — tekući obračun se ne menja',
+    'd.links': 'Veze u bonus šemi', 'd.noLinks': 'Target ne zavisi od drugih targeta i drugi targeti ne zavise od njega', 'd.linkCond': 'Pravilo', 'd.chk1': 'Izabrani su nosioci', 'd.chk2': 'Svaki nosilac ima vrednost veću od nule', 'd.chk3': 'Važi od {d} - tekući obračun se ne menja',
     'd.fPeriod': 'Period', 'd.notifyEmp': 'Obavesti nosioce', 'd.notifyMgr': 'Obavesti menadžere', 'd.activate': 'Aktiviraj dodelu',
     'd.colNew': 'Vrednost za {p}', 'd.colMembers': 'Članova', 'd.colMgr': 'Menadžer', 'd.diff': 'Razlika',
     'd.same': 'Ista vrednost za sve izabrane', 'd.apply': 'Primeni na sve', 'd.pick': 'Izaberite bar jednog nosioca', 'd.selInfo': 'Izabrano: {n}',
-    'd.done': 'Dodela sačuvana: {t} · nosilaca: {n} · {d}', 'd.done1': 'Dodela sačuvana: {t} za {n} — {v} · {d}',
+    'd.done': 'Dodela sačuvana: {t} · nosilaca: {n} · {d}', 'd.done1': 'Dodela sačuvana: {t} za {n} - {v} · {d}',
     'd.viewTitle': 'Dodela', 'd.sumRow': 'Zbir raspodele', 'd.targetRow': 'Target ekspoziture', 'd.targetRowR': 'Target regije', 'd.diffRow': 'Razlika', 'd.even': 'Ravnomerno', 'd.byPrev': 'Prema prethodnom ostvarenju', 'd.byStaff': 'Prema broju bankara', 'd.prev': 'Q3: {p}',
-    'd.ok': 'Usklađeno', 'd.notDist': 'Nije raspodeljeno', 'd.readonly': 'Raspodela je poslata na odobrenje i ne može se menjati', 'd.sent': 'Raspodela za {p} poslata na odobrenje — {n}', 'd.draftSaved': 'Nacrt raspodele sačuvan',
+    'd.ok': 'Usklađeno', 'd.notDist': 'Nije raspodeljeno', 'd.readonly': 'Raspodela je poslata na odobrenje i ne može se menjati', 'd.sent': 'Raspodela za {p} poslata na odobrenje - {n}', 'd.draftSaved': 'Nacrt raspodele sačuvan',
     'd.mismatch': 'Zbir se ne poklapa sa nadređenim targetom', 'd.mismatchTxt': 'Kod targeta {k} razlika je {d}. Sistem može da raspodeli razliku proporcionalno i pošalje raspodelu na odobrenje.', 'd.fixSend': 'Raspodeli razliku i pošalji',
     'd.fromRegion': 'Target ekspoziture', 'd.fromRegionSub': 'Dodelio {n} · {d} · rok za raspodelu {r}', 'd.dist': 'Raspodela na bankare', 'd.distR': 'Raspodela na ekspoziture', 'd.approver': 'Odobrava',
     'd.approve': 'Odobri raspodelu', 'd.approved': 'Raspodela za {b} je odobrena', 'd.confirm': 'Potvrdi raspodelu', 'd.confirmed': 'Raspodela regije {r} za {p} je potvrđena', 'd.locked': 'Vrednosti tekućeg perioda se ne menjaju',
-    'd.i1': 'Fajl', 'd.i2': 'Pregled', 'd.i3': 'Potvrda', 'd.iFile': 'Targeti_Q1_2027_Subotica_Cacak.xlsx', 'd.iRead': '26 redova pročitano · 1 list',
+    'd.i1': 'Fajl', 'd.i2': 'Pregled', 'd.i3': 'Potvrda', 'd.iRead': '26 redova pročitano · 1 list',
     'd.iSum': '{a} novih dodela · {b} izmena · {c} sa greškom', 'd.iErr1': 'HR broj ne postoji u organizaciji', 'd.iErr2': 'Duplirani red za istog zaposlenog i target', 'd.iCheck1': 'Struktura fajla i obavezne kolone', 'd.iCheck2': 'Zbir po ekspozituri odgovara targetu ekspoziture',
     'd.iConfirm': 'Potvrdi uvoz ({n} dodela)', 'd.iDone': 'Uvoz završen: {n} dodela primenjeno, 2 reda odbijena',
     'd.fTargets': 'Targeti', 'd.pickT': 'Izaberite bar jedan target', 'd.sameCarr': 'Zajedno se dodeljuju targeti istog nosioca i perioda: {c} · {p}', 'd.prevV': '{p}: {v}', 'd.nTargets': '{n} targeta', 'd.colAsg': 'Broj dodela',
-    'd.doneN': 'Dodela sačuvana: {k} targeta · nosilaca: {n} · {d}', 'd.doneAppr': 'Dodela poslata na odobrenje — {n}', 'd.sendAppr': 'Pošalji na odobrenje',
+    'd.doneN': 'Dodela sačuvana: {k} targeta · nosilaca: {n} · {d}', 'd.notInSch': 'Target nije u šemi', 'd.notInSchNote': 'Target još nije u šemi ovih nosilaca; na bonus utiče kada uđe u šemu', 'd.doneAppr': 'Dodela poslata na odobrenje - {n}', 'd.sendAppr': 'Pošalji na odobrenje',
     'd.noSch': 'Bez šeme', 'd.lockNoSch': '{n} nema raspoređenu šemu za {p}', 'd.lockNoT': 'Šema „{s}“ za {p} ne sadrži izabrane targete', 'd.noneOk': 'Nijedan nosilac nema izabrane targete u šemi za {p}',
-    'd.impB': 'Uticaj na target ekspoziture', 'd.impR': 'Uticaj na target regije', 'd.colSumB': 'Zbir bankara posle dodele', 'd.colSumR': 'Zbir ekspozitura posle dodele',
-    'd.chkFitB': 'Zbir bankara odgovara targetu ekspoziture', 'd.chkFitR': 'Zbir ekspozitura odgovara targetu regije', 'd.chkMoveB': 'Menja se target ekspoziture i regije', 'd.chkMoveR': 'Menja se target regije',
+    'd.impB': 'Uticaj na target ekspoziture', 'd.impR': 'Uticaj na target regije', 'd.colSumB': 'Zbir nosilaca posle dodele', 'd.colSumR': 'Zbir ekspozitura posle dodele',
+    'd.chkFitB': 'Zbir nosilaca odgovara targetu ekspoziture', 'd.chkFitR': 'Zbir ekspozitura odgovara targetu regije', 'd.chkMoveB': 'Menja se target ekspoziture i regije', 'd.chkMoveR': 'Menja se target regije',
     'd.chkAppr': 'Ide na odobrenje: {n}', 'd.chkApprSub': 'Ponovo se odobrava raspodela: {b}', 'd.chkDraft': 'Ulazi u nacrt raspodele koji menadžer šalje na odobrenje: {b}', 'd.noLinksN': 'Izabrani targeti ne zavise od drugih targeta i drugi targeti ne zavise od njih',
-    'tt.title': 'Targeti tima', 'tt.q4title': 'Targeti bankara — Q4 2026', 'tt.teamM3': 'Tim univerzalnih bankara — oktobar 2026'
+    'tt.title': 'Targeti tima', 'tt.q4title': 'Targeti bankara - Q4 2026', 'tt.teamM3': 'Tim univerzalnih bankara - oktobar 2026'
   }, {
     'd.title': 'Target assignment and split', 'd.newAsg': 'New assignment', 'd.import': 'Import assignments', 'd.split': 'Split to bankers', 'd.splitR': 'Split to branches', 'd.splitTitle': 'Split of the branch target to bankers', 'd.splitRTitle': 'Split of the region target to branches',
     'd.colCarrier': 'Carrier', 'd.colType': 'Level', 'd.colBranch': 'Branch', 'd.colTarget': 'Target', 'd.colValue': 'Value', 'd.colValid': 'Valid', 'd.colSource': 'Source', 'd.colApproved': 'Approved by', 'd.colPeriod': 'Period',
     'd.srcCasc': 'Split', 'd.srcMan': 'Manual', 'd.srcImp': 'Import', 'd.srcExc': 'Exception', 'd.srcPlan': 'Bank plan', 'd.srcReg': 'Region split', 'd.srcSum': 'Sum',
     'd.carrEmp': 'Employee', 'd.carrTeam': 'Team', 'd.carrBranch': 'Branch', 'd.carrRegion': 'Region', 'd.fFind': 'Name, branch',
     'd.w1': 'Targets', 'd.w2': 'Carriers', 'd.w3': 'Values', 'd.w4': 'Review and activation', 'd.fCarr': 'Carriers', 'd.colCarriers': 'Number of carriers', 'd.colPrev': 'Value in {p}', 'd.vals': 'Values per carrier',
-    'd.links': 'Links in the bonus scheme', 'd.noLinks': 'The target does not depend on other targets and no target depends on it', 'd.linkCond': 'Rule', 'd.chk1': 'Carriers are selected', 'd.chk2': 'Every carrier has a value above zero', 'd.chk3': 'Valid from {d} — the current calculation is not changed',
+    'd.links': 'Links in the bonus scheme', 'd.noLinks': 'The target does not depend on other targets and no target depends on it', 'd.linkCond': 'Rule', 'd.chk1': 'Carriers are selected', 'd.chk2': 'Every carrier has a value above zero', 'd.chk3': 'Valid from {d} - the current calculation is not changed',
     'd.fPeriod': 'Period', 'd.notifyEmp': 'Notify carriers', 'd.notifyMgr': 'Notify managers', 'd.activate': 'Activate assignment',
     'd.colNew': 'Value for {p}', 'd.colMembers': 'Members', 'd.colMgr': 'Manager', 'd.diff': 'Difference',
     'd.same': 'Same value for all selected', 'd.apply': 'Apply to all', 'd.pick': 'Choose at least one carrier', 'd.selInfo': 'Selected: {n}',
-    'd.done': 'Assignment saved: {t} · carriers: {n} · {d}', 'd.done1': 'Assignment saved: {t} for {n} — {v} · {d}',
+    'd.done': 'Assignment saved: {t} · carriers: {n} · {d}', 'd.done1': 'Assignment saved: {t} for {n} - {v} · {d}',
     'd.viewTitle': 'Assignment', 'd.sumRow': 'Sum of split', 'd.targetRow': 'Branch target', 'd.targetRowR': 'Region target', 'd.diffRow': 'Difference', 'd.even': 'Evenly', 'd.byPrev': 'By previous achievement', 'd.byStaff': 'By number of bankers', 'd.prev': 'Q3: {p}',
-    'd.ok': 'Balanced', 'd.notDist': 'Not distributed', 'd.readonly': 'The split is submitted for approval and cannot be changed', 'd.sent': 'Split for {p} submitted for approval — {n}', 'd.draftSaved': 'Split draft saved',
+    'd.ok': 'Balanced', 'd.notDist': 'Not distributed', 'd.readonly': 'The split is submitted for approval and cannot be changed', 'd.sent': 'Split for {p} submitted for approval - {n}', 'd.draftSaved': 'Split draft saved',
     'd.mismatch': 'The sum does not match the parent target', 'd.mismatchTxt': 'For target {k} the difference is {d}. The system can distribute the difference proportionally and submit the split for approval.', 'd.fixSend': 'Distribute difference and submit',
     'd.fromRegion': 'Branch target', 'd.fromRegionSub': 'Assigned by {n} · {d} · split due {r}', 'd.dist': 'Split to bankers', 'd.distR': 'Split to branches', 'd.approver': 'Approver',
     'd.approve': 'Approve split', 'd.approved': 'Split for {b} approved', 'd.confirm': 'Confirm split', 'd.confirmed': 'Split of region {r} for {p} confirmed', 'd.locked': 'Values of the current period do not change',
-    'd.i1': 'File', 'd.i2': 'Preview', 'd.i3': 'Confirm', 'd.iFile': 'Targeti_Q1_2027_Subotica_Cacak.xlsx', 'd.iRead': '26 rows read · 1 sheet',
+    'd.i1': 'File', 'd.i2': 'Preview', 'd.i3': 'Confirm', 'd.iRead': '26 rows read · 1 sheet',
     'd.iSum': '{a} new assignments · {b} changes · {c} with errors', 'd.iErr1': 'HR number does not exist in the organisation', 'd.iErr2': 'Duplicate row for the same employee and target', 'd.iCheck1': 'File structure and mandatory columns', 'd.iCheck2': 'Sum per branch matches the branch target',
     'd.iConfirm': 'Confirm import ({n} assignments)', 'd.iDone': 'Import complete: {n} assignments applied, 2 rows rejected',
     'd.fTargets': 'Targets', 'd.pickT': 'Choose at least one target', 'd.sameCarr': 'Targets are assigned together only with the same carrier and period: {c} · {p}', 'd.prevV': '{p}: {v}', 'd.nTargets': '{n} targets', 'd.colAsg': 'Number of assignments',
-    'd.doneN': 'Assignment saved: {k} targets · carriers: {n} · {d}', 'd.doneAppr': 'Assignment submitted for approval — {n}', 'd.sendAppr': 'Submit for approval',
+    'd.doneN': 'Assignment saved: {k} targets · carriers: {n} · {d}', 'd.notInSch': 'Target not in scheme', 'd.notInSchNote': 'The target is not yet in these carriers\' scheme; it affects the bonus once it is added', 'd.doneAppr': 'Assignment submitted for approval - {n}', 'd.sendAppr': 'Submit for approval',
     'd.noSch': 'No scheme', 'd.lockNoSch': '{n} has no scheme assigned for {p}', 'd.lockNoT': 'Scheme “{s}” for {p} does not contain the selected targets', 'd.noneOk': 'No carrier has the selected targets in a scheme for {p}',
-    'd.impB': 'Impact on the branch target', 'd.impR': 'Impact on the region target', 'd.colSumB': 'Sum of bankers after assignment', 'd.colSumR': 'Sum of branches after assignment',
-    'd.chkFitB': 'Sum of bankers matches the branch target', 'd.chkFitR': 'Sum of branches matches the region target', 'd.chkMoveB': 'The branch and region targets change', 'd.chkMoveR': 'The region target changes',
+    'd.impB': 'Impact on the branch target', 'd.impR': 'Impact on the region target', 'd.colSumB': 'Sum of carriers after assignment', 'd.colSumR': 'Sum of branches after assignment',
+    'd.chkFitB': 'Sum of carriers matches the branch target', 'd.chkFitR': 'Sum of branches matches the region target', 'd.chkMoveB': 'The branch and region targets change', 'd.chkMoveR': 'The region target changes',
     'd.chkAppr': 'Goes for approval: {n}', 'd.chkApprSub': 'Split approved again: {b}', 'd.chkDraft': 'Added to the split draft the manager submits for approval: {b}', 'd.noLinksN': 'The selected targets do not depend on other targets and no target depends on them',
-    'tt.title': 'Team targets', 'tt.q4title': 'Banker targets — Q4 2026', 'tt.teamM3': 'Universal banker team — October 2026'
+    'tt.title': 'Team targets', 'tt.q4title': 'Banker targets - Q4 2026', 'tt.teamM3': 'Universal banker team - October 2026'
   });
 
   function fmtU(v, unit) { return F.unit(v, unit); }
@@ -72,6 +72,11 @@
     return D.allPeriods().filter(function (p) { return tys[p.type] && (p.status === 'u_toku' || p.status === 'planiran'); })
       .sort(function (a, b) { return (a.from < b.from ? -1 : a.from > b.from ? 1 : 0) || ord[a.type] - ord[b.type]; }).map(function (p) { return { v: p.id, l: D.periodLabel(p.id) }; });
   }
+  /* raspodela na bankare: tekući i planirani kvartali iz kalendara (Obračunski periodi) */
+  function splitPers() {
+    return D.allPeriods().filter(function (p) { return p.type === 'Q' && (p.status === 'u_toku' || p.status === 'planiran'); }).sort(function (a, b) { return a.from < b.from ? -1 : a.from > b.from ? 1 : 0; }).map(function (p) { return { v: p.id, l: D.periodLabel(p.id) }; });
+  }
+  function defSplitPer() { var l = splitPers(), pl = l.filter(function (o) { return D.isPlanned(o.v); })[0]; return (pl || l[0] || {}).v || '2026-Q4'; }
   function perSel() { var cur = IH.v('asg').per || '2026-Q4'; return '<select class="in" data-asgper="1" style="width:auto;min-width:180px">' + PERS().map(function (o) { return '<option value="' + o.v + '"' + (o.v === cur ? ' selected' : '') + '>' + IH.esc(o.l) + '</option>'; }).join('') + '</select>'; }
   document.addEventListener('change', function (e) { if (e.target.dataset && e.target.dataset.asgper) { IH.v('asg').per = e.target.value; IH.render(); } });
   IH.asgPeriodLabel = function (p) { return D.periodLabel(p); };
@@ -93,11 +98,13 @@
     return IH.targets().filter(function (x) { return ids[x.id] && x.status !== 'arhiviran'; });
   }
   IH.targetsIn = targetsIn;
-  function staffFor(tg, bid, pid) { return D.branchStaff(bid, tg.pos || 'licni').filter(function (e) { return usesT(e.id, tg.id, pid); }); }
+  /* nosioci individualnog targeta u ekspozituri: target je u njihovoj šemi ili im je vrednost već dodeljena (planiranje pre šeme) */
+  function staffFor(tg, bid, pid) { return D.branchStaff(bid, tg.pos || 'licni').filter(function (e) { return usesT(e.id, tg.id, pid) || D.valOv(tg.id, pid, { emp: e.id }) != null; }); }
   function teamCarrier(tg) { return (tg.team || []).length === 1; }
   /* status raspodele: regija → ekspoziture i ekspozitura → bankari (planirani periodi) */
   function regStatus(rid, pid) { var m = IH.map('regionSplit'); return m[rid + '|' + pid] || 'odobreno'; }
-  function brStatus(bid, pid) { if (pid === '2027-Q1') return D.status27(bid); return (IH.map('branchSplit') || {})[bid + '|' + pid] || 'odobreno'; }
+  /* raspodela ekspoziture na bankare: planiran period bez raspodele je nacrt, ostali su odobreni */
+  function brStatus(bid, pid) { return (IH.map('branchSplit') || {})[bid + '|' + pid] || (D.isPlanned(pid) ? 'nacrt' : 'odobreno'); }
   function head(rid) { return D.emp(D.region(rid).head); }
 
   /* ---------- redovi plana za period ---------- */
@@ -158,7 +165,7 @@
   function asgFields(r, ro) {
     return [
       { k: 'av_c', label: t('d.colCarrier'), type: 'static', value: r.name }, { k: 'av_ct', label: t('d.colType'), type: 'static', value: LVL(r) },
-      { k: 'av_t', label: t('d.colTarget'), type: 'static', value: IH.L(r.tg.name) }, { k: 'av_p', label: t('d.colPeriod'), type: 'static', value: D.periodLabel(r.per) + ' (' + F.date(D.period(r.per).from) + ' – ' + F.date(D.period(r.per).to) + ')' },
+      { k: 'av_t', label: t('d.colTarget'), type: 'static', value: IH.L(r.tg.name) }, { k: 'av_p', label: t('d.colPeriod'), type: 'static', value: D.periodLabel(r.per) + ' (' + F.date(D.period(r.per).from) + ' - ' + F.date(D.period(r.per).to) + ')' },
       { k: 'av_v', label: t('d.colValue') + ' (' + unitTxt(r.tg) + ')', type: ro ? 'static' : 'number', value: F.num(r.val) },
       { k: 'av_sc', label: t('c.scheme'), type: 'static', value: D.schemesOf(r.tg.id).map(function (s) { return IH.L(s.name); }).join(', ') || t('tg.free') },
       { k: 'av_s', label: t('d.colSource'), type: 'static', value: r.src }, { k: 'av_a', label: t('d.colApproved'), type: 'static', value: r.appr }
@@ -179,27 +186,29 @@
     var r = rowById(el.dataset.arg); if (!r || !r.canEdit) return;
     var v = parseFloat(String(IH.form.av_v || '').replace(/\./g, '').replace(',', '.'));
     if (!isNaN(v)) IH.map('vals')[r.id] = v;
-    IH.audit('assignment', r.id, { sr: 'Izmenjena dodela — ' + IH.L(r.tg.name), en: 'Assignment changed — ' + IH.L(r.tg.name) }, { sr: r.name + ' · ' + D.periodLabel(r.per) + ' · ' + fmtU(isNaN(v) ? r.val : v, r.tg.unit), en: r.name + ' · ' + D.periodLabel(r.per) + ' · ' + fmtU(isNaN(v) ? r.val : v, r.tg.unit) });
+    IH.audit('assignment', r.id, { sr: 'Izmenjena dodela - ' + IH.L(r.tg.name), en: 'Assignment changed - ' + IH.L(r.tg.name) }, { sr: r.name + ' · ' + D.periodLabel(r.per) + ' · ' + fmtU(isNaN(v) ? r.val : v, r.tg.unit), en: r.name + ' · ' + D.periodLabel(r.per) + ' · ' + fmtU(isNaN(v) ? r.val : v, r.tg.unit) });
     EN.invalidate(); IH.save(); IH.closeModal(); IH.render(); IH.toast(t('c.saved'));
   };
   IH.act['asg-hist'] = function (el) { var r = rowById(el.dataset.arg); IH.showHistory(r ? r.name + ' · ' + IH.L(r.tg.name) : el.dataset.arg, IH.auditFor('assignment', el.dataset.arg).concat([{ at: '2026-09-28T10:00', by: r ? D.region(r.region).head : 'D001', action: { sr: 'Dodela odobrena', en: 'Assignment approved' } }])); };
   IH.act['asg-approve'] = function (el) {
     var p = el.dataset.arg.split('|'), bid = p[0], per = p[1];
-    if (per === '2027-Q1') IH.map('plan27Status')[bid] = 'odobreno'; else IH.map('branchSplit')[bid + '|' + per] = 'odobreno';
+    IH.map('branchSplit')[bid + '|' + per] = 'odobreno';
     IH.audit('cascade', bid, { sr: 'Raspodela ' + D.periodLabel(per) + ' odobrena', en: D.periodLabel(per) + ' split approved' }, { sr: D.branchShort(bid), en: D.branchShort(bid) });
     IH.save(); IH.render(); IH.toast(t('d.approved', { b: IH.esc(D.branchShort(bid)) }));
   };
 
-  /* ---------- čarobnjak nove dodele: target → nosioci → vrednosti → pregled ---------- */
+  /* ---------- čarobnjak nove dodele: targeti → nosioci → vrednosti ---------- */
   /* planirani periodi vrste targeta (dodela važi samo za planirane periode) */
   function aper(type) { return D.plannedOf(type).slice(0, 8).map(function (p) { return p.id; }); }
-  function noPer() { return '<div class="note warn">' + t('pe.noPlanned') + ' — <a href="#/periodi">' + t('pe.toCal') + '</a></div>'; }
+  function noPer() { return '<div class="note warn">' + t('pe.noPlanned') + ' - <a href="#/periodi">' + t('pe.toCal') + '</a></div>'; }
   function prevOf(pid) { var p = D.period(pid); if (!p) return null; var all = D.allPeriods().filter(function (x) { return x.type === p.type && x.from < p.from; }).sort(function (a, b) { return a.from < b.from ? 1 : -1; }); return all[0] ? all[0].id : null; }
   /* više targeta u jednoj dodeli: isti nosilac i isti period (redovi su nosioci, kolone targeti).
-     Nova dodela je izuzetak uz raspodelu (novi zaposleni, premeštaj, korekcija):
-     nosilac mora imati target u šemi za period, pregled pokazuje uticaj na nadređeni nivo,
-     a izmena perioda koji već ima raspodelu ekspoziture ide na odobrenje kao i raspodela. */
-  function AW() { if (!IH.form.aw) IH.form.aw = { tgs: ['TG-101'], sel: [], per: '2027-Q1', vals: {} }; return IH.form.aw; }
+     Tri koraka: targeti → nosioci → vrednosti (sa uticajem na nadređeni nivo); čuva se na poslednjem koraku.
+     Vrednosti se mogu dodeliti i pre nego što target uđe u šemu nosioca (planiranje); kolona Šema to pokazuje.
+     Izmena perioda koji već ima raspodelu ekspoziture ide na odobrenje kao i raspodela. */
+  /* podrazumevani target u kreiranju: poslednji kreirani individualni target za gotovinske kredite (primer za prezentaciju) */
+  function defTg() { var g = IH.targets().filter(function (x) { return x.status === 'aktivan' && x.kind !== 'timski' && /gotovinsk/i.test(IH.L(x.name)); }).pop(); return g ? g.id : 'TG-101'; }
+  function AW() { if (!IH.form.aw) { var id = defTg(), tg = D.target(id); IH.form.aw = { tgs: [id], sel: [], per: (tg && aper(tg.periodType)[0]) || null, vals: {} }; } return IH.form.aw; }
   function awTargets() { return AW().tgs.map(D.target).filter(Boolean); }
   function grpOf(tg) { return IH.targetCarrier(tg) + '|' + tg.periodType; }
   function ctOf(tg) { return tg.kind !== 'timski' ? 'emp' : 'br'; }
@@ -208,17 +217,17 @@
     return D.branches.map(function (b) { return { id: b.id, name: (teamCarrier(tg) ? t('d.carrTeam') + ' · ' : '') + D.branchShort(b), branch: b.id, n: D.employees.filter(function (e) { return e.branch === b.id && (tg.team || []).indexOf(e.pos) >= 0; }).length, mgr: D.branchManager(b.id).id, c: { branch: b.id } }; });
   }
   function cById(id) { var tg = awTargets()[0]; return tg ? carriers(tg).filter(function (c) { return c.id === id; })[0] : null; }
-  /* target u šemi nosioca: zaposleni — njegova šema; tim ili ekspozitura — šema bar jednog člana */
+  /* target u šemi nosioca: zaposleni - njegova šema; tim ili ekspozitura - šema bar jednog člana */
   function hasT(s, tid) { return !!s && (s.targets.some(function (tc) { return tc.id === tid; }) || EN.rulesOf(s).some(function (r) { return r.target === tid; })); }
   function members(c, tg) { return c.e ? [c.e] : D.employees.filter(function (e) { return e.branch === c.branch && (tg.team || []).indexOf(e.pos) >= 0; }); }
-  function cUses(c, tg, per) { return members(c, tg).some(function (e) { return hasT(schemeIn(e.id, per), tg.id); }); }
-  function cOk(c) { var per = AW().per; return awTargets().some(function (tg) { return cUses(c, tg, per); }); }
+  function inSch(c, tg, per) { return members(c, tg).some(function (e) { return hasT(schemeIn(e.id, per), tg.id); }); }
   function cSchemes(c) { var tg = awTargets()[0], per = AW().per, l = []; if (!tg) return l; members(c, tg).forEach(function (e) { var s = EN.schemeFor(e.id, per); if (s && l.indexOf(s) < 0) l.push(s); }); return l; }
-  function cells(sel, tgs) { var per = AW().per, out = []; tgs.forEach(function (tg) { sel.forEach(function (c) { if (cUses(c, tg, per)) out.push({ c: c, tg: tg }); }); }); return out; }
-  function prevVal(c, tg) { var pv = prevOf(AW().per); return pv ? D.val(tg.id, pv, c.c) : null; }
+  function cells(sel, tgs) { var out = []; tgs.forEach(function (tg) { sel.forEach(function (c) { out.push({ c: c, tg: tg }); }); }); return out; }
+  /* vrednost u prethodnom periodu; nema je ako target tada još nije važio */
+  function prevVal(c, tg) { var pv = prevOf(AW().per); if (!pv || (tg.from && D.period(pv).to < tg.from)) return null; return D.val(tg.id, pv, c.c); }
   function newVal(c, tg) { var a = AW(), k = tg.id + '|' + c.id; if (a.vals[k] != null) return a.vals[k]; return D.val(tg.id, a.per, c.c) || prevVal(c, tg) || 0; }
   function tgNames(tgs) { return tgs.map(function (x) { return IH.L(x.name); }).join(', '); }
-  function selOk() { return AW().sel.map(cById).filter(function (c) { return c && cOk(c); }); }
+  function selOk() { return AW().sel.map(cById).filter(Boolean); }
   /* izbor targeta: prvi izabrani određuje nosioca i period; promena nosioca briše izbor nosilaca i vrednosti */
   function setTargets(l) {
     var a = AW(), cur = awTargets(), g0 = cur.length ? grpOf(cur[0]) : null;
@@ -226,17 +235,16 @@
     l = l.filter(function (id) { var x = D.target(id); return x && anchor && grpOf(x) === grpOf(anchor); });
     a.tgs = l;
     if (!anchor || grpOf(anchor) !== g0) { a.sel = []; a.vals = {}; if (anchor) a.per = aper(anchor.periodType)[0] || null; }
-    a.sel = selOk().map(function (c) { return c.id; });
   }
 
   /* uticaj na nadređeni nivo: zaposleni → target ekspoziture, tim ili ekspozitura → target regije.
-     Nadređeni target je fiksan ako ga je zadala regija (ili plan banke za Q1 2027); inače je zbir i menja se sa dodelom. */
-  function parentFixed(tg, per, pc) { return D.valOv(tg.id, per, pc) != null || !!(pc.branch && per === '2027-Q1' && D.M1_KEY[tg.id]); }
+     Nadređeni target je fiksan ako ga je zadala regija; inače je zbir i menja se sa dodelom. */
+  function parentFixed(tg, per, pc) { return D.valOv(tg.id, per, pc) != null; }
   function impact() {
     var a = AW(), tgs = awTargets(), sel = selOk(), emp = tgs[0] && ctOf(tgs[0]) === 'emp', out = [];
     tgs.forEach(function (tg) {
       var groups = {}, order = [];
-      sel.filter(function (c) { return cUses(c, tg, a.per); }).forEach(function (c) { var pid = emp ? c.branch : D.branch(c.branch).region; if (!groups[pid]) { groups[pid] = {}; order.push(pid); } groups[pid][c.id] = c; });
+      sel.forEach(function (c) { var pid = emp ? c.branch : D.branch(c.branch).region; if (!groups[pid]) { groups[pid] = {}; order.push(pid); } groups[pid][c.id] = c; });
       order.forEach(function (pid) {
         var pc = emp ? { branch: pid } : { region: pid };
         var kids = emp ? D.branchStaff(pid, tg.pos || 'licni').map(function (e) { return { id: e.id, c: { emp: e.id } }; }) : D.branches.filter(function (b) { return b.region === pid; }).map(function (b) { return { id: b.id, c: { branch: b.id } }; });
@@ -250,7 +258,7 @@
     return out.sort(function (x, y) { return po.indexOf(x.name) - po.indexOf(y.name) || x.ti - y.ti; });
   }
   /* ekspoziture čija raspodela za period već postoji: odobrena ili poslata → ponovo na odobrenje; nacrt → dodela ulazi u nacrt */
-  function hasSplit(bid, per) { return per === '2027-Q1' || (IH.map('branchSplit') || {})[bid + '|' + per] != null; }
+  function hasSplit(bid, per) { return (IH.map('branchSplit') || {})[bid + '|' + per] != null; }
   function apprOf() {
     var a = AW(), tgs = awTargets(), r = { appr: [], draft: [], heads: [] };
     if (!tgs[0] || ctOf(tgs[0]) !== 'emp' || !editable(a.per)) return r;
@@ -280,7 +288,7 @@
   }
   function perSelect(tg) {
     var a = AW();
-    return '<select class="in" data-aw="per">' + aper(tg.periodType).map(function (o) { var p = D.period(o); return '<option value="' + o + '"' + (o === a.per ? ' selected' : '') + '>' + IH.esc(D.periodLabel(o)) + ' (' + F.date(p.from) + ' – ' + F.date(p.to) + ')</option>'; }).join('') + '</select>';
+    return '<select class="in" data-aw="per">' + aper(tg.periodType).map(function (o) { var p = D.period(o); return '<option value="' + o + '"' + (o === a.per ? ' selected' : '') + '>' + IH.esc(D.periodLabel(o)) + ' (' + F.date(p.from) + ' - ' + F.date(p.to) + ')</option>'; }).join('') + '</select>';
   }
   function step2() {
     var a = AW(), tgs = awTargets(), tg = tgs[0];
@@ -292,77 +300,68 @@
     cols.push({ key: 'rg', label: t('c.region'), val: function (c) { return IH.L(D.region(D.branch(c.branch).region).name); }, fval: function (c) { return D.branch(c.branch).region; }, filter: function () { return D.regions.map(function (r) { return { v: r.id, l: IH.L(r.name) }; }); } });
     if (ct !== 'emp') cols.push({ key: 'm', label: t('d.colMembers'), num: true, search: false, val: function (c) { return c.n; } });
     cols.push({ key: 'sc', label: t('c.scheme'), val: function (c) { var l = cSchemes(c); return l.length ? l.map(function (s) { return IH.L(s.name); }).join(', ') : t('d.noSch'); },
-      render: function (c) { var l = cSchemes(c); return l.length ? IH.esc(l.map(function (s) { return IH.L(s.name); }).join(', ')) : ui.pill(t('d.noSch'), 'warning'); } });
+      render: function (c) {
+        var l = cSchemes(c), per = AW().per, inS = awTargets().some(function (x) { return inSch(c, x, per); });
+        return (l.length ? IH.esc(l.map(function (s) { return IH.L(s.name); }).join(', ')) : ui.pill(t('d.noSch'), 'warning')) + (l.length && !inS ? ' ' + ui.pill(t('d.notInSch'), 'warning') : '');
+      } });
     cols.push({ key: 'mg', label: t('d.colMgr'), val: function (c) { return c.mgr ? D.emp(c.mgr).name : ''; } });
     var hd = '<div class="form-grid g3"><div class="field"><label class="lab">' + t('d.fPeriod') + '</label>' + perSelect(tg) + '</div>' +
       '<div class="field"><label class="lab">' + t('d.fTargets') + '</label><div class="in ro">' + IH.esc(tgNames(tgs)) + '</div></div>' +
       '<div class="field"><label class="lab">' + t('d.fCarr') + '</label><div class="in ro">' + IH.esc(IH.targetCarrier(tg)) + '</div></div></div>';
-    var none = !carriers(tg).some(cOk) ? '<div class="note warn">' + t('d.noneOk', { p: D.periodLabel(a.per) }) + '</div>' : '';
-    return hd + none + IH.grid({ id: gid, exportName: 'Nosioci.xlsx', searchLabel: t('d.fFind'), rows: function () { return carriers(tg); }, key: function (c) { return c.id; }, label: function (c) { return c.name; }, searchKeys: ['n', 'mg'], cols: cols, actions: [],
-      select: { get: function () { return AW().sel; }, set: function (l) { AW().sel = l; }, onChange: function () { IH.render(); },
-        disabled: function (c) { return !cOk(c); },
-        disabledMsg: function (c) { var l = cSchemes(c), p = D.periodLabel(AW().per); return l.length ? t('d.lockNoT', { s: l.map(function (s) { return IH.L(s.name); }).join(', '), p: p }) : t('d.lockNoSch', { n: c.name, p: p }); } } });
+    return hd + IH.grid({ id: gid, exportName: 'Nosioci.xlsx', searchLabel: t('d.fFind'), rows: function () { return carriers(tg); }, key: function (c) { return c.id; }, label: function (c) { return c.name; }, searchKeys: ['n', 'mg'], cols: cols, actions: [],
+      select: { get: function () { return AW().sel; }, set: function (l) { AW().sel = l; }, onChange: function () { IH.render(); } } });
   }
+  /* vrednosti po nosiocu i targetu, uticaj na nadređeni nivo, odobravanje i veze u šemi (poslednji korak, bez posebnog pregleda) */
   function step3() {
-    var a = AW(), tgs = awTargets(), sel = selOk(), pv = prevOf(a.per);
+    var a = AW(), tgs = awTargets(), sel = selOk(), pv = prevOf(a.per), tg0 = tgs[0];
     if (!tgs.length) return '<div class="note warn">' + t('d.pickT') + '</div>';
     if (!D.period(a.per)) return noPer();
     if (!sel.length) return '<div class="note warn">' + t('d.pick') + '</div>';
-    var inp = 'style="width:130px;margin-left:auto;display:block" class="in cell tnum"', dash = '<span class="mut">—</span>';
+    var inp = 'style="width:130px;margin-left:auto;display:block" class="in cell tnum"', emp = ctOf(tg0) === 'emp';
     var th = '<tr><th>' + t('d.colCarrier') + '</th><th>' + t('d.colBranch') + '</th>' + tgs.map(function (tg) { return '<th class="num">' + IH.esc(IH.L(tg.name)) + ' (' + unitTxt(tg) + ')</th>'; }).join('') + '</tr>';
-    var all = sel.length > 1 ? '<tr class="lvl-0"><td colspan="2">' + t('d.same') + '</td>' + tgs.map(function (tg) { var f = sel.filter(function (c) { return cUses(c, tg, a.per); })[0]; return '<td class="num">' + (f ? '<input ' + inp + ' data-awall="' + tg.id + '" placeholder="' + F.num(newVal(f, tg)) + '">' : dash) + '</td>'; }).join('') + '</tr>' : '';
+    var all = sel.length > 1 ? '<tr class="lvl-0"><td colspan="2">' + t('d.same') + '</td>' + tgs.map(function (tg) { return '<td class="num"><input ' + inp + ' data-awall="' + tg.id + '" placeholder="' + F.num(newVal(sel[0], tg)) + '"></td>'; }).join('') + '</tr>' : '';
     var rows = sel.map(function (c) {
       return '<tr><td class="nw"><b>' + IH.esc(c.name) + '</b></td><td class="nw">' + IH.esc(D.branchShort(c.branch)) + '</td>' + tgs.map(function (tg) {
-        if (!cUses(c, tg, a.per)) return '<td class="num">' + dash + '</td>';
         var p = prevVal(c, tg);
         return '<td class="num"><input ' + inp + ' data-awv="' + tg.id + '|' + c.id + '" value="' + F.num(newVal(c, tg)) + '">' + (pv && p != null ? '<div class="mut nw" style="font-size:11.5px;margin-top:3px">' + t('d.prevV', { p: D.periodLabel(pv), v: F.num(p) }) + '</div>' : '') + '</td>';
       }).join('') + '</tr>';
     }).join('');
-    var foot = '<tr class="lvl-0"><td colspan="2">' + t('c.total') + '</td>' + tgs.map(function (tg) { return '<td class="num">' + fmtU(sel.reduce(function (s, c) { return s + (cUses(c, tg, a.per) ? newVal(c, tg) : 0); }, 0), tg.unit) + '</td>'; }).join('') + '</tr>';
-    return '<div class="form-grid g3"><div class="field"><label class="lab">' + t('d.fPeriod') + '</label><div class="in ro">' + IH.esc(D.periodLabel(a.per)) + ' (' + F.date(D.period(a.per).from) + ' – ' + F.date(D.period(a.per).to) + ')</div></div></div>' +
-      '<div class="tbl-wrap"><table class="t"><thead>' + th + '</thead><tbody>' + all + rows + '</tbody><tfoot>' + foot + '</tfoot></table></div>' +
-      '<div class="fsec" style="margin-top:16px"><h3>' + t('d.links') + '</h3>' + linksTable(tgs) + '</div>';
-  }
-  function step4() {
-    var a = AW(), tgs = awTargets(), tg = tgs[0], sel = selOk(), p = D.period(a.per);
-    if (!tg) return '<div class="note warn">' + t('d.pickT') + '</div>';
-    if (!p) return noPer();
-    var cl = cells(sel, tgs), emp = ctOf(tg) === 'emp', imp = impact(), ap = apprOf(), dash = '<span class="mut">—</span>';
+    var foot = '<tr class="lvl-0"><td colspan="2">' + t('c.total') + '</td>' + tgs.map(function (tg) { return '<td class="num">' + fmtU(sel.reduce(function (s, c) { return s + newVal(c, tg); }, 0), tg.unit) + '</td>'; }).join('') + '</tr>';
+    /* napomene: odstupanje od nadređenog targeta, promena nadređenog targeta, odobravanje, target van šeme */
+    var imp = impact(), ap = apprOf();
     var dTxt = function (r, d) { return IH.esc(r.name) + ' · ' + IH.esc(IH.L(r.tg.name)) + ': ' + d; };
-    var mism = imp.filter(function (r) { return r.fixed && Math.abs(r.sum - r.before) > 0.5; });
-    var moved = imp.filter(function (r) { return !r.fixed && Math.abs(r.after - r.before) > 0.5; });
-    var chk = [{ label: t('d.chk1'), state: sel.length ? 'ok' : 'no', sub: t('d.selInfo', { n: sel.length }) }, { label: t('d.chk2'), state: cl.every(function (x) { return newVal(x.c, x.tg) > 0; }) ? 'ok' : 'no' }];
-    chk.push({ label: t(emp ? 'd.chkFitB' : 'd.chkFitR'), state: mism.length ? 'warn' : 'ok', sub: mism.length ? mism.map(function (r) { var d = r.sum - r.before; return dTxt(r, (d > 0 ? '+' : '−') + fmtU(Math.abs(d), r.tg.unit)); }).join(' · ') : null });
-    if (moved.length) chk.push({ label: t(emp ? 'd.chkMoveB' : 'd.chkMoveR'), state: 'warn', sub: moved.map(function (r) { return dTxt(r, fmtU(r.before, r.tg.unit) + ' → ' + fmtU(r.after, r.tg.unit)); }).join(' · ') });
-    if (ap.appr.length) chk.push({ label: t('d.chkAppr', { n: IH.esc(ap.heads.join(', ')) }), sub: t('d.chkApprSub', { b: ap.appr.map(D.branchShort).join(', ') }) });
-    if (ap.draft.length) chk.push({ label: t('d.chkDraft', { b: ap.draft.map(D.branchShort).join(', ') }) });
-    chk.push({ label: t('d.chk3', { d: F.date(p.from) }) });
-    var summary = ui.form([{ k: 'as_t', label: t('d.fTargets'), value: tgNames(tgs) }, { k: 'as_k', label: t('tg.colKind'), value: tg.kind === 'timski' ? t('k.team') : t('k.ind') }, { k: 'as_c', label: t('d.fCarr'), value: IH.targetCarrier(tg) }, { k: 'as_p', label: t('d.fPeriod'), value: D.periodLabel(a.per) + ' (' + F.date(p.from) + ' – ' + F.date(p.to) + ')' }, { k: 'as_n', label: t('d.colCarriers'), value: String(sel.length) }, { k: 'as_a', label: t('d.colAsg'), value: String(cl.length) }], { readonly: true, cols: 3 });
-    var cols = [{ key: 'n', label: t('d.colCarrier') }, { key: 'b', label: t('d.colBranch') }].concat(tgs.map(function (x) { return { key: x.id, label: IH.esc(IH.L(x.name)) + ' (' + unitTxt(x) + ')', num: true }; }));
-    var rows = sel.map(function (c) { var r = { n: IH.esc(c.name), b: IH.esc(D.branchShort(c.branch)) }; tgs.forEach(function (x) { r[x.id] = cUses(c, x, a.per) ? fmtU(newVal(c, x), x.unit) : dash; }); return r; });
-    var ft = { n: t('c.total') }; tgs.forEach(function (x) { ft[x.id] = '<b>' + fmtU(cl.filter(function (q) { return q.tg === x; }).reduce(function (s, q) { return s + newVal(q.c, x); }, 0), x.unit) + '</b>'; });
+    var mism = imp.filter(function (r) { return r.fixed && Math.abs(r.sum - r.before) > 0.5; }), moved = imp.filter(function (r) { return !r.fixed && Math.abs(r.after - r.before) > 0.5; });
+    var outS = sel.filter(function (c) { return !tgs.some(function (x) { return inSch(c, x, a.per); }); });
+    var notes = [];
+    if (mism.length) notes.push({ label: t(emp ? 'd.chkFitB' : 'd.chkFitR'), state: 'warn', sub: mism.map(function (r) { var d = r.sum - r.before; return dTxt(r, (d > 0 ? '+' : '−') + fmtU(Math.abs(d), r.tg.unit)); }).join(' · ') });
+    if (moved.length) notes.push({ label: t(emp ? 'd.chkMoveB' : 'd.chkMoveR'), state: 'warn', sub: moved.map(function (r) { return dTxt(r, fmtU(r.before, r.tg.unit) + ' → ' + fmtU(r.after, r.tg.unit)); }).join(' · ') });
+    if (ap.appr.length) notes.push({ label: t('d.chkAppr', { n: IH.esc(ap.heads.join(', ')) }), sub: t('d.chkApprSub', { b: ap.appr.map(D.branchShort).join(', ') }) });
+    if (ap.draft.length) notes.push({ label: t('d.chkDraft', { b: ap.draft.map(D.branchShort).join(', ') }) });
+    if (outS.length) notes.push({ label: t('d.notInSchNote'), state: 'warn', sub: outS.map(function (c) { return IH.esc(c.name); }).join(', ') });
     var impCols = [{ key: 'n', label: emp ? t('d.colBranch') : t('c.region') }, { key: 't', label: t('d.colTarget') }, { key: 'p', label: t(emp ? 'd.targetRow' : 'd.targetRowR'), num: true }, { key: 's', label: t(emp ? 'd.colSumB' : 'd.colSumR'), num: true }, { key: 'd', label: t('d.diff'), num: true }];
     var impRows = imp.map(function (r) { return { n: IH.esc(r.name), t: IH.esc(IH.L(r.tg.name)), p: r.fixed || Math.abs(r.after - r.before) < 0.5 ? fmtU(r.before, r.tg.unit) : fmtU(r.before, r.tg.unit) + ' → <b>' + fmtU(r.after, r.tg.unit) + '</b>', s: fmtU(r.sum, r.tg.unit), d: diffCell(r.sum - r.after, r.tg.unit) }; });
-    return ui.checks(chk) + '<div class="hr"></div>' + summary + '<div class="fsec" style="margin-top:14px"><h3>' + t('d.vals') + '</h3>' + ui.table(cols, rows, { compact: true, foot: ft }) + '</div>' +
-      '<div class="fsec"><h3>' + t(emp ? 'd.impB' : 'd.impR') + '</h3>' + ui.table(impCols, impRows, { compact: true }) + '</div>' +
+    return '<div class="form-grid g3"><div class="field"><label class="lab">' + t('d.fPeriod') + '</label><div class="in ro">' + IH.esc(D.periodLabel(a.per)) + ' (' + F.date(D.period(a.per).from) + ' - ' + F.date(D.period(a.per).to) + ')</div></div></div>' +
+      '<div class="tbl-wrap"><table class="t"><thead>' + th + '</thead><tbody>' + all + rows + '</tbody><tfoot>' + foot + '</tfoot></table></div>' +
+      (notes.length ? '<div style="margin-top:14px">' + ui.checks(notes) + '</div>' : '') +
+      '<div class="fsec" style="margin-top:16px"><h3>' + t(emp ? 'd.impB' : 'd.impR') + '</h3>' + ui.table(impCols, impRows, { compact: true }) + '</div>' +
       '<div class="fsec"><h3>' + t('d.links') + '</h3>' + linksTable(tgs) + '</div>' +
       '<div class="form-grid" style="margin-top:4px">' + ui.toggle('a_n1', t('d.notifyEmp'), true) + ui.toggle('a_n2', t('d.notifyMgr'), true) + '</div>';
   }
   function wizardPage(step) {
-    var a = AW(), cur = Math.max(0, Math.min(3, (+step || 1) - 1));
-    var steps = [{ label: t('d.w1') }, { label: t('d.w2') }, { label: t('d.w3') }, { label: t('d.w4') }];
-    var body = [step1, step2, step3, step4][cur]();
+    var a = AW(), cur = Math.max(0, Math.min(2, (+step || 1) - 1));
+    var steps = [{ label: t('d.w1') }, { label: t('d.w2') }, { label: t('d.w3') }];
+    var body = [step1, step2, step3][cur]();
     var tgs = awTargets(), crumb = tgs.length === 1 ? IH.esc(IH.L(tgs[0].name)) : tgs.length ? t('d.nTargets', { n: tgs.length }) : '', n = selOk().length;
     return ui.header(t('d.newAsg'), '', '', '<a href="#/dodela-targeta">' + t('d.title') + '</a>' + (crumb ? ' ' + ic('chevr') + ' ' + crumb : '') + (n ? ' <span class="mut">· ' + t('d.selInfo', { n: n }) + '</span>' : '')) +
-      ui.wizard({ base: 'dodela-targeta/nova', steps: steps, cur: cur, body: '<div id="aw-body">' + body + '</div>', finishLabel: apprOf().appr.length ? t('d.sendAppr') : t('d.activate'), finishAct: 'asg-save', cancelGo: 'dodela-targeta' });
+      ui.wizard({ base: 'dodela-targeta/nova', steps: steps, cur: cur, body: '<div id="aw-body">' + body + '</div>', finishLabel: apprOf().appr.length ? t('d.sendAppr') : t('c.save'), finishAct: 'asg-save', cancelGo: 'dodela-targeta' });
   }
   IH.startAssignFor = function (tgId) { var tg = D.target(tgId); IH.form = {}; if (!tg || tg.value && tg.value.mode === 'zbir') { IH.go('dodela-targeta'); return; } IH.form.aw = { tgs: [tgId], sel: [], per: aper(tg.periodType)[0], vals: {} }; IH.go('dodela-targeta/nova/2'); };
   document.addEventListener('change', function (e) {
     var d = e.target.dataset || {}; if (!IH.form.aw) return;
     var num = function (s) { return parseFloat(String(s).replace(/\./g, '').replace(',', '.')); };
     if (d.awv) { var v = num(e.target.value); if (!isNaN(v)) IH.form.aw.vals[d.awv] = v; IH.render(); }
-    if (d.awall) { var w = num(e.target.value), a = AW(), tg = D.target(d.awall); if (!isNaN(w)) selOk().forEach(function (c) { if (cUses(c, tg, a.per)) a.vals[d.awall + '|' + c.id] = w; }); IH.render(); }
-    if (d.aw === 'per') { var b = AW(); b.per = e.target.value; b.vals = {}; b.sel = selOk().map(function (c) { return c.id; }); IH.render(); }
+    if (d.awall) { var w = num(e.target.value), a = AW(); if (!isNaN(w)) selOk().forEach(function (c) { a.vals[d.awall + '|' + c.id] = w; }); IH.render(); }
+    if (d.aw === 'per') { var b = AW(); b.per = e.target.value; b.vals = {}; IH.render(); }
   });
   IH.act['asg-new'] = function () { IH.form = {}; IH.go('dodela-targeta/nova/1'); };
   IH.act['asg-save'] = function () {
@@ -370,16 +369,17 @@
     if (!tgs.length) { IH.toast(t('d.pickT')); IH.go('dodela-targeta/nova/1'); return; }
     if (!D.period(a.per)) { IH.toast(t('pe.noPlanned')); return; }
     if (!cl.length) { IH.toast(t('d.pick')); IH.go('dodela-targeta/nova/2'); return; }
+    if (!cl.every(function (x) { return newVal(x.c, x.tg) > 0; })) { IH.toast(t('d.chk2')); IH.go('dodela-targeta/nova/3'); return; }
     cl.forEach(function (x) {
       var v = newVal(x.c, x.tg), k = D.valKey(x.tg.id, a.per, x.c.c);
       IH.map('vals')[k] = v;
-      IH.audit('assignment', k, { sr: 'Nova dodela — ' + IH.L(x.tg.name) + ' · ' + fmtU(v, x.tg.unit), en: 'New assignment — ' + IH.L(x.tg.name) + ' · ' + fmtU(v, x.tg.unit) }, { sr: x.c.name + ' · ' + D.periodLabel(a.per), en: x.c.name + ' · ' + D.periodLabel(a.per) });
+      IH.audit('assignment', k, { sr: 'Nova dodela - ' + IH.L(x.tg.name) + ' · ' + fmtU(v, x.tg.unit), en: 'New assignment - ' + IH.L(x.tg.name) + ' · ' + fmtU(v, x.tg.unit) }, { sr: x.c.name + ' · ' + D.periodLabel(a.per), en: x.c.name + ' · ' + D.periodLabel(a.per) });
     });
     /* izmena postojeće raspodele ekspoziture ponovo ide na odobrenje direktoru regije */
     ap.appr.forEach(function (bid) {
-      if (a.per === '2027-Q1') IH.map('plan27Status')[bid] = 'na_odobravanju'; else IH.map('branchSplit')[bid + '|' + a.per] = 'na_odobravanju';
+      IH.map('branchSplit')[bid + '|' + a.per] = 'na_odobravanju';
       var hd = head(D.branch(bid).region);
-      IH.audit('cascade', bid, { sr: 'Raspodela ' + D.periodLabel(a.per) + ' izmenjena novom dodelom — na odobrenju', en: D.periodLabel(a.per) + ' split changed by a new assignment — pending approval' }, { sr: 'Odobrava: ' + hd.name, en: 'Approver: ' + hd.name });
+      IH.audit('cascade', bid, { sr: 'Raspodela ' + D.periodLabel(a.per) + ' izmenjena novom dodelom - na odobrenju', en: D.periodLabel(a.per) + ' split changed by a new assignment - pending approval' }, { sr: 'Odobrava: ' + hd.name, en: 'Approver: ' + hd.name });
     });
     var tg = tgs[0], one = cl.length === 1, msg = ap.appr.length ? t('d.doneAppr', { n: IH.esc(ap.heads.join(', ')) })
       : tgs.length > 1 ? t('d.doneN', { k: tgs.length, n: sel.length, d: D.periodLabel(a.per) })
@@ -404,7 +404,7 @@
     var rows = lic.map(function (e) {
       var r = '<tr><td class="nw"><b>' + IH.esc(e.name) + '</b></td>';
       tgs.forEach(function (tg) {
-        if (!usesT(e.id, tg.id, per)) { r += '<td class="num mut">—</td><td></td>'; return; }
+        if (!usesT(e.id, tg.id, per)) { r += '<td class="num mut">-</td><td></td>'; return; }
         var sug = F.num(D.val(tg.id, per, { emp: e.id })), key = 'sp|' + e.id + '|' + tg.id, cur = IH.form[key] != null ? IH.form[key] : (locked ? sug : ''), pq = q3pct(e.id, tg.id);
         r += '<td class="num">' + (locked ? '<b>' + sug + '</b>' : '<input style="width:130px;margin-left:auto;display:block" class="in cell guided' + (cur === sug ? ' filled' : '') + '" data-sp2="' + e.id + '|' + tg.id + '" data-k="' + key + '"' + IH.guided.attr(sug) + ' value="' + IH.esc(cur) + '">') + '</td><td class="mut nw">' + (pq != null ? t('d.prev', { p: F.pct(pq) }) : '') + '</td>';
       });
@@ -413,17 +413,17 @@
     var sumRow = '<tr class="lvl-0"><td>' + t('d.sumRow') + '</td>' + tgs.map(function (tg) { return '<td class="num" id="ss-' + tg.id + '"></td><td></td>'; }).join('') + '</tr>';
     var tgtRow = '<tr><td>' + t('d.targetRow') + '</td>' + tgs.map(function (tg) { return '<td class="num">' + fmtU(bt[tg.id], tg.unit) + '</td><td></td>'; }).join('') + '</tr>';
     var diffRow = '<tr><td><b>' + t('d.diffRow') + '</b></td>' + tgs.map(function (tg) { return '<td class="num" id="sd-' + tg.id + '"></td><td></td>'; }).join('') + '</tr>';
-    var tbl = '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + t('c.employee') + '</th>' + tgs.map(function (tg) { return '<th class="num">' + IH.esc(IH.L(tg.name)) + (tg.unit === 'RSD' ? ' (RSD)' : tg.unit === 'bod' ? ' (' + IH.unitTxt('bod') + ')' : '') + '</th><th></th>'; }).join('') + '</tr></thead><tbody>' + rows + '</tbody><tfoot>' + sumRow + tgtRow + diffRow + '</tfoot></table></div>';
+    var tbl = '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + t('c.employee') + '</th>' + tgs.map(function (tg) { return '<th class="num">' + IH.esc(IH.L(tg.name)) + (tg.unit === 'RSD' ? ' (RSD)' : '') + '</th><th></th>'; }).join('') + '</tr></thead><tbody>' + rows + '</tbody><tfoot>' + sumRow + tgtRow + diffRow + '</tfoot></table></div>';
     var acts = locked ? ui.st2(st) : ui.btn(t('d.even'), { cls: 'sm', act: 'sp-fill', arg: 'even|' + bid + '|' + per }) + ui.btn(t('d.byPrev'), { cls: 'sm', act: 'sp-fill', arg: 'q3|' + bid + '|' + per });
     var foot = locked ? '<div class="wz-foot"><span class="left">' + (plan ? t('d.readonly') : t('d.locked')) + '</span></div>' : '<div class="wz-foot"><span class="left">' + t('wz.hint') + '</span>' + ui.btn(t('c.saveDraft'), { act: 'sp-draft', arg: bid + '|' + per }) + ui.btn(t('c.sendApproval'), { cls: 'primary', icon: 'send', act: 'sp-send', arg: bid + '|' + per }) + '</div>';
-    var info = ui.card(t('d.fromRegion') + ' — ' + IH.esc(D.branchShort(bid)) + ' · ' + D.periodLabel(per), top, { actions: (per === '2027-Q1' ? '<span class="mut">' + t('d.fromRegionSub', { n: IH.esc(hd.name), d: F.date(D.plan27.received), r: F.date(D.plan27.deadline) }) + '</span> ' : '') + (locked ? '' : ui.pill(t('d.notDist'), 'warning')) });
+    var info = ui.card(t('d.fromRegion') + ' - ' + IH.esc(D.branchShort(bid)) + ' · ' + D.periodLabel(per), top, { actions: (locked ? '' : ui.pill(t('d.notDist'), 'warning')) });
     return info + '<section class="card"><div class="ch"><h2>' + t('d.dist') + '</h2>' + acts + '</div><div class="cb flush">' + tbl + '</div>' + foot + '</section>';
   }
   function splitPage(arg) {
-    var p = (arg || '').split('|'), bid = p[0] || 'B01', per = p[1] || '2027-Q1';
-    var pers = ui.segf('tt-' + bid, 'per', [{ v: '2027-Q1', l: 'Q1 2027' }, { v: '2026-Q4', l: 'Q4 2026' }]);
+    var p = (arg || '').split('|'), bid = p[0] || 'B01', per = p[1] || defSplitPer();
+    var pers = ui.segf('tt-' + bid, 'per', splitPers());
     IH.v('tt-' + bid).per = IH.v('tt-' + bid).per || per;
-    IH.refreshers['tt-' + bid] = function () { IH.go('dodela-targeta/raspodela/' + bid + '|' + (IH.v('tt-' + bid).per || '2027-Q1')); };
+    IH.refreshers['tt-' + bid] = function () { IH.go('dodela-targeta/raspodela/' + bid + '|' + (IH.v('tt-' + bid).per || defSplitPer())); };
     return ui.header(t('d.splitTitle'), '', '', '<a href="#/dodela-targeta">' + t('d.title') + '</a> ' + ic('chevr') + ' ' + IH.esc(D.branchShort(bid))) + '<div style="margin-bottom:16px">' + pers + '</div>' + splitBody(bid, per, false);
   }
   IH.act['asg-split'] = function (el) { var p = el.dataset.arg.split('|'); IH.v('tt-' + p[0]).per = p[1]; IH.go('dodela-targeta/raspodela/' + el.dataset.arg); };
@@ -434,11 +434,11 @@
       ins.forEach(function (el) { if (el.value) any = true; sum += parseNum(el.value); });
       if (!ins.length) { sum = D.branchStaff(bid, 'licni').filter(function (e) { return usesT(e.id, tg.id, per); }).reduce(function (a, e) { return a + D.val(tg.id, per, { emp: e.id }); }, 0); any = true; }
       var bt = D.val(tg.id, per, { branch: bid });
-      IH.swap('ss-' + tg.id, any ? fmtU(sum, tg.unit) : '—');
+      IH.swap('ss-' + tg.id, any ? fmtU(sum, tg.unit) : '-');
       IH.swap('sd-' + tg.id, any ? diffCell(sum - bt, tg.unit) : '<span class="mut">' + fmtU(-bt, tg.unit) + '</span>');
     });
   }
-  function curSplit() { var c = IH.current(); if (c.id === 'targeti-tima') return { bid: IH.me().branch, per: IH.v('tt').per || '2027-Q1' }; var p = (c.params[1] || 'B01|2027-Q1').split('|'); return { bid: p[0], per: p[1] }; }
+  function curSplit() { var c = IH.current(); if (c.id === 'targeti-tima') return { bid: IH.me().branch, per: IH.v('tt').per || defSplitPer() }; var p = (c.params[1] || 'B01|' + defSplitPer()).split('|'); return { bid: p[0], per: p[1] }; }
   document.addEventListener('input', function (e) { if (e.target.dataset && e.target.dataset.sp2) { var s = curSplit(); updSums(s.bid, s.per); } });
   IH.act['sp-fill'] = function (el) {
     var p = el.dataset.arg.split('|'), mode = p[0], bid = p[1], per = p[2];
@@ -460,7 +460,7 @@
     splitTargets(bid, per).forEach(function (tg) {
       D.branchStaff(bid, 'licni').filter(function (e) { return usesT(e.id, tg.id, per); }).forEach(function (e) { var inp = document.querySelector('[data-sp2="' + e.id + '|' + tg.id + '"]'); vals[D.valKey(tg.id, per, { emp: e.id })] = inp && inp.value ? parseNum(inp.value) : D.val(tg.id, per, { emp: e.id }); });
     });
-    if (per === '2027-Q1') IH.map('plan27Status')[bid] = 'na_odobravanju'; else IH.map('branchSplit')[bid + '|' + per] = 'na_odobravanju';
+    IH.map('branchSplit')[bid + '|' + per] = 'na_odobravanju';
     var hd = head(D.branch(bid).region), me = IH.me();
     IH.audit('cascade', bid, { sr: 'Raspodela ' + D.periodLabel(per) + ' poslata na odobrenje', en: D.periodLabel(per) + ' split submitted for approval' }, { sr: 'Odobrava: ' + hd.name, en: 'Approver: ' + hd.name });
     IH.state.data.extraNotif = IH.state.data.extraNotif || {};
@@ -492,14 +492,14 @@
   }
   function regBranches(rid, tg, per) { return D.branches.filter(function (b) { return b.region === rid && (tg.kind === 'timski' || staffFor(tg, b.id, per).length); }); }
   function regionPage(arg) {
-    var p = (arg || '').split('|'), rid = p[0] || 'R1', per = p[1] || '2027-Q1', rg = D.region(rid), plan = editable(per), st = regStatus(rid, per), locked = !plan || st !== 'nacrt' && IH.v('rg-' + rid).edit !== true;
+    var p = (arg || '').split('|'), rid = p[0] || 'R1', per = p[1] || defSplitPer(), rg = D.region(rid), plan = editable(per), st = regStatus(rid, per), locked = !plan || st !== 'nacrt' && IH.v('rg-' + rid).edit !== true;
     var tgs = regTargets(rid, per), brs = D.branches.filter(function (b) { return b.region === rid; });
     var rt = {}; tgs.forEach(function (tg) { rt[tg.id] = D.val(tg.id, per, { region: rid }); });
     var top = '<div class="kpis" style="margin:0">' + tgs.map(function (tg) { return ui.kpi(IH.esc(IH.L(tg.name)), tg.unit === 'RSD' ? F.mio(rt[tg.id]) + '<span class="u">RSD</span>' : F.num(rt[tg.id]) + '<span class="u">' + IH.unitTxt(tg.unit) + '</span>'); }).join('') + '</div>';
     var rows = brs.map(function (b) {
       var r = '<tr><td class="nw"><b>' + IH.esc(D.branchShort(b)) + '</b> <span class="mut">· ' + D.branchStaff(b.id, 'licni').length + ' / ' + D.branchStaff(b.id, 'univerzalni').length + '</span></td>';
       tgs.forEach(function (tg) {
-        if (regBranches(rid, tg, per).indexOf(b) < 0) { r += '<td class="num mut">—</td>'; return; }
+        if (regBranches(rid, tg, per).indexOf(b) < 0) { r += '<td class="num mut">-</td>'; return; }
         var sug = F.num(D.val(tg.id, per, { branch: b.id })), key = 'rg|' + b.id + '|' + tg.id, cur = IH.form[key] != null ? IH.form[key] : sug;
         r += '<td class="num">' + (locked ? '<b>' + sug + '</b>' : '<input style="width:140px;margin-left:auto;display:block" class="in cell" data-rg="' + b.id + '|' + tg.id + '" data-k="' + key + '" value="' + IH.esc(cur) + '">') + '</td>';
       });
@@ -508,14 +508,14 @@
     var sumRow = '<tr class="lvl-0"><td>' + t('d.sumRow') + '</td>' + tgs.map(function (tg) { return '<td class="num" id="rs-' + tg.id + '"></td>'; }).join('') + '</tr>';
     var tgtRow = '<tr><td>' + t('d.targetRowR') + '</td>' + tgs.map(function (tg) { return '<td class="num">' + fmtU(rt[tg.id], tg.unit) + '</td>'; }).join('') + '</tr>';
     var diffRow = '<tr><td><b>' + t('d.diffRow') + '</b></td>' + tgs.map(function (tg) { return '<td class="num" id="rd-' + tg.id + '"></td>'; }).join('') + '</tr>';
-    var tbl = '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + t('d.colBranch') + '</th>' + tgs.map(function (tg) { return '<th class="num">' + IH.esc(IH.L(tg.name)) + (tg.unit === 'RSD' ? ' (RSD)' : tg.unit === 'bod' ? ' (' + IH.unitTxt('bod') + ')' : '') + '</th>'; }).join('') + '</tr></thead><tbody>' + rows + '</tbody><tfoot>' + sumRow + tgtRow + diffRow + '</tfoot></table></div>';
+    var tbl = '<div class="tbl-wrap"><table class="t"><thead><tr><th>' + t('d.colBranch') + '</th>' + tgs.map(function (tg) { return '<th class="num">' + IH.esc(IH.L(tg.name)) + (tg.unit === 'RSD' ? ' (RSD)' : '') + '</th>'; }).join('') + '</tr></thead><tbody>' + rows + '</tbody><tfoot>' + sumRow + tgtRow + diffRow + '</tfoot></table></div>';
     var acts = locked ? ui.st2(st) + (plan ? ' ' + ui.btn(t('c.edit'), { cls: 'sm', icon: 'edit', act: 'rg-edit', arg: rid }) : '') : ui.btn(t('d.even'), { cls: 'sm', act: 'rg-fill', arg: 'even|' + rid + '|' + per }) + ui.btn(t('d.byStaff'), { cls: 'sm', act: 'rg-fill', arg: 'staff|' + rid + '|' + per }) + ui.btn(t('d.byPrev'), { cls: 'sm', act: 'rg-fill', arg: 'q3|' + rid + '|' + per });
     var foot = locked ? '' : '<div class="wz-foot"><span class="left">' + t('wz.hint') + '</span>' + ui.btn(t('c.cancel'), { act: 'rg-cancel', arg: rid }) + ui.btn(t('d.confirm'), { cls: 'primary', icon: 'check', act: 'rg-save', arg: rid + '|' + per }) + '</div>';
     return ui.header(t('d.splitRTitle'), '', '', '<a href="#/dodela-targeta">' + t('d.title') + '</a> ' + ic('chevr') + ' ' + IH.esc(IH.L(rg.name))) +
-      ui.card(t('d.targetRowR') + ' — ' + IH.esc(IH.L(rg.name)) + ' · ' + D.periodLabel(per), top, { actions: '<span class="mut">' + t('d.approver') + ': ' + IH.esc(head(rid).name) + '</span>' }) +
+      ui.card(t('d.targetRowR') + ' - ' + IH.esc(IH.L(rg.name)) + ' · ' + D.periodLabel(per), top, { actions: '<span class="mut">' + t('d.approver') + ': ' + IH.esc(head(rid).name) + '</span>' }) +
       '<section class="card"><div class="ch"><h2>' + t('d.distR') + '</h2>' + acts + '</div><div class="cb flush">' + tbl + '</div>' + foot + '</section>';
   }
-  function curReg() { var c = IH.current(), p = (c.params[1] || 'R1|2027-Q1').split('|'); return { rid: p[0], per: p[1] }; }
+  function curReg() { var c = IH.current(), p = (c.params[1] || 'R1|' + defSplitPer()).split('|'); return { rid: p[0], per: p[1] }; }
   function updReg(rid, per) {
     regTargets(rid, per).forEach(function (tg) {
       var ins = document.querySelectorAll('[data-rg$="|' + tg.id + '"]'), sum = 0;
@@ -558,22 +558,25 @@
   };
 
   /* ---------- uvoz dodela ---------- */
-  IH.act['asg-imp'] = function () { IH.v('aimp').file = false; IH.go('dodela-targeta/uvoz/1'); };
+  /* uvoz dodela: prvi planirani kvartal iz kalendara (Obračunski periodi) */
+  function impPer() { var l = D.plannedOf('Q'); return l[0] ? l[0].id : null; }
+  function iFile(per) { return 'Targeti_' + D.periodLabel(per).replace(/\s+/g, '_') + '_Subotica_Cacak.xlsx'; }
+  IH.act['asg-imp'] = function () { if (!impPer()) { IH.toast(t('pe.noPlanned')); return; } IH.v('aimp').file = false; IH.go('dodela-targeta/uvoz/1'); };
   function m1T() { return ['TG-101', 'TG-102', 'TG-103'].map(D.target); }
   function importPage(step) {
     var cur = Math.max(0, Math.min(2, (+step || 1) - 1)), loaded = IH.v('aimp').file;
     var steps = [{ label: t('d.i1') }, { label: t('d.i2') }, { label: t('d.i3') }];
-    var lic = D.branchStaff('B05', 'licni').concat(D.branchStaff('B08', 'licni')), tgs = m1T();
+    var lic = D.branchStaff('B05', 'licni').concat(D.branchStaff('B08', 'licni')), tgs = m1T(), per = impPer() || '2026-Q4';
     var body;
     if (cur === 0) {
-      body = (loaded ? '<div class="filechip">' + ic('file') + '<div style="flex:1"><b>' + t('d.iFile') + '</b><div class="hint" style="margin:0">' + t('d.iRead') + '</div></div>' + ic('checkc') + '</div>'
+      body = (loaded ? '<div class="filechip">' + ic('file') + '<div style="flex:1"><b>' + iFile(per) + '</b><div class="hint" style="margin:0">' + t('d.iRead') + '</div></div>' + ic('checkc') + '</div>'
         : '<div class="drop">' + ic('upload') + '<div>' + t('c.dropFile') + '</div><div style="margin-top:10px">' + ui.btn(t('c.chooseFile'), { cls: 'primary', act: 'aimp-file' }) + '</div></div>') +
         '<div style="margin-top:12px">' + ui.btn(t('k.impTemplate'), { cls: 'ghost sm', icon: 'download', act: 'export', arg: 'Sablon_dodele.xlsx' }) + '</div>';
     } else if (cur === 1) {
       var rows = [], rn = 2;
-      lic.forEach(function (e) { tgs.forEach(function (tg) { rows.push({ r: rn++, n: IH.esc(e.name), b: IH.esc(D.branch(e.branch).city), t: IH.esc(IH.L(tg.name)), v: fmtU(D.val(tg.id, '2027-Q1', { emp: e.id }), tg.unit), res: ui.pill(t('k.rOk'), 'success'), a: ui.pill(t('k.aNew'), 'accent') }); }); });
+      lic.forEach(function (e) { tgs.forEach(function (tg) { rows.push({ r: rn++, n: IH.esc(e.name), b: IH.esc(D.branch(e.branch).city), t: IH.esc(IH.L(tg.name)), v: fmtU(D.val(tg.id, per, { emp: e.id }), tg.unit), res: ui.pill(t('k.rOk'), 'success'), a: ui.pill(t('k.aNew'), 'accent') }); }); });
       rows.push({ r: rn++, n: 'HR-99999', b: 'Čačak', t: IH.esc(IH.L(tgs[0].name)), v: '8.000.000 RSD', res: ui.pill(t('k.rErr'), 'danger') + ' <span class="mut">' + t('d.iErr1') + '</span>', a: ui.pill(t('k.aErr'), 'danger') });
-      rows.push({ r: rn++, n: IH.esc(lic[1].name), b: IH.esc(D.branch(lic[1].branch).city), t: IH.esc(IH.L(tgs[0].name)), v: fmtU(D.val('TG-101', '2027-Q1', { emp: lic[1].id }), 'RSD'), res: ui.pill(t('k.rErr'), 'danger') + ' <span class="mut">' + t('d.iErr2') + '</span>', a: ui.pill(t('k.aErr'), 'danger') });
+      rows.push({ r: rn++, n: IH.esc(lic[1].name), b: IH.esc(D.branch(lic[1].branch).city), t: IH.esc(IH.L(tgs[0].name)), v: fmtU(D.val('TG-101', per, { emp: lic[1].id }), 'RSD'), res: ui.pill(t('k.rErr'), 'danger') + ' <span class="mut">' + t('d.iErr2') + '</span>', a: ui.pill(t('k.aErr'), 'danger') });
       body = '<div class="note">' + t('d.iSum', { a: lic.length * 3, b: 0, c: 2 }) + '</div>' + ui.table([{ key: 'r', label: t('k.impRow'), num: true }, { key: 'a', label: t('k.impAction') }, { key: 'n', label: t('d.colCarrier') }, { key: 'b', label: t('c.branch') }, { key: 't', label: t('d.colTarget') }, { key: 'v', label: t('d.colValue'), num: true }, { key: 'res', label: t('k.impRes') }], rows, { compact: true });
     } else {
       body = ui.checks([{ label: t('d.iCheck1') }, { label: t('d.iCheck2') }, { label: t('d.iErr1'), state: 'warn' }, { label: t('d.iErr2'), state: 'warn' }]) + '<div class="hr"></div><div class="big-amt">' + (lic.length * 3) + '<span class="u">' + IH.L(L('dodela za primenu', 'assignments to apply')) + '</span></div>';
@@ -585,11 +588,12 @@
   }
   IH.act['aimp-file'] = function () { IH.v('aimp').file = true; IH.render(); };
   IH.act['aimp-apply'] = function () {
+    var per = impPer(); if (!per) { IH.toast(t('pe.noPlanned')); return; }
     var vals = IH.map('vals'), lic = D.branchStaff('B05', 'licni').concat(D.branchStaff('B08', 'licni'));
-    lic.forEach(function (e) { m1T().forEach(function (tg) { vals[D.valKey(tg.id, '2027-Q1', { emp: e.id })] = D.val(tg.id, '2027-Q1', { emp: e.id }); }); });
-    var st = IH.map('plan27Status'); st.B05 = 'na_odobravanju'; st.B08 = 'na_odobravanju';
-    IH.audit('cascade', 'import', { sr: 'Uvoz dodela Q1 2027 — Subotica i Čačak', en: 'Q1 2027 assignment import — Subotica and Čačak' }, { sr: (lic.length * 3) + ' dodela primenjeno, 2 reda odbijena', en: (lic.length * 3) + ' assignments applied, 2 rows rejected' });
-    EN.invalidate(); IH.save(); IH.v('asg').per = '2027-Q1'; IH.go('dodela-targeta'); IH.toast(t('d.iDone', { n: lic.length * 3 }));
+    lic.forEach(function (e) { m1T().forEach(function (tg) { vals[D.valKey(tg.id, per, { emp: e.id })] = D.val(tg.id, per, { emp: e.id }); }); });
+    var st = IH.map('branchSplit'); st['B05|' + per] = 'na_odobravanju'; st['B08|' + per] = 'na_odobravanju';
+    IH.audit('cascade', 'import', { sr: 'Uvoz dodela ' + D.periodLabel(per) + ' - Subotica i Čačak', en: D.periodLabel(per) + ' assignment import - Subotica and Čačak' }, { sr: (lic.length * 3) + ' dodela primenjeno, 2 reda odbijena', en: (lic.length * 3) + ' assignments applied, 2 rows rejected' });
+    EN.invalidate(); IH.save(); IH.v('asg').per = per; IH.go('dodela-targeta'); IH.toast(t('d.iDone', { n: lic.length * 3 }));
   };
 
   IH.route('dodela-targeta', {
@@ -606,18 +610,19 @@
 
   /* ================= MENADŽER: Targeti tima ================= */
   function mgrPage() {
-    var me = IH.me(), bid = me.branch, v = IH.v('tt'), per = v.per || '2027-Q1';
-    var tb = '<div style="margin-bottom:16px">' + ui.segf('tt', 'per', [{ v: '2027-Q1', l: 'Q1 2027' }, { v: '2026-Q4', l: 'Q4 2026' }]) + '</div>';
+    var me = IH.me(), bid = me.branch, v = IH.v('tt'), pers = splitPers(), per = v.per || defSplitPer();
+    if (!pers.some(function (o) { return o.v === per; })) per = defSplitPer();
+    var tb = '<div style="margin-bottom:16px">' + ui.segf('tt', 'per', pers) + '</div>';
     var h = ui.header(t('tt.title'), '', '', IH.esc(D.branchName(bid)));
-    if (per === '2026-Q4') {
-      var lic = D.branchStaff(bid, 'licni'), tgs = splitTargets(bid, '2026-Q4');
-      var rows = lic.map(function (e) { var r = { n: '<b>' + IH.esc(e.name) + '</b>' }, res = EN.result(e.id, '2026-Q4'); tgs.forEach(function (tg) { var x = (res.targets || []).filter(function (q) { return q.id === tg.id; })[0]; r[tg.id] = x ? fmtU(x.target, x.unit) : '—'; r[tg.id + 'p'] = x ? ui.pcell(x.pct, { max: 1.2 }) : ''; }); return r; });
+    if (!editable(per)) {
+      var lic = D.branchStaff(bid, 'licni'), tgs = splitTargets(bid, per);
+      var rows = lic.map(function (e) { var r = { n: '<b>' + IH.esc(e.name) + '</b>' }, res = EN.result(e.id, per); tgs.forEach(function (tg) { var x = (res.targets || []).filter(function (q) { return q.id === tg.id; })[0]; r[tg.id] = x ? fmtU(x.target, x.unit) : '-'; r[tg.id + 'p'] = x ? ui.pcell(x.pct, { max: 1.2 }) : ''; }); return r; });
       var cols = [{ key: 'n', label: t('c.employee') }]; tgs.forEach(function (tg) { cols.push({ key: tg.id, label: IH.esc(IH.L(tg.name)), num: true }); cols.push({ key: tg.id + 'p', label: t('c.pct'), w: '150px' }); });
       var m3 = EN.m3(bid, '2026-10');
       var m3t = ui.table([{ key: 'k', label: t('c.target') }, { key: 't', label: t('c.target'), num: true }, { key: 'a', label: t('c.ach'), num: true }, { key: 's', label: IH.L(L('Udeo', 'Share')), num: true }], m3.kpis.map(function (k) { return { k: IH.esc(IH.L(k.name)), t: F.unit(k.target, k.unit), a: F.unit(Math.round(k.ach), k.unit), s: F.pct(k.share) }; }), { compact: true });
       return h + tb + ui.card(t('tt.q4title'), ui.table(cols, rows), { flush: true, actions: ui.st2('odobreno') }) + ui.card(t('tt.teamM3'), m3t, { flush: true });
     }
-    return h + tb + splitBody(bid, '2027-Q1', true);
+    return h + tb + splitBody(bid, per, true);
   }
   IH.route('targeti-tima', {
     title: function () { return t('tt.title'); },

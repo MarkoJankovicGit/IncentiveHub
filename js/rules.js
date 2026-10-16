@@ -1,4 +1,4 @@
-/* Incentive Hub — pravila merenja i uslovi priznavanja (parametarski)
+/* Incentive Hub - pravila merenja i uslovi priznavanja (parametarski)
    Uslov u targetu = šablon iz šifarnika (rečenica + definicija + posledica) sa parametrima (rok u danima, iznos, vrednost).
    Posledica (šta se dešava ako uslov nije ispunjen) je deo šablona i ne bira se u targetu. */
 (function () {
@@ -13,24 +13,19 @@
     { id: 'datum_isplate', name: L('Datum isplate', 'Disbursement date'), type: 'date', basis: true, pt: ['kredit'] },
     { id: 'datum_aktivacije', name: L('Datum aktivacije', 'Activation date'), type: 'date', basis: true, pt: ['kartica', 'racun'] },
     { id: 'datum_naknade', name: L('Datum naplate prve naknade', 'First fee date'), type: 'date', pt: ['racun', 'kartica'] },
-    { id: 'datum_priliva', name: L('Datum prvog priliva zarade', 'First salary inflow date'), type: 'date', pt: ['racun'] },
     { id: 'datum_prve_tx', name: L('Datum prve transakcije', 'First transaction date'), type: 'date', pt: ['kartica', 'racun'] },
     { id: 'datum_otkaza', name: L('Otkaz / zatvaranje', 'Cancellation / closure'), type: 'event', pt: ['racun', 'kartica'] },
-    { id: 'datum_prevremene_otplate', name: L('Prevremena otplata', 'Early repayment'), type: 'event', pt: ['kredit'] },
-    { id: 'broj_priliva', name: L('Broj priliva zarade', 'Number of salary inflows'), type: 'number', pt: ['racun'] },
-    { id: 'iznos_priliva', name: L('Prosečan mesečni priliv', 'Average monthly inflow'), type: 'amount', pt: ['racun'] },
     { id: 'broj_tx', name: L('Broj transakcija', 'Number of transactions'), type: 'number', pt: ['kartica', 'racun'] },
     { id: 'dpd', name: L('Dani docnje', 'Days past due'), type: 'number', pt: ['kredit', 'kartica'] },
     { id: 'rocnost', name: L('Ročnost (meseci)', 'Tenor (months)'), type: 'number', pt: ['kredit'] },
     { id: 'status_ugovora', name: L('Status ugovora', 'Contract status'), type: 'list', pt: ['kredit', 'kartica', 'racun'], values: [{ v: 'odobren', l: L('Odobren', 'Approved') }, { v: 'isplacen', l: L('Isplaćen', 'Disbursed') }, { v: 'aktivan', l: L('Aktivan', 'Active') }, { v: 'zatvoren', l: L('Zatvoren', 'Closed') }] },
     { id: 'kanal', name: L('Kanal ugovaranja', 'Channel'), type: 'list', pt: ['racun', 'kartica', 'kredit'], values: [{ v: 'ekspozitura', l: L('Ekspozitura', 'Branch') }, { v: 'digitalno', l: L('Mobilna aplikacija', 'Mobile app') }, { v: 'kontakt_centar', l: L('Kontakt centar', 'Contact centre') }] },
+    { id: 'datum_priliva', name: L('Datum prvog priliva zarade', 'First salary inflow date'), type: 'date', pt: ['kredit'] },
     { id: 'izvor_refi', name: L('Izvor refinansiranja', 'Refinancing source'), type: 'list', pt: ['kredit'], values: [{ v: 'eksterni', l: L('Druga banka', 'Other bank') }, { v: 'interni', l: L('Ista banka', 'Same bank') }] },
     { id: 'valuta', name: L('Valuta', 'Currency'), type: 'list', pt: ['kredit', 'racun'], values: [{ v: 'RSD', l: 'RSD' }, { v: 'EUR', l: 'EUR' }] },
     { id: 'ntb', name: L('Novi klijent banke', 'New-to-bank client'), type: 'bool', pt: ['racun', 'kartica', 'kredit'] },
     { id: 'naknada_naplacena', name: L('Naplaćena prva naknada', 'First fee charged'), type: 'bool', date: 'datum_naknade', pt: ['racun', 'kartica'] },
     { id: 'iznos', name: L('Iznos prodaje', 'Sale amount'), type: 'amount', pt: ['kredit'] },
-    { id: 'hipoteka_potrebna', name: L('Kredit sa hipotekom', 'Mortgage-backed loan'), type: 'bool', pt: ['kredit'] },
-    { id: 'datum_hipoteke', name: L('Datum upisa hipoteke', 'Mortgage registration date'), type: 'date', pt: ['kredit'] },
     { id: 'klijent_zaposleni', name: L('Klijent je zaposleni banke ili član porodice', 'Client is a bank employee or family member'), type: 'bool', pt: ['racun', 'kartica', 'kredit'] }
   ];
   R.attr = function (id) { return R.attrs.concat(IH.list('newAttrsItem')).filter(function (a) { return a.id === id; })[0]; };
@@ -73,22 +68,18 @@
       txt: L('Računa se samo kredit koji je isplaćen klijentu', 'Only a loan disbursed to the client counts'),
       def: L('Odobren, a još neisplaćen kredit ne ulazi u ostvarenje. Ulazi kada bude isplaćen.', 'An approved but not yet disbursed loan does not count. It counts once disbursed.'),
       c: { attr: 'status_ugovora', op: 'eq', value: 'isplacen', effect: 'uslov' } },
-    { id: 'T-EXCLUDE', name: L('Refinansiranje iste banke', 'Same-bank refinancing'), pt: ['kredit'],
+    { id: 'T-EXCLUDE', name: L('Bez refinansiranja kredita naše banke', 'No same-bank refinancing'), pt: ['kredit'],
       txt: L('Ne računa se refinansiranje kredita naše banke', 'Refinancing of our own bank\'s loan does not count'),
       def: L('Prebacivanje postojećeg kredita naše banke u novi kredit nije nova prodaja. Refinansiranje kredita druge banke se računa.', 'Moving an existing loan of our bank into a new loan is not a new sale. Refinancing another bank\'s loan counts.'),
       c: { attr: 'izvor_refi', op: 'ne', value: 'interni', effect: 'iskljucenje' } },
+    { id: 'T-SALARY', name: L('Prenos zarade', 'Salary transfer'), pt: ['kredit'],
+      txt: L('Računa se kada klijent prenese zaradu u našu banku, najkasnije {w} od isplate kredita', 'Counts once the client transfers the salary to our bank, at the latest {w} after disbursement'),
+      def: L('Kredit ulazi u ostvarenje kada na račun klijenta u našoj banci stigne prva zarada. Ako zarada ne stigne u roku, kredit se ne računa.', 'The loan counts once the first salary arrives on the client account in our bank. If it does not arrive in time, the loan does not count.'),
+      c: { attr: 'datum_priliva', op: 'within', window: { n: 60, unit: 'd', from: 'datum_isplate' }, effect: 'odlozeno' } },
     { id: 'T-MIN-AMT', name: L('Minimalan iznos kredita', 'Minimum loan amount'), pt: ['kredit'],
       txt: L('Računa se kredit od najmanje {v}', 'A loan of at least {v} counts'),
       def: L('Krediti manjeg iznosa ne ulaze u ostvarenje. Sprečava da se target ispunjava velikim brojem malih kredita.', 'Smaller loans do not count. Prevents the target from being met with many small loans.'),
       c: { attr: 'iznos', op: 'gte', value: 300000, effect: 'uslov' } },
-    { id: 'T-MORTGAGE', name: L('Upisana hipoteka', 'Mortgage registered'), pt: ['kredit'],
-      txt: L('Stambeni kredit se računa kada se upiše hipoteka, najkasnije {w} od isplate', 'A housing loan counts once the mortgage is registered, at the latest {w} after disbursement'),
-      def: L('Stambeni kredit je završen posao tek kada je hipoteka upisana. Odnosi se samo na kredite sa hipotekom; ostali krediti nisu obuhvaćeni.', 'A housing loan is complete only once the mortgage is registered. Applies only to mortgage-backed loans; other loans are not affected.'),
-      c: { attr: 'datum_hipoteke', op: 'within', window: { n: 90, unit: 'd', from: 'datum_isplate' }, when: 'hipoteka_potrebna', effect: 'odlozeno' } },
-    { id: 'T-NO-PREPAY', name: L('Prevremena otplata', 'Early repayment'), pt: ['kredit'],
-      txt: L('Poništava se ako klijent vrati ceo kredit u roku od {w} od isplate', 'Reversed if the client repays the whole loan within {w} of disbursement'),
-      def: L('Ako klijent vrati ceo kredit pre isteka roka, prodaja se poništava u periodu u kom je kredit vraćen.', 'If the client repays the whole loan before the window ends, the sale is reversed in the period of repayment.'),
-      c: { attr: 'datum_prevremene_otplate', op: 'not_within', window: { n: 90, unit: 'd', from: 'datum_isplate' }, effect: 'storno' } },
     { id: 'T-ACTIVATION', name: L('Aktivacija kartice', 'Card activation'), pt: ['kartica'],
       txt: L('Računa se kada klijent aktivira karticu, najkasnije {w} od izdavanja', 'Counts once the client activates the card, at the latest {w} after issue'),
       def: L('Kartica ulazi u ostvarenje kada je klijent aktivira (prva upotreba ili PIN). Ako je ne aktivira u roku, ne računa se.', 'The card counts once the client activates it (first use or PIN). If not activated in time, it does not count.'),
@@ -97,7 +88,7 @@
       txt: L('Računa se kada klijent prvi put plati karticom, najkasnije {w} od izdavanja', 'Counts once the client first pays with the card, at the latest {w} after issue'),
       def: L('Strože od aktivacije: kartica ulazi u ostvarenje tek kada je klijent upotrebi za plaćanje. Ako ne plati u roku, ne računa se.', 'Stricter than activation: the card counts only once the client uses it to pay. If not used in time, it does not count.'),
       c: { attr: 'datum_prve_tx', op: 'within', window: { n: 30, unit: 'd', from: 'datum_prodaje' }, effect: 'odlozeno' } },
-    { id: 'T-NO-CANCEL', name: L('Otkaz proizvoda', 'Product cancellation'), pt: ['racun', 'kartica'],
+    { id: 'T-NO-CANCEL', name: L('Bez otkaza proizvoda', 'No product cancellation'), pt: ['racun', 'kartica'],
       txt: L('Poništava se ako klijent zatvori račun ili otkaže karticu u roku od {w}', 'Reversed if the client closes the account or cancels the card within {w}'),
       def: L('Ako klijent zatvori račun ili otkaže karticu pre isteka roka, prodaja se poništava u periodu u kom je otkaz evidentiran.', 'If the client closes the account or cancels the card before the window ends, the sale is reversed in the period the cancellation is recorded.'),
       c: { attr: 'datum_otkaza', op: 'not_within', window: { n: 90, unit: 'd', from: 'datum_prodaje' }, effect: 'storno' } },
@@ -109,7 +100,7 @@
       txt: L('Računa se samo prodaja novom klijentu banke', 'Only a sale to a new bank client counts'),
       def: L('Novi klijent je onaj koji u poslednjih 12 meseci nije imao nijedan aktivan proizvod u banci.', 'A new client had no active product with the bank in the last 12 months.'),
       c: { attr: 'ntb', op: 'eq', value: true, effect: 'uslov' } },
-    { id: 'T-STAFF', name: L('Prodaja zaposlenima banke', 'Sales to bank staff'),
+    { id: 'T-STAFF', name: L('Bez prodaje zaposlenima banke', 'No sales to bank staff'),
       txt: L('Ne računa se prodaja zaposlenima banke i članovima njihove porodice', 'Sales to bank employees and their family members do not count'),
       def: L('Prodaja klijentu koji je zaposlen u banci ili je član porodice zaposlenog ne ulazi u ostvarenje. Najčešće pravilo protiv nameštanja prodaje.', 'A sale to a client employed by the bank or a family member of an employee does not count. The most common rule against staged sales.'),
       c: { attr: 'klijent_zaposleni', op: 'eq', value: false, effect: 'iskljucenje' } },
@@ -127,7 +118,7 @@
     return { unit: p.unit, measure: p.measure, basis: p.basis, formula: { agg: p.measure === 'iznos' ? 'zbir' : 'broj', measure: p.measure, basis: p.basis }, conds: JSON.parse(JSON.stringify(p.conds)) };
   };
   /* jedinica merenja je ista za sve vrste proizvoda: komadi ili iznos */
-  R.measureOptions = function () { return [{ v: 'broj', l: IH.L(L('Komadi', 'Pieces')) }, { v: 'iznos', l: IH.L(L('Iznos (RSD)', 'Amount (RSD)')) }, { v: 'bodovi', l: IH.L(L('Bodovi', 'Points')) }]; };
+  R.measureOptions = function () { return [{ v: 'broj', l: IH.L(L('Komadi', 'Pieces')) }, { v: 'iznos', l: IH.L(L('Iznos (RSD)', 'Amount (RSD)')) }]; };
   /* po kom datumu prodaja ulazi u period */
   R.basisOptions = function (ptype) {
     if (ptype === 'kredit') return [{ v: 'datum_isplate', l: IH.L(L('Datumu isplate kredita', 'Loan disbursement date')) }, { v: 'datum_prodaje', l: IH.L(L('Datumu ugovaranja', 'Contract date')) }];
@@ -155,7 +146,7 @@
   };
   /* rokovi koji se nude u izboru */
   R.WINS = [{ n: 15, unit: 'd' }, { n: 30, unit: 'd' }, { n: 45, unit: 'd' }, { n: 60, unit: 'd' }, { n: 90, unit: 'd' }, { n: 6, unit: 'm' }, { n: 12, unit: 'm' }];
-  function winTxt(w) { return w && w.n ? w.n + ' ' + unitTxt(+w.n, w.unit) : '—'; }
+  function winTxt(w) { return w && w.n ? w.n + ' ' + unitTxt(+w.n, w.unit) : '-'; }
   R.winTxt = winTxt;
   /* rečenica uslova; parametri su podebljani (html) */
   function fill(txt, c, html) {
@@ -169,7 +160,7 @@
     });
   }
   function genericTxt(c) {
-    var a = R.attr(c.attr); if (!a) return '—';
+    var a = R.attr(c.attr); if (!a) return '-';
     if (c.op === 'within' || c.op === 'not_within') return IH.L(a.name) + ' ' + IH.L(R.ops[c.op]) + ' {w}';
     if (a.type === 'bool') return IH.L(a.name) + ': {v}';
     return IH.L(a.name) + ' ' + IH.L(R.ops[c.op]) + ' {v}' + (c.window && c.window.n ? (IH.state.lang === 'en' ? ' within {w}' : ' u roku od {w}') : '');
@@ -193,9 +184,9 @@
       if (w.n && !opts.some(function (x) { return x.n === +w.n && x.unit === w.unit; })) opts.push({ n: +w.n, unit: w.unit });
       out.push('<select class="in" style="width:auto;min-width:120px" data-cr="' + idx + '" data-cf="win">' + opts.map(function (x) { return '<option value="' + x.n + '|' + x.unit + '"' + (x.n === +w.n && x.unit === w.unit ? ' selected' : '') + '>' + winTxt(x) + '</option>'; }).join('') + '</select>');
     }
-    return out.length ? out.join(' ') : '<span class="mut">—</span>';
+    return out.length ? out.join(' ') : '<span class="mut">-</span>';
   };
-  R.condName = function (c) { var tp = c.tpl && R.template(c.tpl); return tp ? IH.L(tp.name) : (R.attr(c.attr) ? IH.L(R.attr(c.attr).name) : '—'); };
+  R.condName = function (c) { var tp = c.tpl && R.template(c.tpl); return tp ? IH.L(tp.name) : (R.attr(c.attr) ? IH.L(R.attr(c.attr).name) : '-'); };
   R.condDef = function (c) { var tp = c.tpl && R.template(c.tpl); return tp && tp.def ? IH.L(tp.def) : ''; };
   R.effectPill = function (eff) { var e = R.effects[eff || 'uslov']; return '<span class="pill p-' + e.pill + '">' + IH.L(e) + '</span>'; };
   R.measureText = function (ptype, measure) {
@@ -207,7 +198,7 @@
     if (!subj) return '';
     var pt = D.ptype(subj.ptype), segs = (subj.segs || []).map(function (s) { return D.segName(s).toLowerCase(); });
     var s = pt ? IH.L(pt.name) : D.subjPtypeName(subj);
-    if (segs.length && segs.length < D.segments.length) s += ' – ' + segs.join(', ');
+    if (segs.length && segs.length < D.segments.length) s += ' - ' + segs.join(', ');
     if (subj.products && subj.products.length) s += ' (' + subj.products.map(function (p) { return D.productName(p); }).join(', ') + ')';
     return s;
   };
@@ -235,6 +226,9 @@
       a.dpd = r() < 0.95 ? 0 : 5 + Math.floor(r() * 50); a.rocnost = [24, 36, 48, 60, 71, 84, 120][Math.floor(r() * 7)]; a.valuta = /EUR/.test(it.code || '') ? 'EUR' : 'RSD';
       if (p && p.ref) a.izvor_refi = f === 'T-EXCLUDE' ? 'interni' : 'eksterni';
       a.iznos = it.amount || 0;
+      /* prenos zarade: kod većine kredita prva zarada stiže 2-20 dana posle isplate; računa se iz šifre prodaje, bez trošenja generatora (ostali podaci ostaju isti) */
+      var hz = 0; for (var hi = 0; hi < String(it.id).length; hi++) hz = (hz * 31 + String(it.id).charCodeAt(hi)) | 0; hz = Math.abs(hz);
+      if (f !== 'T-SALARY' && hz % 100 < 94) a.datum_priliva = cl(addDays(a.datum_isplate, 2 + hz % 19));
       a.hipoteka_potrebna = !!(p && /^SK-/.test(p.codes[0]));
       if (a.hipoteka_potrebna && f !== 'T-MORTGAGE') a.datum_hipoteke = cl(addDays(a.datum_isplate, 5 + Math.floor(r() * 35)));
     }
@@ -270,7 +264,7 @@
     if (c.op === 'in') return String(val).split(',').map(function (x) { return x.trim(); }).indexOf(String(v)) >= 0;
     return true;
   };
-  /* provera uslova na dan podataka: ok; ili nije ispunjen — pending ako se još može ispuniti u roku (until = poslednji dan roka) */
+  /* provera uslova na dan podataka: ok; ili nije ispunjen - pending ako se još može ispuniti u roku (until = poslednji dan roka) */
   R.evalAsOf = function (c, a, asOf) {
     if (c.when && !a[c.when]) return { ok: true };
     var at = R.attr(c.attr) || {}, w = c.window, win = w && w.n ? +w.n * (w.unit === 'm' ? 30 : 1) : null;
@@ -313,11 +307,11 @@
   /* ---------- UI: uslovi u targetu ---------- */
   IH.addStrings({
     'r.measure': 'Meri se', 'r.basis': 'Prodaja ulazi u period po', 'r.conds': 'Uslovi priznavanja', 'r.colName': 'Uslov', 'r.colText': 'Pravilo', 'r.colEff': 'Vrsta uslova', 'r.colDef': 'Šta znači', 'r.colParam': 'Rok ili vrednost',
-    'r.add': 'Dodaj uslov', 'r.none': 'Nema uslova — računa se svaka prodaja iz predmeta targeta', 'r.pickT': 'Dodaj uslove priznavanja', 'r.pickAdd': 'Dodaj izabrane ({n})', 'r.pickNone': 'Svi uslovi za ovu vrstu proizvoda su već dodati',
+    'r.add': 'Dodaj uslov', 'r.none': 'Nema uslova - računa se svaka prodaja iz predmeta targeta', 'r.pickT': 'Dodaj uslove priznavanja', 'r.pickAdd': 'Dodaj izabrane ({n})', 'r.pickNone': 'Svi uslovi za ovu vrstu proizvoda su već dodati',
     'r.u.d': 'dana', 'r.u.m': 'meseci', 'r.attrType': 'Tip', 'r.isBasis': 'Osnova datuma', 'r.values': 'Vrednosti', 'r.forPt': 'Vrsta proizvoda'
   }, {
     'r.measure': 'Measured as', 'r.basis': 'Sale enters the period by', 'r.conds': 'Recognition conditions', 'r.colName': 'Condition', 'r.colText': 'Rule', 'r.colEff': 'Condition type', 'r.colDef': 'What it means', 'r.colParam': 'Window or value',
-    'r.add': 'Add condition', 'r.none': 'No conditions — every sale in the target subject counts', 'r.pickT': 'Add recognition conditions', 'r.pickAdd': 'Add selected ({n})', 'r.pickNone': 'All conditions for this product type are already added',
+    'r.add': 'Add condition', 'r.none': 'No conditions - every sale in the target subject counts', 'r.pickT': 'Add recognition conditions', 'r.pickAdd': 'Add selected ({n})', 'r.pickNone': 'All conditions for this product type are already added',
     'r.u.d': 'days', 'r.u.m': 'months', 'r.attrType': 'Type', 'r.isBasis': 'Date basis', 'r.values': 'Values', 'r.forPt': 'Product type'
   });
 

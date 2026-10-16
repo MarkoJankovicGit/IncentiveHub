@@ -1,11 +1,11 @@
-/* Incentive Hub — Izveštaji: katalog, obuhvat po roli (menadžer: svoja ekspozitura; posmatrač: odobrene sekcije), izvoz */
+/* Incentive Hub - Izveštaji: katalog, obuhvat po roli (menadžer: svoja ekspozitura; posmatrač: odobrene sekcije), izvoz */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt;
 
   IH.addStrings({
-    'rp.title': 'Izveštaji', 'rp.desc': 'Katalog izveštaja nad istim podacima koje koristi obračun — isti zaposleni ima isti iznos u izveštaju, obračunskom listu i isplati. Svaki izveštaj se izvozi u Excel.',
-    'rp.descMgr': 'Izveštaji za vašu ekspozituru i tim. Brojevi su isti kao u obračunu i isplati.', 'rp.descView': 'Izveštaji koje je administrator odobrio za Posmatrača — tabele samo za čitanje.',
+    'rp.title': 'Izveštaji', 'rp.desc': 'Katalog izveštaja nad istim podacima koje koristi obračun - isti zaposleni ima isti iznos u izveštaju, obračunskom listu i isplati. Svaki izveštaj se izvozi u Excel.',
+    'rp.descMgr': 'Izveštaji za vašu ekspozituru i tim. Brojevi su isti kao u obračunu i isplati.', 'rp.descView': 'Izveštaji koje je administrator odobrio za Posmatrača - tabele samo za čitanje.',
     'rp.open': 'Otvori', 'rp.scope': 'Obuhvat: {s}', 'rp.scopeAll': 'cela banka', 'rp.readonly': 'samo za čitanje', 'rp.viewerOn': 'Odobreno za Posmatrača', 'rp.none': 'Administrator još nije odobrio nijednu sekciju za Posmatrača.', 'rp.asof': 'Podaci do {d}',
     'rg.g1': 'Ostvarenje i prodaja', 'rg.g2': 'Isplate i trošak', 'rg.g3': 'Proizvodi', 'rg.g4': 'Kontrola i audit',
     'r.r1': 'Ostvarenje po ekspozituri i targetu', 'r.r1d': 'Ostvarenje po targetu i ekspozituri, projekcija do kraja perioda i broj bankara na targetu.',
@@ -18,10 +18,10 @@
     'r.r8': 'Izmene podešavanja (audit)', 'r.r8d': 'Ko je i kada menjao katalog, targete, šeme, rasporede, role i šablone.',
     'r.r9': 'Korisnici i pristupi', 'r.r9d': 'Korisnici po roli i deaktivacije.',
     'rc.comp': 'Komponenta', 'rc.amt': 'Iznos (RSD)', 'rc.share': 'Udeo', 'rc.c1': 'Bonus za targete', 'rc.c2': 'Prodaja van targeta', 'rc.c3': 'Kontinuitet', 'rc.c4': 'Storno umanjenja', 'rc.c5': 'Prenos negativnog salda', 'rc.c6': 'Odsečeno limitom', 'rc.c7': 'Ručne korekcije', 'rc.c8': 'Ispravke isplaćenih perioda', 'rc.m1': 'Savetnici', 'rc.m2': 'Menadžeri ekspozitura', 'rc.m3': 'Timovi univerzalnih bankara', 'rc.tot': 'Ukupno za isplatu',
-    'rc.prod': 'Proizvod', 'rc.seg': 'Grupa klijenata', 'rc.pt': 'Vrsta', 'rc.sub': 'Podvrsta', 'rc.ty': 'Tip', 'rc.pdate': 'Datum isplate', 'rc.cnt': 'Prodaja (kom)', 'rc.st': 'Storno', 'rc.n': 'Zaposlenih', 'rc.tot2': 'Ukupno', 'rc.avg': 'Prosečno', 'rc.max': 'Najveća', 'rc.paid': 'Isplaćeno', 'rc.reason': 'Razlog', 'rc.count': 'Broj', 'rc.topic': 'Tema', 'rc.codes': 'Šifara', 'rc.role': 'Rola', 'rc.users': 'Korisnika', 'rc.active': 'Aktivnih'
+    'rc.prod': 'Proizvod', 'rc.seg': 'Segment', 'rc.pt': 'Vrsta', 'rc.sub': 'Podvrsta', 'rc.ty': 'Tip', 'rc.pdate': 'Datum isplate', 'rc.cnt': 'Prodaja (kom)', 'rc.st': 'Storno', 'rc.n': 'Zaposlenih', 'rc.tot2': 'Ukupno', 'rc.avg': 'Prosečno', 'rc.max': 'Najveća', 'rc.paid': 'Isplaćeno', 'rc.reason': 'Razlog', 'rc.count': 'Broj', 'rc.topic': 'Tema', 'rc.codes': 'Šifara', 'rc.role': 'Rola', 'rc.users': 'Korisnika', 'rc.active': 'Aktivnih'
   }, {
-    'rp.title': 'Reports', 'rp.desc': 'A report catalogue over the same data the calculation uses — the same employee has the same amount in a report, a statement and the payout. Every report exports to Excel.',
-    'rp.descMgr': 'Reports for your branch and team. Numbers match calculation and payout.', 'rp.descView': 'Reports the administrator approved for the Viewer — read-only tables.',
+    'rp.title': 'Reports', 'rp.desc': 'A report catalogue over the same data the calculation uses - the same employee has the same amount in a report, a statement and the payout. Every report exports to Excel.',
+    'rp.descMgr': 'Reports for your branch and team. Numbers match calculation and payout.', 'rp.descView': 'Reports the administrator approved for the Viewer - read-only tables.',
     'rp.open': 'Open', 'rp.scope': 'Scope: {s}', 'rp.scopeAll': 'whole bank', 'rp.readonly': 'read-only', 'rp.viewerOn': 'Approved for Viewer', 'rp.none': 'The administrator has not approved any section for the Viewer yet.', 'rp.asof': 'Data as of {d}',
     'rg.g1': 'Achievement and sales', 'rg.g2': 'Payout and cost', 'rg.g3': 'Products', 'rg.g4': 'Control and audit',
     'r.r1': 'Achievement by branch and target', 'r.r1d': 'Achievement by target and branch, projection to period end and bankers on target.',
@@ -34,7 +34,7 @@
     'r.r8': 'Settings changes (audit)', 'r.r8d': 'Who changed the catalogue, targets, schemes, assignments, roles and templates, and when.',
     'r.r9': 'Users and access', 'r.r9d': 'Users by role and deactivations.',
     'rc.comp': 'Component', 'rc.amt': 'Amount (RSD)', 'rc.share': 'Share', 'rc.c1': 'Target bonus', 'rc.c2': 'Out-of-target sales', 'rc.c3': 'Continuity', 'rc.c4': 'Reversal deductions', 'rc.c5': 'Negative balance carried', 'rc.c6': 'Cut by limit', 'rc.c7': 'Manual corrections', 'rc.c8': 'Paid period fixes', 'rc.m1': 'Advisors', 'rc.m2': 'Branch managers', 'rc.m3': 'Universal banker teams', 'rc.tot': 'Total payout',
-    'rc.prod': 'Product', 'rc.seg': 'Client group', 'rc.pt': 'Type', 'rc.sub': 'Subtype', 'rc.ty': 'Kind', 'rc.pdate': 'Payment date', 'rc.cnt': 'Sales (pcs)', 'rc.st': 'Reversals', 'rc.n': 'Staff', 'rc.tot2': 'Total', 'rc.avg': 'Average', 'rc.max': 'Largest', 'rc.paid': 'Paid', 'rc.reason': 'Reason', 'rc.count': 'Count', 'rc.topic': 'Topic', 'rc.codes': 'Codes', 'rc.role': 'Role', 'rc.users': 'Users', 'rc.active': 'Active'
+    'rc.prod': 'Product', 'rc.seg': 'Segment', 'rc.pt': 'Type', 'rc.sub': 'Subtype', 'rc.ty': 'Kind', 'rc.pdate': 'Payment date', 'rc.cnt': 'Sales (pcs)', 'rc.st': 'Reversals', 'rc.n': 'Staff', 'rc.tot2': 'Total', 'rc.avg': 'Average', 'rc.max': 'Largest', 'rc.paid': 'Paid', 'rc.reason': 'Reason', 'rc.count': 'Count', 'rc.topic': 'Topic', 'rc.codes': 'Codes', 'rc.role': 'Role', 'rc.users': 'Users', 'rc.active': 'Active'
   });
 
   var REP = [
@@ -61,7 +61,7 @@
   function seg(id, opts) { IH.refreshers['rp-' + id] = function () { IH.render(); }; var v = IH.v('rp-' + id).per; return { v: opts.some(function (o) { return o.v === v; }) ? v : opts[0].v, html: ui.segf('rp-' + id, 'per', opts) }; }
   var QOPT = function () { return [{ v: '2026-Q4', l: 'Q4 2026 · ' + t('c.projection').toLowerCase() }, { v: '2026-Q3', l: 'Q3 2026' }, { v: '2026-Q2', l: 'Q2 2026' }]; };
   function grid(id, cfg) { return IH.grid(Object.assign({ id: 'rp-g-' + id, exportName: 'Izvestaj_' + id + '.xlsx', actions: [] }, cfg)); }
-  function tName(k) { return IH.L(D.targetByKey('S-M1', k).name).split(' – ')[0]; }
+  function tName(k) { return IH.L(D.targetByKey('S-M1', k).name).split(' - ')[0]; }
 
   /* ---------- izveštaji ---------- */
   var R = {};
@@ -74,7 +74,7 @@
         { key: 'rg', label: t('c.region'), val: function (r) { return IH.L(D.region(r.b.region).name); } },
         { key: 'n', label: t('rc.n'), num: true, search: false, val: function (r) { return r.n; } }]
         .concat(D.TKEYS.map(function (k) { return { key: k, label: tName(k), search: false, val: function (r) { return r[k]; }, render: function (r) { return '<div style="min-width:100px">' + ui.pcell(r[k]) + '</div>'; } }; }))
-        .concat([{ key: 'p', label: t('os.colProj'), num: true, search: false, val: function (r) { return r.pT1; }, render: function (r) { return run ? F.pct(r.pT1) : '<span class="mut">—</span>'; } }, { key: 'on', label: t('os.colOn'), num: true, search: false, val: function (r) { return r.on; }, render: function (r) { return r.on + ' / ' + r.n; } }, { key: 'bn', label: 'Bonus', num: true, search: false, val: function (r) { return r.bonus; }, render: function (r) { return F.num(r.bonus); } }])
+        .concat([{ key: 'p', label: t('os.colProj'), num: true, search: false, val: function (r) { return r.pT1; }, render: function (r) { return run ? F.pct(r.pT1) : '<span class="mut">-</span>'; } }, { key: 'on', label: t('os.colOn'), num: true, search: false, val: function (r) { return r.on; }, render: function (r) { return r.on + ' / ' + r.n; } }, { key: 'bn', label: 'Bonus', num: true, search: false, val: function (r) { return r.bonus; }, render: function (r) { return F.num(r.bonus); } }])
     });
   };
   R['ostvarenje-zaposleni'] = function () {
@@ -103,7 +103,7 @@
         { key: 'pt', label: t('rc.pt'), val: function (x) { return D.ptypeName(x.p.ptype); }, fval: function (x) { return x.p.ptype; }, filter: function () { return D.ptypes.map(function (p) { return { v: p.id, l: IH.L(p.name) }; }); } },
         { key: 'n', label: t('rc.cnt'), num: true, search: false, val: function (x) { return x.a.n; } },
         { key: 'sh', label: t('rc.share'), num: true, search: false, val: function (x) { return x.a.n / (tot || 1); }, render: function (x) { return F.pct(x.a.n / (tot || 1), 1); } },
-        { key: 'a', label: t('rc.amt'), num: true, search: false, val: function (x) { return x.a.amt; }, render: function (x) { return x.a.amt ? F.num(x.a.amt) : '<span class="mut">—</span>'; } },
+        { key: 'a', label: t('rc.amt'), num: true, search: false, val: function (x) { return x.a.amt; }, render: function (x) { return x.a.amt ? F.num(x.a.amt) : '<span class="mut">-</span>'; } },
         { key: 's', label: t('rc.st'), num: true, search: false, val: function (x) { return x.a.st; }, render: function (x) { return x.a.st ? '<span style="color:var(--danger)">' + x.a.st + '</span>' : '<span class="mut">0</span>'; } }
       ]
     });
@@ -125,7 +125,7 @@
         { key: 't', label: t('rc.tot2'), num: true, search: false, val: function (r) { return r.tot; }, render: function (r) { return F.num(r.tot); } },
         { key: 'a', label: t('rc.avg'), num: true, search: false, val: function (r) { return r.avg; }, render: function (r) { return F.num(r.avg); } },
         { key: 'm', label: t('rc.max'), num: true, search: false, val: function (r) { return r.max; }, render: function (r) { return F.num(r.max); } },
-        { key: 'pd', label: t('rc.pdate'), search: false, val: function (r) { return r.p.paidAt || ''; }, render: function (r) { return r.p.paidAt ? F.date(r.p.paidAt) : '<span class="mut">—</span>'; } }
+        { key: 'pd', label: t('rc.pdate'), search: false, val: function (r) { return r.p.paidAt || ''; }, render: function (r) { return r.p.paidAt ? F.date(r.p.paidAt) : '<span class="mut">-</span>'; } }
       ]
     });
   };
@@ -138,10 +138,10 @@
     var m3 = months.reduce(function (a, m) { return a + D.branches.reduce(function (q, b) { return q + EN.m3(b.id, m).total; }, 0); }, 0);
     var rows = [['rc.c1', sum(function (r) { return r.targets.reduce(function (a, x) { return a + x.bonus; }, 0); })], ['rc.c3', sum(function (r) { return r.continuity; })], ['rc.c4', sum(function (r) { return r.storno; })], ['rc.c5', -sum(function (r) { return r.carryIn; })], ['rc.c6', -sum(function (r) { return r.capped ? r.beforeCap - Math.min(r.beforeCap, r.limit) : 0; })], ['rc.c7', sum(function (r) { return r.corrections || 0; })], ['rc.c8', sum(function (r) { return r.priorAdj || 0; })]];
     var m1 = sum(function (r) { return r.payout; }), tot = m1 + m2 + m3;
-    var tb = rows.map(function (x) { return { c: t(x[0]), a: '<span style="color:' + (x[1] < 0 ? 'var(--danger)' : 'var(--ink)') + '">' + F.num(x[1]) + '</span>', s: tot ? F.pct(x[1] / tot, 1) : '—' }; })
+    var tb = rows.map(function (x) { return { c: t(x[0]), a: '<span style="color:' + (x[1] < 0 ? 'var(--danger)' : 'var(--ink)') + '">' + F.num(x[1]) + '</span>', s: tot ? F.pct(x[1] / tot, 1) : '-' }; })
       .concat([{ c: '<b>' + t('rc.m1') + '</b>', a: '<b>' + F.num(m1) + '</b>', s: F.pct(m1 / (tot || 1), 1) }, { c: t('rc.m2'), a: F.num(m2), s: F.pct(m2 / (tot || 1), 1) }]).concat(months.length ? [{ c: t('rc.m3'), a: F.num(m3), s: F.pct(m3 / (tot || 1), 1) }] : []);
     var bar = '<div class="stackbar" style="height:16px;margin:4px 0 14px"><i style="width:' + (m1 / tot * 100) + '%;background:var(--c1)" title="' + t('rc.m1') + '"></i><i style="width:' + (m2 / tot * 100) + '%;background:var(--c2)" title="' + t('rc.m2') + '"></i><i style="width:' + (m3 / tot * 100) + '%;background:var(--c4)" title="' + t('rc.m3') + '"></i></div>';
-    return s.html + '<div class="kpis">' + ui.kpi(t('rc.tot'), F.num(tot) + '<span class="u">RSD</span>', D.periodLabel(pid), { hl: true }) + ui.kpi(t('rc.m1'), F.num(m1)) + ui.kpi(t('rc.m2'), F.num(m2)) + ui.kpi(t('rc.m3'), months.length ? F.num(m3) : '—') + '</div>' +
+    return s.html + '<div class="kpis">' + ui.kpi(t('rc.tot'), F.num(tot) + '<span class="u">RSD</span>', D.periodLabel(pid), { hl: true }) + ui.kpi(t('rc.m1'), F.num(m1)) + ui.kpi(t('rc.m2'), F.num(m2)) + ui.kpi(t('rc.m3'), months.length ? F.num(m3) : '-') + '</div>' +
       ui.card(t('r.r5'), bar + ui.table([{ key: 'c', label: t('rc.comp') }, { key: 'a', label: t('rc.amt'), num: true }, { key: 's', label: t('rc.share'), num: true }], tb, { compact: true, foot: { c: t('rc.tot'), a: F.num(tot), s: '100%' } }));
   };
   R['korekcije-prigovori'] = function () {

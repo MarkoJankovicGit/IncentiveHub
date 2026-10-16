@@ -1,4 +1,4 @@
-/* Incentive Hub — engine obračuna
+/* Incentive Hub - engine obračuna
    Tipovi šeme: bonus za ostvaren target (udeo × % isplate sa skale × osnovica), provizija po prodaji (zbir provizija prodaja × % isplate)
    i bonus + provizija iznad targeta (osnovica do 100% ostvarenja + provizija po prodaji za ostvarenje iznad 100%).
    Prodaja ulazi u ostvarenje tek kada ispuni uslove priznavanja targeta.
@@ -12,20 +12,35 @@
   EN.invalidate = function () { CACHE = {}; };
 
   /* skala: redovi {to, f} rastuće; ostvarenje od (uključeno) do (isključeno); poslednji red otvoren
-     linearna skala: {type:'linear', min, cap} — ispod praga 0, zatim procenat isplate = ostvarenje, do plafona */
+     linearna skala: {type:'linear', min, cap} - ispod praga 0, zatim procenat isplate = ostvarenje, do plafona */
   function band(list, pct) {
     if (list && list.type === 'linear') { if (pct < list.min - 1e-9) return 0; return Math.min(pct, list.cap); }
     for (var i = 0; i < list.length; i++) if (list[i].to == null || pct < list[i].to - 1e-9) return list[i].f;
     return list[list.length - 1].f;
   }
   EN.band = band;
+  /* korpa targeta (opciono u šemi): izabrani targeti se skaliraju zajedno - ponderisani prosek ostvarenja
+     (target ispod „najmanje“ ulazi sa 0%, iznad „najviše“ sa najviše) ide na skalu korpe; ostali targeti imaju skalu šeme ili svoju */
+  function basketApply(s, rows) {
+    var b = s.basket; if (!b || !b.on || (s.type || 'scorecard') === 'provizija') return null;
+    var inB = rows.filter(function (r) { return (b.targets || []).indexOf(r.key) >= 0 && r.inCalc !== false; });
+    if (inB.length < 2) return null;
+    var komb = s.type === 'kombinovana', sw = inB.reduce(function (a, r) { return a + (r.share || 0); }, 0);
+    var parts = inB.map(function (r) { var u = r.pct < (b.min || 0) - 1e-9 ? 0 : b.cap ? Math.min(r.pct, b.cap) : r.pct; return { key: r.key, pct: r.pct, used: u, w: sw > 0 ? (r.share || 0) : 1 }; });
+    var tw = parts.reduce(function (a, x) { return a + x.w; }, 0) || 1;
+    var pct = parts.reduce(function (a, x) { return a + x.w * x.used; }, 0) / tw;
+    var ponder = band(b.scale || s.scale, komb ? Math.min(pct, 1) : pct);
+    inB.forEach(function (r) { r.ponder = ponder; if (r.weight != null) r.weight = ponder; r.basket = true; });
+    return { pct: pct, ponder: ponder, parts: parts, cap: b.cap || 0, min: b.min || 0 };
+  }
+  EN.basketApply = basketApply;
   /* sledeći prag skale iznad ostvarenja (null ako je dostignut najviši) */
   EN.nextBand = function (list, pct) {
     if (list && list.type === 'linear') return pct < list.min ? { at: list.min, f: list.min } : null;
     for (var i = 0; i < list.length; i++) if (list[i].to != null && pct < list[i].to - 1e-9) return { at: list[i].to, f: list[i + 1] ? list[i + 1].f : list[i].f };
     return null;
   };
-  /* indeks opsega za matricu: granice rastuće [0.8, 1.0] → 0: <80%, 1: 80–100%, 2: ≥100% */
+  /* indeks opsega za matricu: granice rastuće [0.8, 1.0] → 0: <80%, 1: 80-100%, 2: ≥100% */
   function bandIdx(bounds, pct) { var i = 0; while (i < bounds.length && pct >= bounds[i] - 1e-9) i++; return i; }
   EN.bandIdx = bandIdx;
 
@@ -64,7 +79,7 @@
   /* vrednost prodaje po pravilu {k:'pct'|'rsd', v, cap} */
   function itemValue(val, it, t) {
     if (!val) return 0;
-    var v = val.k === 'pct' ? (it.amount || 0) * val.v : t && t.unit === 'bod' ? val.v * D.ptsOf(t, it.product) : val.v;
+    var v = val.k === 'pct' ? (it.amount || 0) * val.v : val.v;
     if (val.cap && v > val.cap) v = val.cap;
     return Math.round(v);
   }
@@ -94,7 +109,7 @@
 
   /* ---------- predmet targeta i priznavanje prodaje ---------- */
   function matches(t, i) {
-    var sj = t && D.resolveSubj(t.subject); if (!sj) return false;
+    var sj = t && t.subject; if (!sj) return false;
     if (sj.ptype && i.ptype !== sj.ptype) return false;
     if (sj.segs && sj.segs.length && sj.segs.indexOf(i.seg) < 0) return false;
     if (sj.products && sj.products.length && sj.products.indexOf(i.product) < 0) return false;
@@ -102,7 +117,7 @@
   }
   EN.matches = matches;
   /* da li prodaja ispunjava uslove priznavanja targeta (na dan podataka)
-     ok — ulazi u ostvarenje; ceka — uslov se još može ispuniti u roku; ne — uslov nije ispunjen; iskljuceno — nikad se ne računa
+     ok - ulazi u ostvarenje; ceka - uslov se još može ispuniti u roku; ne - uslov nije ispunjen; iskljuceno - nikad se ne računa
      uslovi sa posledicom „poništava se“ dolaze kao posebne storno stavke */
   EN.recog = function (t, i) {
     var R = IH.rules, conds = t && t.conds;
@@ -110,8 +125,6 @@
     var a = R.itemAttrs(i);
     for (var k = 0; k < conds.length; k++) {
       var c = conds[k]; if (c.effect === 'storno') continue;
-      /* uslov važi samo za vrste proizvoda na koje se odnosi (bodovni target sa više vrsta) */
-      if (c.pt && c.pt.indexOf(i.ptype) < 0) continue;
       var tp = c.tpl && R.template(c.tpl); if (tp && tp.pt && tp.pt.indexOf(i.ptype) < 0) continue;
       var r = R.evalAsOf(c, a, D.DATA_AS_OF); /* uslov sa „when“ važi samo za prodaje gde je to polje tačno */
       if (r.ok) continue;
@@ -135,8 +148,8 @@
       var rc = EN.recog(t, i);
       if (rc.st === 'ok') pos.push(i); else if (rc.st === 'ceka') wait.push(i); else rej.push(i);
     });
-    var amt = t.unit === 'RSD', pts = t.unit === 'bod';
-    function sum(l) { return pts ? l.reduce(function (a, i) { return a + D.ptsOf(t, i.product); }, 0) : amt ? l.reduce(function (a, i) { return a + (i.amount || 0); }, 0) : l.length; }
+    var amt = t.unit === 'RSD';
+    function sum(l) { return amt ? l.reduce(function (a, i) { return a + (i.amount || 0); }, 0) : l.length; }
     var g = sum(pos), s = sum(neg), z = sum(clo);
     return { gross: g, storno: s, closed: z, ach: g - s - z, n: pos.length, nStorno: neg.length, nClosed: clo.length, nWait: wait.length, nRej: rej.length, items: pos, stornoItems: neg, closedItems: clo, waitItems: wait, rejItems: rej };
   }
@@ -170,7 +183,7 @@
   };
   /* parametri šeme u periodu; opts.ver = druga verzija (simulacija) */
   function schemeIn(s, pid, opts) {
-    if (opts && opts.ver) { var o = Object.assign({}, s); ['type', 'targets', 'scale', 'conds', 'rules', 'continuity', 'teamFactor', 'carryNegative'].forEach(function (k) { if (opts.ver[k] !== undefined) o[k] = opts.ver[k]; }); o.ver = opts.ver; return o; }
+    if (opts && opts.ver) { var o = Object.assign({}, s); ['type', 'targets', 'scale', 'basket', 'conds', 'rules', 'continuity', 'teamFactor', 'carryNegative'].forEach(function (k) { if (opts.ver[k] !== undefined) o[k] = opts.ver[k]; }); o.ver = opts.ver; return o; }
     return D.schemeAt(s, pid);
   }
   EN.schemeIn = schemeIn;
@@ -194,7 +207,9 @@
     var t = D.targetAt(tid, pid), p = D.period(pid); if (!t) return 1;
     var proj = project && p.status === 'u_toku' ? 1 / D.elapsed(pid) : 1;
     var tgt = D.val(tid, pid, { branch: bid });
-    var pct = tgt ? pctOf(t, achieve(t, branchItems(bid, pid)).ach * proj, tgt) : 0;
+    var its = branchItems(bid, pid);
+    if (t.team && t.team.length) its = its.filter(function (i) { var e = D.emp(i.emp); return !e || t.team.indexOf(e.pos) >= 0; });
+    var pct = tgt ? pctOf(t, achieve(t, its).ach * proj, tgt) : 0;
     CACHE[k] = pct; return pct;
   };
 
@@ -270,7 +285,7 @@
   /* ---------- individualni obračun (savetnik; univerzalni sa individualnom šemom) ---------- */
   EN.m1 = function (empId, pid, opts) {
     opts = opts || {};
-    var key = 'm1|' + empId + '|' + pid + '|' + (opts.project ? 'p' : '') + (opts.noCont ? 'n' : '') + (opts.simKey ? '|' + opts.simKey : '');
+    var key = 'm1|' + empId + '|' + pid + '|' + (opts.project ? 'p' : '') + (opts.noCont ? 'n' : '') + (opts.simKey ? '|' + opts.simKey : '') + (opts.sch ? '|s:' + opts.sch.id : '');
     if (CACHE[key]) return CACHE[key];
     var s0 = opts.sch || EN.schemeFor(empId, pid);
     if (!s0) return (CACHE[key] = noScheme(empId, pid));
@@ -305,6 +320,7 @@
       byKey[tc.key] = r;
       res.targets.push(r);
     });
+    res.basket = basketApply(s, res.targets);
     res.condRes = applyRules(s, byKey, empId, pid, opts);
     res.targets.forEach(function (r) { r.bonus = payOf(r); });
     res.depActive = res.targets.some(function (r) { return r.dep !== 1; });
@@ -368,7 +384,7 @@
   };
   EN.m3 = function (bid, pid, opts) {
     opts = opts || {};
-    var key = 'm3|' + bid + '|' + pid + '|' + (opts.project ? 'p' : '') + (opts.simKey ? '|' + opts.simKey : '');
+    var key = 'm3|' + bid + '|' + pid + '|' + (opts.project ? 'p' : '') + (opts.simKey ? '|' + opts.simKey : '') + (opts.sch ? '|s:' + opts.sch.id : '');
     if (CACHE[key]) return CACHE[key];
     var s0 = opts.sch || EN.teamScheme(bid, pid), p = D.period(pid);
     var empty = { branch: bid, period: pid, scheme: null, noScheme: true, model: 'M3', kpis: [], targets: [], members: [], total: 0, payoutPct: 0, teamFactor: 1, onTarget: 0, condRes: [], base: 0 };
@@ -391,6 +407,7 @@
       byKey[tc.key] = k;
       res.kpis.push(k);
     });
+    res.basket = basketApply(s, res.kpis);
     res.condRes = applyRules(s, byKey, members[0] ? members[0].id : null, pid, opts);
     res.kpis.forEach(function (k) {
       var eff = k.weight * k.dep; if (k.kap != null && eff > k.kap) { eff = k.kap; k.capT = true; }
@@ -431,7 +448,7 @@
   /* ---------- menadžer ekspoziture (osnovica po targetima nad rezultatom ekspoziture) ---------- */
   EN.m2 = function (mgrId, pid, opts) {
     opts = opts || {};
-    var key = 'm2|' + mgrId + '|' + pid + '|' + (opts.project ? 'p' : '') + (opts.noCont ? 'n' : '') + (opts.simKey ? '|' + opts.simKey : '');
+    var key = 'm2|' + mgrId + '|' + pid + '|' + (opts.project ? 'p' : '') + (opts.noCont ? 'n' : '') + (opts.simKey ? '|' + opts.simKey : '') + (opts.sch ? '|s:' + opts.sch.id : '');
     if (CACHE[key]) return CACHE[key];
     var s0 = opts.sch || EN.schemeFor(mgrId, pid);
     if (!s0) return (CACHE[key] = noScheme(mgrId, pid));
@@ -455,6 +472,7 @@
       byKey[tc.key] = r;
       res.targets.push(r);
     });
+    res.basket = basketApply(s, res.targets);
     res.condRes = applyRules(s, byKey, mgrId, pid, opts);
     res.targets.forEach(function (r) { r.bonus = payOf(r); });
     res.depActive = res.targets.some(function (r) { return r.dep !== 1; });
@@ -484,7 +502,7 @@
     if (s.model === 'M3') return EN.m3For(empId, pid, opts);
     return EN.m1(empId, pid, opts);
   };
-  /* koji periodi važe za zaposlenog: tip perioda šeme iz poslednjeg rasporeda (bez rasporeda — po poziciji) */
+  /* koji periodi važe za zaposlenog: tip perioda šeme iz poslednjeg rasporeda (bez rasporeda - po poziciji) */
   EN.periodType = function (empId) {
     var e = D.emp(empId), list = (IH.assignments ? IH.assignments() : D.assignments).filter(function (a) { return a.emp === empId && (a.status === 'aktivan' || a.status === 'zavrsen'); });
     list.sort(function (a, b) { return a.from < b.from ? 1 : -1; });

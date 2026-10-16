@@ -1,4 +1,4 @@
-/* Incentive Hub — Obračun bonusa: periodi, tok obrade, ponovni obračun, kontrola odstupanja, verzije, obračunski list */
+/* Incentive Hub - Obračun bonusa: periodi, tok obrade, ponovni obračun, kontrola odstupanja, verzije, obračunski list */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt;
@@ -9,11 +9,11 @@
     'ob.q': 'Kvartal · savetnici i menadžeri', 'ob.m': 'Mesec · univerzalni bankari', 'ob.lockOn': 'Zaključavanje {d}', 'ob.consTo': 'Saglasnosti do {d}', 'ob.paidOn': 'Isplaćeno {d}', 'ob.prelim': 'preliminarno',
     'ob.tOv': 'Pregled', 'ob.tSt': 'Obračunski listovi', 'ob.tCtl': 'Kontrola odstupanja', 'ob.tVer': 'Verzije i istorija',
     'ob.fLock': 'Zaključavanje', 'ob.fCalc': 'Obračun', 'ob.fCtl': 'Kontrola', 'ob.fSend': 'Slanje', 'ob.fCons': 'Saglasnost', 'ob.fPay': 'Isplata',
-    'ob.runNote': 'Period je u toku — iznosi su preliminarni, na osnovu projekcije do kraja perioda. Zaključavanje {d}.',
+    'ob.runNote': 'Period je u toku - iznosi su preliminarni, na osnovu projekcije do kraja perioda. Zaključavanje {d}.',
     'ob.pend': '{n} izmena čeka ponovni obračun', 'ob.pendS': 'Period je zaključen; izmene ulaze u obračun tek posle ponovnog obračuna. Zaposleni čiji se iznos promeni dobijaju obračunski list ponovo na saglasnost.',
-    'ob.pMap': 'Šifra {c} mapirana {d} — {n} stavki kod {e} zaposlenih', 'ob.pCorr': 'Korekcija {k} · {e} · {r}', 'ob.recalc': 'Ponovni obračun', 'ob.recalcT': 'Ponovni obračun — {p}',
-    'ob.scope': 'Obuhvat', 'ob.scChanged': 'Zaposleni sa izmenama', 'ob.scChangedS': '{n} zaposlenih — preporučeno', 'ob.scEmp': 'Pojedinačno', 'ob.scEmpS': 'Jedan zaposleni', 'ob.scBranch': 'Ekspozitura', 'ob.scBranchS': 'Svi u ekspozituri', 'ob.scAll': 'Ceo period', 'ob.scAllS': 'Svi zaposleni u periodu',
-    'ob.preview': 'Razlike pre potvrde', 'ob.before': 'Sada', 'ob.after': 'Posle', 'ob.diff': 'Razlika', 'ob.noDiff': 'U izabranom obuhvatu nema promena iznosa — obračun se ipak beleži sa novom verzijom.', 'ob.why': 'Uzrok',
+    'ob.pMap': 'Šifra {c} mapirana {d} - {n} stavki kod {e} zaposlenih', 'ob.pCorr': 'Korekcija {k} · {e} · {r}', 'ob.recalc': 'Ponovni obračun', 'ob.recalcT': 'Ponovni obračun - {p}',
+    'ob.scope': 'Obuhvat', 'ob.scChanged': 'Zaposleni sa izmenama', 'ob.scChangedS': '{n} zaposlenih - preporučeno', 'ob.scEmp': 'Pojedinačno', 'ob.scEmpS': 'Jedan zaposleni', 'ob.scBranch': 'Ekspozitura', 'ob.scBranchS': 'Svi u ekspozituri', 'ob.scAll': 'Ceo period', 'ob.scAllS': 'Svi zaposleni u periodu',
+    'ob.preview': 'Razlike pre potvrde', 'ob.before': 'Sada', 'ob.after': 'Posle', 'ob.diff': 'Razlika', 'ob.noDiff': 'U izabranom obuhvatu nema promena iznosa - obračun se ipak beleži sa novom verzijom.', 'ob.why': 'Uzrok',
     'ob.reCons': 'Zaposleni sa promenom dobijaju obračunski list ponovo na saglasnost (status „Korigovano“).', 'ob.run': 'Pokreni ponovni obračun', 'ob.done': 'Ponovni obračun {p}: {n} zaposlenih sa promenom, ukupno {d}',
     'ob.kTot': 'Ukupno za isplatu', 'ob.kN': 'Zaposlenih', 'ob.kAvg': 'Prosečna isplata', 'ob.kCap': 'Na limitu', 'ob.kZero': 'Bez bonusa', 'ob.kCarry': 'Prenos salda', 'ob.kCorr': 'Ručne korekcije',
     'ob.bySch': 'Po šemi', 'ob.byBr': 'Po ekspozituri', 'ob.prevPer': 'Prethodni period', 'ob.colPay': 'Isplata', 'ob.colPrev': 'Prethodni', 'ob.colFlags': 'Oznake', 'ob.colCons': 'Saglasnost',
@@ -28,11 +28,11 @@
     'ob.q': 'Quarter · advisors and managers', 'ob.m': 'Month · universal bankers', 'ob.lockOn': 'Lock {d}', 'ob.consTo': 'Consents until {d}', 'ob.paidOn': 'Paid {d}', 'ob.prelim': 'preliminary',
     'ob.tOv': 'Overview', 'ob.tSt': 'Statements', 'ob.tCtl': 'Variance review', 'ob.tVer': 'Versions and history',
     'ob.fLock': 'Lock', 'ob.fCalc': 'Calculate', 'ob.fCtl': 'Review', 'ob.fSend': 'Send', 'ob.fCons': 'Consent', 'ob.fPay': 'Payout',
-    'ob.runNote': 'The period is in progress — amounts are preliminary, based on the projection to period end. Lock on {d}.',
+    'ob.runNote': 'The period is in progress - amounts are preliminary, based on the projection to period end. Lock on {d}.',
     'ob.pend': '{n} changes await recalculation', 'ob.pendS': 'The period is locked; changes count only after recalculation. Employees whose amount changes receive the statement again for consent.',
-    'ob.pMap': 'Code {c} mapped {d} — {n} items for {e} employees', 'ob.pCorr': 'Correction {k} · {e} · {r}', 'ob.recalc': 'Recalculate', 'ob.recalcT': 'Recalculation — {p}',
-    'ob.scope': 'Scope', 'ob.scChanged': 'Employees with changes', 'ob.scChangedS': '{n} employees — recommended', 'ob.scEmp': 'Single', 'ob.scEmpS': 'One employee', 'ob.scBranch': 'Branch', 'ob.scBranchS': 'Everyone in a branch', 'ob.scAll': 'Whole period', 'ob.scAllS': 'All employees in the period',
-    'ob.preview': 'Differences before confirming', 'ob.before': 'Now', 'ob.after': 'After', 'ob.diff': 'Difference', 'ob.noDiff': 'No amount changes in the chosen scope — the run is still recorded with a new version.', 'ob.why': 'Cause',
+    'ob.pMap': 'Code {c} mapped {d} - {n} items for {e} employees', 'ob.pCorr': 'Correction {k} · {e} · {r}', 'ob.recalc': 'Recalculate', 'ob.recalcT': 'Recalculation - {p}',
+    'ob.scope': 'Scope', 'ob.scChanged': 'Employees with changes', 'ob.scChangedS': '{n} employees - recommended', 'ob.scEmp': 'Single', 'ob.scEmpS': 'One employee', 'ob.scBranch': 'Branch', 'ob.scBranchS': 'Everyone in a branch', 'ob.scAll': 'Whole period', 'ob.scAllS': 'All employees in the period',
+    'ob.preview': 'Differences before confirming', 'ob.before': 'Now', 'ob.after': 'After', 'ob.diff': 'Difference', 'ob.noDiff': 'No amount changes in the chosen scope - the run is still recorded with a new version.', 'ob.why': 'Cause',
     'ob.reCons': 'Employees with a change receive the statement again for consent (status "Adjusted").', 'ob.run': 'Run recalculation', 'ob.done': 'Recalculation {p}: {n} employees changed, total {d}',
     'ob.kTot': 'Total payout', 'ob.kN': 'Staff', 'ob.kAvg': 'Average payout', 'ob.kCap': 'At limit', 'ob.kZero': 'No bonus', 'ob.kCarry': 'Balance carried', 'ob.kCorr': 'Manual corrections',
     'ob.bySch': 'By scheme', 'ob.byBr': 'By branch', 'ob.prevPer': 'Previous period', 'ob.colPay': 'Payout', 'ob.colPrev': 'Previous', 'ob.colFlags': 'Flags', 'ob.colCons': 'Consent',
@@ -56,7 +56,7 @@
   function flagPills(r, e, pid) {
     var f = flags(r).map(function (k) { return ui.pill(t('fl.' + k), k === 'zero' || k === 'carry' ? 'danger' : k === 'cap' ? 'warning' : 'accent'); });
     if (e && EN.approval(e.id, pid).status === 'korigovano') f.push(ui.pill(t('fl.reCalc'), 'accent'));
-    return f.join(' ') || '<span class="mut">—</span>';
+    return f.join(' ') || '<span class="mut">-</span>';
   }
 
   /* ---------- izmene koje čekaju ponovni obračun ---------- */
@@ -105,7 +105,7 @@
     var tb = diff.reduce(function (a, x) { return a + x.b; }, 0), ta = diff.reduce(function (a, x) { return a + x.a; }, 0);
     return ui.table([{ key: 'e', label: t('c.employee') }, { key: 'w', label: t('ob.why') }, { key: 'b', label: t('ob.before'), num: true }, { key: 'a', label: t('ob.after'), num: true }, { key: 'd', label: t('ob.diff'), num: true }],
       diff.map(function (x) {
-        var why = x.e.pos === 'menadzer' ? IH.L({ sr: 'rezultat tima', en: 'team result' }) : pend.emps.indexOf(x.e.id) >= 0 ? IH.L({ sr: 'izmena stavki', en: 'item changes' }) : '—';
+        var why = x.e.pos === 'menadzer' ? IH.L({ sr: 'rezultat tima', en: 'team result' }) : pend.emps.indexOf(x.e.id) >= 0 ? IH.L({ sr: 'izmena stavki', en: 'item changes' }) : '-';
         return { e: IH.esc(x.e.name) + ' <span class="mut">· ' + IH.esc(D.branchShort(x.e.branch)) + '</span>', w: '<span class="mut">' + why + '</span>', b: F.num(x.b), a: '<b>' + F.num(x.a) + '</b>', d: '<b style="color:' + (x.a > x.b ? 'var(--success)' : 'var(--danger)') + '">' + (x.a > x.b ? '+' : '−') + F.num(Math.abs(x.a - x.b)) + '</b>' };
       }), { compact: true, foot: { e: t('c.total'), b: F.num(tb), a: F.num(ta), d: (ta >= tb ? '+' : '−') + F.num(Math.abs(ta - tb)) } }) + '<div class="hint" style="margin-top:8px">' + t('ob.reCons') + '</div>';
   }
@@ -180,7 +180,7 @@
     var paid = p.status === 'isplaceno';
     var lock = p.lockedAt || p.to + 'T18:00', calc = p.calcAt || p.to, sent = p.sentAt || p.to;
     var ctlOk = ctlRows(p.id).filter(function (r) { return r.ok; }).length, ctlN = ctlRows(p.id).length;
-    return ui.flow([{ label: t('ob.fLock'), sub: F.date(lock), state: 'done' }, { label: t('ob.fCalc'), sub: F.date(calc), state: 'done' }, { label: t('ob.fCtl'), sub: t('ctl.sum', { a: ctlOk, b: ctlN }), state: paid || ctlOk === ctlN ? 'done' : 'run' }, { label: t('ob.fSend'), sub: F.date(sent), state: 'done' }, { label: t('ob.fCons'), sub: paid ? '100%' : t('ob.consTo', { d: F.date(p.deadline) }), state: paid ? 'done' : 'run' }, { label: t('ob.fPay'), sub: paid ? F.date(p.paidAt) : '—', state: paid ? 'done' : '' }]);
+    return ui.flow([{ label: t('ob.fLock'), sub: F.date(lock), state: 'done' }, { label: t('ob.fCalc'), sub: F.date(calc), state: 'done' }, { label: t('ob.fCtl'), sub: t('ctl.sum', { a: ctlOk, b: ctlN }), state: paid || ctlOk === ctlN ? 'done' : 'run' }, { label: t('ob.fSend'), sub: F.date(sent), state: 'done' }, { label: t('ob.fCons'), sub: paid ? '100%' : t('ob.consTo', { d: F.date(p.deadline) }), state: paid ? 'done' : 'run' }, { label: t('ob.fPay'), sub: paid ? F.date(p.paidAt) : '-', state: paid ? 'done' : '' }]);
   }
   function overviewTab(pid) {
     var st = staff(pid), rs = st.map(function (e) { return { e: e, r: res(e, pid) }; }), tot = rs.reduce(function (a, x) { return a + x.r.payout; }, 0);
@@ -197,7 +197,7 @@
       var mine = rs.filter(function (q) { return q.e.branch === b.id; }), s = mine.reduce(function (a, q) { return a + q.r.payout; }, 0);
       var ps = pp ? staff(pp).filter(function (e) { return e.branch === b.id; }).reduce(function (a, e) { return a + res(e, pp).payout; }, 0) : 0;
       var d = ps ? s / ps - 1 : 0;
-      return { b: '<b>' + IH.esc(D.branchShort(b)) + '</b>', n: mine.length, t: F.num(s), p: ps ? F.num(ps) : '—', d: ps ? '<span style="color:' + (Math.abs(d) > 0.25 ? 'var(--warning)' : 'var(--ink-2)') + '">' + (d >= 0 ? '+' : '') + F.pct(d, 1) + '</span>' : '—', _go: 'obracun/' + pid + '/listovi' };
+      return { b: '<b>' + IH.esc(D.branchShort(b)) + '</b>', n: mine.length, t: F.num(s), p: ps ? F.num(ps) : '-', d: ps ? '<span style="color:' + (Math.abs(d) > 0.25 ? 'var(--warning)' : 'var(--ink-2)') + '">' + (d >= 0 ? '+' : '') + F.pct(d, 1) + '</span>' : '-', _go: 'obracun/' + pid + '/listovi' };
     });
     return kp + ui.card(t('ob.bySch'), ui.table([{ key: 's', label: t('c.scheme') }, { key: 'n', label: t('ob.colN'), num: true }, { key: 't', label: t('ob.colTot'), num: true }, { key: 'a', label: t('ob.colAvg'), num: true }, { key: 'c', label: t('ob.kCap'), num: true }], bySch, { compact: true }), { flush: true }) + ui.card(t('ob.byBr'), ui.table([{ key: 'b', label: t('c.branch') }, { key: 'n', label: t('ob.colN'), num: true }, { key: 't', label: D.periodLabel(pid), num: true }, { key: 'p', label: pp ? D.periodLabel(pp) : t('ob.prevPer'), num: true }, { key: 'd', label: t('ob.diff'), num: true }], byBr, { compact: true }), { flush: true });
   }
@@ -213,7 +213,7 @@
         { key: 'b', label: t('c.branch'), val: function (e) { return D.branchShort(e.branch); }, fval: function (e) { return e.branch; }, filter: function () { return D.branches.map(function (b) { return { v: b.id, l: D.branchName(b) }; }); } },
         { key: 's', label: t('c.scheme'), val: function (e) { return schemeOf(e, pid).code; }, filter: function () { return schemesOf(pid).map(function (s) { return { v: D.scheme(s).code, l: D.scheme(s).code }; }); } },
         { key: 'pay', label: t('ob.colPay'), num: true, search: false, val: function (e) { return res(e, pid).payout; }, render: function (e) { return '<b>' + F.num(res(e, pid).payout) + '</b>'; } },
-        { key: 'prev', label: pp ? D.periodLabel(pp) : t('ob.colPrev'), num: true, search: false, val: function (e) { return pp ? res(e, pp).payout : 0; }, render: function (e) { if (!pp || e.since > D.period(pp).to) return '<span class="mut">—</span>'; var a = res(e, pid).payout, b = res(e, pp).payout; return F.num(b) + (b ? ' <span style="color:' + (a >= b ? 'var(--success)' : 'var(--danger)') + '">' + (a >= b ? '+' : '') + F.pct(a / b - 1, 0) + '</span>' : ''); } },
+        { key: 'prev', label: pp ? D.periodLabel(pp) : t('ob.colPrev'), num: true, search: false, val: function (e) { return pp ? res(e, pp).payout : 0; }, render: function (e) { if (!pp || e.since > D.period(pp).to) return '<span class="mut">-</span>'; var a = res(e, pid).payout, b = res(e, pp).payout; return F.num(b) + (b ? ' <span style="color:' + (a >= b ? 'var(--success)' : 'var(--danger)') + '">' + (a >= b ? '+' : '') + F.pct(a / b - 1, 0) + '</span>' : ''); } },
         { key: 'fl', label: t('ob.colFlags'), search: false, sort: false, val: function (e) { return flags(res(e, pid)).join(' '); }, fval: function (e) { return flags(res(e, pid)); }, render: function (e) { return flagPills(res(e, pid), e, pid); }, filter: function () { return ['cap', 'carry', 'corr', 'zero'].map(function (k) { return { v: k, l: t('fl.' + k) }; }); } },
         { key: 'c', label: t('ob.colCons'), val: function (e) { return t('st.' + EN.approval(e.id, pid).status); }, fval: function (e) { return EN.approval(e.id, pid).status; }, render: function (e) { return IH.ui.status(EN.approval(e.id, pid).status); }, filter: function () { return ['ceka', 'saglasan', 'auto', 'prigovor', 'korigovano', 'isplaceno', 'u_toku'].map(function (k) { return { v: k, l: t('st.' + k) }; }); } }
       ],
@@ -241,7 +241,7 @@
   }
   function ctlTab(pid) {
     var rows = ctlRows(pid), open = rows.filter(function (r) { return !r.ok; }).length;
-    return IH.sech(t('ob.tCtl') + ' — ' + t('ctl.sum', { a: rows.length - open, b: rows.length }), '', open ? ui.btn(t('ctl.markAll'), { cls: 'sm', icon: 'checkc', act: 'ctl-all', arg: pid }) : '') + IH.grid({
+    return IH.sech(t('ob.tCtl') + ' - ' + t('ctl.sum', { a: rows.length - open, b: rows.length }), '', open ? ui.btn(t('ctl.markAll'), { cls: 'sm', icon: 'checkc', act: 'ctl-all', arg: pid }) : '') + IH.grid({
       id: 'ctl-' + pid, exportName: 'Kontrola_odstupanja_' + pid + '.xlsx', searchLabel: IH.L({ sr: 'Zaposleni', en: 'Employee' }),
       rows: function () { return ctlRows(pid); }, key: function (r) { return r.id; }, label: function (r) { return r.e.name; }, searchKeys: ['e'],
       cols: [
@@ -269,10 +269,10 @@
     var schTxt = schemesOf(pid).map(function (s) { var x = D.scheme(s); return x.code + ' v' + D.schemeVersion(x, pid).v; }).join(', ');
     var tgTxt = p.type === 'Q' ? IH.L({ sr: 'Dodela ' + D.periodLabel(pid) + ' · v1', en: D.periodLabel(pid) + ' assignment · v1' }) : IH.L({ sr: 'Timski targeti ' + D.periodLabel(pid), en: 'Team targets ' + D.periodLabel(pid) });
     var catTxt = 'v' + p.to.slice(0, 7).replace('-', '.') + ' · ' + D.products.filter(function (x) { return x.status === 'aktivan'; }).length + IH.L({ sr: ' proizvoda', en: ' products' });
-    var rows = [{ r: '#1', at: F.dt(p.calcAt || p.to + 'T09:00'), ty: t('ver.t1'), sc: t('ob.scAll'), s: schTxt, tg: tgTxt, c: catTxt, by: IH.esc(D.emp('A001').name), t: F.num(cur - sum), d: '—' }]
+    var rows = [{ r: '#1', at: F.dt(p.calcAt || p.to + 'T09:00'), ty: t('ver.t1'), sc: t('ob.scAll'), s: schTxt, tg: tgTxt, c: catTxt, by: IH.esc(D.emp('A001').name), t: F.num(cur - sum), d: '-' }]
       .concat(runs.map(function (r, i) { return { r: '#' + (i + 2), at: F.dt(r.at), ty: t('ver.t2'), sc: IH.esc(r.scope), s: schTxt, tg: tgTxt, c: catTxt + IH.L({ sr: ' (mapiranja do ', en: ' (mappings to ' }) + F.date(r.at) + ')', by: IH.esc(D.emp(r.by).name), t: F.num(cur - runs.slice(i + 1).reduce(function (a, q) { return a + q.delta; }, 0)), d: '<b style="color:' + (r.delta >= 0 ? 'var(--success)' : 'var(--danger)') + '">' + (r.delta >= 0 ? '+' : '−') + F.num(Math.abs(r.delta)) + '</b> <span class="mut">(' + r.n + IH.L({ sr: ' zaposl.', en: ' staff' }) + ')</span>' }; }));
     return ui.card(t('ob.tVer'), ui.table([{ key: 'r', label: t('ver.run') }, { key: 'at', label: t('c.date') }, { key: 'ty', label: t('ver.type') }, { key: 'sc', label: t('ver.scope') }, { key: 's', label: t('ver.sch') }, { key: 'tg', label: t('ver.tg') }, { key: 'c', label: t('ver.cat') }, { key: 'by', label: t('ld.colBy') }, { key: 't', label: t('ver.tot'), num: true }, { key: 'd', label: t('ver.delta'), num: true }], rows.reverse(), { compact: true }), { flush: true }) +
-      ui.card(t('c.history'), ui.hist(IH.auditFor('calc', pid).concat(p.sentAt ? [{ at: p.sentAt, by: 'A001', action: { sr: 'Obračunski listovi poslati zaposlenima', en: 'Statements sent to employees' } }] : []).concat(p.calcAt ? [{ at: p.calcAt, by: 'A001', action: { sr: 'Obračun pokrenut (run #1)', en: 'Calculation run #1' } }] : []).concat(p.lockedAt ? [{ at: p.lockedAt, by: 'A001', action: { sr: 'Period zaključan — nove stavke idu u naredni period ili kroz korekciju', en: 'Period locked — new items go to the next period or via correction' } }] : [])));
+      ui.card(t('c.history'), ui.hist(IH.auditFor('calc', pid).concat(p.sentAt ? [{ at: p.sentAt, by: 'A001', action: { sr: 'Obračunski listovi poslati zaposlenima', en: 'Statements sent to employees' } }] : []).concat(p.calcAt ? [{ at: p.calcAt, by: 'A001', action: { sr: 'Obračun pokrenut (run #1)', en: 'Calculation run #1' } }] : []).concat(p.lockedAt ? [{ at: p.lockedAt, by: 'A001', action: { sr: 'Period zaključan - nove stavke idu u naredni period ili kroz korekciju', en: 'Period locked - new items go to the next period or via correction' } }] : [])));
   }
 
   function periodPage(pid, tab) {
@@ -291,7 +291,7 @@
 
   function stmtHist(pid, empId) {
     var p = D.period(pid), ap = EN.approval(empId, pid), h = [];
-    if (ap.status === 'korigovano') h.push({ at: ap.at, by: 'A001', action: { sr: 'Ponovni obračun: ' + F.num(ap.prev) + ' → ' + F.num(ap.now) + ' RSD — čeka ponovnu saglasnost', en: 'Recalculation: RSD ' + F.num(ap.prev) + ' → ' + F.num(ap.now) + ' — awaiting re-consent' } });
+    if (ap.status === 'korigovano') h.push({ at: ap.at, by: 'A001', action: { sr: 'Ponovni obračun: ' + F.num(ap.prev) + ' → ' + F.num(ap.now) + ' RSD - čeka ponovnu saglasnost', en: 'Recalculation: RSD ' + F.num(ap.prev) + ' → ' + F.num(ap.now) + ' - awaiting re-consent' } });
     else if (ap.at && ap.status !== 'isplaceno') h.push({ at: ap.at, by: ap.status === 'auto' ? null : empId, action: { sr: 'Saglasnost: ' + t('st.' + ap.status), en: 'Consent: ' + t('st.' + ap.status) } });
     EN.allCorr().filter(function (c) { return c.period === pid && (c.emp === empId || (c.changes && c.changes.emp === empId)); }).forEach(function (c) { h.push({ at: c.at, by: c.by, action: { sr: 'Korekcija ' + c.id, en: 'Correction ' + c.id }, detail: c.note }); });
     if (p.paidAt) h.push({ at: p.paidAt + 'T10:00', by: 'A001', action: { sr: 'Isplaćeno kroz obračun zarada', en: 'Paid through payroll' } });
@@ -310,7 +310,7 @@
     var info = '<dl class="kv"><dt>' + t('c.scheme') + '</dt><dd>' + s.code + ' · v' + D.schemeVersion(s, pid).v + '</dd><dt>' + t('ver.tg') + '</dt><dd>' + (p.type === 'Q' ? IH.L({ sr: 'Dodela ' + D.periodLabel(pid) + ' · v1', en: D.periodLabel(pid) + ' assignment · v1' }) : IH.L({ sr: 'Timski targeti', en: 'Team targets' })) + '</dd><dt>' + t('ver.cat') + '</dt><dd>v' + p.to.slice(0, 7).replace('-', '.') + '</dd>' +
       '<dt>' + t('ver.run') + '</dt><dd>' + (run(pid) ? t('ob.prelim') : lastRun && EN.recalcAt(pid, empId) ? '#' + (runs.length + 1) + ' · ' + F.dt(EN.recalcAt(pid, empId)) : '#1 · ' + F.dt(p.calcAt || p.to + 'T09:00')) + '</dd><dt>' + t('ob.colCons') + '</dt><dd>' + IH.ui.status(ap.status) + (ap.prev != null ? ' <span class="mut">' + F.num(ap.prev) + ' → ' + F.num(ap.now) + '</span>' : '') + '</dd></dl>';
     var kp = '<div class="kpis" style="margin-bottom:14px">' + ui.kpi(run(pid) ? IH.L({ sr: 'Projektovano', en: 'Projected' }) : t('ob.colPay'), F.num(r.payout) + '<span class="u">RSD</span>', D.periodLabel(pid), { hl: true }) + ui.kpi(t('ob.colFlags'), flagPills(r, e, pid)) + ui.kpi(t('ob.colCons'), IH.ui.status(ap.status), ap.at ? F.dt(ap.at) : null) + '</div>';
-    return ui.header(t('st.title') + ' — ' + IH.esc(e.name), '', acts, crumb) + kp +
+    return ui.header(t('st.title') + ' - ' + IH.esc(e.name), '', acts, crumb) + kp +
       '<div class="grid g-main">' + ui.card(IH.esc(IH.L(s.name)) + ' · ' + D.periodLabel(pid), IH.stmtBody(empId, pid, { project: run(pid) }), { flush: true }) + '<div>' + ui.card(t('st.calcInfo'), info) + ui.card(t('c.history'), ui.hist(stmtHist(pid, empId))) + '</div></div>';
   }
 

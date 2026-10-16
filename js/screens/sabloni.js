@@ -1,5 +1,5 @@
-/* Incentive Hub — Šabloni obaveštenja: tekst, okidači (kada se šalje) i kanali (u aplikaciji, e-mail)
-   Okidač je rečenica: „odmah kada se desi“, „N dana pre roka“, „na dan roka“, „N dana posle, ako nije rešeno“ ili „jednom dnevno, zbirno“ — uz vreme slanja.
+/* Incentive Hub - Šabloni obaveštenja: tekst, okidači (kada se šalje) i kanali (u aplikaciji, e-mail)
+   Okidač je rečenica: „odmah kada se desi“, „N dana pre roka“, „na dan roka“, „N dana posle, ako nije rešeno“ ili „jednom dnevno, zbirno“ - uz vreme slanja.
    Tehnički: događaji iz procesa šalju odmah; dnevni planer (npr. u 08:00) proverava rokove i nerešene stavke. */
 (function () {
   'use strict';
@@ -7,7 +7,7 @@
 
   IH.addStrings({
     'tp2.title': 'Šabloni obaveštenja', 'tp2.colTpl': 'Šablon', 'tp2.colEvent': 'Događaj', 'tp2.colTo': 'Primaoci', 'tp2.colCh': 'Kanali', 'tp2.colTrig': 'Okidači', 'tp2.colCond': 'Uslov', 'tp2.colSent': 'Poslato (30 dana)', 'tp2.colMod': 'Izmenjen', 'tp2.new': 'Novi šablon', 'tp2.search': 'Naziv šablona',
-    'ch.mail': 'E-mail', 'ch.app': 'U aplikaciji', 'tp2.edit': 'Izmena šablona — {n}', 'tp2.view': 'Šablon — {n}', 'tp2.name': 'Naziv šablona', 'tp2.triggers': 'Okidači slanja', 'tp2.addTrig': 'Dodaj okidač', 'tp2.subject': 'Naslov', 'tp2.body': 'Tekst', 'tp2.fields': 'Polja', 'tp2.preview': 'Pregled za {n}', 'tp2.saved': 'Šablon „{n}“ je sačuvan', 'tp2.lang': 'Jezik', 'tp2.needName': 'Unesite naziv šablona', 'tp2.needTrig': 'Šablon mora imati bar jedan okidač',
+    'ch.mail': 'E-mail', 'ch.app': 'U aplikaciji', 'tp2.edit': 'Izmena šablona - {n}', 'tp2.view': 'Šablon - {n}', 'tp2.name': 'Naziv šablona', 'tp2.triggers': 'Okidači slanja', 'tp2.addTrig': 'Dodaj okidač', 'tp2.subject': 'Naslov', 'tp2.body': 'Tekst', 'tp2.fields': 'Polja', 'tp2.preview': 'Pregled za {n}', 'tp2.saved': 'Šablon „{n}“ je sačuvan', 'tp2.lang': 'Jezik', 'tp2.needName': 'Unesite naziv šablona', 'tp2.needTrig': 'Šablon mora imati bar jedan okidač',
     'tr.when': 'Kada se šalje', 'tr.days': 'Dana', 'tr.time': 'U', 'tr.w.odmah': 'Odmah kada se desi', 'tr.w.pre': 'Pre roka', 'tr.w.dan': 'Na dan roka', 'tr.w.posle': 'Ako nije rešeno', 'tr.w.dnevno': 'Jednom dnevno, zbirno',
     'tr.sOdmah': 'Odmah kada se desi', 'tr.sPre': '{n} dana pre {r}, u {h}', 'tr.sDan': 'Na dan {r}, u {h}', 'tr.sPosle': '{n} dana posle događaja ako nije rešeno, u {h}', 'tr.sDnevno': 'Jednom dnevno u {h}, zbirno', 'tr.daysPre': 'dana pre {r}', 'tr.daysPosle': 'dana posle događaja',
     'rok.deadline': 'roka za saglasnost', 'rok.complaint': 'roka za odluku', 'rok.x': 'roka',
@@ -15,7 +15,7 @@
     'cd.all': 'Uvek', 'cd.noReply': 'Samo zaposleni bez odgovora', 'cd.changed': 'Samo ako se iznos promenio', 'cd.gt0': 'Ako ima bar jedne nove šifre', 'cd.paid': 'Samo zaposleni u batch-u'
   }, {
     'tp2.title': 'Notification templates', 'tp2.colTpl': 'Template', 'tp2.colEvent': 'Event', 'tp2.colTo': 'Recipients', 'tp2.colCh': 'Channels', 'tp2.colTrig': 'Triggers', 'tp2.colCond': 'Condition', 'tp2.colSent': 'Sent (30 days)', 'tp2.colMod': 'Modified', 'tp2.new': 'New template', 'tp2.search': 'Template name',
-    'ch.mail': 'Email', 'ch.app': 'In-app', 'tp2.edit': 'Edit template — {n}', 'tp2.view': 'Template — {n}', 'tp2.name': 'Template name', 'tp2.triggers': 'Sending triggers', 'tp2.addTrig': 'Add trigger', 'tp2.subject': 'Subject', 'tp2.body': 'Text', 'tp2.fields': 'Fields', 'tp2.preview': 'Preview for {n}', 'tp2.saved': 'Template "{n}" saved', 'tp2.lang': 'Language', 'tp2.needName': 'Enter the template name', 'tp2.needTrig': 'The template needs at least one trigger',
+    'ch.mail': 'Email', 'ch.app': 'In-app', 'tp2.edit': 'Edit template - {n}', 'tp2.view': 'Template - {n}', 'tp2.name': 'Template name', 'tp2.triggers': 'Sending triggers', 'tp2.addTrig': 'Add trigger', 'tp2.subject': 'Subject', 'tp2.body': 'Text', 'tp2.fields': 'Fields', 'tp2.preview': 'Preview for {n}', 'tp2.saved': 'Template "{n}" saved', 'tp2.lang': 'Language', 'tp2.needName': 'Enter the template name', 'tp2.needTrig': 'The template needs at least one trigger',
     'tr.when': 'When it is sent', 'tr.days': 'Days', 'tr.time': 'At', 'tr.w.odmah': 'Immediately when it happens', 'tr.w.pre': 'Before the deadline', 'tr.w.dan': 'On the deadline day', 'tr.w.posle': 'If not resolved', 'tr.w.dnevno': 'Once a day, summarised',
     'tr.sOdmah': 'Immediately when it happens', 'tr.sPre': '{n} days before {r}, at {h}', 'tr.sDan': 'On the day of {r}, at {h}', 'tr.sPosle': '{n} days after the event if not resolved, at {h}', 'tr.sDnevno': 'Once a day at {h}, summarised', 'tr.daysPre': 'days before {r}', 'tr.daysPosle': 'days after the event',
     'rok.deadline': 'the consent deadline', 'rok.complaint': 'the decision deadline', 'rok.x': 'the deadline',
@@ -46,7 +46,7 @@
       subj: L('{zaposleni} je uložio prigovor na obračun {period}', '{zaposleni} filed a complaint on the {period} statement'), body: L('Poštovani {ime},\n\n{zaposleni} je uložio prigovor {prigovor}. Odluku donosite u roku od 5 radnih dana.\n\n{link}', 'Dear {ime},\n\n{zaposleni} filed complaint {prigovor}. Please decide within 5 working days.\n\n{link}') },
     { id: 'PRIGOVOR_ODLUKA', ev: 'decision', to: 'employee', ch: ['mail', 'app'], cond: 'all', trig: [TR('odmah')], mod: '2026-09-02T10:25', sent: 3, name: L('Odluka o prigovoru', 'Complaint decision'),
       subj: L('Odluka o prigovoru {prigovor}', 'Decision on complaint {prigovor}'), body: L('Poštovani {ime},\n\nmenadžer {menadzer} je doneo odluku o vašem prigovoru {prigovor}. Obrazloženje i eventualni novi iznos vidite u obračunu.\n\n{link}', 'Dear {ime},\n\nmanager {menadzer} decided on your complaint {prigovor}. See the explanation and any new amount in your statement.\n\n{link}') },
-    { id: 'OBRACUN_KORIGOVAN', ev: 'corrected', to: 'employee', ch: ['mail', 'app'], cond: 'changed', trig: [TR('odmah')], mod: '2026-09-02T10:27', sent: 2, name: L('Korigovan obračun — ponovna saglasnost', 'Adjusted statement — re-consent'),
+    { id: 'OBRACUN_KORIGOVAN', ev: 'corrected', to: 'employee', ch: ['mail', 'app'], cond: 'changed', trig: [TR('odmah')], mod: '2026-09-02T10:27', sent: 2, name: L('Korigovan obračun - ponovna saglasnost', 'Adjusted statement - re-consent'),
       subj: L('Obračun {period} je korigovan', 'Your {period} statement was adjusted'), body: L('Poštovani {ime},\n\nobračun za {period} je korigovan: novi iznos je {iznos}. Potvrdite novi iznos do {rok}.\n\n{link}', 'Dear {ime},\n\nyour {period} statement was adjusted: the new amount is {iznos}. Please confirm it by {rok}.\n\n{link}') },
     { id: 'RASPORED_ODOBRENJE', ev: 'assign', to: 'manager', ch: ['app'], cond: 'all', trig: [TR('odmah'), TR('posle', 3, '09:00')], mod: '2026-08-11T09:00', sent: 6, name: L('Raspored čeka odobrenje', 'Assignment awaits approval'),
       subj: L('Raspored za {zaposleni} čeka vaše odobrenje', 'Assignment for {zaposleni} awaits your approval'), body: L('Administrator je pripremio raspored šeme za {zaposleni}. Raspored postaje aktivan kada ga odobrite.\n\n{link}', 'The administrator prepared a scheme assignment for {zaposleni}. It becomes active when you approve it.\n\n{link}') },
@@ -139,7 +139,7 @@
   function openTpl(x, mode) {
     IH.form = { tpl: { id: x ? x.id : null, ro: mode === 'view', lg: IH.state.lang, name: x ? IH.L(x.name) : '', ev: x ? x.ev : 'sent', to: x ? x.to : 'employee', cond: x ? (x.cond || 'all') : 'all', ch: x ? x.ch.slice() : ['app'], trig: x ? JSON.parse(JSON.stringify(x.trig || [])) : [TR('odmah')], subj: x ? Object.assign({}, x.subj) : { sr: '', en: '' }, body: x ? Object.assign({}, x.body) : { sr: '', en: '' } } };
     var title = mode === 'view' ? t('tp2.view', { n: IH.esc(IH.L(x.name)) }) : mode === 'edit' ? t('tp2.edit', { n: IH.esc(IH.L(x.name)) }) : t('tp2.new');
-    IH.modal({ title: title, wide: true, body: '<div id="tpl-body">' + edBody() + '</div>', foot: mode === 'view' ? ui.btn(t('g.aEdit'), { icon: 'edit', act: 'ntf-edit', arg: x.id }) + ui.btn(t('c.close'), { act: 'modal-close' }) : ui.btn(t('c.cancel'), { act: 'modal-close' }) + ui.btn(t('c.save'), { cls: 'primary', icon: 'check', act: 'ntf-save' }) });
+    IH.modal({ title: title, wide: true, sug: mode === 'new', body: '<div id="tpl-body">' + edBody() + '</div>', foot: mode === 'view' ? ui.btn(t('g.aEdit'), { icon: 'edit', act: 'ntf-edit', arg: x.id }) + ui.btn(t('c.close'), { act: 'modal-close' }) : ui.btn(t('c.cancel'), { act: 'modal-close' }) + ui.btn(t('c.save'), { cls: 'primary', icon: 'check', act: 'ntf-save' }) });
   }
   IH.act['ntf-new'] = function () { openTpl(null, 'new'); };
   IH.act['ntf-view'] = function (el) { var x = tpl(el.dataset.arg); if (x) openTpl(x, 'view'); };

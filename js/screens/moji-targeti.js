@@ -1,4 +1,4 @@
-/* Incentive Hub — Moji targeti (Zaposleni): koliko sam od targeta, kako se meri, šta vredi */
+/* Incentive Hub - Moji targeti (Zaposleni): koliko sam od targeta, kako se meri, šta vredi */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt, R = IH.rules, L = D.L2;
@@ -7,18 +7,18 @@
     'mt.title': 'Moji targeti', 'mt.asg': 'Šema {s} · v{v} · važi od {d}', 'mt.measure': 'Kako se meri', 'mt.cond': 'Priznaje se ako', 'mt.subj': 'Proizvodi koji ulaze',
     'mt.scale': 'Skala isplate', 'mt.value': 'Vrednost za bonus', 'mt.share': 'Udeo u bonusu', 'mt.at100': 'Bonus na 100%', 'mt.perSale': 'Provizija po prodaji', 'mt.now': 'Sada', 'mt.proj': 'Projekcija', 'mt.final': 'Konačno',
     'mt.exc': 'Izuzetak: {r}', 'mt.rules': 'Ostala pravila šeme', 'mt.limit': 'Najviši iznos isplate po periodu: {l}.', 'mt.carry': 'Negativan saldo ne ide u isplatu, već se oduzima od sledećeg pozitivnog obračuna.',
-    'mt.cont': 'Kontinuitet: +{a} ako je {k} ≥ {m} {n} perioda zaredom.', 'mt.team': 'Timski targeti — {p}', 'mt.myShare': 'Moje prodaje'
+    'mt.cont': 'Kontinuitet: +{a} ako je {k} ≥ {m} {n} perioda zaredom.', 'mt.team': 'Timski targeti - {p}', 'mt.myShare': 'Moje prodaje'
   }, {
     'mt.title': 'My targets', 'mt.asg': 'Scheme {s} · v{v} · valid from {d}', 'mt.measure': 'How it is measured', 'mt.cond': 'Recognised if', 'mt.subj': 'Products included',
     'mt.scale': 'Payout scale', 'mt.value': 'Value for bonus', 'mt.share': 'Share of bonus', 'mt.at100': 'Bonus at 100%', 'mt.perSale': 'Commission per sale', 'mt.now': 'Now', 'mt.proj': 'Projection', 'mt.final': 'Final',
     'mt.exc': 'Exception: {r}', 'mt.rules': 'Other scheme rules', 'mt.limit': 'Maximum payout per period: {l}.', 'mt.carry': 'A negative balance is not paid out; it is deducted from the next positive calculation.',
-    'mt.cont': 'Continuity: +{a} if {k} ≥ {m} for {n} periods in a row.', 'mt.team': 'Team targets — {p}', 'mt.myShare': 'My sales'
+    'mt.cont': 'Continuity: +{a} if {k} ≥ {m} for {n} periods in a row.', 'mt.team': 'Team targets - {p}', 'mt.myShare': 'My sales'
   });
 
-  function fmtVal(x, unit) { return !x ? '—' : x.k === 'pct' ? F.num(x.v * 100, 2) + '% ' + IH.L(L('iznosa', 'of amount')) : F.rsd(x.v) + ' / ' + (unit === 'bod' ? t('u.bod1') : t('u.kom')); }
+  function fmtVal(x, unit) { return !x ? '-' : x.k === 'pct' ? F.num(x.v * 100, 2) + '% ' + IH.L(L('iznosa', 'of amount')) : F.rsd(x.v) + ' / ' + t('u.kom'); }
   function scaleHtml(sc, cur) {
-    if (sc.type === 'linear') { var a0 = cur != null && cur < sc.min, a2 = cur != null && cur >= sc.cap, a1 = cur != null && !a0 && !a2; return '<div class="scale"><div class="sc' + (a0 ? ' on' : '') + '"><b>0%</b>&lt; ' + F.pct(sc.min) + '</div><div class="sc' + (a1 ? ' on' : '') + '"><b>' + (a1 ? F.pct(cur) : '=') + '</b>' + F.pct(sc.min) + '–' + F.pct(sc.cap) + '</div><div class="sc' + (a2 ? ' on' : '') + '"><b>' + F.pct(sc.cap) + '</b>≥ ' + F.pct(sc.cap) + '</div></div>'; }
-    var lo = 0; return '<div class="scale">' + sc.map(function (b) { var on = cur != null && cur >= lo && (b.to == null || cur < b.to); var lbl = b.to == null ? '≥ ' + F.pct(lo) : F.pct(lo) + '–' + F.pct(b.to - 0.0001); lo = b.to; return '<div class="sc' + (on ? ' on' : '') + '"><b>' + F.pct(b.f) + '</b>' + lbl + '</div>'; }).join('') + '</div>'; }
+    if (sc.type === 'linear') { var a0 = cur != null && cur < sc.min, a2 = cur != null && cur >= sc.cap, a1 = cur != null && !a0 && !a2; return '<div class="scale"><div class="sc' + (a0 ? ' on' : '') + '"><b>0%</b>&lt; ' + F.pct(sc.min) + '</div><div class="sc' + (a1 ? ' on' : '') + '"><b>' + (a1 ? F.pct(cur) : '=') + '</b>' + F.pct(sc.min) + '-' + F.pct(sc.cap) + '</div><div class="sc' + (a2 ? ' on' : '') + '"><b>' + F.pct(sc.cap) + '</b>≥ ' + F.pct(sc.cap) + '</div></div>'; }
+    var lo = 0; return '<div class="scale">' + sc.map(function (b) { var on = cur != null && cur >= lo && (b.to == null || cur < b.to); var lbl = b.to == null ? '≥ ' + F.pct(lo) : F.pct(lo) + '-' + F.pct(b.to - 0.0001); lo = b.to; return '<div class="sc' + (on ? ' on' : '') + '"><b>' + F.pct(b.f) + '</b>' + lbl + '</div>'; }).join('') + '</div>'; }
   function prodsOf(tg) { return D.subjProducts(tg.subject); }
 
   function page() {
@@ -30,18 +30,20 @@
     var s = D.schemeAt(D.scheme(now.scheme), per), ver = s.ver;
     var a = EN.assignmentFor(me.id, per);
     var h = ui.header(t('mt.title'), '', ui.segf('mt', 'per', ['2026-Q4', '2026-Q3', '2026-Q2'].map(function (x) { return { v: x, l: D.periodLabel(x) + (x === '2026-Q4' ? ' · ' + t('st.u_toku').toLowerCase() : '') }; })), IH.esc(IH.L(s.name)) + ' · v' + ver.v + (a ? ' · ' + IH.L(L('važi od ', 'valid from ')) + F.date(a.from) : '') + (running ? ' · ' + t('c.day', { d: D.daysInfo(per).done, t: D.daysInfo(per).total }) : ''));
-    h += '<div class="tcards">' + now.targets.map(function (x) { var nb = EN.nextBand(s.scale, x.pct); return ui.targetCard({ name: IH.L(x.name), ach: Math.round(x.ach), target: x.target, unit: x.unit, pct: x.pct, next: nb, nextNone: !nb }); }).join('') + '</div>';
+    var scOf = function (x) { var tc = s.targets.filter(function (q) { return q.key === x.key; })[0]; return x.basket ? (s.basket.scale || s.scale) : (tc && tc.scale) || s.scale; };
+    h += '<div class="tcards">' + now.targets.map(function (x) { var nb = x.basket ? null : EN.nextBand(scOf(x), x.pct); return ui.targetCard({ name: IH.L(x.name), ach: Math.round(x.ach), target: x.target, unit: x.unit, pct: x.pct, next: nb, nextNone: !nb }); }).join('') + '</div>';
     now.targets.forEach(function (x, i) {
       var tg = D.targetAt(x.id, per), pp = pr.targets[i], cur = running ? pp.pct : x.pct;
       var left = '<div class="lab">' + t('mt.measure') + '</div><div style="margin-bottom:10px">' + IH.esc(R.formulaText(tg.formula, tg.subject)) + '</div>' +
         ((tg.conds || []).length ? '<div class="lab">' + t('mt.cond') + '</div><ul class="rulelist" style="margin:0 0 10px">' + tg.conds.map(function (c) { return '<li>' + IH.esc(R.condText(c)) + '</li>'; }).join('') + '</ul>' : '') +
-        (tg.unit === 'bod' ? '<div class="lab">' + IH.L(L('Komadi i bodovi', 'Pieces and points')) + '</div>' + IH.ptsBreakdown(tg, me.id, per) : '<div class="lab">' + t('mt.subj') + '</div><div>' + prodsOf(tg).map(function (q) { return '<span class="tag">' + IH.esc(D.productName(q)) + '</span>'; }).join('') + '</div>');
+        ('<div class="lab">' + t('mt.subj') + '</div><div>' + prodsOf(tg).map(function (q) { return '<span class="tag">' + IH.esc(D.productName(q)) + '</span>'; }).join('') + '</div>');
       var mid = '<div style="display:flex;align-items:baseline;gap:6px"><b style="font-size:22px">' + F.unitShort(x.ach, x.unit) + '</b><span class="mut">' + t('h.of') + ' ' + F.unit(x.target, x.unit) + '</span></div>' +
         ui.bar(x.pct, { max: 1, marker: running ? D.elapsed(per) : null, cls: running ? (x.pct >= D.elapsed(per) ? 'ok' : 'warn') : undefined }) +
         '<div class="mini-kv" style="margin-top:8px"><span>' + t('mt.now') + ': <b>' + F.pct(x.pct) + '</b></span>' + (running ? '<span>' + t('mt.proj') + ': <b>' + F.pct(pp.pct) + '</b></span>' : '<span>' + t('mt.final') + ': <b>' + F.pct(x.pct) + '</b></span>') + '</div>' +
         (x.nWait ? '<div class="mut" style="margin-top:6px">' + IH.L(L('Čeka uslov priznavanja: ', 'Awaiting recognition condition: ')) + '<b>' + x.nWait + '</b></div>' : '') +
         (x.exception ? '<div class="note warn" style="margin:8px 0 0">' + t('mt.exc', { r: IH.esc(IH.L(x.exception.reason)) }) + '</div>' : '') +
-        '<div class="lab" style="margin-top:12px">' + t('mt.scale') + '</div>' + scaleHtml(s.scale, cur) + '<div class="hint" style="margin-top:6px">' + IH.schemeScaleText(s.scale) + '</div>';
+        (x.basket ? '<div class="note" style="margin:10px 0 0">' + IH.L(L('U korpi targeta - ostvarenje korpe: ', 'In the target basket - basket achievement: ')) + '<b>' + F.pct((running ? pr : now).basket.pct) + '</b></div>' : '') +
+        '<div class="lab" style="margin-top:12px">' + (x.basket ? IH.L(L('Skala korpe', 'Basket scale')) : t('mt.scale')) + '</div>' + scaleHtml(scOf(x), x.basket ? (running ? pr : now).basket.pct : cur) + '<div class="hint" style="margin-top:6px">' + IH.schemeScaleText(scOf(x)) + '</div>';
       var right = '<div class="lab">' + t('mt.value') + '</div>' + (s.type === 'provizija' ? '<dl class="kv"><dt>' + t('mt.perSale') + '</dt><dd>' + fmtVal(x.val, x.unit) + '</dd><dt>' + t('mt.now') + '</dt><dd>' + F.rsd(x.value) + ' × ' + F.pct(x.ponder) + '</dd></dl>' : '<dl class="kv"><dt>' + t('mt.share') + '</dt><dd>' + F.pct(x.share) + '</dd><dt>' + t('mt.at100') + '</dt><dd>' + F.rsd(x.value) + '</dd><dt>' + t('mt.now') + '</dt><dd>' + F.rsd(x.value) + ' × ' + F.pct(x.ponder) + (x.dep < 1 ? ' × ' + F.num(x.dep, 1) : '') + ' = <b>' + F.rsd(x.bonus) + '</b></dd></dl>');
       ((running ? pr : now).condRes || []).filter(function (c) { var r = c.r || c.d; return [r.cond, r.a, r.b].indexOf(x.key) >= 0 || (r.affects || []).indexOf(x.key) >= 0 || (r.keys || []).indexOf(x.key) >= 0; }).forEach(function (c) {
         right += '<div class="note' + (c.active && c.r.tpl !== 'pojacanje' ? ' warn' : '') + '" style="margin:10px 0 0">' + IH.veze.resText(s, c) + '</div>';

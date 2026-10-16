@@ -1,55 +1,55 @@
-/* Incentive Hub — Učitavanje podataka: registar, nemapirane stavke, gotove KPI vrednosti, izvori, ručni upload */
+/* Incentive Hub - Učitavanje podataka: registar, nemapirane stavke, gotove KPI vrednosti, izvori, ručni upload */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt;
 
   IH.addStrings({
-    'ld.title': 'Učitavanje podataka', 'ld.desc': 'Svako učitavanje prolazi istu validaciju — automatsko noćno, API ili ručni upload. Ništa se ne gubi: stavka je prihvaćena, odbijena uz razlog ili čeka mapiranje šifre.',
+    'ld.title': 'Učitavanje podataka', 'ld.desc': 'Svako učitavanje prolazi istu validaciju - automatsko noćno, API ili ručni upload. Ništa se ne gubi: stavka je prihvaćena, odbijena uz razlog ili čeka mapiranje šifre.',
     'ld.tReg': 'Registar učitavanja', 'ld.tUnm': 'Nemapirane stavke', 'ld.tKpi': 'Gotove KPI vrednosti', 'ld.tSrc': 'Izvori podataka', 'ld.upload': 'Ručni upload',
     'ld.colId': 'Učitavanje', 'ld.colSrc': 'Izvor', 'ld.colPer': 'Period', 'ld.colRows': 'Primljeno', 'ld.colAcc': 'Prihvaćeno', 'ld.colUnm': 'Nemapirano', 'ld.colRej': 'Odbijeno', 'ld.colDur': 'Trajanje', 'ld.colBy': 'Pokrenuo', 'ld.system': 'Sistem (raspored)',
     'lst.ok': 'Uspešno', 'lst.upozorenje': 'Delimično', 'lst.greska': 'Greška', 'lst.ponovljeno': 'Ponovljeno',
     'ld.det': 'Učitavanje {id}', 'ld.rules': 'Validacija', 'ld.rule': 'Pravilo', 'ld.pass': 'Prošlo', 'ld.fail': 'Nije prošlo', 'ld.action': 'Postupak', 'ld.rejRows': 'Odbijeni redovi', 'ld.row': 'Red', 'ld.err': 'Greška', 'ld.dlRej': 'Preuzmi odbijene redove', 'ld.rerun': 'Ponovi učitavanje', 'ld.log': 'Dnevnik izvršavanja',
     'v.V1': 'Format i obavezna polja', 'v.V2': 'Duplikat (ugovor + tip + datum)', 'v.V3': 'Prodavac postoji u organizaciji na datum prodaje', 'v.V4': 'Šifra proizvoda postoji u katalogu', 'v.V5': 'Datum u otvorenom periodu', 'v.V6': 'Iznos u dozvoljenom opsegu',
     'va.rej': 'Red se odbija', 'va.queue': 'Stavka čeka mapiranje (ne odbija se)',
-    'ld.unmBanner': '{n} stavki čeka mapiranje šifre', 'ld.unmBannerS': 'Stavke nisu izgubljene. U tekućem periodu ulaze u ostvarenje odmah posle mapiranja; u zaključenom Q3 — pri ponovnom obračunu.', 'ld.map': 'Mapiraj', 'ld.code': 'Šifra', 'ld.items': '{n} stavki', 'ld.open': '{n} otvoreno',
-    'ust.nemapirano': 'Čeka mapiranje', 'ust.mapirano': 'Mapirano — u obračunu', 'ust.ceka': 'Mapirano — čeka ponovni obračun',
+    'ld.unmBanner': '{n} stavki čeka mapiranje šifre', 'ld.unmBannerS': 'Stavke nisu izgubljene. U tekućem periodu ulaze u ostvarenje odmah posle mapiranja; u zaključenom Q3 - pri ponovnom obračunu.', 'ld.map': 'Mapiraj', 'ld.code': 'Šifra', 'ld.items': '{n} stavki', 'ld.open': '{n} otvoreno',
+    'ust.nemapirano': 'Čeka mapiranje', 'ust.mapirano': 'Mapirano - u obračunu', 'ust.ceka': 'Mapirano - čeka ponovni obračun',
     'kp.desc': 'Vrednosti koje drugi sistemi isporučuju kao gotov zbir (stanje, broj korisnika). Ne mogu se spustiti do transakcije, zato se koriste za izveštaje i informativne targete, a ne za bonus po stavkama.',
-    'kp.colKpi': 'KPI', 'kp.colLvl': 'Nivo', 'kp.colPer': 'Poslednji period', 'kp.colCov': 'Pokrivenost', 'kp.colUse': 'Koristi se u', 'kp.vals': 'Vrednosti — {k}', 'kp.prev': 'Prethodna isporuka', 'kp.delta': 'Promena', 'kp.lvlE': 'Zaposleni', 'kp.lvlB': 'Ekspozitura',
+    'kp.colKpi': 'KPI', 'kp.colLvl': 'Nivo', 'kp.colPer': 'Poslednji period', 'kp.colCov': 'Pokrivenost', 'kp.colUse': 'Koristi se u', 'kp.vals': 'Vrednosti - {k}', 'kp.prev': 'Prethodna isporuka', 'kp.delta': 'Promena', 'kp.lvlE': 'Zaposleni', 'kp.lvlB': 'Ekspozitura',
     'sr.colKind': 'Vrsta podataka', 'sr.colMethod': 'Način prenosa', 'sr.colSched': 'Raspored', 'sr.colFmt': 'Format', 'sr.colLast': 'Poslednje učitavanje', 'sr.colOwner': 'Vlasnik', 'sk.stavke': 'Prodajne stavke', 'sk.organizacija': 'Organizacija', 'sk.kpi': 'Gotove KPI vrednosti',
-    'sr.edit': 'Podešavanje izvora — {n}', 'sr.thr': 'Upozorenje ako je odbijeno više od (%)', 'sr.notify': 'Obavesti vlasnika izvora o grešci', 'sr.saved': 'Podešavanje izvora {n} je sačuvano',
+    'sr.edit': 'Podešavanje izvora - {n}', 'sr.thr': 'Upozorenje ako je odbijeno više od (%)', 'sr.notify': 'Obavesti vlasnika izvora o grešci', 'sr.saved': 'Podešavanje izvora {n} je sačuvano',
     'up.title': 'Ručni upload', 'up.desc': 'Prodajne stavke iz Excel šablona prolaze istu validaciju kao noćni uvoz. Pre potvrde vidite tačno šta ulazi, a šta se odbija i zašto.',
     'up.s1': 'Izvor i fajl', 'up.s1s': 'Šablon, period i fajl', 'up.s2': 'Validacija i pregled', 'up.s2s': 'Red po red, pre upisa', 'up.s3': 'Potvrda', 'up.s3s': 'Upis i obaveštenja',
-    'up.src': 'Šablon', 'up.per': 'Period', 'up.file': 'Fajl', 'up.drop': 'Prevucite Excel fajl ovde ili', 'up.choose': 'Izaberi fajl', 'up.tpl': 'Preuzmi prazan šablon', 'up.note': 'Razlog ručnog unosa', 'up.noteSug': 'Prodaja na sajmu u Čačku (vikend) — ugovori nisu prošli kroz core do noćnog uvoza',
+    'up.src': 'Šablon', 'up.per': 'Period', 'up.file': 'Fajl', 'up.drop': 'Prevucite Excel fajl ovde ili', 'up.choose': 'Izaberi fajl', 'up.tpl': 'Preuzmi prazan šablon', 'up.note': 'Razlog ručnog unosa', 'up.noteSug': 'Prodaja na sajmu u Čačku (vikend) - ugovori nisu prošli kroz core do noćnog uvoza',
     'up.rows': 'Redova u fajlu', 'up.ok': 'Ispravno', 'up.rej': 'Odbija se', 'up.okRow': 'Ulazi', 'up.dup': 'Duplikat reda {r}', 'up.noEmp': 'Prodavac {h} ne postoji u organizaciji', 'up.seller': 'Prodavac', 'up.noFile': 'Izaberite fajl u prvom koraku',
-    'up.confirmTxt': '{n} stavki ulazi u ostvarenje za {p} odmah po potvrdi. {r} odbijena reda možete ispraviti u fajlu i ponovo učitati — upis je idempotentan po broju ugovora.', 'up.notifyMgr': 'Obavesti menadžera ekspoziture', 'up.go': 'Učitaj u sistem', 'up.done': 'Učitavanje {id}: {n} stavki prihvaćeno, {r} odbijeno'
+    'up.confirmTxt': '{n} stavki ulazi u ostvarenje za {p} odmah po potvrdi. {r} odbijena reda možete ispraviti u fajlu i ponovo učitati - upis je idempotentan po broju ugovora.', 'up.notifyMgr': 'Obavesti menadžera ekspoziture', 'up.go': 'Učitaj u sistem', 'up.done': 'Učitavanje {id}: {n} stavki prihvaćeno, {r} odbijeno'
   }, {
-    'ld.title': 'Data loads', 'ld.desc': 'Every load passes the same validation — nightly, API or manual upload. Nothing is lost: an item is accepted, rejected with a reason or waits for code mapping.',
+    'ld.title': 'Data loads', 'ld.desc': 'Every load passes the same validation - nightly, API or manual upload. Nothing is lost: an item is accepted, rejected with a reason or waits for code mapping.',
     'ld.tReg': 'Load register', 'ld.tUnm': 'Unmapped items', 'ld.tKpi': 'Ready KPI values', 'ld.tSrc': 'Data sources', 'ld.upload': 'Manual upload',
     'ld.colId': 'Load', 'ld.colSrc': 'Source', 'ld.colPer': 'Period', 'ld.colRows': 'Received', 'ld.colAcc': 'Accepted', 'ld.colUnm': 'Unmapped', 'ld.colRej': 'Rejected', 'ld.colDur': 'Duration', 'ld.colBy': 'Started by', 'ld.system': 'System (schedule)',
     'lst.ok': 'Successful', 'lst.upozorenje': 'Partial', 'lst.greska': 'Error', 'lst.ponovljeno': 'Re-run',
     'ld.det': 'Load {id}', 'ld.rules': 'Validation', 'ld.rule': 'Rule', 'ld.pass': 'Passed', 'ld.fail': 'Failed', 'ld.action': 'Handling', 'ld.rejRows': 'Rejected rows', 'ld.row': 'Row', 'ld.err': 'Error', 'ld.dlRej': 'Download rejected rows', 'ld.rerun': 'Re-run load', 'ld.log': 'Execution log',
     'v.V1': 'Format and mandatory fields', 'v.V2': 'Duplicate (contract + type + date)', 'v.V3': 'Seller exists in the organisation on the sale date', 'v.V4': 'Product code exists in the catalogue', 'v.V5': 'Date in an open period', 'v.V6': 'Amount within allowed range',
     'va.rej': 'Row is rejected', 'va.queue': 'Item waits for mapping (not rejected)',
-    'ld.unmBanner': '{n} items wait for code mapping', 'ld.unmBannerS': 'Items are not lost. In the current period they count right after mapping; in locked Q3 — at recalculation.', 'ld.map': 'Map', 'ld.code': 'Code', 'ld.items': '{n} items', 'ld.open': '{n} open',
-    'ust.nemapirano': 'Awaiting mapping', 'ust.mapirano': 'Mapped — counted', 'ust.ceka': 'Mapped — awaiting recalculation',
+    'ld.unmBanner': '{n} items wait for code mapping', 'ld.unmBannerS': 'Items are not lost. In the current period they count right after mapping; in locked Q3 - at recalculation.', 'ld.map': 'Map', 'ld.code': 'Code', 'ld.items': '{n} items', 'ld.open': '{n} open',
+    'ust.nemapirano': 'Awaiting mapping', 'ust.mapirano': 'Mapped - counted', 'ust.ceka': 'Mapped - awaiting recalculation',
     'kp.desc': 'Values other systems deliver as ready totals (balances, user counts). They cannot be drilled to a transaction, so they are used for reports and informative targets, not for item-based bonus.',
-    'kp.colKpi': 'KPI', 'kp.colLvl': 'Level', 'kp.colPer': 'Last period', 'kp.colCov': 'Coverage', 'kp.colUse': 'Used in', 'kp.vals': 'Values — {k}', 'kp.prev': 'Previous delivery', 'kp.delta': 'Change', 'kp.lvlE': 'Employee', 'kp.lvlB': 'Branch',
+    'kp.colKpi': 'KPI', 'kp.colLvl': 'Level', 'kp.colPer': 'Last period', 'kp.colCov': 'Coverage', 'kp.colUse': 'Used in', 'kp.vals': 'Values - {k}', 'kp.prev': 'Previous delivery', 'kp.delta': 'Change', 'kp.lvlE': 'Employee', 'kp.lvlB': 'Branch',
     'sr.colKind': 'Data type', 'sr.colMethod': 'Transfer method', 'sr.colSched': 'Schedule', 'sr.colFmt': 'Format', 'sr.colLast': 'Last load', 'sr.colOwner': 'Owner', 'sk.stavke': 'Sales items', 'sk.organizacija': 'Organisation', 'sk.kpi': 'Ready KPI values',
-    'sr.edit': 'Source settings — {n}', 'sr.thr': 'Warn if rejected rows exceed (%)', 'sr.notify': 'Notify the source owner on error', 'sr.saved': 'Settings for {n} saved',
+    'sr.edit': 'Source settings - {n}', 'sr.thr': 'Warn if rejected rows exceed (%)', 'sr.notify': 'Notify the source owner on error', 'sr.saved': 'Settings for {n} saved',
     'up.title': 'Manual upload', 'up.desc': 'Sales items from the Excel template pass the same validation as the nightly import. Before confirming you see exactly what is accepted, what is rejected and why.',
     'up.s1': 'Source and file', 'up.s1s': 'Template, period and file', 'up.s2': 'Validation and preview', 'up.s2s': 'Row by row, before writing', 'up.s3': 'Confirmation', 'up.s3s': 'Write and notifications',
-    'up.src': 'Template', 'up.per': 'Period', 'up.file': 'File', 'up.drop': 'Drop an Excel file here or', 'up.choose': 'Choose file', 'up.tpl': 'Download empty template', 'up.note': 'Reason for manual entry', 'up.noteSug': 'Sales at the Čačak fair (weekend) — contracts did not reach core before the nightly import',
+    'up.src': 'Template', 'up.per': 'Period', 'up.file': 'File', 'up.drop': 'Drop an Excel file here or', 'up.choose': 'Choose file', 'up.tpl': 'Download empty template', 'up.note': 'Reason for manual entry', 'up.noteSug': 'Sales at the Čačak fair (weekend) - contracts did not reach core before the nightly import',
     'up.rows': 'Rows in file', 'up.ok': 'Valid', 'up.rej': 'Rejected', 'up.okRow': 'Accepted', 'up.dup': 'Duplicate of row {r}', 'up.noEmp': 'Seller {h} does not exist in the organisation', 'up.seller': 'Seller', 'up.noFile': 'Choose a file in the first step',
-    'up.confirmTxt': '{n} items enter {p} achievement immediately on confirmation. You can fix the {r} rejected rows in the file and load again — writing is idempotent by contract number.', 'up.notifyMgr': 'Notify the branch manager', 'up.go': 'Load into the system', 'up.done': 'Load {id}: {n} items accepted, {r} rejected'
+    'up.confirmTxt': '{n} items enter {p} achievement immediately on confirmation. You can fix the {r} rejected rows in the file and load again - writing is idempotent by contract number.', 'up.notifyMgr': 'Notify the branch manager', 'up.go': 'Load into the system', 'up.done': 'Load {id}: {n} items accepted, {r} rejected'
   });
 
   /* ---------- izvori ---------- */
   var SRC = [
-    { id: 'SRC-DWH', name: { sr: 'DWH — prodajne stavke', en: 'DWH — sales items' }, kind: 'stavke', method: { sr: 'DB pogled (Oracle)', en: 'DB view (Oracle)' }, sched: { sr: 'Svaki dan 05:30', en: 'Daily 05:30' }, fmt: 'UC_SALES_V3', owner: { sr: 'DWH tim', en: 'DWH team' }, thr: 1 },
-    { id: 'SRC-HR', name: { sr: 'HR master — organizacija', en: 'HR master — organisation' }, kind: 'organizacija', method: { sr: 'SFTP, CSV', en: 'SFTP, CSV' }, sched: { sr: 'Svaki dan 05:00', en: 'Daily 05:00' }, fmt: 'HR_ORG_V2', owner: { sr: 'Ljudski resursi', en: 'Human resources' }, thr: 0 },
-    { id: 'SRC-DIG', name: { sr: 'Digitalna platforma — aktivacije', en: 'Digital platform — activations' }, kind: 'stavke', method: { sr: 'REST API', en: 'REST API' }, sched: { sr: 'Svaki dan 05:45', en: 'Daily 05:45' }, fmt: 'DIG_ACT_V1', owner: { sr: 'Digitalno bankarstvo', en: 'Digital banking' }, thr: 2 },
-    { id: 'SRC-KPI', name: { sr: 'DWH — gotove KPI vrednosti', en: 'DWH — ready KPI values' }, kind: 'kpi', method: { sr: 'SFTP, Excel', en: 'SFTP, Excel' }, sched: { sr: 'Mesečno, 3. radni dan', en: 'Monthly, 3rd working day' }, fmt: 'KPI_AGG_V1', owner: { sr: 'Kontroling', en: 'Controlling' }, thr: 0 },
-    { id: 'SRC-MAN', name: { sr: 'Ručni upload — prodajne stavke', en: 'Manual upload — sales items' }, kind: 'stavke', method: { sr: 'Excel šablon', en: 'Excel template' }, sched: { sr: 'Po potrebi', en: 'On demand' }, fmt: 'SALES_TEMPLATE_V3', owner: { sr: 'Administrator prodajnog učinka', en: 'Sales performance administrator' }, thr: 5 }
+    { id: 'SRC-DWH', name: { sr: 'DWH - prodajne stavke', en: 'DWH - sales items' }, kind: 'stavke', method: { sr: 'DB pogled (Oracle)', en: 'DB view (Oracle)' }, sched: { sr: 'Svaki dan 05:30', en: 'Daily 05:30' }, fmt: 'UC_SALES_V3', owner: { sr: 'DWH tim', en: 'DWH team' }, thr: 1 },
+    { id: 'SRC-HR', name: { sr: 'HR master - organizacija', en: 'HR master - organisation' }, kind: 'organizacija', method: { sr: 'SFTP, CSV', en: 'SFTP, CSV' }, sched: { sr: 'Svaki dan 05:00', en: 'Daily 05:00' }, fmt: 'HR_ORG_V2', owner: { sr: 'Ljudski resursi', en: 'Human resources' }, thr: 0 },
+    { id: 'SRC-DIG', name: { sr: 'Digitalna platforma - aktivacije', en: 'Digital platform - activations' }, kind: 'stavke', method: { sr: 'REST API', en: 'REST API' }, sched: { sr: 'Svaki dan 05:45', en: 'Daily 05:45' }, fmt: 'DIG_ACT_V1', owner: { sr: 'Digitalno bankarstvo', en: 'Digital banking' }, thr: 2 },
+    { id: 'SRC-KPI', name: { sr: 'DWH - gotove KPI vrednosti', en: 'DWH - ready KPI values' }, kind: 'kpi', method: { sr: 'SFTP, Excel', en: 'SFTP, Excel' }, sched: { sr: 'Mesečno, 3. radni dan', en: 'Monthly, 3rd working day' }, fmt: 'KPI_AGG_V1', owner: { sr: 'Kontroling', en: 'Controlling' }, thr: 0 },
+    { id: 'SRC-MAN', name: { sr: 'Ručni upload - prodajne stavke', en: 'Manual upload - sales items' }, kind: 'stavke', method: { sr: 'Excel šablon', en: 'Excel template' }, sched: { sr: 'Po potrebi', en: 'On demand' }, fmt: 'SALES_TEMPLATE_V3', owner: { sr: 'Administrator prodajnog učinka', en: 'Sales performance administrator' }, thr: 5 }
   ];
   function src(id) { return SRC.filter(function (s) { return s.id === id; })[0]; }
 
@@ -87,7 +87,7 @@
   IH.loads = function () { return IH.list('newLoads').concat(seed()).slice().sort(function (a, b) { return a.at < b.at ? 1 : a.at > b.at ? -1 : 0; }); };
   function findLoad(id) { return IH.loads().filter(function (l) { return l.id === id; })[0]; }
   function lst(s) { return ui.pill(t('lst.' + s), { ok: 'success', upozorenje: 'warning', greska: 'danger' }[s] || 'gray'); }
-  function perTxt(l) { return l.per ? l.per.split(' · ').map(D.periodLabel).join(' · ') : '—'; }
+  function perTxt(l) { return l.per ? l.per.split(' · ').map(D.periodLabel).join(' · ') : '-'; }
 
   /* ručno učitane stavke ulaze u stavke zaposlenog */
   var _itemsOf = D.itemsOf;
@@ -116,14 +116,14 @@
   IH.act['ld-det'] = function (el) {
     var l = findLoad(el.dataset.arg), s = src(l.src);
     var head = '<dl class="kv" style="grid-template-columns:max-content 1fr max-content 1fr;margin-bottom:14px"><dt>' + t('ld.colSrc') + '</dt><dd>' + IH.esc(IH.L(s.name)) + '</dd><dt>' + t('sr.colMethod') + '</dt><dd>' + IH.esc(IH.L(s.method)) + '</dd>' +
-      '<dt>' + t('c.status') + '</dt><dd>' + lst(l.status) + '</dd><dt>' + t('ld.colPer') + '</dt><dd>' + perTxt(l) + '</dd><dt>' + IH.L({ sr: 'Početak / kraj', en: 'Start / end' }) + '</dt><dd>' + F.dt(l.at) + ' – ' + l.end.slice(11) + '</dd><dt>' + t('ld.colBy') + '</dt><dd>' + (l.by ? IH.esc(D.emp(l.by).name) : t('ld.system')) + '</dd>' +
+      '<dt>' + t('c.status') + '</dt><dd>' + lst(l.status) + '</dd><dt>' + t('ld.colPer') + '</dt><dd>' + perTxt(l) + '</dd><dt>' + IH.L({ sr: 'Početak / kraj', en: 'Start / end' }) + '</dt><dd>' + F.dt(l.at) + ' - ' + l.end.slice(11) + '</dd><dt>' + t('ld.colBy') + '</dt><dd>' + (l.by ? IH.esc(D.emp(l.by).name) : t('ld.system')) + '</dd>' +
       (l.file ? '<dt>' + t('up.file') + '</dt><dd><span class="filechip" style="padding:3px 8px">' + ic('file') + IH.esc(l.file) + '</span></dd><dt></dt><dd></dd>' : '') + '</dl>';
     var body;
     if (l.status === 'greska') {
       body = '<div class="note warn"><b>' + t('lst.greska') + ':</b> ' + IH.esc(IH.L(l.err)) + '</div><div class="lab" style="margin-top:12px">' + t('ld.log') + '</div>' +
-        ui.hist([{ at: l.at.slice(0, 11) + '06:10', action: { sr: 'Pokrenuto po rasporedu', en: 'Started by schedule' } }, { at: l.at.slice(0, 11) + '06:15', action: { sr: 'Timeout posle 300 s', en: 'Timeout after 300 s' } }, { at: l.at.slice(0, 11) + '06:20', action: { sr: 'Automatski ponovni pokušaj — neuspešno; obavešteni DWH tim i administrator', en: 'Automatic retry — failed; DWH team and administrator notified' } }, { at: l.at.slice(0, 11) + '07:42', by: 'A001', action: { sr: 'Ručno ponovljeno kao ' + l.rerunBy, en: 'Manually re-run as ' + l.rerunBy } }].reverse());
+        ui.hist([{ at: l.at.slice(0, 11) + '06:10', action: { sr: 'Pokrenuto po rasporedu', en: 'Started by schedule' } }, { at: l.at.slice(0, 11) + '06:15', action: { sr: 'Timeout posle 300 s', en: 'Timeout after 300 s' } }, { at: l.at.slice(0, 11) + '06:20', action: { sr: 'Automatski ponovni pokušaj - neuspešno; obavešteni DWH tim i administrator', en: 'Automatic retry - failed; DWH team and administrator notified' } }, { at: l.at.slice(0, 11) + '07:42', by: 'A001', action: { sr: 'Ručno ponovljeno kao ' + l.rerunBy, en: 'Manually re-run as ' + l.rerunBy } }].reverse());
     } else if (l.src === 'SRC-HR') {
-      body = '<div class="note">' + IH.L({ sr: '418 zaposlenih u HR masteru; promena u organizaciji: ', en: '418 employees in HR master; organisation changes: ' }) + '<b>' + l.changes + '</b>' + (l.changes ? ' — <a href="#/organizacija" data-act="modal-close">' + IH.L({ sr: 'pregled promena', en: 'review changes' }) + '</a>' : '') + '</div>';
+      body = '<div class="note">' + IH.L({ sr: '418 zaposlenih u HR masteru; promena u organizaciji: ', en: '418 employees in HR master; organisation changes: ' }) + '<b>' + l.changes + '</b>' + (l.changes ? ' - <a href="#/organizacija" data-act="modal-close">' + IH.L({ sr: 'pregled promena', en: 'review changes' }) + '</a>' : '') + '</div>';
     } else {
       var rr = rules(l).map(function (x) { return { k: t('v.' + x.k), p: F.num(x.p), f: x.f ? '<b style="color:' + (x.a === 'rej' ? 'var(--danger)' : 'var(--warning)') + '">' + F.num(x.f) + '</b>' : '<span class="mut">0</span>', a: '<span class="mut">' + t('va.' + x.a) + '</span>' }; });
       body = '<div class="kpis" style="margin-bottom:12px">' + ui.kpi(t('ld.colRows'), F.num(l.rows)) + ui.kpi(t('ld.colAcc'), F.num(l.acc), null, { hl: true }) + ui.kpi(t('ld.colUnm'), l.unm, l.unm ? IH.L({ sr: 'čeka mapiranje', en: 'awaiting mapping' }) : null) + ui.kpi(t('ld.colRej'), l.rej) + '</div>' +
@@ -144,7 +144,7 @@
         { key: 'src', label: t('ld.colSrc'), val: function (l) { return IH.L(src(l.src).name); }, fval: function (l) { return l.src; }, filter: function () { return SRC.map(function (s) { return { v: s.id, l: IH.L(s.name) }; }); } },
         { key: 'm', label: t('sr.colMethod'), val: function (l) { return IH.L(src(l.src).method); } },
         { key: 'per', label: t('ld.colPer'), search: false, val: function (l) { return perTxt(l); } },
-        { key: 'f', label: t('up.file'), val: function (l) { return l.file || ''; }, render: function (l) { return l.file ? IH.esc(l.file) : '<span class="mut">—</span>'; } },
+        { key: 'f', label: t('up.file'), val: function (l) { return l.file || ''; }, render: function (l) { return l.file ? IH.esc(l.file) : '<span class="mut">-</span>'; } },
         { key: 'rows', label: t('ld.colRows'), num: true, search: false, val: function (l) { return l.rows; }, render: function (l) { return F.num(l.rows); } },
         { key: 'acc', label: t('ld.colAcc'), num: true, search: false, val: function (l) { return l.acc; }, render: function (l) { return F.num(l.acc); } },
         { key: 'unm', label: t('ld.colUnm'), num: true, search: false, val: function (l) { return l.unm; }, render: function (l) { return l.unm ? '<b style="color:var(--warning)">' + l.unm + '</b>' : '<span class="mut">0</span>'; } },
@@ -189,7 +189,7 @@
         { key: 'e', label: t('c.employee'), val: function (r) { return D.emp(r.i.emp).name; } },
         { key: 'b', label: t('c.branch'), val: function (r) { return D.branchShort(r.i.branch); } },
         { key: 'p', label: t('ld.colPer'), val: function (r) { return D.periodLabel(r.i.period); }, fval: function (r) { return r.i.period; }, filter: function () { return ['2026-Q3', '2026-Q4', '2026-10'].map(function (p) { return { v: p, l: D.periodLabel(p) }; }); } },
-        { key: 'a', label: t('os.colAmt'), num: true, search: false, val: function (r) { return r.i.amount || 0; }, render: function (r) { return r.i.amount ? F.num(r.i.amount) : '<span class="mut">—</span>'; } }
+        { key: 'a', label: t('os.colAmt'), num: true, search: false, val: function (r) { return r.i.amount || 0; }, render: function (r) { return r.i.amount ? F.num(r.i.amount) : '<span class="mut">-</span>'; } }
       ],
       actions: [
         { icon: 'share', title: t('ld.map'), act: 'map-open', kind: 'acc', arg: function (r) { return r.i.code; }, show: function (r) { return r.st === 'nemapirano'; } },
@@ -200,8 +200,8 @@
 
   /* ---------- gotove KPI vrednosti ---------- */
   var KPIS = [
-    { id: 'KPI-STD-NET', name: { sr: 'Neto priliv štednje (stanje portfolija)', en: 'Net savings inflow (portfolio balance)' }, lvl: 'E', per: '2026-09', unit: 'RSD', use: { sr: 'Izveštaji — portfolio bankara', en: 'Reports — banker portfolio' } },
-    { id: 'KPI-MB-AKT', name: { sr: 'Aktivni korisnici mBanking (30 dana)', en: 'Active mBanking users (30 days)' }, lvl: 'B', per: '2026-09', unit: 'kom', use: { sr: 'Izveštaji — digitalizacija', en: 'Reports — digitalisation' } },
+    { id: 'KPI-STD-NET', name: { sr: 'Neto priliv štednje (stanje portfolija)', en: 'Net savings inflow (portfolio balance)' }, lvl: 'E', per: '2026-09', unit: 'RSD', use: { sr: 'Izveštaji - portfolio bankara', en: 'Reports - banker portfolio' } },
+    { id: 'KPI-MB-AKT', name: { sr: 'Aktivni korisnici mBanking (30 dana)', en: 'Active mBanking users (30 days)' }, lvl: 'B', per: '2026-09', unit: 'kom', use: { sr: 'Izveštaji - digitalizacija', en: 'Reports - digitalisation' } },
     { id: 'KPI-PKG-PEN', name: { sr: 'Penetracija paket računa', en: 'Package account penetration' }, lvl: 'B', per: '2026-09', unit: '%', use: { sr: 'Informativni KPI ekspoziture', en: 'Informative branch KPI' } }
   ];
   function kpiVals(k) {
@@ -253,10 +253,10 @@
         { key: 'm', label: t('sr.colMethod'), val: function (s) { return IH.L(s.method); } },
         { key: 'sch', label: t('sr.colSched'), val: function (s) { return IH.L((IH.map('srcCfg')[s.id] || {}).sched || s.sched); } },
         { key: 'fmt', label: t('sr.colFmt'), val: function (s) { return s.fmt; } },
-        { key: 'l', label: t('sr.colLast'), search: false, val: function (s) { var l = lastOf(s); return l ? l.at : ''; }, render: function (s) { var l = lastOf(s); return l ? lst(l.status) + ' <span class="mut">' + F.dt(l.at) + '</span>' : '—'; } },
+        { key: 'l', label: t('sr.colLast'), search: false, val: function (s) { var l = lastOf(s); return l ? l.at : ''; }, render: function (s) { var l = lastOf(s); return l ? lst(l.status) + ' <span class="mut">' + F.dt(l.at) + '</span>' : '-'; } },
         { key: 'o', label: t('sr.colOwner'), val: function (s) { return IH.L(s.owner); } }
       ],
-      onStatus: function (s, on) { IH.map('srcOff')[s.id] = !on; IH.audit('source', s.id, on ? { sr: 'Izvor aktiviran', en: 'Source activated' } : { sr: 'Izvor deaktiviran — raspored zaustavljen', en: 'Source deactivated — schedule stopped' }); },
+      onStatus: function (s, on) { IH.map('srcOff')[s.id] = !on; IH.audit('source', s.id, on ? { sr: 'Izvor aktiviran', en: 'Source activated' } : { sr: 'Izvor deaktiviran - raspored zaustavljen', en: 'Source deactivated - schedule stopped' }); },
       actions: [{ type: 'edit', title: t('g.aEdit'), act: 'src-edit', kind: 'acc' }, { type: 'history', title: t('g.aHistory'), act: 'src-hist' }]
     });
   }
@@ -302,13 +302,13 @@
     var rows = upRows(), ok = rows.filter(function (r) { return !r.err; });
     return '<div class="kpis" style="margin-bottom:12px">' + ui.kpi(t('up.rows'), rows.length) + ui.kpi(t('up.ok'), ok.length, null, { hl: true }) + ui.kpi(t('up.rej'), rows.length - ok.length) + ui.kpi(t('ld.colUnm'), 0) + '</div>' +
       ui.table([{ key: 'r', label: t('ld.row'), num: true }, { key: 's', label: t('c.status') }, { key: 'e', label: t('up.seller') }, { key: 'p', label: t('c.product') }, { key: 'c', label: t('ld.code') }, { key: 'd', label: t('c.date') }, { key: 'u', label: t('it.contract') }, { key: 'a', label: t('os.colAmt'), num: true }, { key: 'x', label: t('ld.err') }],
-        rows.map(function (x) { return { r: x.r, s: x.err ? ui.pill(t('up.rej'), 'danger') : ui.pill(t('up.okRow'), 'success'), e: x.e ? IH.esc(x.e.name) : x.hr, p: IH.esc(D.productName(x.p)), c: x.code, d: F.date(x.date), u: x.ug, a: x.amt ? F.num(x.amt) : '<span class="mut">—</span>', x: x.err ? '<span style="color:var(--danger)">' + IH.esc(x.err) + '</span>' : '<span class="mut">—</span>' }; }), { compact: true }) +
-      '<div class="lab" style="margin-top:14px">' + t('ld.rules') + '</div>' + ui.checks([{ label: t('v.V1') }, { label: t('v.V2'), state: 'warn', sub: t('up.dup', { r: 2 }) + ' — ' + IH.L({ sr: 'red 8', en: 'row 8' }) }, { label: t('v.V3'), state: 'warn', sub: t('up.noEmp', { h: 'HR-99999' }) + ' — ' + IH.L({ sr: 'red 9', en: 'row 9' }) }, { label: t('v.V4') }, { label: t('v.V5') }, { label: t('v.V6') }]);
+        rows.map(function (x) { return { r: x.r, s: x.err ? ui.pill(t('up.rej'), 'danger') : ui.pill(t('up.okRow'), 'success'), e: x.e ? IH.esc(x.e.name) : x.hr, p: IH.esc(D.productName(x.p)), c: x.code, d: F.date(x.date), u: x.ug, a: x.amt ? F.num(x.amt) : '<span class="mut">-</span>', x: x.err ? '<span style="color:var(--danger)">' + IH.esc(x.err) + '</span>' : '<span class="mut">-</span>' }; }), { compact: true }) +
+      '<div class="lab" style="margin-top:14px">' + t('ld.rules') + '</div>' + ui.checks([{ label: t('v.V1') }, { label: t('v.V2'), state: 'warn', sub: t('up.dup', { r: 2 }) + ' - ' + IH.L({ sr: 'red 8', en: 'row 8' }) }, { label: t('v.V3'), state: 'warn', sub: t('up.noEmp', { h: 'HR-99999' }) + ' - ' + IH.L({ sr: 'red 9', en: 'row 9' }) }, { label: t('v.V4') }, { label: t('v.V5') }, { label: t('v.V6') }]);
   }
   function upStep3() {
     if (!U().file) return '<div class="note warn" style="display:flex;align-items:center;gap:12px"><span style="flex:1">' + t('up.noFile') + '</span>' + ui.btn(t('up.choose'), { cls: 'sm primary', icon: 'file', act: 'up-file' }) + '</div>';
     var rows = upRows(), ok = rows.filter(function (r) { return !r.err; }), mg = D.branchManager('B08');
-    return '<div class="note">' + t('up.confirmTxt', { n: ok.length, p: 'Q4 2026', r: rows.length - ok.length }) + '</div>' + ui.toggle('up_n', t('up.notifyMgr') + ' — ' + IH.esc(mg.name), true) +
+    return '<div class="note">' + t('up.confirmTxt', { n: ok.length, p: 'Q4 2026', r: rows.length - ok.length }) + '</div>' + ui.toggle('up_n', t('up.notifyMgr') + ' - ' + IH.esc(mg.name), true) +
       ui.flow([{ label: IH.L({ sr: 'Validacija', en: 'Validation' }), sub: ok.length + ' / ' + rows.length, state: 'done' }, { label: IH.L({ sr: 'Upis stavki', en: 'Write items' }), sub: 'Q4 2026', state: 'run' }, { label: t('os.title'), sub: IH.L({ sr: 'odmah', en: 'immediately' }) }, { label: t('nav.obracun'), sub: IH.L({ sr: 'pri zaključavanju', en: 'at lock' }) }]);
   }
   IH.act['up-file'] = function () { U().file = 'Sajam_Cacak_oktobar.xlsx'; IH.render(); };

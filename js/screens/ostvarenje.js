@@ -1,37 +1,37 @@
-/* Incentive Hub — Dnevno ostvarenje (Administrator) i Moje ostvarenje (Zaposleni) */
+/* Incentive Hub - Dnevno ostvarenje (Administrator) i Moje ostvarenje (Zaposleni) */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt, L = D.L2;
 
   IH.addStrings({
     'os.title': 'Dnevno ostvarenje', 'os.my': 'Moje ostvarenje',
-    'os.day': 'Dan {d} od {t}', 'os.daySub': 'podaci do {d}', 'os.netT1': 'Krediti — mreža', 'os.netT1s': 'od {t} · projekcija {p}', 'os.cost': 'Projektovani trošak', 'os.costS': 'savetnici i menadžeri, {p}',
+    'os.day': 'Dan {d} od {t}', 'os.daySub': 'podaci do {d}', 'os.netT1': 'Krediti - mreža', 'os.netT1s': 'od {t} · projekcija {p}', 'os.cost': 'Projektovani trošak', 'os.costS': 'savetnici i menadžeri, {p}',
     'os.onTrack': 'Na putu ka targetu', 'os.onTrackS': 'savetnici, projekcija kredita ≥ 100%', 'os.lastLoad': 'Poslednji uvoz', 'os.lastLoadS': '{n} prodaja · {d}',
     'os.daily': 'Plasman kredita po danu (RSD)', 'os.byBranch': 'Ostvarenje po ekspozituri', 'os.colProj': 'Projekcija kredita', 'os.colOn': 'Na putu', 'os.colBonus': 'Bonus (proj.)',
-    'os.final': 'konačno', 'os.lic': 'Savetnici', 'os.team': 'Tim univerzalnih bankara — {p}', 'os.teamSub': 'timski faktor {f} · {n} člana', 'os.mgr': 'Menadžer ekspoziture',
+    'os.final': 'konačno', 'os.lic': 'Savetnici', 'os.team': 'Tim univerzalnih bankara - {p}', 'os.teamSub': 'timski faktor {f} · {n} člana', 'os.mgr': 'Menadžer ekspoziture',
     'os.targets': 'Ostvarenje po targetu', 'os.items': 'Prodaje', 'os.proj': 'projekcija {p}', 'os.members': 'Članovi tima', 'os.myShare': 'Moje prodaje u timskom targetu',
-    'os.colDate': 'Datum', 'os.colItem': 'Proizvod', 'os.colSeg': 'Grupa klijenata', 'os.colPt': 'Vrsta', 'os.colType': 'Vrsta prodaje', 'os.colAmt': 'Iznos', 'os.colTg': 'Target', 'os.colVal': 'Vrednost za bonus', 'os.colSrc': 'Izvor', 'os.colClient': 'Klijent', 'os.none': 'Ne ulazi',
+    'os.colDate': 'Datum', 'os.colItem': 'Proizvod', 'os.colSeg': 'Segment', 'os.colPt': 'Vrsta', 'os.colType': 'Vrsta prodaje', 'os.colAmt': 'Iznos', 'os.colTg': 'Target', 'os.colVal': 'Vrednost za bonus', 'os.colSrc': 'Izvor', 'os.colClient': 'Klijent', 'os.none': 'Ne ulazi',
     'it.priznato': 'Priznato', 'it.storno': 'Storno', 'it.nemapirano': 'Čeka mapiranje', 'it.mapirano': 'Mapirano naknadno', 'it.ceka': 'Čeka ponovni obračun', 'it.korigovano': 'Korigovano', 'it.rucno': 'Ručno dodato', 'it.iskljuceno': 'Isključeno', 'it.premesteno': 'Prebačeno drugom prodavcu',
-    'it.why.priznato': 'Prodaja je priznata i ulazi u ostvarenje targeta {t}.', 'it.why.storno': 'Storno umanjuje ostvarenje targeta {t}.', 'it.why.nemapirano': 'Šifra {c} još nije povezana sa proizvodom u katalogu. Prodaja nije izgubljena — ulazi u obračun čim administrator mapira šifru.',
-    'it.why.mapirano': 'Šifra {c} je mapirana naknadno; prodaja je uključena u obračun.', 'it.why.ceka': 'Izmena je evidentirana, a period je zaključen — ulazi u obračun pri ponovnom obračunu perioda.', 'it.why.korigovano': 'Prodaja je izmenjena korekcijom {k}; original je sačuvan.',
+    'it.why.priznato': 'Prodaja je priznata i ulazi u ostvarenje targeta {t}.', 'it.why.storno': 'Storno umanjuje ostvarenje targeta {t}.', 'it.why.nemapirano': 'Šifra {c} još nije povezana sa proizvodom u katalogu. Prodaja nije izgubljena - ulazi u obračun čim administrator mapira šifru.',
+    'it.why.mapirano': 'Šifra {c} je mapirana naknadno; prodaja je uključena u obračun.', 'it.why.ceka': 'Izmena je evidentirana, a period je zaključen - ulazi u obračun pri ponovnom obračunu perioda.', 'it.why.korigovano': 'Prodaja je izmenjena korekcijom {k}; original je sačuvan.',
     'it.ceka_uslov': 'Čeka uslov', 'it.nije_priznato': 'Nije priznato', 'it.ne_racuna': 'Ne računa se', 'it.zatvaranje': 'Zatvoren račun',
-    'it.why.ceka_uslov': 'Prodaja ulazi u ostvarenje targeta {t} kada se ispuni uslov „{c}“ — najkasnije {d}.', 'it.why.nije_priznato': 'Uslov „{c}“ nije ispunjen u roku — prodaja ne ulazi u ostvarenje targeta {t}.', 'it.why.ne_racuna': 'Uslov „{c}“ — prodaja se nikad ne računa u target {t}.', 'it.why.zatvaranje': 'Klijent je zatvorio račun. Umanjuje neto target {t}.',
+    'it.why.ceka_uslov': 'Prodaja ulazi u ostvarenje targeta {t} kada se ispuni uslov „{c}“ - najkasnije {d}.', 'it.why.nije_priznato': 'Uslov „{c}“ nije ispunjen u roku - prodaja ne ulazi u ostvarenje targeta {t}.', 'it.why.ne_racuna': 'Uslov „{c}“ - prodaja se nikad ne računa u target {t}.', 'it.why.zatvaranje': 'Klijent je zatvorio račun. Umanjuje neto target {t}.',
     'it.why.rucno': 'Prodaja je ručno dodata korekcijom {k}.', 'it.why.iskljuceno': 'Prodaja je isključena iz obračuna korekcijom {k}.', 'it.why.premesteno': 'Prodaja je korekcijom {k} pripisana drugom prodavcu: {n}.',
     'it.detail': 'Prodaja', 'it.orig': 'Original iz izvora', 'it.now': 'Važi u obračunu', 'it.trail': 'Tok prodaje', 'it.loaded': 'Učitano iz {s} ({l})', 'it.mappedAt': 'Šifra {c} mapirana na {p}', 'it.corrAt': 'Korekcija {k}: {r}',
     'it.client': 'Klijent', 'it.contract': 'Ugovor', 'it.code': 'Šifra iz izvora', 'it.toCorr': 'Korekcija prodaje', 'os.empty': 'Za izabrani period nema prodaja.', 'os.inCalc': 'Prodaja u obračunu', 'os.ofTotal': 'od ukupno {n}', 'os.afterMap': 'ulaze posle mapiranja / ponovnog obračuna', 'os.reduce': 'umanjuju ostvarenje'
   }, {
     'os.title': 'Daily achievement', 'os.my': 'My achievement',
-    'os.day': 'Day {d} of {t}', 'os.daySub': 'data as of {d}', 'os.netT1': 'Loans — network', 'os.netT1s': 'of {t} · projection {p}', 'os.cost': 'Projected cost', 'os.costS': 'advisors and managers, {p}',
+    'os.day': 'Day {d} of {t}', 'os.daySub': 'data as of {d}', 'os.netT1': 'Loans - network', 'os.netT1s': 'of {t} · projection {p}', 'os.cost': 'Projected cost', 'os.costS': 'advisors and managers, {p}',
     'os.onTrack': 'On track to target', 'os.onTrackS': 'advisors, loan projection ≥ 100%', 'os.lastLoad': 'Last import', 'os.lastLoadS': '{n} sales · {d}',
     'os.daily': 'Loan disbursement per day (RSD)', 'os.byBranch': 'Achievement by branch', 'os.colProj': 'Loan projection', 'os.colOn': 'On track', 'os.colBonus': 'Bonus (proj.)',
-    'os.final': 'final', 'os.lic': 'Advisors', 'os.team': 'Universal banker team — {p}', 'os.teamSub': 'team factor {f} · {n} members', 'os.mgr': 'Branch manager',
+    'os.final': 'final', 'os.lic': 'Advisors', 'os.team': 'Universal banker team - {p}', 'os.teamSub': 'team factor {f} · {n} members', 'os.mgr': 'Branch manager',
     'os.targets': 'Achievement by target', 'os.items': 'Sales', 'os.proj': 'projection {p}', 'os.members': 'Team members', 'os.myShare': 'My sales in the team target',
-    'os.colDate': 'Date', 'os.colItem': 'Product', 'os.colSeg': 'Client group', 'os.colPt': 'Type', 'os.colType': 'Sale type', 'os.colAmt': 'Amount', 'os.colTg': 'Target', 'os.colVal': 'Value for bonus', 'os.colSrc': 'Source', 'os.colClient': 'Client', 'os.none': 'Not counted',
+    'os.colDate': 'Date', 'os.colItem': 'Product', 'os.colSeg': 'Segment', 'os.colPt': 'Type', 'os.colType': 'Sale type', 'os.colAmt': 'Amount', 'os.colTg': 'Target', 'os.colVal': 'Value for bonus', 'os.colSrc': 'Source', 'os.colClient': 'Client', 'os.none': 'Not counted',
     'it.priznato': 'Recognised', 'it.storno': 'Reversal', 'it.nemapirano': 'Awaiting mapping', 'it.mapirano': 'Mapped later', 'it.ceka': 'Awaiting recalculation', 'it.korigovano': 'Adjusted', 'it.rucno': 'Manually added', 'it.iskljuceno': 'Excluded', 'it.premesteno': 'Moved to another seller',
-    'it.why.priznato': 'The sale is recognised and counts toward target {t}.', 'it.why.storno': 'A reversal reduces the achievement of target {t}.', 'it.why.nemapirano': 'Code {c} is not yet linked to a catalogue product. The sale is not lost — it counts as soon as the administrator maps the code.',
-    'it.why.mapirano': 'Code {c} was mapped later; the sale is included.', 'it.why.ceka': 'The change is recorded but the period is locked — it counts when the period is recalculated.', 'it.why.korigovano': 'The sale was changed by correction {k}; the original is kept.',
+    'it.why.priznato': 'The sale is recognised and counts toward target {t}.', 'it.why.storno': 'A reversal reduces the achievement of target {t}.', 'it.why.nemapirano': 'Code {c} is not yet linked to a catalogue product. The sale is not lost - it counts as soon as the administrator maps the code.',
+    'it.why.mapirano': 'Code {c} was mapped later; the sale is included.', 'it.why.ceka': 'The change is recorded but the period is locked - it counts when the period is recalculated.', 'it.why.korigovano': 'The sale was changed by correction {k}; the original is kept.',
     'it.ceka_uslov': 'Awaiting condition', 'it.nije_priznato': 'Not recognised', 'it.ne_racuna': 'Never counts', 'it.zatvaranje': 'Account closed',
-    'it.why.ceka_uslov': 'The sale counts toward target {t} once condition "{c}" is met — by {d} at the latest.', 'it.why.nije_priznato': 'Condition "{c}" was not met in time — the sale does not count toward target {t}.', 'it.why.ne_racuna': 'Condition "{c}" — the sale never counts toward target {t}.', 'it.why.zatvaranje': 'The client closed the account. It reduces the net target {t}.',
+    'it.why.ceka_uslov': 'The sale counts toward target {t} once condition "{c}" is met - by {d} at the latest.', 'it.why.nije_priznato': 'Condition "{c}" was not met in time - the sale does not count toward target {t}.', 'it.why.ne_racuna': 'Condition "{c}" - the sale never counts toward target {t}.', 'it.why.zatvaranje': 'The client closed the account. It reduces the net target {t}.',
     'it.why.rucno': 'The sale was added manually by correction {k}.', 'it.why.iskljuceno': 'The sale was excluded by correction {k}.', 'it.why.premesteno': 'Correction {k} attributed the sale to another seller: {n}.',
     'it.detail': 'Sale', 'it.orig': 'Original from source', 'it.now': 'Used in calculation', 'it.trail': 'Sale trail', 'it.loaded': 'Loaded from {s} ({l})', 'it.mappedAt': 'Code {c} mapped to {p}', 'it.corrAt': 'Correction {k}: {r}',
     'it.client': 'Client', 'it.contract': 'Contract', 'it.code': 'Source code', 'it.toCorr': 'Correct sale', 'os.empty': 'No sales for the selected period.', 'os.inCalc': 'Sales counted', 'os.ofTotal': 'of {n}', 'os.afterMap': 'count after mapping / recalculation', 'os.reduce': 'reduce achievement'
@@ -98,8 +98,8 @@
   /* ---------- detalj prodaje (ista forma, samo za čitanje) ---------- */
   function whyText(r) {
     var k = r.corr ? r.corr.id : '', n = r.st === 'premesteno' ? D.emp(r.it.emp).name : '';
-    if (r.rc) return t('it.why.' + r.st, { t: IH.esc(r.tgName || '—'), c: IH.esc(IH.rules.condName(r.rc.c)), d: r.rc.until ? F.date(r.rc.until) : '—' });
-    return t('it.why.' + r.st, { t: r.tgName || '—', c: r.raw.code, k: k, n: IH.esc(n) });
+    if (r.rc) return t('it.why.' + r.st, { t: IH.esc(r.tgName || '-'), c: IH.esc(IH.rules.condName(r.rc.c)), d: r.rc.until ? F.date(r.rc.until) : '-' });
+    return t('it.why.' + r.st, { t: r.tgName || '-', c: r.raw.code, k: k, n: IH.esc(n) });
   }
   function itemFields(it) {
     return [
@@ -116,7 +116,7 @@
     var trail = [];
     if (r.raw.source === 'KOREKCIJA') trail.push({ at: r.corr.at, by: r.corr.by, action: t('it.corrAt', { k: r.corr.id, r: IH.L(reasonName(r.corr.reason)) }) });
     else if (r.raw.load && IH.loads) { var ld = IH.loads().filter(function (l) { return l.id === r.raw.load; })[0]; trail.push({ at: ld ? ld.at : D.LAST_LOAD, by: ld ? ld.by : null, action: t('it.loaded', { s: IH.L(L('ručnog uploada', 'manual upload')), l: r.raw.load }) }); }
-    else trail.push({ at: (loadOf(r.raw) ? loadOf(r.raw).slice(3, 7) + '-' + loadOf(r.raw).slice(7, 9) + '-' + loadOf(r.raw).slice(9, 11) + 'T06:12' : r.raw.date + 'T06:12'), by: null, action: t('it.loaded', { s: r.raw.source === 'RUCNO' ? IH.L(L('ručnog uploada', 'manual upload')) : 'DWH', l: loadOf(r.raw) || '—' }) });
+    else trail.push({ at: (loadOf(r.raw) ? loadOf(r.raw).slice(3, 7) + '-' + loadOf(r.raw).slice(7, 9) + '-' + loadOf(r.raw).slice(9, 11) + 'T06:12' : r.raw.date + 'T06:12'), by: null, action: t('it.loaded', { s: r.raw.source === 'RUCNO' ? IH.L(L('ručnog uploada', 'manual upload')) : 'DWH', l: loadOf(r.raw) || '-' }) });
     var m = IH.map('mapped')[r.raw.code];
     if (r.raw.status === 'nemapirano' && m) trail.push({ at: m.at, by: m.by, action: t('it.mappedAt', { c: r.raw.code, p: D.productName(m.product) }) });
     if (changed) trail.push({ at: r.corr.at, by: r.corr.by, action: t('it.corrAt', { k: r.corr.id, r: IH.L(reasonName(r.corr.reason)) }), detail: r.corr.note });
@@ -163,12 +163,12 @@
         { key: 'seg', label: t('os.colSeg'), val: function (r) { return r.it.seg ? D.segName(r.it.seg) : ''; }, fval: function (r) { return r.it.seg || ''; }, filter: function () { return D.segments.map(function (x) { return { v: x.id, l: IH.L(x.name) }; }); } },
         { key: 'pt', label: t('os.colPt'), val: function (r) { return r.it.ptype ? D.ptypeName(r.it.ptype) : ''; }, fval: function (r) { return r.it.ptype || ''; }, filter: function () { return D.ptypes.map(function (x) { return { v: x.id, l: IH.L(x.name) }; }); } },
         { key: 'ty', label: t('os.colType'), val: function (r) { return t('ct.' + r.it.type); }, fval: function (r) { return r.it.type; }, filter: function () { return ['nova', 'storno'].map(function (k) { return { v: k, l: t('ct.' + k) }; }); } },
-        { key: 'a', label: t('os.colAmt'), num: true, search: false, val: function (r) { return r.it.amount || 0; }, render: function (r) { return r.it.amount ? F.num(r.it.amount) : '<span class="mut">—</span>'; } },
+        { key: 'a', label: t('os.colAmt'), num: true, search: false, val: function (r) { return r.it.amount || 0; }, render: function (r) { return r.it.amount ? F.num(r.it.amount) : '<span class="mut">-</span>'; } },
         { key: 'q', label: t('it.contract'), val: function (r) { return r.it.contract || ''; }, sort: false },
         { key: 'cl', label: t('os.colClient'), val: function (r) { return r.it.client || ''; } },
         { key: 'code', label: t('it.code'), val: function (r) { return r.it.code; } },
         { key: 'tg', label: t('os.colTg'), val: function (r) { return r.tgName || ''; }, fval: function (r) { return r.tg || ''; }, render: function (r) { return r.tgName ? IH.esc(r.tgName) : '<span class="mut">' + t('os.none') + '</span>'; }, filter: function () { return s ? s.targets.map(function (tc) { return { v: tc.key, l: IH.L(EN.targetOf(tc, s).name) }; }) : []; } },
-        { key: 'v', label: t('os.colVal'), num: true, search: false, val: function (r) { return r.val == null ? -1e12 : r.val; }, render: function (r) { return r.val == null ? '<span class="mut">—</span>' : '<span' + (r.val < 0 ? ' style="color:var(--danger)"' : '') + '>' + F.num(r.val) + '</span>'; } },
+        { key: 'v', label: t('os.colVal'), num: true, search: false, val: function (r) { return r.val == null ? -1e12 : r.val; }, render: function (r) { return r.val == null ? '<span class="mut">-</span>' : '<span' + (r.val < 0 ? ' style="color:var(--danger)"' : '') + '>' + F.num(r.val) + '</span>'; } },
         { key: 'src', label: t('os.colSrc'), val: function (r) { return r.raw.source === 'KOREKCIJA' ? r.corr.id : loadOf(r.raw) || ''; } }
       ],
       actions: [
@@ -176,23 +176,6 @@
         { type: 'edit', title: t('it.toCorr'), act: 'kor-from-item', kind: 'acc', arg: function (r) { return empId + '|' + pid + '|' + r.id; }, show: function (r) { return IH.state.role === 'admin' && D.period(pid).status !== 'isplaceno' && !r.movedIn && r.raw.source !== 'KOREKCIJA' && (r.st === 'priznato' || r.st === 'storno' || r.st === 'korigovano'); } }
       ]
     });
-  }
-  /* bodovni target: komadi i bodovi po proizvodu iz bodovne liste (priznate prodaje − storno) */
-  function ptsBreakdown(tg, empId, pid) {
-    var a = EN.achieve(tg, EN.effItems(empId, pid)), by = {}, tn = 0, tb = 0;
-    a.items.forEach(function (i) { (by[i.product] = by[i.product] || { n: 0, s: 0 }).n++; });
-    a.stornoItems.forEach(function (i) { (by[i.product] = by[i.product] || { n: 0, s: 0 }).s++; });
-    var rows = D.subjProducts(tg.subject).map(function (p) {
-      var o = by[p.id] || { n: 0, s: 0 }, k = o.n - o.s, b = D.ptsOf(tg, p.id); tn += k; tb += k * b;
-      return { p: IH.esc(D.productName(p)), b: F.num(b), n: k ? F.num(k) : '<span class="mut">0</span>', s: k ? '<b>' + F.num(k * b) + '</b>' : '<span class="mut">0</span>' };
-    });
-    return ui.table([{ key: 'p', label: IH.L(L('Proizvod', 'Product')) }, { key: 'b', label: IH.L(L('Bodova po komadu', 'Points per piece')), num: true }, { key: 'n', label: IH.L(L('Komada', 'Pieces')), num: true }, { key: 's', label: IH.L(L('Bodova', 'Points')), num: true }],
-      rows, { compact: true, foot: { p: t('c.total'), n: '<b>' + F.num(tn) + '</b>', s: '<b>' + F.num(tb) + '</b>' } });
-  }
-  IH.ptsBreakdown = ptsBreakdown;
-  function ptsCards(empId, pid) {
-    var r = EN.result(empId, pid); if (!r || r.noScheme || D.emp(empId).pos === 'univerzalni') return '';
-    return (r.targets || []).filter(function (x) { return x.unit === 'bod'; }).map(function (x) { return ui.card(IH.esc(IH.L(x.name)) + ' — ' + IH.L(L('komadi i bodovi', 'pieces and points')), ptsBreakdown(D.targetAt(x.id, pid), empId, pid), { flush: true }); }).join('');
   }
   function empPage(empId, scope, crumb) {
     var e = D.emp(empId), pers = periodsOf(empId), v = IH.v(scope);
@@ -208,7 +191,7 @@
       ui.kpi(t('os.inCalc'), EN.effItems(empId, pid).length, t('os.ofTotal', { n: rows.length })) +
       ui.kpi(t('it.nemapirano'), rows.filter(function (x) { return x.st === 'nemapirano' || x.st === 'ceka'; }).length, t('os.afterMap')) +
       ui.kpi(t('it.storno'), rows.filter(function (x) { return x.st === 'storno'; }).length, t('os.reduce')) + '</div>';
-    return ui.header(title, '', acts, crumb || (D.posName(e.pos) + ' · ' + IH.esc(D.branchName(e.branch)))) + '<div class="toolbar" style="border:0;padding:0 0 14px">' + seg + '</div>' + kp + targetsCard(empId, pid) + ptsCards(empId, pid) + itemsGrid(empId, pid);
+    return ui.header(title, '', acts, crumb || (D.posName(e.pos) + ' · ' + IH.esc(D.branchName(e.branch)))) + '<div class="toolbar" style="border:0;padding:0 0 14px">' + seg + '</div>' + kp + targetsCard(empId, pid) + itemsGrid(empId, pid);
   }
 
   /* ================= MREŽA ================= */
@@ -228,7 +211,7 @@
     keys.forEach(function (k) { res[k] = agg[k].t ? agg[k].a / agg[k].t : 0; res['p' + k] = agg[k].t ? agg[k].pa / agg[k].t : 0; res['a' + k] = agg[k].a; res['t' + k] = agg[k].t; });
     return res;
   }
-  function tName(k) { return IH.L(D.targetByKey('S-M1', k).name).split(' – ')[0]; }
+  function tName(k) { return IH.L(D.targetByKey('S-M1', k).name).split(' - ')[0]; }
   function netPage() {
     var v = IH.v('os'), pid = v.per === '2026-Q3' ? '2026-Q3' : '2026-Q4', run = pid === '2026-Q4', di = D.daysInfo(pid);
     IH.refreshers.os = function () { IH.render(); };
@@ -261,7 +244,7 @@
       actions: [{ type: 'details', title: t('g.aDetails'), act: 'g-go', arg: function (r) { return 'ostvarenje/' + r.b.id; } }]
     });
     return ui.header(t('os.title'), '', ui.segf('os', 'per', [{ v: '2026-Q4', l: perLabel('2026-Q4') }, { v: '2026-Q3', l: D.periodLabel('2026-Q3') }])) + kp +
-      ui.card(t('os.daily'), chart) + IH.sech(t('os.byBranch') + ' — ' + D.periodLabel(pid)) + grid;
+      ui.card(t('os.daily'), chart) + IH.sech(t('os.byBranch') + ' - ' + D.periodLabel(pid)) + grid;
   }
 
   /* ================= EKSPOZITURA ================= */
@@ -286,16 +269,16 @@
     var mem = m3.members.map(function (m) { var e = D.emp(m.emp); return { _go: 'ostvarenje/' + bid + '/' + e.id, n: '<b>' + IH.esc(e.name) + '</b>' + (e.isNew ? ' ' + ui.pill(t('c.new'), 'accent') : ''), i: m.items, b: F.num(m.baseEff), s: F.pct(m.share), p: F.num(m.payout) }; });
     if (run) D.branchStaff(bid, 'univerzalni').filter(function (e) { return e.since > D.DATA_AS_OF && e.since <= D.period(mpid).to; }).forEach(function (e) {
       var dt = D.daysInfo(mpid), pres = (Date.parse(D.period(mpid).to) - Date.parse(e.since)) / 864e5 + 1;
-      mem.push({ n: '<b>' + IH.esc(e.name) + '</b> ' + ui.pill(t('c.new'), 'accent') + ' <span class="mut">' + IH.L(L('od ', 'from ')) + F.date(e.since) + '</span>', i: '—', b: F.num(Math.round(m3.base * pres / dt.total)), p: '<span class="mut">' + IH.L(L('od sledećeg uvoza', 'from next import')) + '</span>' });
+      mem.push({ n: '<b>' + IH.esc(e.name) + '</b> ' + ui.pill(t('c.new'), 'accent') + ' <span class="mut">' + IH.L(L('od ', 'from ')) + F.date(e.since) + '</span>', i: '-', b: F.num(Math.round(m3.base * pres / dt.total)), p: '<span class="mut">' + IH.L(L('od sledećeg uvoza', 'from next import')) + '</span>' });
     });
-    mem.forEach(function (r) { if (r.s == null) r.s = '<span class="mut">—</span>'; });
+    mem.forEach(function (r) { if (r.s == null) r.s = '<span class="mut">-</span>'; });
     var kpis = m3.kpis.map(function (k) { return { k: '<b>' + IH.esc(IH.L(k.name)) + '</b>', a: F.unit(Math.round(k.ach), k.unit) + ' / ' + F.unit(k.target, k.unit), p: ui.pcell(k.pct, { max: 1.6 }), w: F.pct(k.weight) }; });
     var team = '<div class="grid g2">' + ui.card(t('os.team', { p: D.periodLabel(mpid) }) + ' · ' + t('os.teamSub', { f: '×' + F.num(m3.teamFactor, 1), n: m3.members.length }), ui.table([{ key: 'k', label: t('c.target') }, { key: 'a', label: t('c.ach'), num: true }, { key: 'p', label: t('c.pct'), w: '160px' }, { key: 'w', label: t('sc.pay'), num: true }], kpis, { compact: true }), { flush: true }) +
       ui.card(t('os.members'), ui.table([{ key: 'n', label: t('c.employee') }, { key: 'i', label: t('os.items'), num: true }, { key: 'b', label: IH.L(L('Osnova', 'Base')), num: true }, { key: 's', label: IH.L(L('Udeo', 'Share')), num: true }, { key: 'p', label: run ? t('os.colBonus') : 'Bonus', num: true }], mem, { compact: true, foot: { n: t('c.total'), p: F.num(m3.total) } }), { flush: true }) + '</div>';
-    var mgr = ui.card(t('os.mgr') + ' — ' + IH.esc(mg.name) + ' · ' + D.periodLabel(pid), '<dl class="kv" style="grid-template-columns:max-content 1fr max-content 1fr max-content 1fr max-content 1fr">' + m2.targets.map(function (x) { return '<dt>' + IH.esc(IH.L(x.name)) + '</dt><dd>' + F.pct(x.pct) + '</dd>'; }).join('') + '<dt>' + t('sc.teamF') + '</dt><dd>×' + F.num(m2.teamFactor, 1) + ' (' + F.pct(m2.share) + ')</dd><dt>' + (run ? t('os.colBonus') : 'Bonus') + '</dt><dd><b>' + F.rsd(m2.payout) + '</b></dd></dl>', { actions: ui.btn(IH.L(L('Obračunski list', 'Statement')), { cls: 'sm', icon: 'calc', go: 'obracun/' + pid + '/' + mg.id }) });
+    var mgr = ui.card(t('os.mgr') + ' - ' + IH.esc(mg.name) + ' · ' + D.periodLabel(pid), '<dl class="kv" style="grid-template-columns:max-content 1fr max-content 1fr max-content 1fr max-content 1fr">' + m2.targets.map(function (x) { return '<dt>' + IH.esc(IH.L(x.name)) + '</dt><dd>' + F.pct(x.pct) + '</dd>'; }).join('') + '<dt>' + t('sc.teamF') + '</dt><dd>×' + F.num(m2.teamFactor, 1) + ' (' + F.pct(m2.share) + ')</dd><dt>' + (run ? t('os.colBonus') : 'Bonus') + '</dt><dd><b>' + F.rsd(m2.payout) + '</b></dd></dl>', { actions: ui.btn(IH.L(L('Obračunski list', 'Statement')), { cls: 'sm', icon: 'calc', go: 'obracun/' + pid + '/' + mg.id }) });
     var crumb = '<a href="#/ostvarenje">' + t('os.title') + '</a> ' + ic('chevr') + ' ' + IH.esc(D.branchShort(b));
     return ui.header(IH.esc(D.branchName(b)), '', ui.segf('os', 'per', [{ v: '2026-Q4', l: perLabel('2026-Q4') }, { v: '2026-Q3', l: D.periodLabel('2026-Q3') }]), crumb) + kp +
-      IH.sech(t('os.lic') + ' — ' + D.periodLabel(pid)) + g + team + mgr;
+      IH.sech(t('os.lic') + ' - ' + D.periodLabel(pid)) + g + team + mgr;
   }
 
   IH.branchStats = branchStats;

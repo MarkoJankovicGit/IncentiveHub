@@ -1,4 +1,4 @@
-/* Incentive Hub — saglasnost na obračun i prigovori (zajedničko) + Prigovori tima (Menadžer)
+/* Incentive Hub - saglasnost na obračun i prigovori (zajedničko) + Prigovori tima (Menadžer)
    Tok: obračunski list → saglasnost ili prigovor (obavezan opis i prilog) → menadžer usvaja (automatska korekcija,
    ponovni obračun, ponovna saglasnost) ili odbija uz obrazloženje. */
 (function () {
@@ -6,33 +6,33 @@
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt, L = D.L2;
 
   IH.addStrings({
-    'cs.agree': 'Saglasan sam', 'cs.complain': 'Uloži prigovor', 'cs.agreeT': 'Saglasnost na obračun — {p}', 'cs.agreeTxt': 'Potvrđujem da sam pregledao obračunski list za {p} i da sam saglasan sa iznosom od {a}.', 'cs.agreeKor': 'Novi iznos posle korekcije: {b} → {a}.', 'cs.agreed': 'Saglasnost za {p} je evidentirana',
+    'cs.agree': 'Saglasan sam', 'cs.complain': 'Uloži prigovor', 'cs.agreeT': 'Saglasnost na obračun - {p}', 'cs.agreeTxt': 'Potvrđujem da sam pregledao obračunski list za {p} i da sam saglasan sa iznosom od {a}.', 'cs.agreeKor': 'Novi iznos posle korekcije: {b} → {a}.', 'cs.agreed': 'Saglasnost za {p} je evidentirana',
     'cs.wait': 'Obračun za {p} čeka vašu saglasnost do {d} (još {x} dana).', 'cs.kor': 'Obračun za {p} je korigovan: {b} → {a}. Potvrdite novi iznos.', 'cs.inCompl': 'Prigovor {c} je kod menadžera {m} od {d}.',
-    'cs.ok': 'Saglasni ste sa obračunom od {d}.', 'cs.auto': 'Automatska saglasnost po isteku roka ({d}).', 'cs.appr': 'Obračun je odobren za isplatu.', 'cs.paid': 'Isplaćeno {d} kroz obračun zarada.', 'cs.run': 'Period je u toku — preliminarni obračun na osnovu projekcije.', 'cs.rej': 'Prigovor {c} je odbijen ({d}) — obrazloženje je u prepisci. Saglasnost ili novi prigovor do {r}',
-    'pc.title': 'Prigovor na obračun — {p}', 'pc.reason': 'Tema prigovora', 'pc.contract': 'Broj ugovora', 'pc.prod': 'Proizvod', 'pc.amount': 'Iznos (RSD)', 'pc.date': 'Datum prodaje', 'pc.text': 'Opis', 'pc.att': 'Prilog', 'pc.attach': 'Priloži dokument', 'pc.send': 'Pošalji prigovor', 'pc.sent': 'Prigovor {c} je poslat menadžeru {m}', 'pc.need': 'Opis i prilog su obavezni',
+    'cs.ok': 'Saglasni ste sa obračunom od {d}.', 'cs.auto': 'Automatska saglasnost po isteku roka ({d}).', 'cs.appr': 'Obračun je odobren za isplatu.', 'cs.paid': 'Isplaćeno {d} kroz obračun zarada.', 'cs.run': 'Period je u toku - preliminarni obračun na osnovu projekcije.', 'cs.rej': 'Prigovor {c} je odbijen ({d}) - obrazloženje je u prepisci. Saglasnost ili novi prigovor do {r}',
+    'pc.title': 'Prigovor na obračun - {p}', 'pc.reason': 'Tema prigovora', 'pc.contract': 'Broj ugovora', 'pc.prod': 'Proizvod', 'pc.amount': 'Iznos (RSD)', 'pc.date': 'Datum prodaje', 'pc.text': 'Opis', 'pc.att': 'Prilog', 'pc.attach': 'Priloži dokument', 'pc.send': 'Pošalji prigovor', 'pc.sent': 'Prigovor {c} je poslat menadžeru {m}', 'pc.need': 'Opis i prilog su obavezni',
     'pc.textSug': 'Gotovinski kredit klijenta ••2210 (650.000 RSD) isplaćen je 29.09, a ne vidim ga u obračunu za Q3. Ugovor je u prilogu.', 'pc.to': 'Prigovor rešava',
     'pt.title': 'Prigovori tima', 'pt.colId': 'Prigovor', 'pt.colEmp': 'Zaposleni', 'pt.colTopic': 'Tema', 'pt.colReason': 'Razlog', 'pt.colAt': 'Podnet', 'pt.colDue': 'Rok za odluku', 'pt.colDecided': 'Odlučeno', 'pt.data': 'Podaci o prigovoru',
     'pst2.otvoren': 'Otvoren', 'pst2.usvojen': 'Usvojen', 'pst2.odbijen': 'Odbijen',
     'pt.facts': 'Provera u sistemu', 'pt.found': 'Stavka za ugovor {u} postoji u {p}: {s} · {a}', 'pt.notFound': 'U sistemu nema stavke za ugovor {u} ni u jednom periodu.', 'pt.stmt': 'Obračunski list', 'pt.thread': 'Prepiska', 'pt.reply': 'Odgovori', 'pt.replyPh': 'Poruka zaposlenom', 'pt.send': 'Pošalji poruku',
     'pt.accept': 'Usvoji', 'pt.reject': 'Odbij', 'pt.decision': 'Odluka', 'pt.accT': 'Usvajanje prigovora {c}', 'pt.accTxt': 'Usvajanjem se pravi korekcija (razlog: usvojen prigovor), obračun zaposlenog se ponovo računa i vraća na ponovnu saglasnost.', 'pt.corr': 'Korekcija koja se pravi',
-    'pt.kLine': 'Dodaj prodaju', 'pt.kAmt': 'Iznos na bonus', 'pt.rejT': 'Odbijanje prigovora {c}', 'pt.rejNote': 'Obrazloženje (vidi zaposleni)', 'pt.accDone': 'Prigovor {c} usvojen — korekcija {k}, obračun vraćen na ponovnu saglasnost', 'pt.rejDone': 'Prigovor {c} je odbijen', 'pt.decided': '{m}, {d}',
-    'pt.rejSug': 'Kredit je isplaćen {d} i uračunat je u Q4 2026 — period određuje datum isplate, ne datum ugovora. Za Q3 nema promene; kredit ulazi u target Krediti za Q4.', 'pt.sys': 'Sistem', 'pt.corrLink': 'Korekcija'
+    'pt.kLine': 'Dodaj prodaju', 'pt.kAmt': 'Iznos na bonus', 'pt.rejT': 'Odbijanje prigovora {c}', 'pt.rejNote': 'Obrazloženje (vidi zaposleni)', 'pt.accDone': 'Prigovor {c} usvojen - korekcija {k}, obračun vraćen na ponovnu saglasnost', 'pt.rejDone': 'Prigovor {c} je odbijen', 'pt.decided': '{m}, {d}',
+    'pt.rejSug': 'Kredit je isplaćen {d} i uračunat je u Q4 2026 - period određuje datum isplate, ne datum ugovora. Za Q3 nema promene; kredit ulazi u target Krediti za Q4.', 'pt.sys': 'Sistem', 'pt.corrLink': 'Korekcija'
   }, {
-    'cs.agree': 'I agree', 'cs.complain': 'File a complaint', 'cs.agreeT': 'Consent to statement — {p}', 'cs.agreeTxt': 'I confirm that I reviewed the {p} statement and agree with the amount of {a}.', 'cs.agreeKor': 'New amount after correction: {b} → {a}.', 'cs.agreed': 'Consent for {p} recorded',
+    'cs.agree': 'I agree', 'cs.complain': 'File a complaint', 'cs.agreeT': 'Consent to statement - {p}', 'cs.agreeTxt': 'I confirm that I reviewed the {p} statement and agree with the amount of {a}.', 'cs.agreeKor': 'New amount after correction: {b} → {a}.', 'cs.agreed': 'Consent for {p} recorded',
     'cs.wait': 'Your {p} statement awaits consent until {d} ({x} days left).', 'cs.kor': 'Your {p} statement was adjusted: {b} → {a}. Confirm the new amount.', 'cs.inCompl': 'Complaint {c} is with manager {m} since {d}.',
-    'cs.ok': 'You agreed with the statement on {d}.', 'cs.auto': 'Auto-consent after the deadline ({d}).', 'cs.appr': 'The statement is approved for payout.', 'cs.paid': 'Paid on {d} through payroll.', 'cs.run': 'The period is in progress — preliminary statement based on the projection.', 'cs.rej': 'Complaint {c} was rejected ({d}) — see the thread. Consent or file a new complaint by {r}',
-    'pc.title': 'Complaint on statement — {p}', 'pc.reason': 'Complaint topic', 'pc.contract': 'Contract number', 'pc.prod': 'Product', 'pc.amount': 'Amount (RSD)', 'pc.date': 'Sale date', 'pc.text': 'Description', 'pc.att': 'Attachment', 'pc.attach': 'Attach document', 'pc.send': 'Send complaint', 'pc.sent': 'Complaint {c} sent to manager {m}', 'pc.need': 'Description and attachment are required',
+    'cs.ok': 'You agreed with the statement on {d}.', 'cs.auto': 'Auto-consent after the deadline ({d}).', 'cs.appr': 'The statement is approved for payout.', 'cs.paid': 'Paid on {d} through payroll.', 'cs.run': 'The period is in progress - preliminary statement based on the projection.', 'cs.rej': 'Complaint {c} was rejected ({d}) - see the thread. Consent or file a new complaint by {r}',
+    'pc.title': 'Complaint on statement - {p}', 'pc.reason': 'Complaint topic', 'pc.contract': 'Contract number', 'pc.prod': 'Product', 'pc.amount': 'Amount (RSD)', 'pc.date': 'Sale date', 'pc.text': 'Description', 'pc.att': 'Attachment', 'pc.attach': 'Attach document', 'pc.send': 'Send complaint', 'pc.sent': 'Complaint {c} sent to manager {m}', 'pc.need': 'Description and attachment are required',
     'pc.textSug': 'A cash loan for client ••2210 (RSD 650,000) was disbursed on Sep 29, but I cannot see it in my Q3 statement. The contract is attached.', 'pc.to': 'Decided by',
     'pt.title': 'Team complaints', 'pt.colId': 'Complaint', 'pt.colEmp': 'Employee', 'pt.colTopic': 'Topic', 'pt.colReason': 'Reason', 'pt.colAt': 'Filed', 'pt.colDue': 'Decision due', 'pt.colDecided': 'Decided', 'pt.data': 'Complaint data',
     'pst2.otvoren': 'Open', 'pst2.usvojen': 'Accepted', 'pst2.odbijen': 'Rejected',
     'pt.facts': 'System check', 'pt.found': 'An item for contract {u} exists in {p}: {s} · {a}', 'pt.notFound': 'The system has no item for contract {u} in any period.', 'pt.stmt': 'Statement', 'pt.thread': 'Thread', 'pt.reply': 'Reply', 'pt.replyPh': 'Message to the employee', 'pt.send': 'Send message',
     'pt.accept': 'Accept', 'pt.reject': 'Reject', 'pt.decision': 'Decision', 'pt.accT': 'Accept complaint {c}', 'pt.accTxt': 'Accepting creates a correction (reason: complaint accepted), recalculates the employee statement and returns it for re-consent.', 'pt.corr': 'Correction to be created',
-    'pt.kLine': 'Add sale', 'pt.kAmt': 'Bonus amount', 'pt.rejT': 'Reject complaint {c}', 'pt.rejNote': 'Explanation (visible to the employee)', 'pt.accDone': 'Complaint {c} accepted — correction {k}, statement returned for re-consent', 'pt.rejDone': 'Complaint {c} rejected', 'pt.decided': '{m}, {d}',
-    'pt.rejSug': 'The loan was disbursed on {d} and counts in Q4 2026 — the disbursement date sets the period, not the contract date. No change for Q3; the loan counts toward your Q4 Loans target.', 'pt.sys': 'System', 'pt.corrLink': 'Correction'
+    'pt.kLine': 'Add sale', 'pt.kAmt': 'Bonus amount', 'pt.rejT': 'Reject complaint {c}', 'pt.rejNote': 'Explanation (visible to the employee)', 'pt.accDone': 'Complaint {c} accepted - correction {k}, statement returned for re-consent', 'pt.rejDone': 'Complaint {c} rejected', 'pt.decided': '{m}, {d}',
+    'pt.rejSug': 'The loan was disbursed on {d} and counts in Q4 2026 - the disbursement date sets the period, not the contract date. No change for Q3; the loan counts toward your Q4 Loans target.', 'pt.sys': 'System', 'pt.corrLink': 'Correction'
   });
 
   /* ---------- početni podaci ---------- */
-  /* C-0412 (config): kredit ugovoren u septembru, isplaćen u oktobru — placeholderi se pune iz stvarne stavke (itemRef) */
+  /* C-0412 (config): kredit ugovoren u septembru, isplaćen u oktobru - placeholderi se pune iz stvarne stavke (itemRef) */
   function refItem(c) {
     if (!c.itemRef) return null;
     var its = D.itemsOf(c.itemRef.emp, c.itemRef.period).filter(function (i) { return i.ptype === c.itemRef.ptype && i.type === 'nova' && i.product; });
@@ -180,7 +180,7 @@
     var inp = document.getElementById('pt-msg'), v = inp && inp.value.trim(); if (!v) return;
     var c = getC(el.dataset.arg), me = IH.me();
     addMsg(c.id, me.id, v);
-    if (me.id === c.emp) notify('manager', { sr: D.emp(c.emp).name + ' — nova poruka u prigovoru ' + c.id, en: D.emp(c.emp).name + ' — new message in complaint ' + c.id }, 'prigovori-tima/' + c.id);
+    if (me.id === c.emp) notify('manager', { sr: D.emp(c.emp).name + ' - nova poruka u prigovoru ' + c.id, en: D.emp(c.emp).name + ' - new message in complaint ' + c.id }, 'prigovori-tima/' + c.id);
     else if (c.emp === D.personas.employee.emp) notify('employee', { sr: 'Nova poruka menadžera u prigovoru ' + c.id, en: 'New message from your manager in complaint ' + c.id }, 'moj-obracun');
     IH.save(); IH.render();
   };
@@ -200,8 +200,8 @@
         { key: 's', label: t('pt.colTopic'), nw: false, val: function (c) { return IH.L(c.subject); }, render: function (c) { return '<div style="min-width:220px;max-width:340px">' + IH.esc(IH.L(c.subject)) + '</div>'; } },
         { key: 'r', label: t('pt.colReason'), val: function (c) { return prName(c.reason); }, filter: function () { return IH.codeItems('RAZLOG_PRIGOVORA').map(function (x) { return { v: IH.L(x.name), l: IH.L(x.name) }; }); } },
         { key: 'at', label: t('pt.colAt'), search: false, val: function (c) { return c.at; }, render: function (c) { return F.dt(c.at); } },
-        { key: 'due', label: t('pt.colDue'), search: false, val: function (c) { return due(c); }, render: function (c) { if (c.status !== 'otvoren') return '<span class="mut">—</span>'; var d = daysLeft(due(c)); return '<span style="color:' + (d <= 1 ? 'var(--danger)' : 'inherit') + '">' + F.date(due(c)) + '</span>'; } },
-        { key: 'dec', label: t('pt.colDecided'), search: false, val: function (c) { return c.decidedAt || ''; }, render: function (c) { return c.decidedAt ? F.date(c.decidedAt) : '<span class="mut">—</span>'; } }
+        { key: 'due', label: t('pt.colDue'), search: false, val: function (c) { return due(c); }, render: function (c) { if (c.status !== 'otvoren') return '<span class="mut">-</span>'; var d = daysLeft(due(c)); return '<span style="color:' + (d <= 1 ? 'var(--danger)' : 'inherit') + '">' + F.date(due(c)) + '</span>'; } },
+        { key: 'dec', label: t('pt.colDecided'), search: false, val: function (c) { return c.decidedAt || ''; }, render: function (c) { return c.decidedAt ? F.date(c.decidedAt) : '<span class="mut">-</span>'; } }
       ],
       actions: [{ type: 'details', title: t('g.aDetails'), act: 'g-go', arg: function (c) { return 'prigovori-tima/' + c.id; } }]
     });
@@ -274,8 +274,8 @@
     st()[c.id] = { status: 'usvojen', decidedAt: rec.at, decidedBy: me.id, corrId: rec.id };
     addMsg(c.id, me.id, IH.L({ sr: 'Prigovor je usvojen. Napravljena je korekcija ' + rec.id + '; novi iznos ' + F.rsd(after) + ' čeka vašu ponovnu saglasnost.', en: 'Complaint accepted. Correction ' + rec.id + ' was created; the new amount ' + F.rsd(after) + ' awaits your re-consent.' }), true);
     IH.audit('complaint', c.id, { sr: 'Prigovor usvojen', en: 'Complaint accepted' }, { sr: 'Korekcija ' + rec.id + ' · ' + F.num(before) + ' → ' + F.num(after), en: 'Correction ' + rec.id + ' · ' + F.num(before) + ' → ' + F.num(after) });
-    if (c.emp === D.personas.employee.emp) notify('employee', { sr: 'Prigovor ' + c.id + ' je usvojen — novi iznos ' + F.rsd(after) + ' čeka saglasnost', en: 'Complaint ' + c.id + ' accepted — new amount ' + F.rsd(after) + ' awaits consent' }, 'moj-obracun', 'checkc');
-    notify('admin', { sr: me.name + ' je usvojio prigovor ' + c.id + ' (' + D.emp(c.emp).name + ') — korekcija ' + rec.id, en: me.name + ' accepted complaint ' + c.id + ' — correction ' + rec.id }, 'korekcije/istorija', 'edit');
+    if (c.emp === D.personas.employee.emp) notify('employee', { sr: 'Prigovor ' + c.id + ' je usvojen - novi iznos ' + F.rsd(after) + ' čeka saglasnost', en: 'Complaint ' + c.id + ' accepted - new amount ' + F.rsd(after) + ' awaits consent' }, 'moj-obracun', 'checkc');
+    notify('admin', { sr: me.name + ' je usvojio prigovor ' + c.id + ' (' + D.emp(c.emp).name + ') - korekcija ' + rec.id, en: me.name + ' accepted complaint ' + c.id + ' - correction ' + rec.id }, 'korekcije/istorija', 'edit');
     IH.save(); IH.form = {}; IH.closeModal(); IH.go('prigovori-tima'); IH.toast(t('pt.accDone', { c: c.id, k: rec.id }));
   };
   IH.act['pt-rej'] = function (el) {
@@ -291,7 +291,7 @@
     addMsg(c.id, me.id, v);
     EN.setApproval(c.emp, c.period, { status: 'ceka', at: IH.now(), complaint: c.id });
     IH.audit('complaint', c.id, { sr: 'Prigovor odbijen', en: 'Complaint rejected' }, { sr: v, en: v });
-    if (c.emp === D.personas.employee.emp) notify('employee', { sr: 'Prigovor ' + c.id + ' je odbijen — obrazloženje u prepisci', en: 'Complaint ' + c.id + ' rejected — see the thread' }, 'moj-obracun', 'msg');
+    if (c.emp === D.personas.employee.emp) notify('employee', { sr: 'Prigovor ' + c.id + ' je odbijen - obrazloženje u prepisci', en: 'Complaint ' + c.id + ' rejected - see the thread' }, 'moj-obracun', 'msg');
     IH.save(); IH.closeModal(); IH.go('prigovori-tima'); IH.toast(t('pt.rejDone', { c: c.id }));
   };
 

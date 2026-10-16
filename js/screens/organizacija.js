@@ -1,4 +1,4 @@
-/* Incentive Hub — Organizacija: struktura (stablo + pretraga), svi zaposleni, promene iz noćnog uvoza */
+/* Incentive Hub - Organizacija: struktura (stablo + pretraga), svi zaposleni, promene iz noćnog uvoza */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt, L = D.L2;
@@ -7,23 +7,23 @@
     'og.title': 'Organizacija', 'og.tTree': 'Struktura', 'og.tAll': 'Svi zaposleni', 'og.tChg': 'Promene iz uvoza', 'og.import': 'Uvoz iz fajla', 'og.search': 'Pretraga strukture', 'og.noHit': 'Nema rezultata za „{q}“',
     'og.bank': 'Banka', 'og.region': 'Region', 'og.branch': 'Ekspozitura', 'og.staff': 'Zaposlenih', 'og.head': 'Rukovodilac', 'og.addr': 'Adresa', 'og.city': 'Grad', 'og.code': 'Šifra', 'og.factor': 'Faktor veličine', 'og.since': 'U organizaciji od', 'og.mgr': 'Menadžer', 'og.scheme': 'Bonus šema',
     'og.members': 'Zaposleni', 'og.branches': 'Ekspoziture', 'og.regions': 'Regioni', 'og.memb': 'Istorija pripadnosti', 'og.open': 'Otvori ostvarenje', 'og.basic': 'Osnovni podaci', 'og.name': 'Ime i prezime', 'og.hr': 'HR broj', 'og.pos': 'Pozicija', 'og.phone': 'Telefon', 'og.email': 'E-mail', 'og.unit': 'Organizaciona jedinica', 'og.hq': 'Centrala',
-    'og.edit': 'Izmena podataka — {n}', 'og.saved': 'Podaci za {n} su sačuvani', 'og.schemeFrom': '{s} od {d}', 'og.allSearch': 'Ime, HR broj, telefon',
+    'og.edit': 'Izmena podataka - {n}', 'og.saved': 'Podaci za {n} su sačuvani', 'og.schemeFrom': '{s} od {d}', 'og.allSearch': 'Ime, HR broj, telefon',
     'oc.novi': 'Novi zaposleni', 'oc.premestaj': 'Premeštaj', 'oc.odlazak': 'Odlazak', 'oc.pozicija': 'Promena pozicije',
     'oc.colType': 'Promena', 'oc.colEmp': 'Zaposleni', 'oc.colPos': 'Pozicija', 'oc.colFrom': 'Iz', 'oc.colTo': 'U', 'oc.colEff': 'Važi od', 'oc.colImpact': 'Uticaj na obračun', 'oc.open': 'Otvoreno', 'oc.done': 'Rešeno', 'oc.resolve': 'Reši',
-    'oc.iNovi': 'Nema raspoređenu šemu — bez šeme se bonus ne obračunava', 'oc.iPrem': 'Raspored ostaje; target {p} se deli po danima ({a} dana u {b1}, {c} dana u {b2}); prodaje se pripisuju po ekspozituri na dan prodaje', 'oc.iOdl': 'Raspored se zatvara {d} — obračun {p} do poslednjeg radnog dana', 'oc.iPoz': 'Nova pozicija traži novu šemu od {d} — postojeći raspored se zatvara',
-    'oc.applyT': 'Primena promene — {n}', 'oc.apply': 'Primeni', 'oc.applied': 'Promena za {n} je primenjena', 'oc.goAssign': 'Rasporedi šemu',
-    'oi.title': 'Uvoz organizacije iz fajla', 'oi.file': 'Fajl', 'oi.choose': 'Izaberi fajl', 'oi.rows': '{n} promene pronađene', 'oi.go': 'Uvezi promene', 'oi.done': 'Uvezeno {n} promena — čekaju rešavanje',
+    'oc.iNovi': 'Nema raspoređenu šemu - bez šeme se bonus ne obračunava', 'oc.iPrem': 'Raspored ostaje; target {p} se deli po danima ({a} dana u {b1}, {c} dana u {b2}); prodaje se pripisuju po ekspozituri na dan prodaje', 'oc.iOdl': 'Raspored se zatvara {d} - obračun {p} do poslednjeg radnog dana', 'oc.iPoz': 'Nova pozicija traži novu šemu od {d} - postojeći raspored se zatvara',
+    'oc.applyT': 'Primena promene - {n}', 'oc.apply': 'Primeni', 'oc.applied': 'Promena za {n} je primenjena', 'oc.goAssign': 'Rasporedi šemu',
+    'oi.title': 'Uvoz organizacije iz fajla', 'oi.file': 'Fajl', 'oi.choose': 'Izaberi fajl', 'oi.rows': '{n} promene pronađene', 'oi.go': 'Uvezi promene', 'oi.done': 'Uvezeno {n} promena - čekaju rešavanje',
     'mh.colEmp': 'Zaposleni', 'mh.colUnit': 'Organizaciona jedinica', 'mh.colPos': 'Pozicija', 'mh.colFrom': 'Od', 'mh.colTo': 'Do', 'mh.colSrc': 'Izvor', 'mh.hr': 'HR uvoz', 'mh.plan': 'planirano', 'mh.open': 'bez kraja'
   }, {
     'og.title': 'Organisation', 'og.tTree': 'Structure', 'og.tAll': 'All employees', 'og.tChg': 'Import changes', 'og.import': 'Import from file', 'og.search': 'Search the structure', 'og.noHit': 'No results for "{q}"',
     'og.bank': 'Bank', 'og.region': 'Region', 'og.branch': 'Branch', 'og.staff': 'Staff', 'og.head': 'Head', 'og.addr': 'Address', 'og.city': 'City', 'og.code': 'Code', 'og.factor': 'Size factor', 'og.since': 'In organisation since', 'og.mgr': 'Manager', 'og.scheme': 'Bonus scheme',
     'og.members': 'Employees', 'og.branches': 'Branches', 'og.regions': 'Regions', 'og.memb': 'Membership history', 'og.open': 'Open achievement', 'og.basic': 'Basic data', 'og.name': 'Full name', 'og.hr': 'HR number', 'og.pos': 'Position', 'og.phone': 'Phone', 'og.email': 'Email', 'og.unit': 'Organisation unit', 'og.hq': 'Head office',
-    'og.edit': 'Edit data — {n}', 'og.saved': 'Data for {n} saved', 'og.schemeFrom': '{s} from {d}', 'og.allSearch': 'Name, HR number, phone',
+    'og.edit': 'Edit data - {n}', 'og.saved': 'Data for {n} saved', 'og.schemeFrom': '{s} from {d}', 'og.allSearch': 'Name, HR number, phone',
     'oc.novi': 'New employee', 'oc.premestaj': 'Transfer', 'oc.odlazak': 'Leaving', 'oc.pozicija': 'Position change',
     'oc.colType': 'Change', 'oc.colEmp': 'Employee', 'oc.colPos': 'Position', 'oc.colFrom': 'From', 'oc.colTo': 'To', 'oc.colEff': 'Effective', 'oc.colImpact': 'Impact on calculation', 'oc.open': 'Open', 'oc.done': 'Resolved', 'oc.resolve': 'Resolve',
-    'oc.iNovi': 'No scheme assigned — no bonus is calculated without a scheme', 'oc.iPrem': 'Assignment stays; the {p} target is split by days ({a} days in {b1}, {c} days in {b2}); sales follow the branch on the sale date', 'oc.iOdl': 'Assignment closes {d} — {p} calculated to the last working day', 'oc.iPoz': 'The new position needs a new scheme from {d} — the current assignment closes',
-    'oc.applyT': 'Apply change — {n}', 'oc.apply': 'Apply', 'oc.applied': 'Change for {n} applied', 'oc.goAssign': 'Assign scheme',
-    'oi.title': 'Organisation import from file', 'oi.file': 'File', 'oi.choose': 'Choose file', 'oi.rows': '{n} changes found', 'oi.go': 'Import changes', 'oi.done': '{n} changes imported — awaiting resolution',
+    'oc.iNovi': 'No scheme assigned - no bonus is calculated without a scheme', 'oc.iPrem': 'Assignment stays; the {p} target is split by days ({a} days in {b1}, {c} days in {b2}); sales follow the branch on the sale date', 'oc.iOdl': 'Assignment closes {d} - {p} calculated to the last working day', 'oc.iPoz': 'The new position needs a new scheme from {d} - the current assignment closes',
+    'oc.applyT': 'Apply change - {n}', 'oc.apply': 'Apply', 'oc.applied': 'Change for {n} applied', 'oc.goAssign': 'Assign scheme',
+    'oi.title': 'Organisation import from file', 'oi.file': 'File', 'oi.choose': 'Choose file', 'oi.rows': '{n} changes found', 'oi.go': 'Import changes', 'oi.done': '{n} changes imported - awaiting resolution',
     'mh.colEmp': 'Employee', 'mh.colUnit': 'Organisation unit', 'mh.colPos': 'Position', 'mh.colFrom': 'From', 'mh.colTo': 'To', 'mh.colSrc': 'Source', 'mh.hr': 'HR import', 'mh.plan': 'planned', 'mh.open': 'open-ended'
   });
 
@@ -78,12 +78,12 @@
   function empHead(e) { return '<div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">' + ui.avatar(e.name, true) + '<div><b style="font-size:15px">' + IH.esc(e.name) + '</b>' + (e.isNew ? ' ' + ui.pill(t('c.new'), 'accent') : '') + '<div class="mut">' + D.posName(e.pos) + ' · ' + IH.esc(unitOf(e)) + '</div></div></div>'; }
   IH.act['og-view'] = function (el) {
     var e = D.emp(el.dataset.arg); if (!e) return;
-    IH.modal({ title: t('og.basic') + ' — ' + IH.esc(e.name), wide: true, body: empHead(e) + ui.form(basicFields(e), { readonly: true }),
+    IH.modal({ title: t('og.basic') + ' - ' + IH.esc(e.name), wide: true, body: empHead(e) + ui.form(basicFields(e), { readonly: true }),
       foot: ui.btn(t('og.memb'), { icon: 'history', act: 'og-hist', arg: e.id }) + ui.btn(t('g.aEdit'), { icon: 'edit', act: 'og-edit', arg: e.id }) + ui.btn(t('c.close'), { act: 'modal-close' }) });
   };
   IH.act['og-hist'] = function (el) {
     var e = D.emp(el.dataset.arg); if (!e) return;
-    IH.modal({ title: t('og.memb') + ' — ' + IH.esc(e.name), wide: true, body: membTable(e), foot: ui.btn(t('c.close'), { act: 'modal-close' }) });
+    IH.modal({ title: t('og.memb') + ' - ' + IH.esc(e.name), wide: true, body: membTable(e), foot: ui.btn(t('c.close'), { act: 'modal-close' }) });
   };
   IH.act['og-edit'] = function (el) {
     var e = D.emp(el.dataset.arg); if (!e) return; IH.form = {};
@@ -146,7 +146,7 @@
     if (br) {
       var st = D.employees.filter(function (e) { return e.branch === br.id; }), mg = D.branchManager(br.id);
       return ui.card(IH.esc(D.branchName(br)),
-        ui.form([{ k: 'br_c', label: t('og.code'), value: br.code }, { k: 'br_g', label: t('og.city'), value: br.city }, { k: 'br_a', label: t('og.addr'), value: br.addr, full: true }, { k: 'br_ph', label: t('og.phone'), value: br.phone || '' }, { k: 'br_r', label: t('og.region'), value: IH.L(D.region(br.region).name) }, { k: 'br_m', label: t('og.mgr'), value: mg.name }, { k: 'br_mp', label: t('og.mgr') + ' — ' + t('og.phone').toLowerCase(), value: phoneOf(mg) }, { k: 'br_n', label: t('og.staff'), value: st.length + ' (' + D.posName('licni') + ': ' + st.filter(function (e) { return e.pos === 'licni'; }).length + ', ' + D.posName('univerzalni') + ': ' + st.filter(function (e) { return e.pos === 'univerzalni'; }).length + ')' }], { readonly: true }) +
+        ui.form([{ k: 'br_c', label: t('og.code'), value: br.code }, { k: 'br_g', label: t('og.city'), value: br.city }, { k: 'br_a', label: t('og.addr'), value: br.addr, full: true }, { k: 'br_ph', label: t('og.phone'), value: br.phone || '' }, { k: 'br_r', label: t('og.region'), value: IH.L(D.region(br.region).name) }, { k: 'br_m', label: t('og.mgr'), value: mg.name }, { k: 'br_mp', label: t('og.mgr') + ' - ' + t('og.phone').toLowerCase(), value: phoneOf(mg) }, { k: 'br_n', label: t('og.staff'), value: st.length + ' (' + D.posName('licni') + ': ' + st.filter(function (e) { return e.pos === 'licni'; }).length + ', ' + D.posName('univerzalni') + ': ' + st.filter(function (e) { return e.pos === 'univerzalni'; }).length + ')' }], { readonly: true }) +
         '<div class="lab" style="margin-top:14px">' + t('og.members') + '</div>' + ui.table([{ key: 'e', label: t('og.members'), nw: true }, { key: 'p', label: t('mh.colPos'), nw: true }, { key: 'ph', label: t('og.phone'), nw: true }, { key: 's', label: t('og.scheme'), nw: true }], st.map(function (e) { var a = curAsg(e.id); return { _go: 'organizacija/' + e.id, e: '<b>' + IH.esc(e.name) + '</b>' + (e.isNew ? ' ' + ui.pill(t('c.new'), 'accent') : ''), p: D.posName(e.pos), ph: phoneOf(e), s: a ? IH.esc(D.scheme(a.scheme).code) : ui.st2('bez_seme'), f: F.date(e.since) }; }), { compact: true }), { actions: ui.btn(t('og.open'), { cls: 'sm', icon: 'activity', go: 'ostvarenje/' + br.id }) });
     }
     var e = D.emp(id); if (!e) return '';
@@ -194,8 +194,8 @@
         { key: 't', label: t('oc.colType'), val: function (c) { return t('oc.' + c.type); }, fval: function (c) { return c.type; }, render: function (c) { return '<b>' + t('oc.' + c.type) + '</b>'; }, filter: function () { return ['novi', 'premestaj', 'odlazak', 'pozicija'].map(function (k) { return { v: k, l: t('oc.' + k) }; }); } },
         { key: 'e', label: t('oc.colEmp'), val: function (c) { return c.name; } },
         { key: 'p', label: t('oc.colPos'), val: function (c) { return D.posName(c.pos) + (c.type === 'pozicija' ? ' → ' + D.posName(c.newPos) : ''); } },
-        { key: 'f', label: t('oc.colFrom'), val: function (c) { return c.type === 'novi' ? '' : D.branchShort(c.branch); }, render: function (c) { return c.type === 'novi' ? '<span class="mut">—</span>' : IH.esc(D.branchShort(c.branch)); } },
-        { key: 'to', label: t('oc.colTo'), val: function (c) { return c.type === 'odlazak' ? '' : D.branchShort(c.to || c.branch); }, render: function (c) { return c.type === 'odlazak' ? '<span class="mut">—</span>' : IH.esc(D.branchShort(c.to || c.branch)); } },
+        { key: 'f', label: t('oc.colFrom'), val: function (c) { return c.type === 'novi' ? '' : D.branchShort(c.branch); }, render: function (c) { return c.type === 'novi' ? '<span class="mut">-</span>' : IH.esc(D.branchShort(c.branch)); } },
+        { key: 'to', label: t('oc.colTo'), val: function (c) { return c.type === 'odlazak' ? '' : D.branchShort(c.to || c.branch); }, render: function (c) { return c.type === 'odlazak' ? '<span class="mut">-</span>' : IH.esc(D.branchShort(c.to || c.branch)); } },
         { key: 'd', label: t('oc.colEff'), val: function (c) { return c.eff; }, render: function (c) { return F.date(c.eff); } },
         { key: 'i', label: t('oc.colImpact'), search: false, val: function (c) { return impact(c); }, render: function (c) { return '<span class="cell-clip mut" title="' + IH.esc(impact(c)) + '">' + impact(c) + '</span>'; } }
       ],

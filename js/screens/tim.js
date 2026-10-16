@@ -1,10 +1,10 @@
-/* Incentive Hub — Moj obračun (Zaposleni) · Moj tim, Saglasnosti tima, Moj bonus (Menadžer) */
+/* Incentive Hub - Moj obračun (Zaposleni) · Moj tim, Saglasnosti tima, Moj bonus (Menadžer) */
 (function () {
   'use strict';
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt;
 
   IH.addStrings({
-    'mo.title': 'Moj obračun', 'mo.desc': 'Obračunski list stavku po stavku — od targeta do pojedinačne prodaje. Saglasnost ili prigovor dajete ovde.', 'mo.items': 'Moje stavke', 'mo.thread': 'Prigovor {c}', 'mo.hist': 'Istorija obračuna',
+    'mo.title': 'Moj obračun', 'mo.desc': 'Obračunski list stavku po stavku - od targeta do pojedinačne prodaje. Saglasnost ili prigovor dajete ovde.', 'mo.items': 'Moje stavke', 'mo.thread': 'Prigovor {c}', 'mo.hist': 'Istorija obračuna',
     'mo.colPer': 'Period', 'mo.colPay': 'Isplata', 'mo.colSt': 'Status', 'mo.prelim': 'preliminarno',
     'tm.title': 'Moj tim', 'tm.desc': 'Zaposleni u vašoj liniji rukovođenja: ostvarenje tekućeg perioda, projekcija bonusa i status obračuna.', 'tm.colEmp': 'Zaposleni', 'tm.colAch': 'Ostvarenje (projekcija)', 'tm.colBonus': 'Bonus (proj.)', 'tm.colCons': 'Saglasnost', 'tm.colScheme': 'Šema',
     'tm.k1': 'Članova tima', 'tm.k2': 'Na putu ka targetu', 'tm.k3': 'Projektovani bonus tima', 'tm.k4': 'Čeka saglasnost', 'tm.k5': 'Otvoreni prigovori', 'tm.card': 'Kartica zaposlenog', 'tm.periods': 'Obračuni po periodima', 'tm.hist': 'Istorija', 'tm.new': 'počinje {d}',
@@ -12,7 +12,7 @@
     'sgt.remind': 'Podsetnik', 'sgt.remindAll': 'Pošalji podsetnik svima bez odgovora ({n})', 'sgt.reminded': 'Podsetnik poslat: {n}', 'sgt.deadline': 'Rok {d} · još {x} dana', 'sgt.toCompl': 'Otvori prigovor',
     'mb.title': 'Moj bonus', 'mb.desc': 'Vaš obračun iz rezultata tima: krediti i novi klijenti ekspoziture, pomnoženi timskim ponderom prema udelu bankara na targetu.', 'mb.team': 'Doprinos članova tima', 'mb.share': 'Udeo bankara sa targetom Krediti ≥ 100%', 'mb.onT': 'Na targetu', 'mb.to': 'Prigovor na sopstveni obračun rešava regionalni direktor ({n}).'
   }, {
-    'mo.title': 'My statement', 'mo.desc': 'Statement item by item — from targets down to a single sale. You give consent or file a complaint here.', 'mo.items': 'My items', 'mo.thread': 'Complaint {c}', 'mo.hist': 'Statement history',
+    'mo.title': 'My statement', 'mo.desc': 'Statement item by item - from targets down to a single sale. You give consent or file a complaint here.', 'mo.items': 'My items', 'mo.thread': 'Complaint {c}', 'mo.hist': 'Statement history',
     'mo.colPer': 'Period', 'mo.colPay': 'Payout', 'mo.colSt': 'Status', 'mo.prelim': 'preliminary',
     'tm.title': 'My team', 'tm.desc': 'Employees in your management line: current period achievement, projected bonus and statement status.', 'tm.colEmp': 'Employee', 'tm.colAch': 'Achievement (projection)', 'tm.colBonus': 'Bonus (proj.)', 'tm.colCons': 'Consent', 'tm.colScheme': 'Scheme',
     'tm.k1': 'Team members', 'tm.k2': 'On track', 'tm.k3': 'Projected team bonus', 'tm.k4': 'Awaiting consent', 'tm.k5': 'Open complaints', 'tm.card': 'Employee card', 'tm.periods': 'Statements by period', 'tm.hist': 'History', 'tm.new': 'starts {d}',
@@ -51,7 +51,7 @@
     if (e.pos === 'licni') { var r = EN.m1(e.id, '2026-Q4', { project: true }); return { pct: r.targets[0].pct, l: IH.L(r.targets[0].name) }; }
     var m = EN.m3(e.branch, '2026-10', { project: true }); return { pct: m.payoutPct, l: IH.L({ sr: 'tim', en: 'team' }) };
   }
-  /* zajednički bonus tima (tekući mesec): podela na jednake delove ili po odluci menadžera — važi odmah, beleži se u audit */
+  /* zajednički bonus tima (tekući mesec): podela na jednake delove ili po odluci menadžera - važi odmah, beleži se u audit */
   var SPID = '2026-10';
   function TL(sr, en) { return IH.L({ sr: sr, en: en }); }
   function pctIn(s) { s = String(s == null ? '' : s).trim(); var n = parseFloat(s.indexOf(',') >= 0 ? s.replace(/\./g, '').replace(',', '.') : s); return isNaN(n) || n < 0 ? 0 : n; }
@@ -67,7 +67,7 @@
     var rows = r.members.map(function (m) { var e = D.emp(m.emp); return { n: '<b>' + IH.esc(e.name) + '</b>', d: Math.round(m.presence * dt.total) + ' / ' + dt.total, s: '<b>' + F.pct(m.share) + '</b>', p: F.num(Math.round(pool * m.share)), b: F.num(m.payout) }; });
     var acts = ui.pill(man ? TL('Odredio menadžer', 'Set by the manager') : TL('Na jednake delove', 'Equal shares'), man ? 'accent' : 'gray') + (canEdit ? ' ' + ui.btn(TL('Promeni podelu', 'Change split'), { cls: 'sm', icon: 'edit', act: 'tm-split', arg: bid }) : '');
     var tbl = ui.table([{ key: 'n', label: t('tm.colEmp') }, { key: 'd', label: TL('Dana u timu', 'Days in team'), num: true }, { key: 's', label: TL('Udeo', 'Share'), num: true }, { key: 'p', label: TL('Deo bonusa tima', 'Share of team bonus'), num: true }, { key: 'b', label: TL('Ukupna isplata (projekcija)', 'Total payout (projection)'), num: true }], rows, { compact: true, foot: { n: TL('Bonus tima (projekcija)', 'Team bonus (projection)'), p: '<b>' + F.num(pool) + '</b>' } });
-    return ui.card(TL('Zajednički bonus tima', 'Shared team bonus') + ' — ' + D.periodLabel(SPID), tbl, { flush: true, actions: acts });
+    return ui.card(TL('Zajednički bonus tima', 'Shared team bonus') + ' - ' + D.periodLabel(SPID), tbl, { flush: true, actions: acts });
   }
   function splitBody(bid) {
     var r = EN.m3(bid, SPID, { project: true }), f = IH.form.split || {}, pool = r.pool ? r.pool.pay : 0, sum = 0;
@@ -93,7 +93,7 @@
     var key = bid + '|' + SPID, map = IH.map('teamSplit');
     if (same) delete map[key]; else { var o = {}; r.members.forEach(function (m) { o[m.emp] = (f[m.emp] || 0) / 100; }); map[key] = o; }
     var txt = same ? null : r.members.map(function (m) { return D.emp(m.emp).name + ' ' + F.num(f[m.emp] || 0, 1) + '%'; }).join(', ');
-    IH.audit('teamSplit', bid, { sr: 'Promenjena podela bonusa tima — ' + D.periodLabel(SPID), en: 'Team bonus split changed — ' + D.periodLabel(SPID) }, { sr: txt || 'Na jednake delove', en: txt || 'Equal shares' });
+    IH.audit('teamSplit', bid, { sr: 'Promenjena podela bonusa tima - ' + D.periodLabel(SPID), en: 'Team bonus split changed - ' + D.periodLabel(SPID) }, { sr: txt || 'Na jednake delove', en: txt || 'Equal shares' });
     EN.invalidate(); IH.form = {}; IH.save(); IH.closeModal(); IH.render(); IH.toast(TL('Podela bonusa tima je sačuvana i važi odmah', 'Team bonus split saved and applies immediately'));
   };
 
@@ -113,7 +113,7 @@
         { key: 's', label: t('tm.colScheme'), val: function (e) { var s = EN.schemeFor(e.id, curP(e)); return s ? s.code : ''; } },
         { key: 'a', label: t('tm.colAch'), search: false, val: function (e) { return e.since > D.DATA_AS_OF ? -1 : achOf(e).pct; }, render: function (e) { if (e.since > D.DATA_AS_OF) return '<span class="mut">' + t('tm.new', { d: F.date(e.since) }) + '</span>'; var a = achOf(e); return '<div style="min-width:150px" title="' + IH.esc(a.l) + '">' + ui.pcell(a.pct) + '</div>'; } },
         { key: 'b', label: t('tm.colBonus'), num: true, search: false, val: function (e) { return pay(e.id, curP(e)); }, render: function (e) { return F.num(pay(e.id, curP(e))); } },
-        { key: 'c', label: t('tm.colCons'), val: function (e) { return EN.approval(e.id, closedP(e)).status; }, render: function (e) { return e.since > D.period(closedP(e)).to ? '<span class="mut">—</span>' : IH.ui.status(EN.approval(e.id, closedP(e)).status); }, filter: function () { return ['ceka', 'saglasan', 'auto', 'prigovor', 'korigovano'].map(function (k) { return { v: k, l: t('st.' + k) }; }); } }
+        { key: 'c', label: t('tm.colCons'), val: function (e) { return EN.approval(e.id, closedP(e)).status; }, render: function (e) { return e.since > D.period(closedP(e)).to ? '<span class="mut">-</span>' : IH.ui.status(EN.approval(e.id, closedP(e)).status); }, filter: function () { return ['ceka', 'saglasan', 'auto', 'prigovor', 'korigovano'].map(function (k) { return { v: k, l: t('st.' + k) }; }); } }
       ],
       actions: [{ type: 'details', title: t('tm.card'), act: 'g-go', arg: function (e) { return 'tim/' + e.id; } }, { icon: 'calc', title: t('pt.stmt'), act: 'g-go', arg: function (e) { return 'saglasnosti-tima/' + closedP(e) + '/' + e.id; }, show: function (e) { return e.since <= D.period(closedP(e)).to; } }]
     });
@@ -123,9 +123,9 @@
     var e = D.emp(empId); if (!e || e.mgr !== IH.me().id) return teamPage();
     var pers = IH.empPeriods(empId), v = IH.v('tmc-' + empId), pid = pers.indexOf(v.per) >= 0 ? v.per : pers[0];
     IH.refreshers['tmc-' + empId] = function () { IH.render(); };
-    var hist = IH.auditFor('assignment', empId).concat(IH.assignments().filter(function (a) { return a.emp === empId; }).map(function (a) { return { at: (a.approvedAt || a.submittedAt || a.from + 'T08:00'), by: a.approvedBy || a.submittedBy, action: { sr: 'Raspored ' + D.scheme(a.scheme).code + ' — ' + t('st2.' + a.status), en: 'Assignment ' + D.scheme(a.scheme).code + ' — ' + t('st2.' + a.status) } }; }))
+    var hist = IH.auditFor('assignment', empId).concat(IH.assignments().filter(function (a) { return a.emp === empId; }).map(function (a) { return { at: (a.approvedAt || a.submittedAt || a.from + 'T08:00'), by: a.approvedBy || a.submittedBy, action: { sr: 'Raspored ' + D.scheme(a.scheme).code + ' - ' + t('st2.' + a.status), en: 'Assignment ' + D.scheme(a.scheme).code + ' - ' + t('st2.' + a.status) } }; }))
       .concat(EN.allCorr().filter(function (c) { return c.emp === empId || (c.changes && c.changes.emp === empId); }).map(function (c) { return { at: c.at, by: c.by, action: { sr: 'Korekcija ' + c.id + ' (' + D.periodLabel(c.period) + ')', en: 'Correction ' + c.id + ' (' + D.periodLabel(c.period) + ')' }, detail: c.note }; }))
-      .concat(IH.complaints().filter(function (c) { return c.emp === empId; }).map(function (c) { return { at: c.at, by: c.emp, action: { sr: 'Prigovor ' + c.id + ' — ' + t('pst2.' + c.status), en: 'Complaint ' + c.id + ' — ' + t('pst2.' + c.status) }, detail: c.subject }; }))
+      .concat(IH.complaints().filter(function (c) { return c.emp === empId; }).map(function (c) { return { at: c.at, by: c.emp, action: { sr: 'Prigovor ' + c.id + ' - ' + t('pst2.' + c.status), en: 'Complaint ' + c.id + ' - ' + t('pst2.' + c.status) }, detail: c.subject }; }))
       .sort(function (a, b) { return a.at < b.at ? 1 : -1; });
     var crumb = '<a href="#/tim">' + t('tm.title') + '</a> ' + ic('chevr') + ' ' + IH.esc(e.name);
     var top = '<div class="toolbar" style="border:0;padding:0 0 14px">' + ui.segf('tmc-' + empId, 'per', pers.map(function (p) { return { v: p, l: D.periodLabel(p) + (run(p) ? ' · ' + t('pst.u_toku').toLowerCase() : '') }; })) + '</div>';
@@ -150,9 +150,9 @@
       cols: [
         { key: 'st', label: t('c.status'), val: function (e) { return t('st.' + EN.approval(e.id, pid).status); }, fval: function (e) { return EN.approval(e.id, pid).status; }, render: function (e) { return IH.ui.status(EN.approval(e.id, pid).status); }, filter: function () { return ['ceka', 'korigovano', 'prigovor', 'saglasan', 'auto', 'odobreno'].map(function (k) { return { v: k, l: t('st.' + k) }; }); } },
         { key: 'e', label: t('tm.colEmp'), val: function (e) { return e.name; }, render: function (e) { return '<b>' + IH.esc(e.name) + '</b>'; } },
-        { key: 'at', label: t('c.date'), search: false, val: function (e) { return EN.approval(e.id, pid).at || ''; }, render: function (e) { var a = EN.approval(e.id, pid); return a.at ? F.date(a.at) : '<span class="mut">—</span>'; } },
+        { key: 'at', label: t('c.date'), search: false, val: function (e) { return EN.approval(e.id, pid).at || ''; }, render: function (e) { var a = EN.approval(e.id, pid); return a.at ? F.date(a.at) : '<span class="mut">-</span>'; } },
         { key: 'pay', label: t('mo.colPay'), num: true, search: false, val: function (e) { return pay(e.id, pid); }, render: function (e) { var a = EN.approval(e.id, pid); return '<b>' + F.num(pay(e.id, pid)) + '</b>' + (a.prev != null ? ' <span class="mut">(' + IH.L({ sr: 'bilo ', en: 'was ' }) + F.num(a.prev) + ')</span>' : ''); } },
-        { key: 'c', label: t('pt.colId'), search: false, val: function (e) { var c = IH.complaintFor(e.id, pid); return c ? c.id : ''; }, render: function (e) { var c = IH.complaintFor(e.id, pid); return c ? '<a href="#/prigovori-tima/' + c.id + '">' + c.id + '</a> <span class="mut">· ' + t('pst2.' + c.status) + '</span>' : '<span class="mut">—</span>'; } }
+        { key: 'c', label: t('pt.colId'), search: false, val: function (e) { var c = IH.complaintFor(e.id, pid); return c ? c.id : ''; }, render: function (e) { var c = IH.complaintFor(e.id, pid); return c ? '<a href="#/prigovori-tima/' + c.id + '">' + c.id + '</a> <span class="mut">· ' + t('pst2.' + c.status) + '</span>' : '<span class="mut">-</span>'; } }
       ],
       actions: [
         { icon: 'calc', title: t('pt.stmt'), act: 'g-go', arg: function (e) { return 'saglasnosti-tima/' + pid + '/' + e.id; } },
@@ -168,7 +168,7 @@
     var crumb = '<a href="#/saglasnosti-tima">' + t('sgt.title') + '</a> ' + ic('chevr') + ' ' + IH.esc(e.name) + ' · ' + D.periodLabel(pid);
     var acts = (ap.status === 'ceka' || ap.status === 'korigovano' ? ui.btn(t('sgt.remind'), { icon: 'bell', act: 'sgt-rem', arg: empId + '|' + pid }) : '') + (c ? ui.btn(t('sgt.toCompl'), { icon: 'msg', go: 'prigovori-tima/' + c.id }) : '') + ui.btn(t('tm.card'), { icon: 'user', go: 'tim/' + empId });
     var kp = '<div class="kpis" style="margin-bottom:14px">' + ui.kpi(t('mo.colPay'), F.num(pay(empId, pid)) + '<span class="u">RSD</span>', ap.prev != null ? IH.L({ sr: 'bilo ', en: 'was ' }) + F.num(ap.prev) : D.periodLabel(pid), { hl: true }) + ui.kpi(t('mo.colSt'), IH.ui.status(ap.status), ap.at ? F.dt(ap.at) : null) + '</div>';
-    return ui.header(t('pt.stmt') + ' — ' + IH.esc(e.name), '', acts, crumb) + kp + ui.card(IH.esc(IH.L(s.name)) + ' · ' + D.periodLabel(pid), IH.stmtBody(empId, pid), { flush: true });
+    return ui.header(t('pt.stmt') + ' - ' + IH.esc(e.name), '', acts, crumb) + kp + ui.card(IH.esc(IH.L(s.name)) + ' · ' + D.periodLabel(pid), IH.stmtBody(empId, pid), { flush: true });
   }
   function remind(empId, pid) {
     var e = D.emp(empId);
@@ -186,9 +186,9 @@
   /* ================= MENADŽER: MOJ BONUS ================= */
   function mbPage() {
     var me = IH.me(), sp = stmtPanel(me.id, 'mb'), pid = sp.pid, m2 = EN.m2(me.id, pid, { project: run(pid) });
-    var team3 = (m2.team || []).map(function (x) { var e = D.emp(x.emp); return { e: '<b>' + IH.esc(e.name) + '</b>', p: ui.pcell(x.pct), o: x.on ? ui.pill(t('mb.onT'), 'success') : '<span class="mut">—</span>' }; });
+    var team3 = (m2.team || []).map(function (x) { var e = D.emp(x.emp); return { e: '<b>' + IH.esc(e.name) + '</b>', p: ui.pcell(x.pct), o: x.on ? ui.pill(t('mb.onT'), 'success') : '<span class="mut">-</span>' }; });
     var sch = EN.schemeFor(me.id, pid) || D.scheme('S-M2'), bands = (sch.teamFactor && sch.teamFactor.bands) || [{ to: null, f: 1 }], t1name = m2.targets[0] ? IH.L(m2.targets[0].name) : 'T1';
-    var lo = 0, sc = '<div class="scale">' + bands.map(function (b) { var on = m2.share >= lo && (b.to == null || m2.share < b.to); var l = b.to == null ? '≥ ' + F.pct(lo) : F.pct(lo) + ' – ' + F.pct(b.to - 0.0001); lo = b.to; return '<div class="sc' + (on ? ' on' : '') + '"><b>×' + F.num(b.f, 1) + '</b>' + l + '</div>'; }).join('') + '</div>';
+    var lo = 0, sc = '<div class="scale">' + bands.map(function (b) { var on = m2.share >= lo && (b.to == null || m2.share < b.to); var l = b.to == null ? '≥ ' + F.pct(lo) : F.pct(lo) + ' - ' + F.pct(b.to - 0.0001); lo = b.to; return '<div class="sc' + (on ? ' on' : '') + '"><b>×' + F.num(b.f, 1) + '</b>' + l + '</div>'; }).join('') + '</div>';
     return ui.header(t('mb.title')) + sp.html + '<div class="hint" style="margin:-6px 0 12px">' + t('mb.to', { n: IH.esc((D.emp(me.mgr) || {}).name || '') }) + '</div>' +
       ui.card(t('mb.team') + ' · ' + D.periodLabel(pid), ui.table([{ key: 'e', label: t('tm.colEmp') }, { key: 'p', label: t1name, w: '220px' }, { key: 'o', label: t('mb.onT') }], team3, { compact: true }) + '<div class="cb"><div class="lab">' + t('mb.share') + ': <b>' + F.pct(m2.share) + '</b> → ' + IH.L({ sr: 'ponder tima', en: 'team factor' }) + ' ×' + F.num(m2.teamFactor, 1) + '</div>' + sc + '</div>', { flush: true });
   }
