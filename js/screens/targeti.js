@@ -213,8 +213,8 @@
   /* ---------- nacrt (čarobnjak i izmena) ---------- */
   /* kreiranje (vođeno unošenje): primer za prezentaciju je gotovinski kredit za fizička lica - target savetnika, pa target ekspoziture kao zbir */
   var QUEUE = [
-    { name: L('Gotovinski krediti - fizička lica', 'Cash loans - private individuals'), kind: 'individualni', pos: 'licni', periodType: 'Q', subject: { segs: ['FL'], ptype: 'kredit', products: ['P16', 'P17', 'P18'] }, base: 4000000, condTpls: ['T-STAFF', 'T-SALARY'] },
-    { name: L('Gotovinski krediti - ekspozitura', 'Cash loans - branch'), kind: 'timski', team: ['licni'], periodType: 'Q', subject: { segs: ['FL'], ptype: 'kredit', products: ['P16', 'P17', 'P18'] }, base: 30000000, sumOfPrev: true, condTpls: ['T-STAFF', 'T-SALARY'] }
+    { name: L('Gotovinski krediti - fizička lica', 'Cash loans - private individuals'), kind: 'individualni', pos: 'licni', periodType: 'Q', subject: { segs: ['FL'], ptype: 'kredit', products: ['P16', 'P17', 'P18'] }, base: 4000000, condTpls: ['T-NTB', 'T-SALARY'] },
+    { name: L('Gotovinski krediti - ekspozitura', 'Cash loans - branch'), kind: 'timski', team: ['licni'], periodType: 'Q', subject: { segs: ['FL'], ptype: 'kredit', products: ['P16', 'P17', 'P18'] }, base: 30000000, sumOfPrev: true, condTpls: ['T-NTB', 'T-SALARY'] }
   ];
   function nextId() { var n = 404 + IH.list('newTargets').length; while (D.target('TG-' + n)) n++; return 'TG-' + n; }
   /* posle targeta savetnika predlaže se target ekspoziture, inače target savetnika (ne zavisi od drugih kreiranih targeta) */
@@ -233,14 +233,19 @@
     /* target ekspoziture = zbir targeta savetnika za gotovinske kredite (poslednji kreiran) */
     if (tw.sumOfPrev) { var prev = IH.list('newTargets').filter(function (x) { return x.kind !== 'timski' && /gotovinsk/i.test(IH.L(x.name)); }).pop(); tw.value = { mode: 'zbir', of: prev ? [prev.id] : [] }; delete tw.sumOfPrev; }
     if (src) tw.name = { sr: IH.L(src.name) + ' - kopija', en: IH.L(src.name) + ' - copy' };
-    /* gotovinski kredit (primer): samo uslovi koje pokazujemo - bez prodaje zaposlenima i prenos zarade (ne podrazumevani uslovi kredita) */
+    /* gotovinski kredit (primer): samo Novi klijent i Prenos zarade */
     if (!src && tw.condTpls) { tw.conds = tw.condTpls.map(function (id) { var tp = R.template(id); return Object.assign({ tpl: id }, JSON.parse(JSON.stringify(tp.c))); }); delete tw.condTpls; }
     IH.form = { tw: tw, conds: JSON.parse(JSON.stringify(tw.conds)), _mode: 'new' };
+  }
+  /* uslovi koji se predlažu pri izboru vrste proizvoda: krediti - Novi klijent i Prenos zarade */
+  function defConds(pt) {
+    if (pt === 'kredit') return ['T-NTB', 'T-SALARY'].map(function (id) { return Object.assign({ tpl: id }, JSON.parse(JSON.stringify(R.template(id).c))); });
+    return JSON.parse(JSON.stringify(R.presetFor(pt).conds));
   }
   function setPtype(pt) {
     var q = TW(), pre = R.presetFor(pt);
     q.subject.ptype = pt; q.subject.products = []; q._none = false; if (pt !== 'racun') q.mode = undefined;
-    q.unit = pre.unit; q.formula = pre.formula; IH.form.conds = JSON.parse(JSON.stringify(pre.conds));
+    q.unit = pre.unit; q.formula = pre.formula; IH.form.conds = defConds(pt);
     q.base = pt === 'kredit' ? 6000000 : pt === 'racun' ? 24 : 12;
   }
   function num(v) { var n = parseFloat(String(v).replace(/\./g, '').replace(',', '.')); return isNaN(n) ? null : n; }

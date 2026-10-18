@@ -111,7 +111,9 @@
   ];
   R.template = function (id) { return R.allTemplates().filter(function (x) { return x.id === id; })[0]; };
   R.allTemplates = function () { return R.templates.concat(IH.list('newTemplates')); };
-  R.templatesFor = function (ptype) { var pts = ptype == null ? [] : [].concat(ptype); return R.allTemplates().filter(function (x) { return !pts.length || !x.pt || x.pt.some(function (p) { return pts.indexOf(p) >= 0; }); }); };
+  /* za kredite se u izboru uslova nude samo Novi klijent i Prenos zarade; ostali uslovi kredita ostaju u šifarniku i kod postojećih targeta */
+  var LOAN_HIDE = ['T-STATUS', 'T-EXCLUDE', 'T-MIN-AMT', 'T-STAFF', 'T-CHANNEL'];
+  R.templatesFor = function (ptype) { var pts = ptype == null ? [] : [].concat(ptype), loan = pts.length && pts.every(function (p) { return p === 'kredit'; }); return R.allTemplates().filter(function (x) { return !(loan && LOAN_HIDE.indexOf(x.id) >= 0) && (!pts.length || !x.pt || x.pt.some(function (p) { return pts.indexOf(p) >= 0; })); }); };
   /* podrazumevano pravilo merenja po vrsti proizvoda */
   R.presetFor = function (ptype) {
     var p = D.ptype(ptype); if (!p) return null;
@@ -229,6 +231,7 @@
       /* prenos zarade: kod većine kredita prva zarada stiže 2-20 dana posle isplate; računa se iz šifre prodaje, bez trošenja generatora (ostali podaci ostaju isti) */
       var hz = 0; for (var hi = 0; hi < String(it.id).length; hi++) hz = (hz * 31 + String(it.id).charCodeAt(hi)) | 0; hz = Math.abs(hz);
       if (f !== 'T-SALARY' && hz % 100 < 94) a.datum_priliva = cl(addDays(a.datum_isplate, 2 + hz % 19));
+      a.ntb = ((Math.imul(hz, 2654435761) >>> 7) % 100) < 80; /* novi klijent banke */
       a.hipoteka_potrebna = !!(p && /^SK-/.test(p.codes[0]));
       if (a.hipoteka_potrebna && f !== 'T-MORTGAGE') a.datum_hipoteke = cl(addDays(a.datum_isplate, 5 + Math.floor(r() * 35)));
     }
