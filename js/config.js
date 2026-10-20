@@ -113,7 +113,7 @@
     return ok.length ? ok[ok.length - 1] : vs[0];
   };
   /* parametri šeme koji važe u periodu (verzija nosi sve što menja obračun) */
-  var VKEYS = ['type', 'targets', 'scale', 'basket', 'conds', 'rules', 'continuity', 'teamFactor', 'carryNegative', 'teamSplit'];
+  var VKEYS = ['type', 'targets', 'scale', 'basket', 'finalTable', 'models', 'conds', 'rules', 'continuity', 'teamFactor', 'carryNegative', 'teamSplit'];
   D.schemeAt = function (s, pid) {
     if (!s) return s;
     var v = D.schemeVersion(s, pid), o = Object.assign({}, s);

@@ -50,6 +50,9 @@
       });
       h += ui.card(IH.esc(IH.L(x.name)), '<div class="grid" style="grid-template-columns:1.1fr 1fr 0.9fr;gap:24px"><div>' + left + '</div><div>' + mid + '</div><div>' + right + '</div></div>');
     });
+    ((running ? pr : now).final || []).forEach(function (f, fi, all) {
+      h += ui.card(IH.L(L('Model isplate', 'Payout model')) + (all.length > 1 ? ' ' + (f.i + 1) : ''), ui.table([{ key: 't', label: t('c.target') }, { key: 'p', label: t('c.ach'), num: true }], f.pcts.map(function (x) { return { t: IH.esc(IH.L(x.name)), p: F.pct(x.pct) }; }), { compact: true }) + '<div class="mini-kv" style="margin-top:10px"><span>' + IH.L(L('Ponder isplate', 'Payout weight')) + ': <b>' + F.num(f.w, 2) + '</b></span></div>');
+    });
     var rules = '<ul class="rulelist" style="margin:0">' + (s.continuity && ver.contAmount ? '<li>' + t('mt.cont', { a: F.rsd(ver.contAmount), k: IH.esc(IH.L(EN.targetOf(s.targets.filter(function (q) { return q.key === s.continuity.target; })[0], s).name)), m: F.pct(s.continuity.min), n: s.continuity.periods }) + '</li>' : '') + '<li>' + t('mt.limit', { l: F.rsd(ver.limit) }) + '</li>' + (s.carryNegative ? '<li>' + t('mt.carry') + '</li>' : '') + '</ul>';
     h += ui.card(t('mt.rules'), rules);
     if ((now.addons || []).length) h += ui.card(IH.L(L('Kampanjski dodaci', 'Campaign add-ons')), ui.table([{ key: 'n', label: IH.L(L('Dodatak', 'Add-on')) }, { key: 'c', label: IH.L(L('Prodaja', 'Sales')), num: true }, { key: 'a', label: IH.L(L('Iznos', 'Amount')), num: true }], now.addons.map(function (a) { return { n: IH.esc(IH.L(a.name)), c: a.n, a: F.rsd(a.amount) + (a.capped ? ' ' + ui.pill(IH.L(L('na limitu', 'at limit')), 'warning') : '') }; }), { compact: true }), { flush: true });

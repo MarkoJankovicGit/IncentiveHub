@@ -240,6 +240,75 @@
     IH.showHistory(IH.L(k.name), [{ at: '2026-10-05T09:02', action: { sr: 'Isporuka za Septembar 2026 (LD-20261005-K)', en: 'Delivery for Sep 2026 (LD-20261005-K)' } }, { at: '2026-09-03T09:01', action: { sr: 'Isporuka za Avgust 2026', en: 'Delivery for Aug 2026' } }, { at: '2026-08-05T09:04', action: { sr: 'Isporuka za Jul 2026', en: 'Delivery for Jul 2026' } }]);
   };
 
+  /* ---------- izvorne tabele (DWH / core): proizvodi, transakcije, krediti - povezani preko ID-jeva ---------- */
+  var R = IH.rules;
+  function lb(sr, en) { return IH.L({ sr: sr, en: en }); }
+  function idc(v) { return '<span class="idc">' + IH.esc(v == null || v === '' ? '-' : v) + '</span>'; }
+  function dwhItems(pid) {
+    var seen = {}, out = [];
+    [pid].concat(D.subPeriods(pid, 'M').filter(function (m) { return !D.isPlanned(m); })).forEach(function (x) { D.allItems(x).forEach(function (i) { if (!seen[i.id]) { seen[i.id] = 1; out.push(i); } }); });
+    return out.sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
+  }
+  function attrLabel(id, v) { var a = R.attr(id), o = a && a.values && a.values.filter(function (x) { return x.v === v; })[0]; return o ? IH.L(o.l) : (v == null ? '' : v); }
+  function empCell(i) { var e = D.emp(i.emp); return e ? idc(e.hr) + ' <a href="#/ostvarenje/' + i.branch + '/' + e.id + '">' + IH.esc(e.name) + '</a>' : idc(i.emp); }
+  function brCell(i) { var b = D.branch(i.branch); return b ? idc(b.code) + ' <a href="#/ostvarenje/' + b.id + '">' + IH.esc(D.branchShort(b)) + '</a>' : idc(i.branch); }
+  function dwhTab() {
+    var v = IH.v('dwh'), tb = v.t || 't', pid = v.per || '2026-Q3';
+    IH.refreshers.dwh = function () { IH.render(); };
+    var bar = '<div class="toolbar" style="border:0;padding:0 0 14px;display:flex;gap:12px;flex-wrap:wrap">' + ui.segf('dwh', 't', [{ v: 't', l: lb('Transakcije', 'Transactions') }, { v: 'k', l: lb('Krediti', 'Loans') }, { v: 'p', l: lb('Proizvodi', 'Products') }]) +
+      (tb === 'p' ? '' : ui.segf('dwh', 'per', [{ v: '2026-Q3', l: D.periodLabel('2026-Q3') }, { v: '2026-Q4', l: D.periodLabel('2026-Q4') }])) + '</div>';
+    if (tb === 'p') return bar + IH.grid({
+      id: 'dwh-p', exportName: 'DWH_proizvodi.xlsx', searchLabel: lb('ID proizvoda, šifra, naziv', 'Product ID, code, name'),
+      rows: function () { return IH.products(); }, key: function (x) { return x.id; }, label: function (x) { return D.productName(x); }, searchKeys: ['id', 'c', 'n'],
+      cols: [
+        { key: 'id', label: lb('ID proizvoda', 'Product ID'), val: function (x) { return x.id; }, render: function (x) { return idc(x.id); } },
+        { key: 'c', label: lb('Šifre u core sistemu', 'Core system codes'), val: function (x) { return x.codes.join(' '); }, render: function (x) { return x.codes.map(idc).join(' '); } },
+        { key: 'n', label: lb('Naziv', 'Name'), nw: false, val: function (x) { return D.productName(x); }, render: function (x) { return '<b>' + IH.esc(D.productName(x)) + '</b>'; } },
+        { key: 'pt', label: lb('Vrsta proizvoda', 'Product type'), val: function (x) { return D.ptypeName(x.ptype); }, fval: function (x) { return x.ptype; }, filter: function () { return D.ptypes.map(function (q) { return { v: q.id, l: IH.L(q.name) }; }); } },
+        { key: 'sg', label: lb('Segment', 'Segment'), val: function (x) { return D.segName(x.seg); }, fval: function (x) { return x.seg; }, filter: function () { return D.segments.map(function (q) { return { v: q.id, l: IH.L(q.name) }; }); } },
+        { key: 'st', label: lb('Status', 'Status'), val: function (x) { return t('st2.' + x.status); } }
+      ], actions: []
+    });
+    var items = dwhItems(pid);
+    if (tb === 'k') {
+      var loans = items.filter(function (i) { return i.ptype === 'kredit'; });
+      return bar + IH.grid({
+        id: 'dwh-k', exportName: 'DWH_krediti_' + pid + '.xlsx', searchLabel: lb('Broj kredita, ID transakcije, zaposleni', 'Loan no., transaction ID, employee'), hidden: ['rc', 'v'],
+        rows: function () { return loans; }, key: function (i) { return i.id; }, label: function (i) { return i.contract; }, searchKeys: ['q', 'id', 'e', 'p'],
+        cols: [
+          { key: 'q', label: lb('Broj kredita', 'Loan no.'), val: function (i) { return i.contract; }, render: function (i) { return idc(i.contract); } },
+          { key: 'id', label: lb('ID transakcije', 'Transaction ID'), val: function (i) { return i.id; }, render: function (i) { return idc(i.id); } },
+          { key: 'p', label: lb('ID proizvoda', 'Product ID'), val: function (i) { return i.product ? i.product + ' ' + D.productName(i.product) : i.code; }, render: function (i) { return idc(i.product || i.code) + ' ' + (i.product ? IH.esc(D.productName(i.product)) : ''); } },
+          { key: 'd', label: lb('Datum ugovaranja', 'Contract date'), val: function (i) { return i.date; }, render: function (i) { return F.date(i.date); } },
+          { key: 'di', label: lb('Datum isplate', 'Disbursement date'), val: function (i) { return R.itemAttrs(i).datum_isplate || ''; }, render: function (i) { var d = R.itemAttrs(i).datum_isplate; return d ? F.date(d) : '<span class="mut">-</span>'; } },
+          { key: 'a', label: lb('Iznos (RSD)', 'Amount (RSD)'), num: true, search: false, val: function (i) { return (i.type === 'storno' ? -1 : 1) * (i.amount || 0); }, render: function (i) { return (i.type === 'storno' ? '<span style="color:var(--danger)">−' : '<span>') + F.num(i.amount || 0) + '</span>'; } },
+          { key: 'v', label: lb('Valuta', 'Currency'), val: function (i) { return R.itemAttrs(i).valuta || ''; } },
+          { key: 'rc', label: lb('Ročnost (meseci)', 'Tenor (months)'), num: true, val: function (i) { return R.itemAttrs(i).rocnost || 0; } },
+          { key: 'su', label: lb('Status ugovora', 'Contract status'), val: function (i) { return i.type === 'storno' ? t('ct.storno') : attrLabel('status_ugovora', R.itemAttrs(i).status_ugovora); } },
+          { key: 'b', label: lb('ID filijale', 'Branch ID'), val: function (i) { var b = D.branch(i.branch); return b ? b.code + ' ' + D.branchShort(b) : i.branch; }, fval: function (i) { return i.branch; }, render: brCell, filter: function () { return D.branches.map(function (b) { return { v: b.id, l: D.branchShort(b) }; }); } },
+          { key: 'e', label: lb('ID zaposlenog', 'Employee ID'), val: function (i) { var e = D.emp(i.emp); return e ? e.hr + ' ' + e.name : i.emp; }, render: empCell }
+        ], actions: []
+      });
+    }
+    return bar + IH.grid({
+      id: 'dwh-t', exportName: 'DWH_transakcije_' + pid + '.xlsx', searchLabel: lb('ID transakcije, zaposleni, proizvod, ugovor', 'Transaction ID, employee, product, contract'), hidden: ['cl', 'kn'],
+      rows: function () { return items; }, key: function (i) { return i.id; }, label: function (i) { return i.id; }, searchKeys: ['id', 'e', 'p', 'q', 'c'],
+      cols: [
+        { key: 'id', label: lb('ID transakcije', 'Transaction ID'), val: function (i) { return i.id; }, render: function (i) { return idc(i.id); } },
+        { key: 'd', label: lb('Datum prodaje', 'Sale date'), val: function (i) { return i.date; }, render: function (i) { return F.date(i.date); } },
+        { key: 'p', label: lb('ID proizvoda', 'Product ID'), val: function (i) { return i.product ? i.product + ' ' + D.productName(i.product) : i.code; }, fval: function (i) { return i.ptype || ''; }, render: function (i) { return idc(i.product) + ' ' + (i.product ? IH.esc(D.productName(i.product)) : '<span class="mut">' + lb('nemapirano', 'unmapped') + '</span>'); }, filter: function () { return D.ptypes.map(function (q) { return { v: q.id, l: IH.L(q.name) }; }); } },
+        { key: 'c', label: lb('Šifra u core sistemu', 'Core system code'), val: function (i) { return i.code; }, render: function (i) { return idc(i.code); } },
+        { key: 'b', label: lb('ID filijale', 'Branch ID'), val: function (i) { var b = D.branch(i.branch); return b ? b.code + ' ' + D.branchShort(b) : i.branch; }, fval: function (i) { return i.branch; }, render: brCell, filter: function () { return D.branches.map(function (b) { return { v: b.id, l: D.branchShort(b) }; }); } },
+        { key: 'e', label: lb('ID zaposlenog', 'Employee ID'), val: function (i) { var e = D.emp(i.emp); return e ? e.hr + ' ' + e.name : i.emp; }, render: empCell },
+        { key: 'q', label: lb('Broj ugovora', 'Contract no.'), val: function (i) { return i.contract || ''; }, render: function (i) { return idc(i.contract); } },
+        { key: 'cl', label: lb('ID klijenta', 'Client ID'), val: function (i) { return i.client || ''; } },
+        { key: 'ty', label: lb('Tip', 'Type'), val: function (i) { return t('ct.' + i.type); }, fval: function (i) { return i.type; }, filter: function () { return ['nova', 'storno'].map(function (k) { return { v: k, l: t('ct.' + k) }; }); } },
+        { key: 'a', label: lb('Iznos (RSD)', 'Amount (RSD)'), num: true, search: false, val: function (i) { return i.amount || 0; }, render: function (i) { return i.amount ? F.num(i.amount) : '<span class="mut">-</span>'; } },
+        { key: 'kn', label: lb('Kanal', 'Channel'), val: function (i) { return attrLabel('kanal', R.itemAttrs(i).kanal); } }
+      ], actions: []
+    });
+  }
+
   /* ---------- izvori ---------- */
   function lastOf(s) { return IH.loads().filter(function (l) { return l.src === s.id; })[0]; }
   function srcOn(s) { var x = IH.map('srcOff')[s.id]; return !x; }
@@ -340,10 +409,10 @@
     title: function () { return t('ld.title'); },
     render: function (p) {
       if (p[0] === 'upload') return uploadPage(p[1]);
-      var tab = ['nemapirano', 'kpi', 'izvori'].indexOf(p[0]) >= 0 ? p[0] : '';
+      var tab = ['nemapirano', 'kpi', 'izvori', 'tabele'].indexOf(p[0]) >= 0 ? p[0] : '';
       var nU = unmRows().filter(function (r) { return r.st === 'nemapirano'; }).length;
-      var tabs = ui.rtabs('ucitavanje', [{ id: '', label: t('ld.tReg'), icon: 'upload' }, { id: 'nemapirano', label: t('ld.tUnm'), icon: 'alert', cnt: nU || null, warn: true }, { id: 'kpi', label: t('ld.tKpi'), icon: 'chart' }, { id: 'izvori', label: t('ld.tSrc'), icon: 'gear' }], tab);
-      var body = tab === 'nemapirano' ? unmTab() : tab === 'kpi' ? kpiTab() : tab === 'izvori' ? srcTab() : regTab();
+      var tabs = ui.rtabs('ucitavanje', [{ id: '', label: t('ld.tReg'), icon: 'upload' }, { id: 'nemapirano', label: t('ld.tUnm'), icon: 'alert', cnt: nU || null, warn: true }, { id: 'kpi', label: t('ld.tKpi'), icon: 'chart' }, { id: 'tabele', label: IH.L({ sr: 'Izvorne tabele', en: 'Source tables' }), icon: 'grid' }, { id: 'izvori', label: t('ld.tSrc'), icon: 'gear' }], tab);
+      var body = tab === 'nemapirano' ? unmTab() : tab === 'kpi' ? kpiTab() : tab === 'izvori' ? srcTab() : tab === 'tabele' ? dwhTab() : regTab();
       return ui.header(t('ld.title'), '', ui.btn(t('ld.upload'), { cls: 'primary', icon: 'upload', act: 'up-start' })) + tabs + body;
     }
   });

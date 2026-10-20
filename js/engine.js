@@ -34,6 +34,42 @@
     return { pct: pct, ponder: ponder, parts: parts, cap: b.cap || 0, min: b.min || 0 };
   }
   EN.basketApply = basketApply;
+  /* modeli isplate (korak Kreiranje modela): svaki model je tabela - izabrani targeti (1+) su kolone, svaki red ima uslov
+     ostvarenja po targetu (>, ≥, <, ≤, =, ili bez uslova) i ponder isplate; važi prvi red čiji su svi uslovi ispunjeni,
+     inače ponder „svi ostali slučajevi“. Ponder množi isplatu targeta iz modela. */
+  function modelsOf(s) { if (s.models) return s.models; var f = s.finalTable; return f && f.on ? [f] : []; }
+  EN.modelsOf = modelsOf;
+  function cellOk(c, pc) {
+    if (!c || !c.op || c.op === 'any') return true;
+    var v = c.v || 0;
+    if (c.op === 'gt') return pc > v + 1e-9;
+    if (c.op === 'lt') return pc < v - 1e-9;
+    if (c.op === 'lte') return pc <= v + 1e-9;
+    if (c.op === 'eq') return Math.round(pc * 100) === Math.round(v * 100);
+    return pc >= v - 1e-9;
+  }
+  /* prvi red modela koji važi za date ostvarenja (pct(k) → ostvarenje targeta), -1 ako nijedan */
+  EN.modelMatch = function (m, keys, pct) {
+    var hit = -1;
+    (m.rows || []).some(function (row, i) { var ok = keys.every(function (k) { return cellOk((row.c || {})[k], pct(k)); }); if (ok) hit = i; return ok; });
+    return hit;
+  };
+  function finalApply(s, rows) {
+    var ms = modelsOf(s); if (!ms.length) return null;
+    var byK = {}; rows.forEach(function (r) { byK[r.key] = r; });
+    var out = [];
+    ms.forEach(function (m, mi) {
+      var keys = (m.targets || []).filter(function (k) { return byK[k] && byK[k].inCalc !== false; });
+      if (!keys.length) return;
+      var hit = EN.modelMatch(m, keys, function (k) { return byK[k].pct; });
+      var w = hit >= 0 ? m.rows[hit].w : (m.other || 0);
+      keys.forEach(function (k) { byK[k].dep = +((byK[k].dep == null ? 1 : byK[k].dep) * w).toFixed(4); byK[k].finalW = (byK[k].finalW == null ? 1 : byK[k].finalW) * w; });
+      out.push({ i: mi, row: hit, w: w, keys: keys, pcts: keys.map(function (k) { return { key: k, name: byK[k].name, pct: byK[k].pct }; }) });
+    });
+    return out.length ? out : null;
+  }
+  EN.finalApply = finalApply;
+  EN.finalApply = finalApply;
   /* sledeći prag skale iznad ostvarenja (null ako je dostignut najviši) */
   EN.nextBand = function (list, pct) {
     if (list && list.type === 'linear') return pct < list.min ? { at: list.min, f: list.min } : null;
@@ -183,7 +219,7 @@
   };
   /* parametri šeme u periodu; opts.ver = druga verzija (simulacija) */
   function schemeIn(s, pid, opts) {
-    if (opts && opts.ver) { var o = Object.assign({}, s); ['type', 'targets', 'scale', 'basket', 'conds', 'rules', 'continuity', 'teamFactor', 'carryNegative'].forEach(function (k) { if (opts.ver[k] !== undefined) o[k] = opts.ver[k]; }); o.ver = opts.ver; return o; }
+    if (opts && opts.ver) { var o = Object.assign({}, s); ['type', 'targets', 'scale', 'basket', 'finalTable', 'models', 'conds', 'rules', 'continuity', 'teamFactor', 'carryNegative'].forEach(function (k) { if (opts.ver[k] !== undefined) o[k] = opts.ver[k]; }); o.ver = opts.ver; return o; }
     return D.schemeAt(s, pid);
   }
   EN.schemeIn = schemeIn;
@@ -321,6 +357,7 @@
       res.targets.push(r);
     });
     res.basket = basketApply(s, res.targets);
+    res.final = finalApply(s, res.targets);
     res.condRes = applyRules(s, byKey, empId, pid, opts);
     res.targets.forEach(function (r) { r.bonus = payOf(r); });
     res.depActive = res.targets.some(function (r) { return r.dep !== 1; });
@@ -408,6 +445,7 @@
       res.kpis.push(k);
     });
     res.basket = basketApply(s, res.kpis);
+    res.final = finalApply(s, res.kpis);
     res.condRes = applyRules(s, byKey, members[0] ? members[0].id : null, pid, opts);
     res.kpis.forEach(function (k) {
       var eff = k.weight * k.dep; if (k.kap != null && eff > k.kap) { eff = k.kap; k.capT = true; }
@@ -473,6 +511,7 @@
       res.targets.push(r);
     });
     res.basket = basketApply(s, res.targets);
+    res.final = finalApply(s, res.targets);
     res.condRes = applyRules(s, byKey, mgrId, pid, opts);
     res.targets.forEach(function (r) { r.bonus = payOf(r); });
     res.depActive = res.targets.some(function (r) { return r.dep !== 1; });

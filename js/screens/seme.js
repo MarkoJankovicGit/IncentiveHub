@@ -25,14 +25,14 @@
     'sc.exTeamShare': 'Na targetu: {a} od {b}', 'sc.exPayPct': 'Isplata u odnosu na osnovicu', 'sc.exBase': 'Osnovica', 'sc.exProrata': 'proracija', 'sc.noScheme': 'Bez raspoređene šeme - bonus se ne obračunava',
     'sc.vActive': 'važeća', 'sc.vOld': 'prethodna', 'sc.vPlanned': 'planirana od {d}', 'sc.verSel': 'Verzija', 'sc.sim': 'Simulacija: verzija v{v} nad podacima za {p}', 'sc.cmp': 'Važeća v{a}: {x} · v{b}: {y} · razlika {d}',
     'sc.newVer': 'Nova verzija', 'sc.example': 'Primer obračuna', 'sc.archive': 'Arhiviraj', 'sc.archUsed': 'Šema je raspoređena na {n} zaposlenih. Arhiviranje je moguće tek kada se zaposlenima rasporedi druga šema.', 'sc.archTxt': 'Šema nema raspoređenih zaposlenih i biće arhivirana.',
-    'sc.sBasic': 'Osnovno', 'sc.sTargets': 'Targeti', 'sc.sPay': 'Ponderi i skale', 'sc.sPayP': 'Provizije i skale', 'sc.colScale': 'Skala', 'sc.scScheme': 'Skala šeme', 'sc.scOwn': 'Posebna skala', 'sc.scBasket': 'Korpa', 'sc.scaleOf': 'Skala - {n}', 'sc.basket': 'Korpa targeta', 'sc.bTargets': 'Targeti u korpi', 'sc.bCap': 'Najviše po targetu', 'sc.bMin': 'Najmanje po targetu', 'sc.bScale': 'Skala korpe', 'sc.bNone': 'Izaberite „Korpa“ u skali targeta', 'sc.sRules': 'Pravila između targeta', 'sc.sExample': 'Primer isplate',
+    'sc.sBasic': 'Osnovno', 'sc.sTargets': 'Targeti', 'sc.sPay': 'Modeli isplate', 'sc.sPayP': 'Modeli isplate', 'sc.models': 'Modeli', 'sc.model': 'Model {n}', 'sc.mAdd': 'Dodaj model', 'sc.mRemove': 'Ukloni model', 'sc.mPick': 'Izaberite targete za model', 'sc.mTest': 'Provera', 'sc.legacy': 'Skale i pravila šeme', 'sc.cont': 'Kontinuitet', 'sc.tf': 'Timski faktor', 'sc.final': 'Konačna isplata bonusa', 'sc.fTargets': 'Targeti u tabeli', 'sc.fWeight': 'Ponder isplate', 'sc.fOther': 'Svi ostali slučajevi', 'sc.fAdd': 'Dodaj red', 'sc.fOpGte': 'Najmanje', 'sc.fOpLt': 'Manje od', 'sc.fOpAny': 'Bilo koje', 'sc.fAnyTxt': 'bilo koje', 'sc.fGteTxt': 'najmanje {v}', 'sc.fLtTxt': 'manje od {v}', 'sc.colScale': 'Skala', 'sc.scScheme': 'Skala šeme', 'sc.scOwn': 'Posebna skala', 'sc.scBasket': 'Korpa', 'sc.scaleOf': 'Skala - {n}', 'sc.basket': 'Korpa targeta', 'sc.bTargets': 'Targeti u korpi', 'sc.bCap': 'Najviše po targetu', 'sc.bMin': 'Najmanje po targetu', 'sc.bScale': 'Skala korpe', 'sc.bNone': 'Izaberite „Korpa“ u skali targeta', 'sc.sRules': 'Pravila između targeta', 'sc.sExample': 'Primer isplate',
     'sc.exAll': 'Ostvarenje svih targeta', 'sc.exPay': 'Isplata', 'sc.exNote': 'Napomena', 'sc.exCap': 'ograničeno limitom', 'sc.exCondOn': 'aktivno pravilo', 'sc.exTeam': 'uz timski faktor ×1,0',
-    'w.s1': 'Osnovno', 'w.s2': 'Targeti', 'w.s3': 'Ponderi i skale', 'w.s4': 'Pravila', 'w.s5': 'Pregled i aktivacija',
+    'w.s1': 'Osnovno', 'w.s2': 'Targeti', 'w.s3': 'Kreiranje modela', 'w.s4': 'Pravila', 'w.s5': 'Pregled i aktivacija',
     'w.type': 'Tip šeme', 'w.name': 'Naziv šeme', 'w.code': 'Oznaka', 'w.pos': 'Pozicija', 'w.perType': 'Period obračuna', 'w.from': 'Važi od', 'w.to': 'Važi do', 'w.note': 'Napomena verzije', 'w.ver': 'Verzija', 'w.base': 'Osnovica - bonus na 100% (RSD)', 'w.limit': 'Limit po periodu (RSD)', 'w.status': 'Status',
     'w.calc': 'Način obračuna', 'w.calcTeam': 'Timski (zajednički bonus tima)', 'w.calcInd': 'Individualni (bonus po zaposlenom)',
     'w.selCount': 'U šemi: {n} targeta', 'w.newTarget': 'Novi target', 'w.noTargets': 'Nema aktivnih targeta za izabranu poziciju i period.', 'w.shareSum': 'Zbir pondera', 'w.shareWarn': 'Zbir pondera mora biti 100%',
     'w.exPct': '{v} prodaje vredi {r}', 'w.exKom': '1 prodaja vredi {r}',
-    'w.chk1': 'Osnovni podaci su popunjeni', 'w.chk2': 'Šema ima bar jedan target', 'w.blocked': 'Šema nije sačuvana: {r}', 'sc.onlyRules': 'Samo u pravilima', 'sc.colInCalc': 'U isplati', 'w.chk3': 'Skala pokriva ostvarenje od 0% naviše', 'w.chk4': 'Zbir pondera je 100%', 'w.chk5': 'Svaki target ima proviziju po prodaji', 'w.chk6': 'Važi od {d} - tekući obračun se ne menja', 'w.chk7': 'Pravila se odnose samo na targete iz šeme', 'w.chk8': 'Korpa ima bar dva targeta',
+    'w.chk1': 'Osnovni podaci su popunjeni', 'w.chk2': 'Šema ima bar jedan target', 'w.blocked': 'Šema nije sačuvana: {r}', 'sc.onlyRules': 'Samo u pravilima', 'sc.colInCalc': 'U isplati', 'w.chk3': 'Skala pokriva ostvarenje od 0% naviše', 'w.chk4': 'Zbir pondera je 100%', 'w.chk5': 'Svaki target ima proviziju po prodaji', 'w.chk6': 'Važi od {d} - tekući obračun se ne menja', 'w.chk7': 'Pravila se odnose samo na targete iz šeme', 'w.chk8': 'Korpa ima bar dva targeta', 'w.chk9': 'Svaki model ima bar jedan target i jedan red',
     'w.activate': 'Aktiviraj šemu', 'w.saveDraft': 'Sačuvaj nacrt', 'w.saveVer': 'Sačuvaj verziju', 'w.saved': 'Šema „{n}“ je sačuvana', 'w.activated': 'Šema „{n}“ je aktivna od {d}', 'w.verSaved': 'Verzija v{v} šeme „{n}“ važi od {d}',
     'w.editDraft': 'Nastavi uređivanje', 'w.titleNew': 'Nova bonus šema', 'w.titleCopy': 'Kopija šeme', 'w.titleVer': 'Nova verzija šeme', 'w.titleEdit': 'Izmena nacrta',
     'm.M1': 'Individualni', 'm.M2': 'Menadžerski', 'm.M3': 'Timski', 'role.primarni': 'Primarni', 'role.sekundarni': 'Sekundarni', 'role.informativni': 'Informativni',
@@ -58,14 +58,14 @@
     'sc.exTeamShare': 'On target: {a} of {b}', 'sc.exPayPct': 'Payout relative to base', 'sc.exBase': 'Base', 'sc.exProrata': 'prorated', 'sc.noScheme': 'No scheme assigned - no bonus is calculated',
     'sc.vActive': 'current', 'sc.vOld': 'previous', 'sc.vPlanned': 'planned from {d}', 'sc.verSel': 'Version', 'sc.sim': 'Simulation: version v{v} on data for {p}', 'sc.cmp': 'Current v{a}: {x} · v{b}: {y} · difference {d}',
     'sc.newVer': 'New version', 'sc.example': 'Calculation example', 'sc.archive': 'Archive', 'sc.archUsed': 'The scheme is assigned to {n} employees. It can be archived only after they are assigned another scheme.', 'sc.archTxt': 'The scheme has no assigned employees and will be archived.',
-    'sc.sBasic': 'Basics', 'sc.sTargets': 'Targets', 'sc.sPay': 'Weights and scales', 'sc.sPayP': 'Commissions and scales', 'sc.colScale': 'Scale', 'sc.scScheme': 'Scheme scale', 'sc.scOwn': 'Own scale', 'sc.scBasket': 'Basket', 'sc.scaleOf': 'Scale - {n}', 'sc.basket': 'Target basket', 'sc.bTargets': 'Targets in basket', 'sc.bCap': 'At most per target', 'sc.bMin': 'At least per target', 'sc.bScale': 'Basket scale', 'sc.bNone': 'Choose “Basket” in the target scale', 'sc.sRules': 'Rules between targets', 'sc.sExample': 'Payout example',
+    'sc.sBasic': 'Basics', 'sc.sTargets': 'Targets', 'sc.sPay': 'Payout models', 'sc.sPayP': 'Payout models', 'sc.models': 'Models', 'sc.model': 'Model {n}', 'sc.mAdd': 'Add model', 'sc.mRemove': 'Remove model', 'sc.mPick': 'Choose targets for the model', 'sc.mTest': 'Check', 'sc.legacy': 'Scheme scales and rules', 'sc.cont': 'Continuity', 'sc.tf': 'Team factor', 'sc.final': 'Final bonus payout', 'sc.fTargets': 'Targets in the table', 'sc.fWeight': 'Payout weight', 'sc.fOther': 'All other cases', 'sc.fAdd': 'Add row', 'sc.fOpGte': 'At least', 'sc.fOpLt': 'Less than', 'sc.fOpAny': 'Any', 'sc.fAnyTxt': 'any', 'sc.fGteTxt': 'at least {v}', 'sc.fLtTxt': 'less than {v}', 'sc.colScale': 'Scale', 'sc.scScheme': 'Scheme scale', 'sc.scOwn': 'Own scale', 'sc.scBasket': 'Basket', 'sc.scaleOf': 'Scale - {n}', 'sc.basket': 'Target basket', 'sc.bTargets': 'Targets in basket', 'sc.bCap': 'At most per target', 'sc.bMin': 'At least per target', 'sc.bScale': 'Basket scale', 'sc.bNone': 'Choose “Basket” in the target scale', 'sc.sRules': 'Rules between targets', 'sc.sExample': 'Payout example',
     'sc.exAll': 'Achievement of all targets', 'sc.exPay': 'Payout', 'sc.exNote': 'Note', 'sc.exCap': 'capped by the limit', 'sc.exCondOn': 'rule active', 'sc.exTeam': 'with team factor ×1.0',
-    'w.s1': 'Basics', 'w.s2': 'Targets', 'w.s3': 'Weights and scales', 'w.s4': 'Rules', 'w.s5': 'Review and activation',
+    'w.s1': 'Basics', 'w.s2': 'Targets', 'w.s3': 'Model setup', 'w.s4': 'Rules', 'w.s5': 'Review and activation',
     'w.type': 'Scheme type', 'w.name': 'Scheme name', 'w.code': 'Code', 'w.pos': 'Position', 'w.perType': 'Calculation period', 'w.from': 'Valid from', 'w.to': 'Valid to', 'w.note': 'Version note', 'w.ver': 'Version', 'w.base': 'Base - bonus at 100% (RSD)', 'w.limit': 'Limit per period (RSD)', 'w.status': 'Status',
     'w.calc': 'Calculation', 'w.calcTeam': 'Team (shared team bonus)', 'w.calcInd': 'Individual (bonus per employee)',
     'w.selCount': 'In scheme: {n} targets', 'w.newTarget': 'New target', 'w.noTargets': 'No active targets for the chosen position and period.', 'w.shareSum': 'Sum of weights', 'w.shareWarn': 'The sum of weights must be 100%',
     'w.exPct': 'A {v} sale is worth {r}', 'w.exKom': '1 sale is worth {r}',
-    'w.chk1': 'Basic data is filled', 'w.chk2': 'The scheme has at least one target', 'w.blocked': 'The scheme was not saved: {r}', 'sc.onlyRules': 'Rules only', 'sc.colInCalc': 'Paid', 'w.chk3': 'The scale covers achievement from 0% upwards', 'w.chk4': 'The sum of weights is 100%', 'w.chk5': 'Every target has a commission per sale', 'w.chk6': 'Valid from {d} - the current calculation is not changed', 'w.chk7': 'Rules refer only to targets in the scheme',
+    'w.chk1': 'Basic data is filled', 'w.chk2': 'The scheme has at least one target', 'w.blocked': 'The scheme was not saved: {r}', 'sc.onlyRules': 'Rules only', 'sc.colInCalc': 'Paid', 'w.chk3': 'The scale covers achievement from 0% upwards', 'w.chk4': 'The sum of weights is 100%', 'w.chk5': 'Every target has a commission per sale', 'w.chk6': 'Valid from {d} - the current calculation is not changed', 'w.chk7': 'Rules refer only to targets in the scheme', 'w.chk8': 'The basket has at least two targets', 'w.chk9': 'Every model has at least one target and one row',
     'w.activate': 'Activate scheme', 'w.saveDraft': 'Save draft', 'w.saveVer': 'Save version', 'w.saved': 'Scheme "{n}" saved', 'w.activated': 'Scheme "{n}" active from {d}', 'w.verSaved': 'Version v{v} of scheme "{n}" valid from {d}',
     'w.editDraft': 'Continue editing', 'w.titleNew': 'New bonus scheme', 'w.titleCopy': 'Copy of scheme', 'w.titleVer': 'New scheme version', 'w.titleEdit': 'Edit draft',
     'm.M1': 'Individual', 'm.M2': 'Manager', 'm.M3': 'Team', 'role.primarni': 'Primary', 'role.sekundarni': 'Secondary', 'role.informativni': 'Informative',
@@ -227,21 +227,37 @@
     return ui.table(cols, rows, { compact: true, foot: foot });
   }
   /* naziv koraka: kod provizije nema pondera */
-  function payTitle(s) { return (s && s.type === 'provizija') ? t('sc.sPayP') : t('sc.sPay'); }
+  function payTitle() { return t('sc.sPay'); }
   /* skala targeta: skala šeme, posebna skala ili korpa */
   function scaleKind(s, tc) { var b = s.basket; return tc.scale ? 'own' : b && b.on && s.type !== 'provizija' && (b.targets || []).indexOf(tc.key) >= 0 ? 'basket' : 'scheme'; }
   function basketKeys(s) { var b = s.basket; return b && b.on && s.type !== 'provizija' ? s.targets.filter(function (tc) { return !tc.scale && tc.inCalc !== false && (b.targets || []).indexOf(tc.key) >= 0; }) : []; }
+  /* ---------- modeli isplate: tabela pragova ostvarenja po izabranim targetima i ponder isplate ---------- */
+  var OPS = [['', '–'], ['gt', '>'], ['gte', '≥'], ['lt', '<'], ['lte', '≤'], ['eq', '=']];
+  function opSym(op) { var o = OPS.filter(function (x) { return x[0] === (op === 'any' ? '' : op || ''); })[0]; return o ? o[1] : '≥'; }
+  function modelsOf(s) { return s.models || (s.finalTable && s.finalTable.on ? [s.finalTable] : []); }
+  function mKeys(s, m) { return (m.targets || []).filter(function (k) { return s.targets.some(function (tc) { return tc.key === k; }); }); }
+  function tName(s, k) { var tc = s.targets.filter(function (q) { return q.key === k; })[0], tg = tc && tgOf(s, tc); return tg ? IH.L(tg.name) : k; }
+  function cellTxt(c) { return !c || !c.op || c.op === 'any' ? '–' : opSym(c.op) + ' ' + F.pct(c.v || 0); }
+  function modelsView(s) {
+    return modelsOf(s).map(function (m, mi) {
+      var keys = mKeys(s, m); if (!keys.length) return '';
+      var cols = [{ key: 'n', label: '#', num: true }].concat(keys.map(function (k) { return { key: k, label: IH.esc(tName(s, k)) }; })).concat([{ key: 'w', label: t('sc.fWeight'), num: true }]);
+      var rows = (m.rows || []).map(function (r, i) { var o = { n: i + 1, w: '<b>' + F.num(r.w, 2) + '</b>' }; keys.forEach(function (k) { o[k] = cellTxt((r.c || {})[k]); }); return o; });
+      var oth = { n: '', w: '<b>' + F.num(m.other || 0, 2) + '</b>' }; keys.forEach(function (k, i) { oth[k] = i ? '' : '<span class="mut">' + t('sc.fOther') + '</span>'; }); rows.push(oth);
+      return '<div class="lab" style="margin-top:14px">' + t('sc.model', { n: mi + 1 }) + '</div>' + ui.table(cols, rows, { compact: true });
+    }).join('');
+  }
   function extraScalesView(s) {
     var h = '';
-    s.targets.forEach(function (tc) { var tg = tgOf(s, tc); if (tc.scale && tg && tc.inCalc !== false) h += '<div class="lab" style="margin-top:14px">' + t('sc.scaleOf', { n: IH.esc(IH.L(tg.name)) }) + '</div>' + scaleView(tc.scale); });
+    s.targets.forEach(function (tc) { var tg = tgOf(s, tc); if (tc.scale && !neutralScale(tc.scale) && tg && tc.inCalc !== false) h += '<div class="lab" style="margin-top:14px">' + t('sc.scaleOf', { n: IH.esc(IH.L(tg.name)) }) + '</div>' + scaleView(tc.scale, true); });
     var bk = basketKeys(s), b = s.basket;
     if (bk.length) h += '<div class="lab" style="margin-top:14px">' + t('sc.basket') + '</div><dl class="kv"><dt>' + t('sc.bTargets') + '</dt><dd>' + bk.map(function (tc) { return IH.esc(IH.L(tgOf(s, tc).name)); }).join(', ') + '</dd><dt>' + t('sc.bCap') + '</dt><dd>' + (b.cap ? F.pct(b.cap) : '-') + '</dd><dt>' + t('sc.bMin') + '</dt><dd>' + (b.min ? F.pct(b.min) : '-') + '</dd></dl><div class="lab" style="margin-top:10px">' + t('sc.bScale') + '</div>' + scaleView(b.scale || s.scale);
-    return h;
+    return h + modelsView(s);
   }
   IH.schemeScaleKind = scaleKind;
-  function scaleView(sc) {
+  function scaleView(sc, ponder) {
     if (sc.type === 'linear') return ui.table([{ key: 'a', label: t('sc.from'), num: true }, { key: 'b', label: t('sc.to'), num: true }, { key: 'f', label: t('sc.pay'), num: true }], [{ a: '0%', b: F.pct(sc.min), f: '<b>0%</b>' }, { a: F.pct(sc.min), b: F.pct(sc.cap), f: '<b>' + t('sc.linEq') + '</b>' }, { a: F.pct(sc.cap), b: '∞', f: '<b>' + F.pct(sc.cap) + '</b>' }], { compact: true });
-    var lo = 0; return ui.table([{ key: 'a', label: t('sc.from'), num: true }, { key: 'b', label: t('sc.to'), num: true }, { key: 'f', label: t('sc.pay'), num: true }], sc.map(function (b) { var r = { a: F.pct(lo), b: b.to == null ? '∞' : F.pct(b.to), f: '<b>' + F.pct(b.f) + '</b>' }; lo = b.to; return r; }), { compact: true });
+    var lo = 0; return ui.table([{ key: 'a', label: t('sc.from'), num: true }, { key: 'b', label: t('sc.to'), num: true }, { key: 'f', label: ponder ? t('sc.fWeight') : t('sc.pay'), num: true }], sc.map(function (b) { var r = { a: F.pct(lo), b: b.to == null ? '∞' : F.pct(b.to), f: '<b>' + (ponder ? F.num(b.f, 2) : F.pct(b.f)) + '</b>' }; lo = b.to; return r; }), { compact: true });
   }
   function otherView(s, v) {
     var rows = [];
@@ -265,6 +281,7 @@
         byKey[tc.key] = r;
       });
       EN.basketApply(s, Object.keys(byKey).map(function (k) { var r = byKey[k], tc = s.targets.filter(function (q) { return q.key === k; })[0]; r.share = shareOf(s, v, tc); return r; }));
+      EN.finalApply(s, Object.keys(byKey).map(function (k) { return byKey[k]; }));
       var res = EN.applyRules(s, byKey, null, lastPid(s), {});
       var sum = Object.keys(byKey).reduce(function (a, k) { return a + EN.payOf(byKey[k]); }, 0);
       var pay = Math.min(Math.round(sum), lim), on = res.some(function (x) { return x.active && x.r.tpl !== 'kap'; });
@@ -380,7 +397,7 @@
   function W() { return IH.form.wiz; }
   /* način obračuna: savetnik - individualni; menadžer - timski (cela ekspozitura); univerzalni - timski ili individualni */
   function kindOf(s) { return s.model === 'M1' ? 'individualni' : 'timski'; }
-  var SKEYS = ['type', 'targets', 'scale', 'basket', 'rules', 'continuity', 'teamFactor', 'carryNegative', 'teamSplit'];
+  var SKEYS = ['type', 'targets', 'scale', 'basket', 'finalTable', 'models', 'rules', 'continuity', 'teamFactor', 'carryNegative', 'teamSplit'];
   /* nacrt = identitet šeme + parametri verzije (s) i iznosi verzije (v) */
   function draftFrom(src, baseV) {
     var sa = sAt(src, baseV), d = deep(src);
@@ -410,13 +427,16 @@
       d.name = mode === 'copy' ? { sr: IH.L(src.name) + ' - kopija', en: IH.L(src.name) + ' - copy' } : (src.pos === 'licni' ? L('Savetnik - fizička lica 2027', 'Advisor - private individuals 2027') : src.pos === 'menadzer' ? L('Menadžer ekspoziture 2027', 'Branch manager 2027') : L('Tim ekspoziture 2027', 'Branch team 2027'));
       d.status = 'nacrt'; d.isNew = true;
       v = Object.assign(v, { v: 1, from: (D.plannedOf(src.periodType)[0] || {}).from || null, to: null, note: L('Početna verzija', 'Initial version') });
+      if (mode === 'new') { d.scale = [{ to: null, f: 1 }]; d.basket = undefined; d.finalTable = undefined; d.rules = []; d.conds = []; d.continuity = null; v.contAmount = 0; d.targets.forEach(function (tc) { delete tc.scale; }); d.models = d.targets.length ? [newModel(d.targets.map(function (tc) { return tc.key; }))] : []; }
       /* kreiranje: primer za prezentaciju - provizija na gotovinske kredite bez osnovice, uslov ekspoziture i pojačanje za kartice */
       var gi = IH.targets().filter(function (x) { return x.status === 'aktivan' && x.kind !== 'timski' && /gotovinsk/i.test(IH.L(x.name)); }).pop();
       var ge = IH.targets().filter(function (x) { return x.status === 'aktivan' && x.kind === 'timski' && /gotovinsk/i.test(IH.L(x.name)); }).pop();
       if (mode === 'new' && gi) {
         d.type = 'provizija'; d.code = 'BS-GK-2027'; d.name = L('Savetnik - gotovinski krediti 2027', 'Advisor - cash loans 2027');
         d.targets = [{ key: 'T1', id: gi.id, role: 'primarni', inCalc: true, val: { k: 'pct', v: 0.005 } }, { key: 'T2', id: 'TG-103', role: 'primarni', inCalc: true, val: { k: 'rsd', v: 500 } }];
-        d.rules = (ge ? [{ tpl: 'timski', src: 'eksp', target: ge.id, min: 0.8, affects: ['T1'], factor: 0.8 }] : []).concat([{ tpl: 'pojacanje', cond: 'T2', min: 1.0, affects: ['T1'], factor: 1.2 }]);
+        d.rules = ge ? [{ tpl: 'timski', src: 'eksp', target: ge.id, min: 0.8, affects: ['T1'], factor: 0.8 }] : [];
+        /* model isplate: međuzavisnost gotovinskih kredita i kartica */
+        d.models = [{ targets: ['T1', 'T2'], rows: [{ c: { T1: { op: 'gte', v: 1 }, T2: { op: 'gte', v: 1 } }, w: 1.2 }, { c: { T1: { op: 'gte', v: 0.8 }, T2: { op: 'gte', v: 0.8 } }, w: 1 }, { c: { T1: { op: 'gte', v: 0.8 }, T2: { op: 'lt', v: 0.8 } }, w: 0.6 }, { c: { T1: { op: 'lt', v: 0.8 }, T2: { op: 'gte', v: 0.8 } }, w: 0.8 }], other: 0 }];
         d.continuity = null; d.teamFactor = undefined;
         v.base = 0; v.contAmount = 0; v.limit = 90000; v.shares = undefined;
         v.from = (D.plannedOf('Q').filter(function (p) { return p.from >= gi.from; })[0] || {}).from || v.from;
@@ -479,6 +499,7 @@
         var keys = s.targets.map(function (q) { return q.key; });
         s.rules = (s.rules || []).filter(function (r) { return [r.cond, r.a, r.b].filter(Boolean).every(function (k) { return keys.indexOf(k) >= 0; }); }).map(function (r) { if (r.affects) r.affects = r.affects.filter(function (k) { return keys.indexOf(k) >= 0; }); if (r.keys) r.keys = r.keys.filter(function (k) { return keys.indexOf(k) >= 0; }); return r; });
         if (s.continuity && keys.indexOf(s.continuity.target) < 0) s.continuity.target = keys[0];
+        syncModels(s);
         w.rev++; }, onChange: function () { IH.render(); } },
       cols: [
         { key: 'n', label: t('c.target'), val: function (x) { return IH.L(x.name); }, render: function (x) { return '<b>' + IH.esc(IH.L(x.name)) + '</b>'; } },
@@ -492,47 +513,105 @@
   }
   /* editor skale; putanja: 'scale' (skala šeme), 'targets.i.scale' (posebna skala), 'basket.scale' (skala korpe) */
   function getPath(o, path) { return path.split('.').reduce(function (x, k) { return x == null ? x : x[k]; }, o); }
-  function scaleEditor(s, base) {
-    base = base || 'scale'; var sc = getPath(s, base), a = base + '|';
+  function scaleEditor(s, base, o) {
+    o = o || {}; base = base || 'scale'; var sc = getPath(s, base), a = base + '|';
     var typeSel = '<div class="field" style="margin-bottom:10px"><label class="lab">' + t('sc.scaleType') + '</label>' + wseg('w-sctype', [{ v: a + 'step', l: t('sc.scStep') }, { v: a + 'linear', l: t('sc.scLin') }], a + (sc.type === 'linear' ? 'linear' : 'step')) + '</div>';
+    if (o.ponder) typeSel = '';
     if (sc.type === 'linear') return typeSel + '<div class="form-grid g3"><div class="field"><label class="lab">' + t('sc.linMin') + '</label>' + inp(base + '.min', F.num(sc.min * 100), { kind: 'pct', w: 90 }) + ' %</div><div class="field"><label class="lab">' + t('sc.linCap') + '</label>' + inp(base + '.cap', F.num(sc.cap * 100), { kind: 'pct', w: 90 }) + ' %</div></div>';
     var lo = 0, rows = sc.map(function (b, i) {
-      var r = '<tr><td class="num">' + F.pct(lo) + '</td><td>' + (b.to == null ? '<span class="mut">∞</span>' : inp(base + '.' + i + '.to', F.num(b.to * 100), { kind: 'pct', w: 80 }) + ' %') + '</td><td>' + inp(base + '.' + i + '.f', F.num(b.f * 100), { kind: 'pct', w: 80 }) + ' %</td><td class="num">' + (sc.length > 2 && b.to != null ? '<button class="gab dan" data-act="w-band-rm" data-arg="' + base + '|' + i + '">' + ic('trash') + '</button>' : '') + '</td></tr>';
+      var r = '<tr><td class="num">' + F.pct(lo) + '</td><td>' + (b.to == null ? '<span class="mut">∞</span>' : inp(base + '.' + i + '.to', F.num(b.to * 100), { kind: 'pct', w: 80 }) + ' %') + '</td><td>' + (o.ponder ? inp(base + '.' + i + '.f', F.num(b.f, 2), { kind: 'num2', w: 80 }) : inp(base + '.' + i + '.f', F.num(b.f * 100), { kind: 'pct', w: 80 }) + ' %') + '</td><td class="num">' + (sc.length > (o.ponder ? 1 : 2) && b.to != null ? '<button class="gab dan" data-act="w-band-rm" data-arg="' + base + '|' + i + '">' + ic('trash') + '</button>' : '') + '</td></tr>';
       lo = b.to; return r;
     }).join('');
-    return typeSel + '<div class="tbl-wrap"><table class="t compact"><thead><tr><th class="num">' + t('sc.from') + '</th><th>' + t('sc.to') + '</th><th>' + t('sc.pay') + '</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div><div style="margin-top:8px">' + ui.btn(t('sc.addBand'), { cls: 'sm', icon: 'plus', act: 'w-band-add', arg: base }) + '</div>';
+    return typeSel + '<div class="tbl-wrap"><table class="t compact"><thead><tr><th class="num">' + t('sc.from') + '</th><th>' + t('sc.to') + '</th><th>' + (o.ponder ? t('sc.fWeight') : t('sc.pay')) + '</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div><div style="margin-top:8px">' + ui.btn(t('sc.addBand'), { cls: 'sm', icon: 'plus', act: 'w-band-add', arg: base }) + '</div>';
   }
   function valCell(i, tc) { var pct = tc.val.k === 'pct'; return inp('targets.' + i + '.val.v', pct ? F.num(tc.val.v * 100, 2) : F.num(tc.val.v), { kind: pct ? 'pct' : 'num', w: 90 }) + (pct ? ' %' : ' RSD'); }
   /* isplata po targetu; target može biti „samo u pravilima“ (ne donosi novac sam, koristi se u pravilima, npr. kartice za pojačanje) */
   /* ponderi i skale: svaki target se plaća; skala targeta se otvara akcijom u redu (skala šeme, posebna skala ili korpa) */
+  /* kreiranje modela: koliko vredi svaki target (ponder ili provizija) i modeli isplate (tabele pragova sa ponderom) */
   function step3() {
     var w = W(), s = w.s, v = w.v, ty = s.type || 'scorecard', prov = ty === 'provizija', komb = ty === 'kombinovana';
     s.targets.forEach(function (tc) { if (tc.inCalc === false) tc.inCalc = true; });
-    var bOn = !!(s.basket && s.basket.on) && !prov, open = w._scOpen || {}, nCol = prov ? 5 : komb ? 5 : 4;
-    var kinds = [{ v: 'scheme', l: t('sc.scScheme') }, { v: 'own', l: t('sc.scOwn') }].concat(bOn ? [{ v: 'basket', l: t('sc.scBasket') }] : []);
-    var act = function (tc) { return '<td class="num"><button type="button" class="gab' + (open[tc.key] ? ' on' : '') + '" data-act="w-scale-open" data-arg="' + tc.key + '" title="' + t('sc.colScale') + '">' + ic(open[tc.key] ? 'chevd' : 'chart') + '</button></td>'; };
-    var kindTag = function (tc) { var k = scaleKind(s, tc); return k === 'scheme' ? '' : ' <span class="mut">· ' + (k === 'own' ? t('sc.scOwn') : t('sc.scBasket')).toLowerCase() + '</span>'; };
-    var exp = function (tc, i) {
-      if (!open[tc.key]) return '';
-      var cur = scaleKind(s, tc);
-      return '<tr class="exp"><td colspan="' + nCol + '" style="background:var(--line-2)"><div style="padding:6px 4px 10px">' + wseg('w-scale-kind', kinds.map(function (k) { return { v: i + '|' + k.v, l: k.l }; }), i + '|' + cur) +
-        (cur === 'own' ? '<div style="margin-top:12px">' + scaleEditor(s, 'targets.' + i + '.scale') + '</div>' : '') + '</div></td></tr>';
-    };
+    /* skala targeta: akcija u redu otvara ispod reda pragove ostvarenja i ponder isplate */
+    var open = w._scOpen || {}, nCol = prov || komb ? 5 : 4;
+    var act = function (tc) { var on = !!open[tc.key]; return '<td class="num"><button type="button" class="gab' + (on ? ' on' : '') + '" data-act="w-scale-open" data-arg="' + tc.key + '" title="' + t('sc.colScale') + '">' + ic(on ? 'chevd' : 'chart') + '</button></td>'; };
+    var exp = function (tc, i) { if (!open[tc.key]) return ''; if (!tc.scale) tc.scale = [{ to: null, f: 1 }]; return '<tr class="exp"><td colspan="' + nCol + '" style="background:var(--line-2)"><div style="padding:8px 4px 12px">' + scaleEditor(s, 'targets.' + i + '.scale', { ponder: true }) + '</div></td></tr>'; };
     var rows = s.targets.map(function (tc, i) {
       var tg = tgOf(s, tc); if (!tg) return '';
-      var name = '<td><b>' + IH.esc(IH.L(tg.name)) + '</b>' + kindTag(tc) + '</td>';
+      var name = '<td><b>' + IH.esc(IH.L(tg.name)) + '</b>' + (tc.scale && !neutralScale(tc.scale) ? ' <span class="mut">· ' + t('sc.colScale').toLowerCase() + '</span>' : '') + '</td>';
       if (prov) { var pct = tc.val && tc.val.k === 'pct'; return '<tr>' + name + '<td class="mut">' + (pct ? IH.L(L('% iznosa', '% of amount')) : IH.L(L('RSD po komadu', 'RSD per piece'))) + '</td><td class="num">' + (tc.val ? valCell(i, tc) : '') + '</td><td class="mut">' + (!tc.val ? '' : pct ? t('w.exPct', { v: F.rsd(1000000), r: '<b>' + F.rsd(Math.round(1000000 * tc.val.v)) + '</b>' }) : t('w.exKom', { r: '<b>' + F.rsd(tc.val.v) + '</b>' })) + '</td>' + act(tc) + '</tr>' + exp(tc, i); }
       return '<tr>' + name + '<td class="num">' + inp('targets.' + i + '.share', F.num((tc.share || 0) * 100), { kind: 'pct', w: 80 }) + ' %</td><td class="num">' + F.rsd(Math.round((v.base || 0) * (tc.share || 0))) + '</td>' + (komb ? '<td class="num">' + (tc.val ? valCell(i, tc) : '') + '</td>' : '') + act(tc) + '</tr>' + exp(tc, i);
     }).join('');
     var sum = s.targets.reduce(function (a, tc) { return a + (tc.share || 0); }, 0);
-    var inc = '<th class="num">' + t('sc.colScale') + '</th>';
-    var head = prov ? '<tr><th>' + t('sc.colTarget') + '</th><th>' + t('sc.colUnitV') + '</th><th class="num">' + t('sc.colVal') + '</th><th>' + t('sc.colEx') + '</th>' + inc + '</tr>' : '<tr><th>' + t('sc.colTarget') + '</th><th class="num">' + t('sc.colShare') + '</th><th class="num">' + t('sc.colAt100') + '</th>' + (komb ? '<th class="num">' + t('sc.colOver') + '</th>' : '') + inc + '</tr>';
+    var head = prov ? '<tr><th>' + t('sc.colTarget') + '</th><th>' + t('sc.colUnitV') + '</th><th class="num">' + t('sc.colVal') + '</th><th>' + t('sc.colEx') + '</th><th class="num">' + t('sc.colScale') + '</th></tr>' : '<tr><th>' + t('sc.colTarget') + '</th><th class="num">' + t('sc.colShare') + '</th><th class="num">' + t('sc.colAt100') + '</th>' + (komb ? '<th class="num">' + t('sc.colOver') + '</th>' : '') + '<th class="num">' + t('sc.colScale') + '</th></tr>';
     var foot = prov ? '' : '<tfoot><tr><td>' + t('w.shareSum') + '</td><td class="num ' + (Math.abs(sum - 1) < 0.005 ? 'sum-ok' : 'sum-bad') + '">' + F.pct(sum) + '</td><td class="num">' + F.rsd(v.base || 0) + '</td>' + (komb ? '<td></td>' : '') + '<td></td></tr></tfoot>';
     return (!prov && Math.abs(sum - 1) >= 0.005 ? '<div class="note warn">' + t('w.shareWarn') + '</div>' : '') +
       '<div class="tbl-wrap"><table class="t compact"><thead>' + head + '</thead><tbody>' + rows + '</tbody>' + foot + '</table></div>' +
-      '<div class="lab" style="margin-top:16px">' + t('sc.scScheme') + '</div>' + scaleEditor(s, 'scale') +
-      (prov ? '' : basketEditor(s));
+      modelsEditor(s, w) + legacyEditor(s);
   }
+  function defCell() { return { op: 'gte', v: 0.8 }; }
+  function syncModels(s) {
+    (s.models || []).forEach(function (m) {
+      m.targets = (m.targets || []).filter(function (k) { return s.targets.some(function (tc) { return tc.key === k; }); });
+      (m.rows || []).forEach(function (r) { r.c = r.c || {}; Object.keys(r.c).forEach(function (k) { if (m.targets.indexOf(k) < 0) delete r.c[k]; }); m.targets.forEach(function (k) { if (!r.c[k]) r.c[k] = defCell(); }); });
+    });
+  }
+  function newModel(keys) { var c1 = {}, c2 = {}; keys.forEach(function (k) { c1[k] = { op: 'gte', v: 1 }; c2[k] = { op: 'gte', v: 0.8 }; }); return { targets: keys.slice(), rows: [{ c: c1, w: 1.2 }, { c: c2, w: 1 }], other: 0 }; }
+  function modelEditor(s, w, m, mi) {
+    var keys = mKeys(s, m);
+    var chips = '<div class="mchips">' + s.targets.map(function (tc) { var tg = tgOf(s, tc); if (!tg) return ''; var on = keys.indexOf(tc.key) >= 0; return '<button type="button" class="mchip' + (on ? ' on' : '') + '" data-act="w-m-tg" data-arg="' + mi + '|' + tc.key + '">' + ic(on ? 'check' : 'plus') + IH.esc(IH.L(tg.name)) + '</button>'; }).join('') + '</div>';
+    var head = '<div class="mhead"><b>' + t('sc.model', { n: mi + 1 }) + '</b>' + chips + '<button type="button" class="gab dan" data-act="w-m-rm" data-arg="' + mi + '" title="' + t('sc.mRemove') + '">' + ic('trash') + '</button></div>';
+    if (!keys.length) return '<div class="mcard">' + head + '<div class="empty" style="padding:18px">' + t('sc.mPick') + '</div></div>';
+    var cell = function (i, k, c) {
+      var base = 'models.' + mi + '.rows.' + i + '.c.' + k, op = c && c.op && c.op !== 'any' ? c.op : '';
+      return '<div class="cgrp' + (op ? '' : ' off') + '"><select class="in" data-sp="' + base + '.op" data-kind="str">' + OPS.map(function (o) { return '<option value="' + o[0] + '"' + (op === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select>' +
+        (op ? '<input class="in" data-sp="' + base + '.v" data-kind="pct" value="' + F.num(((c && c.v) != null ? c.v : 0.8) * 100) + '"><span>%</span>' : '') + '</div>';
+    };
+    var n = (m.rows || []).length;
+    var rows = (m.rows || []).map(function (r, i) {
+      return '<tr><td class="mnum"><span>' + (i + 1) + '</span></td>' + keys.map(function (k) { return '<td>' + cell(i, k, (r.c || {})[k]) + '</td>'; }).join('') +
+        '<td class="mw"><input class="in" data-sp="models.' + mi + '.rows.' + i + '.w" data-kind="num2" value="' + F.num(r.w, 2) + '"></td>' +
+        '<td class="mact"><button type="button" class="gab" data-act="w-m-mv" data-arg="' + mi + '|' + i + '|-1"' + (i ? '' : ' disabled') + '>↑</button><button type="button" class="gab" data-act="w-m-mv" data-arg="' + mi + '|' + i + '|1"' + (i < n - 1 ? '' : ' disabled') + '>↓</button><button type="button" class="gab dan" data-act="w-m-rrm" data-arg="' + mi + '|' + i + '">' + ic('trash') + '</button></td></tr>';
+    }).join('');
+    var other = '<tr class="moth"><td class="mnum"></td><td colspan="' + keys.length + '">' + t('sc.fOther') + '</td><td class="mw"><input class="in" data-sp="models.' + mi + '.other" data-kind="num2" value="' + F.num(m.other || 0, 2) + '"></td><td></td></tr>';
+    return '<div class="mcard">' + head + '<div class="tbl-wrap"><table class="t mtab"><thead><tr><th class="mnum">#</th>' + keys.map(function (k) { return '<th>' + IH.esc(tName(s, k)) + '</th>'; }).join('') + '<th class="mw">' + t('sc.fWeight') + '</th><th></th></tr></thead><tbody>' + rows + other + '</tbody></table></div>' +
+      '<div class="mfoot">' + ui.btn(t('sc.fAdd'), { cls: 'sm', icon: 'plus', act: 'w-m-radd', arg: String(mi) }) + '</div></div>';
+  }
+  function modelsEditor(s, w) {
+    return '<div class="fsec" style="margin-top:18px"><h3>' + t('sc.models') + '</h3>' + (s.models || []).map(function (m, mi) { return modelEditor(s, w, m, mi); }).join('') + ui.btn(t('sc.mAdd'), { cls: 'sm', icon: 'plus', act: 'w-m-add' }) + '</div>';
+  }
+  /* skale i pravila koje šema već ima (iz ranije verzije ili kopije): vide se i mogu da se uklone */
+  function neutralScale(sc) { return Array.isArray(sc) && sc.length === 1 && sc[0].to == null && sc[0].f === 1; }
+  function legacyEditor(s) {
+    var it = [], rm = function (arg) { return ' <button type="button" class="gab dan" data-act="w-leg-rm" data-arg="' + arg + '">' + ic('trash') + '</button>'; };
+    if (s.scale && !neutralScale(s.scale)) it.push('<b>' + t('sc.scScheme') + '</b>: ' + IH.esc(scaleText(s.scale)) + rm('scale'));
+    if (s.basket && s.basket.on) it.push('<b>' + t('sc.basket') + '</b>: ' + basketKeys(s).map(function (tc) { return IH.esc(tName(s, tc.key)); }).join(', ') + rm('basket'));
+    EN.rulesOf(s).forEach(function (r, i) { it.push(V.text(s, r) + rm('rule|' + i)); });
+    if (s.continuity) it.push('<b>' + t('sc.cont') + '</b>: ' + IH.esc(tName(s, s.continuity.target)) + ' ≥ ' + F.pct(s.continuity.min) + ' · ' + s.continuity.periods + rm('cont'));
+    if (s.teamFactor) it.push('<b>' + t('sc.tf') + '</b>');
+    if (!it.length) return '';
+    return '<div class="fsec" style="margin-top:18px"><h3>' + t('sc.legacy') + '</h3><ul class="rulelist" style="margin:0">' + it.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>';
+  }
+  IH.act['w-leg-rm'] = function (el) {
+    var w = W(), s = w.s, p = el.dataset.arg.split('|');
+    if (p[0] === 'scale') s.scale = [{ to: null, f: 1 }];
+    else if (p[0] === 'tscale') delete s.targets[+p[1]].scale;
+    else if (p[0] === 'basket') s.basket.on = false;
+    else if (p[0] === 'rule') { s.rules = EN.rulesOf(s).slice(); s.conds = []; s.rules.splice(+p[1], 1); }
+    else if (p[0] === 'cont') { s.continuity = null; w.v.contAmount = 0; }
+    w.rev++; IH.render();
+  };
+  IH.act['w-m-add'] = function () { var w = W(), s = w.s; s.models = s.models || []; s.models.push(newModel(s.targets.slice(0, 1).map(function (tc) { return tc.key; }))); w.rev++; IH.render(); };
+  IH.act['w-m-rm'] = function (el) { var w = W(); w.s.models.splice(+el.dataset.arg, 1); w._mt = {}; w.rev++; IH.render(); };
+  IH.act['w-m-tg'] = function (el) {
+    var w = W(), p = el.dataset.arg.split('|'), m = w.s.models[+p[0]], i = m.targets.indexOf(p[1]), ord = w.s.targets.map(function (q) { return q.key; });
+    if (i >= 0) m.targets.splice(i, 1); else m.targets.push(p[1]);
+    m.targets.sort(function (a, b) { return ord.indexOf(a) - ord.indexOf(b); });
+    syncModels(w.s); w.rev++; IH.render();
+  };
+  IH.act['w-m-radd'] = function (el) { var w = W(), m = w.s.models[+el.dataset.arg], c = {}; m.targets.forEach(function (k) { c[k] = defCell(); }); m.rows.push({ c: c, w: 1 }); w.rev++; IH.render(); };
+  IH.act['w-m-rrm'] = function (el) { var w = W(), p = el.dataset.arg.split('|'); w.s.models[+p[0]].rows.splice(+p[1], 1); w.rev++; IH.render(); };
+  IH.act['w-m-mv'] = function (el) { var w = W(), p = el.dataset.arg.split('|'), r = w.s.models[+p[0]].rows, i = +p[1], j = i + +p[2]; if (j < 0 || j >= r.length) return; var x = r[i]; r[i] = r[j]; r[j] = x; w.rev++; IH.render(); };
+
   IH.act['w-scale-open'] = function (el) { var w = W(); w._scOpen = w._scOpen || {}; w._scOpen[el.dataset.arg] = !w._scOpen[el.dataset.arg]; IH.render(); };
   IH.act['w-scale-kind'] = function (el) {
     var w = W(), p = el.dataset.arg.split('|'), tc0 = w.s.targets[+p[0]], val = p[1], bb = w.s.basket; if (!tc0) return;
@@ -609,10 +688,10 @@
   function wizardPage(mode, srcId, step) {
     var w = W();
     if (!w || w.mode !== mode || (srcId && w.src !== srcId && mode !== 'new')) { w = makeDraft(mode, srcId); IH.form = { wiz: w }; }
-    var cur = Math.max(0, Math.min(3, (+step || 1) - 1)), s = w.s;
+    var cur = Math.max(0, Math.min(2, (+step || 1) - 1)), s = w.s;
     var base = mode === 'new' ? 'seme/nova' : mode === 'copy' ? 'seme/kopija/' + w.src : mode === 'ver' ? 'seme/' + w.src + '/verzija' : 'seme/izmena/' + w.src;
-    var steps = ['w.s1', 'w.s2', 'w.s3', 'w.s4'].map(function (k) { return { label: k === 'w.s3' ? payTitle(s) : t(k) }; });
-    var body = [step1, step2, step3, step4][cur]();
+    var steps = ['w.s1', 'w.s2', 'w.s3'].map(function (k) { return { label: t(k) }; });
+    var body = [step1, step2, step3][cur]();
     var title = mode === 'new' ? t('w.titleNew') : mode === 'copy' ? t('w.titleCopy') : mode === 'ver' ? t('w.titleVer') : t('w.titleEdit');
     return ui.header(title + (mode !== 'new' ? ' · ' + IH.esc(IH.L(D.scheme(w.src).name)) : ''), '', '', '<a href="#/seme">' + t('sc.title') + '</a> ' + ic('chevr') + ' ' + IH.esc(IH.L(s.name))) +
       ui.wizard({ base: base, steps: steps, cur: cur, body: body, finishLabel: mode === 'ver' ? t('w.saveVer') : t('c.save'), finishAct: 'w-save', cancelGo: mode === 'new' ? 'seme' : 'seme/' + w.src });
@@ -634,7 +713,7 @@
     setPath(root, path, val);
     var smt = path.match(/^(.*scale)\.\d+\.to$/); if (smt) { var arr = getPath(w.s, smt[1]); if (Array.isArray(arr)) arr.sort(function (a, b) { return a.to == null ? 1 : b.to == null ? -1 : a.to - b.to; }); }
     w.rev++;
-    if (/^(targets|scale|continuity|teamFactor)/.test(path) || path === 'base') IH.render();
+    if (/^(targets|scale|continuity|teamFactor)/.test(path) || path === 'base' || /^models\./.test(path)) IH.render();
   });
   document.addEventListener('change', function (e) {
     var el = e.target, w = W(); if (!w || !el.dataset || !el.dataset.wtfpos) return;
@@ -652,7 +731,7 @@
     else if (sc.type === 'linear') setPath(w.s, base, w._step[base] || deep(D.SCALES[w.s.periodType === 'M' ? 'M' : 'Q']));
     w.rev++; IH.render();
   };
-  IH.act['w-band-add'] = function (el) { var w = W(), sc = getPath(w.s, el.dataset.arg || 'scale'), last = sc[sc.length - 1], prev = sc[sc.length - 2]; var to = prev && prev.to != null ? +(prev.to + 0.2).toFixed(2) : 1.5; sc.splice(sc.length - 1, 0, { to: to, f: last.f }); last.f = +(last.f + 0.2).toFixed(2); w.rev++; IH.render(); };
+  IH.act['w-band-add'] = function (el) { var w = W(), sc = getPath(w.s, el.dataset.arg || 'scale'), last = sc[sc.length - 1], prev = sc[sc.length - 2]; if (sc.length === 1) { sc.unshift({ to: 0.8, f: 0 }); w.rev++; IH.render(); return; } var to = prev && prev.to != null ? +(prev.to + 0.2).toFixed(2) : 1.5; sc.splice(sc.length - 1, 0, { to: to, f: last.f }); last.f = +(last.f + 0.2).toFixed(2); w.rev++; IH.render(); };
   IH.act['w-band-rm'] = function (el) { var w = W(), p = el.dataset.arg.split('|'); getPath(w.s, p[0]).splice(+p[1], 1); w.rev++; IH.render(); };
   IH.act['w-cont'] = function () { var w = W(); if (w.s.continuity) { w.s.continuity = null; } else { w.s.continuity = { target: w.s.targets[0] ? w.s.targets[0].key : 'T1', min: 1.0, periods: 3 }; w.v.contAmount = w.v.contAmount || 10000; } w.rev++; IH.render(); };
   IH.act['w-carry'] = function () { var w = W(); w.s.carryNegative = !w.s.carryNegative; w.rev++; IH.render(); };
@@ -674,7 +753,8 @@
     if (!prov && Math.abs(ssum - 1) >= 0.005) bad.push([3, t('w.chk4')]);
     if (prov && !s.targets.every(function (tc) { return tc.inCalc === false || (tc.val && tc.val.v > 0); })) bad.push([3, t('w.chk5')]);
     if (s.basket && s.basket.on && !prov && (s.basket.targets || []).filter(function (k) { return s.targets.some(function (tc) { return tc.key === k && tc.inCalc !== false; }); }).length < 2) bad.push([3, t('w.chk8')]);
-    if (!rulesOk(s)) bad.push([4, t('w.chk7')]);
+    if ((s.models || []).some(function (m) { return !mKeys(s, m).length || !(m.rows || []).length; })) bad.push([3, t('w.chk9')]);
+    if (!rulesOk(s)) bad.push([3, t('w.chk7')]);
     if (!draft && bad.length) { IH.toast(t('w.blocked', { r: bad.map(function (x) { return x[1]; }).join('; ') })); IH.go(wb + '/' + bad[0][0]); return; }
     if (s.type !== 'provizija') { v.shares = {}; s.targets.forEach(function (tc) { v.shares[tc.key] = tc.share || 0; }); }
     if (s.pos === 'univerzalni' && s.model !== 'M1' && v.base) v.capFactor = v.limit ? +(v.limit / v.base).toFixed(2) : 1.5;

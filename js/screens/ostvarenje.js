@@ -18,7 +18,7 @@
     'it.why.ceka_uslov': 'Prodaja ulazi u ostvarenje targeta {t} kada se ispuni uslov „{c}“ - najkasnije {d}.', 'it.why.nije_priznato': 'Uslov „{c}“ nije ispunjen u roku - prodaja ne ulazi u ostvarenje targeta {t}.', 'it.why.ne_racuna': 'Uslov „{c}“ - prodaja se nikad ne računa u target {t}.', 'it.why.zatvaranje': 'Klijent je zatvorio račun. Umanjuje neto target {t}.',
     'it.why.rucno': 'Prodaja je ručno dodata korekcijom {k}.', 'it.why.iskljuceno': 'Prodaja je isključena iz obračuna korekcijom {k}.', 'it.why.premesteno': 'Prodaja je korekcijom {k} pripisana drugom prodavcu: {n}.',
     'it.detail': 'Prodaja', 'it.orig': 'Original iz izvora', 'it.now': 'Važi u obračunu', 'it.trail': 'Tok prodaje', 'it.loaded': 'Učitano iz {s} ({l})', 'it.mappedAt': 'Šifra {c} mapirana na {p}', 'it.corrAt': 'Korekcija {k}: {r}',
-    'it.client': 'Klijent', 'it.contract': 'Ugovor', 'it.code': 'Šifra iz izvora', 'it.toCorr': 'Korekcija prodaje', 'os.empty': 'Za izabrani period nema prodaja.', 'os.inCalc': 'Prodaja u obračunu', 'os.ofTotal': 'od ukupno {n}', 'os.afterMap': 'ulaze posle mapiranja / ponovnog obračuna', 'os.reduce': 'umanjuju ostvarenje'
+    'it.client': 'Klijent', 'it.contract': 'Broj ugovora / kredita', 'it.id': 'ID transakcije', 'it.pid': 'ID proizvoda', 'it.byProd': 'Prodaje po proizvodu', 'it.sold': 'Prodato', 'it.storno': 'Storno', 'it.amt': 'Iznos (RSD)', 'it.brItems': 'Prodaje ekspoziture', 'it.empId': 'ID zaposlenog', 'it.code': 'Šifra proizvoda (core)', 'it.toCorr': 'Korekcija prodaje', 'os.empty': 'Za izabrani period nema prodaja.', 'os.inCalc': 'Prodaja u obračunu', 'os.ofTotal': 'od ukupno {n}', 'os.afterMap': 'ulaze posle mapiranja / ponovnog obračuna', 'os.reduce': 'umanjuju ostvarenje'
   }, {
     'os.title': 'Daily achievement', 'os.my': 'My achievement',
     'os.day': 'Day {d} of {t}', 'os.daySub': 'data as of {d}', 'os.netT1': 'Loans - network', 'os.netT1s': 'of {t} · projection {p}', 'os.cost': 'Projected cost', 'os.costS': 'advisors and managers, {p}',
@@ -34,7 +34,7 @@
     'it.why.ceka_uslov': 'The sale counts toward target {t} once condition "{c}" is met - by {d} at the latest.', 'it.why.nije_priznato': 'Condition "{c}" was not met in time - the sale does not count toward target {t}.', 'it.why.ne_racuna': 'Condition "{c}" - the sale never counts toward target {t}.', 'it.why.zatvaranje': 'The client closed the account. It reduces the net target {t}.',
     'it.why.rucno': 'The sale was added manually by correction {k}.', 'it.why.iskljuceno': 'The sale was excluded by correction {k}.', 'it.why.premesteno': 'Correction {k} attributed the sale to another seller: {n}.',
     'it.detail': 'Sale', 'it.orig': 'Original from source', 'it.now': 'Used in calculation', 'it.trail': 'Sale trail', 'it.loaded': 'Loaded from {s} ({l})', 'it.mappedAt': 'Code {c} mapped to {p}', 'it.corrAt': 'Correction {k}: {r}',
-    'it.client': 'Client', 'it.contract': 'Contract', 'it.code': 'Source code', 'it.toCorr': 'Correct sale', 'os.empty': 'No sales for the selected period.', 'os.inCalc': 'Sales counted', 'os.ofTotal': 'of {n}', 'os.afterMap': 'count after mapping / recalculation', 'os.reduce': 'reduce achievement'
+    'it.client': 'Client', 'it.contract': 'Contract / loan no.', 'it.id': 'Transaction ID', 'it.pid': 'Product ID', 'it.byProd': 'Sales by product', 'it.sold': 'Sold', 'it.storno': 'Reversed', 'it.amt': 'Amount (RSD)', 'it.brItems': 'Branch sales', 'it.empId': 'Employee ID', 'it.code': 'Product code (core)', 'it.toCorr': 'Correct sale', 'os.empty': 'No sales for the selected period.', 'os.inCalc': 'Sales counted', 'os.ofTotal': 'of {n}', 'os.afterMap': 'count after mapping / recalculation', 'os.reduce': 'reduce achievement'
   });
 
   var ITC = { priznato: 'success', storno: 'danger', nemapirano: 'warning', mapirano: 'accent', ceka: 'warning', korigovano: 'accent', rucno: 'accent', iskljuceno: 'gray', premesteno: 'gray', ceka_uslov: 'warning', nije_priznato: 'gray', ne_racuna: 'gray', zatvaranje: 'gray' };
@@ -153,11 +153,12 @@
     var s = schemeOf(empId, pid), prov = s && s.type === 'provizija', gid = 'it-' + empId;
     var rowsFn = function () { return IH.itemRows(empId, pid); };
     return IH.sech(t('os.items')) + IH.grid({
-      id: gid, exportName: 'Prodaje_' + D.emp(empId).hr + '_' + pid + '.xlsx', searchLabel: IH.L(L('Proizvod, klijent, ugovor, šifra', 'Product, client, contract, code')), hidden: ['src', 'code', 'cl'].concat(prov ? [] : ['v']),
-      rows: rowsFn, key: function (r) { return r.id; }, label: function (r) { return r.id; }, searchKeys: ['p', 'q', 'cl', 'code'],
+      id: gid, exportName: 'Prodaje_' + D.emp(empId).hr + '_' + pid + '.xlsx', searchLabel: IH.L(L('Proizvod, klijent, ugovor, šifra', 'Product, client, contract, code')), hidden: ['src', 'cl', 'seg'].concat(prov ? [] : ['v']),
+      rows: rowsFn, key: function (r) { return r.id; }, label: function (r) { return r.id; }, searchKeys: ['id', 'p', 'q', 'cl', 'code'],
       rowCls: function (r) { return r.st === 'premesteno' || r.st === 'iskljuceno' ? 'muted' : ''; },
       cols: [
         { key: 'st', label: t('c.status'), val: function (r) { return t('it.' + r.st); }, fval: function (r) { return r.st; }, render: function (r) { return IH.ui.itemSt(r.st); }, filter: function () { var u = {}; rowsFn().forEach(function (r) { u[r.st] = 1; }); return Object.keys(u).map(function (k) { return { v: k, l: t('it.' + k) }; }); } },
+        { key: 'id', label: t('it.id'), val: function (r) { return r.id; }, render: function (r) { return '<span class="idc">' + IH.esc(r.id) + '</span>'; } },
         { key: 'd', label: t('os.colDate'), val: function (r) { return r.it.date; }, render: function (r) { return F.date(r.it.date); } },
         { key: 'p', label: t('os.colItem'), nw: false, val: function (r) { return r.it.product ? D.productName(r.it.product) : r.it.code; }, render: function (r) { return '<b>' + prodLabel(r.it) + '</b>'; } },
         { key: 'seg', label: t('os.colSeg'), val: function (r) { return r.it.seg ? D.segName(r.it.seg) : ''; }, fval: function (r) { return r.it.seg || ''; }, filter: function () { return D.segments.map(function (x) { return { v: x.id, l: IH.L(x.name) }; }); } },
@@ -177,6 +178,44 @@
       ]
     });
   }
+  /* prodaje po proizvodu (iz transakcija): broj prodatih komada, storno i iznos */
+  function prodSummary(rows, title) {
+    var by = {}, order = [], po = D.ptypes.map(function (x) { return x.id; });
+    rows.forEach(function (r) { var it = r.it; if (it.type !== 'nova' && it.type !== 'storno') return; var k = it.product || it.code; if (!by[k]) { by[k] = { it: it, n: 0, s: 0, a: 0 }; order.push(k); } if (it.type === 'storno') by[k].s++; else { by[k].n++; by[k].a += it.amount || 0; } });
+    var list = order.map(function (k) { return by[k]; }).sort(function (x, y) { return (po.indexOf(x.it.ptype) - po.indexOf(y.it.ptype)) || y.n - x.n; });
+    if (!list.length) return '';
+    return ui.card(title, ui.table([{ key: 'id', label: t('it.pid') }, { key: 'p', label: t('os.colItem') }, { key: 'pt', label: t('os.colPt') }, { key: 'n', label: t('it.sold'), num: true }, { key: 's', label: t('it.storno'), num: true }, { key: 'a', label: t('it.amt'), num: true }],
+      list.map(function (x) { return { id: '<span class="idc">' + IH.esc(x.it.product || '-') + '</span>', p: '<b>' + prodLabel(x.it) + '</b>', pt: x.it.ptype ? D.ptypeName(x.it.ptype) : '', n: x.n, s: x.s || '<span class="mut">-</span>', a: x.a ? F.num(x.a) : '<span class="mut">-</span>' }; }), { compact: true }), { flush: true });
+  }
+  /* sve prodaje ekspoziture u periodu: savetnici (kvartal) i univerzalni bankari (meseci kvartala) */
+  function branchItemRows(bid, pid) {
+    var out = [], ms = D.subPeriods(pid, 'M').filter(function (m) { return !D.isPlanned(m); });
+    D.branchStaff(bid, 'licni').forEach(function (e) { IH.itemRows(e.id, pid).forEach(function (r) { out.push(Object.assign({ e: e, pid: pid }, r)); }); });
+    D.branchStaff(bid, 'univerzalni').forEach(function (e) { ms.forEach(function (m) { IH.itemRows(e.id, m).forEach(function (r) { out.push(Object.assign({ e: e, pid: m }, r)); }); }); });
+    return out;
+  }
+  function branchItemsGrid(bid, pid, rows) {
+    return IH.grid({
+      id: 'os-bi-' + bid, exportName: 'Prodaje_' + D.branch(bid).code + '_' + pid + '.xlsx', searchLabel: IH.L(L('ID transakcije, zaposleni, proizvod, ugovor', 'Transaction ID, employee, product, contract')), hidden: ['cl', 'seg'],
+      rows: function () { return rows; }, key: function (r) { return r.id; }, label: function (r) { return r.id; }, searchKeys: ['id', 'e', 'p', 'q', 'code'],
+      cols: [
+        { key: 'st', label: t('c.status'), val: function (r) { return t('it.' + r.st); }, fval: function (r) { return r.st; }, render: function (r) { return IH.ui.itemSt(r.st); }, filter: function () { var u = {}; rows.forEach(function (r) { u[r.st] = 1; }); return Object.keys(u).map(function (k) { return { v: k, l: t('it.' + k) }; }); } },
+        { key: 'id', label: t('it.id'), val: function (r) { return r.id; }, render: function (r) { return '<span class="idc">' + IH.esc(r.id) + '</span>'; } },
+        { key: 'd', label: t('os.colDate'), val: function (r) { return r.it.date; }, render: function (r) { return F.date(r.it.date); } },
+        { key: 'e', label: t('c.employee'), val: function (r) { return r.e.name; }, fval: function (r) { return r.e.id; }, render: function (r) { return '<a href="#/ostvarenje/' + bid + '/' + r.e.id + '">' + IH.esc(r.e.name) + '</a> <span class="idc">' + IH.esc(r.e.hr) + '</span>'; }, filter: function () { var u = {}, o = []; rows.forEach(function (r) { if (!u[r.e.id]) { u[r.e.id] = 1; o.push({ v: r.e.id, l: r.e.name }); } }); return o; } },
+        { key: 'p', label: t('os.colItem'), nw: false, val: function (r) { return r.it.product ? D.productName(r.it.product) : r.it.code; }, render: function (r) { return '<b>' + prodLabel(r.it) + '</b>'; } },
+        { key: 'code', label: t('it.code'), val: function (r) { return r.it.code; } },
+        { key: 'seg', label: t('os.colSeg'), val: function (r) { return r.it.seg ? D.segName(r.it.seg) : ''; } },
+        { key: 'pt', label: t('os.colPt'), val: function (r) { return r.it.ptype ? D.ptypeName(r.it.ptype) : ''; }, fval: function (r) { return r.it.ptype || ''; }, filter: function () { return D.ptypes.map(function (x) { return { v: x.id, l: IH.L(x.name) }; }); } },
+        { key: 'ty', label: t('os.colType'), val: function (r) { return t('ct.' + r.it.type); }, fval: function (r) { return r.it.type; }, filter: function () { return ['nova', 'storno'].map(function (k) { return { v: k, l: t('ct.' + k) }; }); } },
+        { key: 'a', label: t('os.colAmt'), num: true, search: false, val: function (r) { return r.it.amount || 0; }, render: function (r) { return r.it.amount ? F.num(r.it.amount) : '<span class="mut">-</span>'; } },
+        { key: 'q', label: t('it.contract'), val: function (r) { return r.it.contract || ''; } },
+        { key: 'cl', label: t('os.colClient'), val: function (r) { return r.it.client || ''; } },
+        { key: 'tg', label: t('os.colTg'), val: function (r) { return r.tgName || ''; }, render: function (r) { return r.tgName ? IH.esc(r.tgName) : '<span class="mut">' + t('os.none') + '</span>'; } }
+      ],
+      actions: [{ type: 'details', title: t('g.aDetails'), act: 'it-det', arg: function (r) { return r.e.id + '|' + r.pid + '|' + r.id; } }]
+    });
+  }
   function empPage(empId, scope, crumb) {
     var e = D.emp(empId), pers = periodsOf(empId), v = IH.v(scope);
     var pid = pers.indexOf(v.per) >= 0 ? v.per : pers[0];
@@ -191,7 +230,7 @@
       ui.kpi(t('os.inCalc'), EN.effItems(empId, pid).length, t('os.ofTotal', { n: rows.length })) +
       ui.kpi(t('it.nemapirano'), rows.filter(function (x) { return x.st === 'nemapirano' || x.st === 'ceka'; }).length, t('os.afterMap')) +
       ui.kpi(t('it.storno'), rows.filter(function (x) { return x.st === 'storno'; }).length, t('os.reduce')) + '</div>';
-    return ui.header(title, '', acts, crumb || (D.posName(e.pos) + ' · ' + IH.esc(D.branchName(e.branch)))) + '<div class="toolbar" style="border:0;padding:0 0 14px">' + seg + '</div>' + kp + targetsCard(empId, pid) + itemsGrid(empId, pid);
+    return ui.header(title, '', acts, crumb || (D.posName(e.pos) + ' · ' + IH.esc(D.branchName(e.branch)))) + '<div class="toolbar" style="border:0;padding:0 0 14px">' + seg + '</div>' + kp + targetsCard(empId, pid) + prodSummary(IH.itemRows(empId, pid), t('it.byProd') + ' · ' + D.periodLabel(pid)) + itemsGrid(empId, pid);
   }
 
   /* ================= MREŽA ================= */
@@ -278,7 +317,7 @@
     var mgr = ui.card(t('os.mgr') + ' - ' + IH.esc(mg.name) + ' · ' + D.periodLabel(pid), '<dl class="kv" style="grid-template-columns:max-content 1fr max-content 1fr max-content 1fr max-content 1fr">' + m2.targets.map(function (x) { return '<dt>' + IH.esc(IH.L(x.name)) + '</dt><dd>' + F.pct(x.pct) + '</dd>'; }).join('') + '<dt>' + t('sc.teamF') + '</dt><dd>×' + F.num(m2.teamFactor, 1) + ' (' + F.pct(m2.share) + ')</dd><dt>' + (run ? t('os.colBonus') : 'Bonus') + '</dt><dd><b>' + F.rsd(m2.payout) + '</b></dd></dl>', { actions: ui.btn(IH.L(L('Obračunski list', 'Statement')), { cls: 'sm', icon: 'calc', go: 'obracun/' + pid + '/' + mg.id }) });
     var crumb = '<a href="#/ostvarenje">' + t('os.title') + '</a> ' + ic('chevr') + ' ' + IH.esc(D.branchShort(b));
     return ui.header(IH.esc(D.branchName(b)), '', ui.segf('os', 'per', [{ v: '2026-Q4', l: perLabel('2026-Q4') }, { v: '2026-Q3', l: D.periodLabel('2026-Q3') }]), crumb) + kp +
-      IH.sech(t('os.lic') + ' - ' + D.periodLabel(pid)) + g + team + mgr;
+      IH.sech(t('os.lic') + ' - ' + D.periodLabel(pid)) + g + team + mgr + (function () { var br = branchItemRows(bid, pid); return IH.sech(t('it.brItems') + ' - ' + D.periodLabel(pid)) + prodSummary(br, t('it.byProd')) + branchItemsGrid(bid, pid, br); })();
   }
 
   IH.branchStats = branchStats;

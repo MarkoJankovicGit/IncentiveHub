@@ -504,3 +504,43 @@ table.gt .gact{padding:6px 8px}
 /* matrica dva targeta */
 .t.mx td.mx-on{background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent-line)}
 .t.mx td,.t.mx th{white-space:nowrap}
+
+/* modeli isplate (bonus šema, korak Kreiranje modela) */
+.mcard{border:1px solid var(--line);border-radius:12px;background:var(--card);margin:0 0 14px;overflow:hidden}
+.mhead{display:flex;align-items:center;gap:12px;padding:10px 12px;border-bottom:1px solid var(--line-2);flex-wrap:wrap}
+.mhead>b{font-size:13.5px;white-space:nowrap}
+.mchips{display:flex;flex-wrap:wrap;gap:6px;flex:1}
+.mchip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:999px;padding:4px 10px;font-size:12px;cursor:pointer}
+.mchip .i{width:13px;height:13px}
+.mchip.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-strong);font-weight:600}
+.mtab{margin:0}
+.mtab td{vertical-align:middle;padding-top:7px;padding-bottom:7px}
+.mtab .mnum{width:40px;text-align:center}
+.mtab td.mnum span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--line-2);font-size:11.5px;font-weight:600;color:var(--ink-2)}
+.mtab .mw{width:110px;text-align:right;background:var(--accent-soft)}
+.mtab th.mw{color:var(--accent-strong)}
+.mtab td.mw .in{width:76px;text-align:right;font-weight:650;padding:6px 8px}
+.mtab .mact{width:100px;text-align:right;white-space:nowrap}
+.mtab .mact .gab{opacity:.45;display:inline-grid;vertical-align:middle;margin-left:2px}
+.mtab tr:hover .mact .gab{opacity:1}
+.mtab .mact .gab[disabled]{opacity:.15;cursor:default}
+.mtab tr.hit td{background:var(--accent-soft)}
+.mtab tr.hit td.mnum span{background:var(--accent);color:var(--on-accent)}
+.mtab tr.moth td{color:var(--mut);font-style:italic}
+.cgrp{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:var(--card);overflow:hidden}
+.cgrp select.in{border:0;border-right:1px solid var(--line);border-radius:0;width:48px;padding:6px 4px;text-align:center;text-align-last:center;font-weight:700;font-size:14px;background:var(--line-2)}
+.cgrp.off select.in{border-right:0}
+.cgrp input.in{border:0;border-radius:0;width:58px;padding:6px;text-align:right}
+.cgrp span{padding:0 9px 0 1px;color:var(--mut);font-size:12px}
+.cgrp:focus-within{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-line)}
+.cgrp select.in:focus,.cgrp input.in:focus{outline:0}
+.mfoot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:10px 12px;border-top:1px solid var(--line-2)}
+.mtest{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto;font-size:12.5px;color:var(--ink-2)}
+.mtest>span:first-child{font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--mut)}
+.mtest label{display:inline-flex;align-items:center;gap:4px}
+.mtest .tin{width:56px;text-align:right;border:1px solid var(--line);border-radius:6px;padding:4px 6px;background:var(--card);color:var(--ink)}
+.mres{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent-strong)}
+.mres .i{width:14px;height:14px}
+
+/* ID iz izvornog sistema (transakcija, proizvod, filijala, zaposleni, ugovor) */
+.idc{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11.5px;color:var(--ink-2);background:var(--line-2);border-radius:4px;padding:1px 5px;white-space:nowrap}
