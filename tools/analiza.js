@@ -86,7 +86,7 @@ function snapRole(role, extra, folder, label, only) {
 /* ---------- 1. početno stanje demo-a, po rolama ---------- */
 fs.rmSync(OUT, { recursive: true, force: true });
 const DET = {
-  admin: ['targeti/TG-101', 'targeti/TG-201', 'targeti/TG-301', 'targeti/novi/1', 'targeti/novi/2', 'targeti/novi/3',
+  admin: ['targeti/TG-102', 'targeti/TG-201', 'targeti/TG-301', 'targeti/novi/1', 'targeti/novi/2', 'targeti/novi/3',
     'seme/S-M1', 'seme/S-M1P', 'seme/S-M2', 'seme/S-M3', 'seme/nova/1', 'seme/nova/2', 'seme/nova/3',
     'dodela-targeta/nova/1', 'dodela-targeta/nova/2', 'dodela-targeta/nova/3', 'dodela-targeta/raspodela/B01|2026-Q4', 'dodela-targeta/regija/R1|2026-Q4',
     'ostvarenje/B01', 'ostvarenje/B01/E1002', 'ostvarenje/B05', 'katalog/P16', 'katalog/P07', 'ucitavanje/tabele'],
