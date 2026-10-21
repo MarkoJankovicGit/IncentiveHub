@@ -6,15 +6,15 @@
   IH.addStrings({
     'mk.title': 'Moja kartica', 'mk.desc': 'Vaši podaci iz HR-a, raspored bonus šeme, dokumenti i podešavanja obaveštenja. Podatke iz HR-a menja služba ljudskih resursa.',
     'mk.personal': 'Lični i organizacioni podaci', 'mk.hr': 'HR broj', 'mk.phone': 'Telefon', 'mk.email': 'E-mail', 'mk.docSt': 'Status', 'mk.user': 'Korisničko ime', 'mk.pos': 'Pozicija', 'mk.branch': 'Ekspozitura', 'mk.region': 'Region', 'mk.mgr': 'Menadžer', 'mk.since': 'U organizaciji od', 'mk.cc': 'Mesto troška', 'mk.lang': 'Jezik obaveštenja',
-    'mk.asg': 'Raspored bonus šeme', 'mk.scheme': 'Šema', 'mk.from': 'Važi od', 'mk.ver': 'Verzija', 'mk.exc': 'Izuzeci', 'mk.noExc': 'bez izuzetaka', 'mk.targets': 'Moji targeti',
+    'mk.asg': 'Raspored bonus šeme', 'mk.scheme': 'Šema', 'mk.from': 'Važi od', 'mk.ver': 'Verzija', 'mk.exc': 'Izuzeci', 'mk.noExc': 'bez izuzetaka', 'mk.targets': 'Moji KPI',
     'mk.docs': 'Dokumenti', 'mk.doc': 'Obračunski list {p}', 'mk.docPay': 'Potvrda o isplati {p}', 'mk.dl': 'Preuzmi', 'mk.notif': 'Obaveštenja', 'mk.notifSub': 'Šta i kako želite da primate. Obaveštenja o roku i odluci uvek stižu u aplikaciji.', 'mk.saved': 'Podešavanje obaveštenja je sačuvano',
-    'mk.hist': 'Istorija promena', 'mk.e1': 'Obračun spreman', 'mk.e2': 'Podsetnik za saglasnost', 'mk.e3': 'Odluka o prigovoru', 'mk.e4': 'Novi targeti', 'mk.e5': 'Isplata bonusa', 'mk.mail': 'Mejl', 'mk.app': 'U aplikaciji', 'mk.req': 'uvek'
+    'mk.hist': 'Istorija promena', 'mk.e1': 'Obračun spreman', 'mk.e2': 'Podsetnik za saglasnost', 'mk.e3': 'Odluka o prigovoru', 'mk.e4': 'Novi targeti', 'mk.e5': 'Realizacija bonusa', 'mk.mail': 'Mejl', 'mk.app': 'U aplikaciji', 'mk.req': 'uvek'
   }, {
     'mk.title': 'My profile', 'mk.desc': 'Your HR data, bonus scheme assignment, documents and notification settings. HR data is maintained by Human Resources.',
     'mk.personal': 'Personal and organisation data', 'mk.hr': 'HR number', 'mk.phone': 'Phone', 'mk.email': 'Email', 'mk.docSt': 'Status', 'mk.user': 'Username', 'mk.pos': 'Position', 'mk.branch': 'Branch', 'mk.region': 'Region', 'mk.mgr': 'Manager', 'mk.since': 'In organisation since', 'mk.cc': 'Cost centre', 'mk.lang': 'Notification language',
-    'mk.asg': 'Bonus scheme assignment', 'mk.scheme': 'Scheme', 'mk.from': 'Valid from', 'mk.ver': 'Version', 'mk.exc': 'Exceptions', 'mk.noExc': 'no exceptions', 'mk.targets': 'My targets',
+    'mk.asg': 'Bonus scheme assignment', 'mk.scheme': 'Scheme', 'mk.from': 'Valid from', 'mk.ver': 'Version', 'mk.exc': 'Exceptions', 'mk.noExc': 'no exceptions', 'mk.targets': 'My KPIs',
     'mk.docs': 'Documents', 'mk.doc': 'Statement {p}', 'mk.docPay': 'Payout confirmation {p}', 'mk.dl': 'Download', 'mk.notif': 'Notifications', 'mk.notifSub': 'What you want to receive and how. Deadline and decision notices always arrive in the app.', 'mk.saved': 'Notification settings saved',
-    'mk.hist': 'Change history', 'mk.e1': 'Statement ready', 'mk.e2': 'Consent reminder', 'mk.e3': 'Complaint decision', 'mk.e4': 'New targets', 'mk.e5': 'Bonus paid', 'mk.mail': 'Email', 'mk.app': 'In app', 'mk.req': 'always'
+    'mk.hist': 'Change history', 'mk.e1': 'Statement ready', 'mk.e2': 'Consent reminder', 'mk.e3': 'Complaint decision', 'mk.e4': 'New targets', 'mk.e5': 'Bonus realization', 'mk.mail': 'Email', 'mk.app': 'In app', 'mk.req': 'always'
   });
 
   function uname(e) { var p = e.name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'dj').split(' '); return p[0] + '.' + p[p.length - 1]; }

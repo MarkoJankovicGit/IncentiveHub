@@ -544,3 +544,7 @@ table.gt .gact{padding:6px 8px}
 
 /* ID iz izvornog sistema (transakcija, proizvod, filijala, zaposleni, ugovor) */
 .idc{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11.5px;color:var(--ink-2);background:var(--line-2);border-radius:4px;padding:1px 5px;white-space:nowrap}
+
+/* „Popuni predlogom“: pomoćna akcija demo-a, ne glavno dugme */
+.btn[data-act="fill-form"]{background:none;border-color:transparent;box-shadow:none;color:var(--ghost);font-size:12px;font-weight:400;padding:4px 8px}
+.btn[data-act="fill-form"]:hover{color:var(--mut);background:none}

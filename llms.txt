@@ -1,0 +1,7 @@
+# Incentive Hub (demo)
+
+> Demo aplikacija za upravljanje incentive (bonus) šemama prodajnog osoblja banke (UniCredit Bank Srbija): targeti, dodela i raspodela targeta, bonus šeme i modeli isplate, dnevno ostvarenje, obračun, saglasnost i isplata. Aplikacija se iscrtava JavaScript-om; za čitanje bez browsera koristite statični pregled.
+
+- [Statični pregled svih ekrana](analiza/index.html): svi ekrani po roli (administrator, menadžer, zaposleni, posmatrač) i scenario gotovinskog kredita za 2027, kao čist HTML
+- [Uputstvo](analiza/uputstvo.html): pojmovi, tok rada, pravila i primeri obračuna
+- [Aplikacija](index.html): interaktivni demo (potreban browser sa JavaScript-om)

@@ -67,7 +67,9 @@
   }
 
   function bodyHtml(cfg) {
-    var v = IH.v(cfg.id), rows = prepared(cfg), size = +(v.size || cfg.size || 10), pages = Math.max(1, Math.ceil(rows.length / size));
+    var v = IH.v(cfg.id), rows = prepared(cfg), size = +(v.size || cfg.size || IH.snapSize || 10), pages = Math.max(1, Math.ceil(rows.length / size));
+    /* izabrani (čekirani) redovi su uvek prvi */
+    if (cfg.select) { var sl0 = cfg.select.get() || []; if (sl0.length) rows = rows.filter(function (r) { return sl0.indexOf(cfg.key(r)) >= 0; }).concat(rows.filter(function (r) { return sl0.indexOf(cfg.key(r)) < 0; })); }
     var page = Math.min(Math.max(1, v.page || 1), pages); v.page = page;
     var slice = rows.slice((page - 1) * size, page * size), hide = v.hide || {};
     var cols = cfg.cols.filter(function (c) { return !hide[c.key]; });

@@ -461,7 +461,7 @@
   /* ---------- targeti po zaposlenom ---------- */
   D.M1_TARGETS = { T1: 7500000, T2: 24, T3: 12 };
   D.M3_TARGETS = { K1: 3000000, K2: 36, K3: 20 };
-  D.TKEYS = ['T1', 'T2', 'T3'];
+  D.TKEYS = ['T2', 'T3'];
   D.KKEYS = ['K1', 'K2', 'K3'];
   function branchAt(e, date) {
     if (!e.history) return e.branch;
@@ -475,9 +475,9 @@
      Redosled: ručna/planska dodela (IH.state.data.vals) → početne vrednosti iz plana banke.
      Individualni target: ekspozitura = zbir zaposlenih, regija = zbir ekspozitura.
      Timski target: zadaje se ekspozituri, ili je zbir dodela drugih targeta (value.mode = 'zbir'). */
-  D.SEED_IND = { 'TG-101': 7500000, 'TG-102': 24, 'TG-103': 12 };
+  D.SEED_IND = { 'TG-102': 24, 'TG-103': 12 };
   D.SEED_TEAM = { 'TG-301': 3000000, 'TG-302': 36, 'TG-303': 20 };
-  D.M1_KEY = { 'TG-101': 'T1', 'TG-102': 'T2', 'TG-103': 'T3' };
+  D.M1_KEY = { 'TG-102': 'T2', 'TG-103': 'T3' };
   function ckey(c) { return c.emp ? 'E:' + c.emp : c.branch ? 'B:' + c.branch : 'R:' + c.region; }
   D.valKey = function (tid, pid, c) { return tid + '|' + pid + '|' + ckey(c); };
   D.valOv = function (tid, pid, c) { var m = IH.state.data && IH.state.data.vals, v = m && m[D.valKey(tid, pid, c)]; return v == null ? null : v; };
@@ -506,14 +506,28 @@
       var pids = D.typeLen(o.periodType) < D.typeLen(p.type) ? D.subPeriods(p.id, o.periodType) : [p.id];
       return a + pids.reduce(function (x, m) { return x + D.val(oid, m, { branch: bid }); }, 0);
     }, 0);
+    if (t.id === 'TG-201' && D.seedBranchLoans) return D.seedBranchLoans(bid, p);
     if (D.SEED_TEAM[t.id] != null && p.type === 'M') return D.teamTarget(bid, p.id, t.id);
     var f = (D.branch(bid) || {}).f || 1;
     return D.roundT((t.base || 0) * f, t.unit);
   }
   /* kompatibilnost: vrednost po ključu šeme savetnika (T1-T3) */
+  /* plan prodaje kredita savetnika (demo podaci, ne zavisi od KPI kataloga): 7,5 mil. RSD po kvartalu × faktor ekspoziture (× izuzetak premeštaja) */
+  D.loanPlan = function (empId, pid) {
+    var e = D.emp(empId), p = D.period(pid); if (!e || !p) return 0;
+    var b = D.branch(branchAt(e, p.to > D.DATA_AS_OF ? D.DATA_AS_OF : p.to)), v = 7500000 * (b ? b.f : 1);
+    var ex = D.exceptions.filter(function (x) { return x.emp === empId && x.period === pid; })[0]; if (ex) v = v * ex.factor;
+    return D.roundT(v, 'RSD');
+  };
+  /* plan banke za Kredite ekspoziture: krediti savetnika + tim univerzalnih bankara (meseci perioda) */
+  D.seedBranchLoans = function (bid, p) {
+    var lic = D.branchStaff(bid, 'licni').reduce(function (a, e) { return a + D.loanPlan(e.id, p.id); }, 0);
+    var ms = D.typeLen('M') < D.typeLen(p.type) ? D.subPeriods(p.id, 'M') : [p.id];
+    return lic + ms.reduce(function (a, m) { return a + D.val('TG-301', m, { branch: bid }); }, 0);
+  };
   D.targetFor = function (empId, pid, key) { var tg = D.targetByKey('S-M1', key); return tg ? D.val(tg.id, pid, { emp: empId }) : 0; };
   D.exceptions = [
-    { emp: 'E1006', period: '2026-Q3', targets: ['TG-101', 'TG-102', 'TG-103'], factor: 2 / 3, reason: L('Premeštaj iz Dorćola 01.08. - target za 2 od 3 meseca', 'Transfer from Dorćol on Aug 1 - target for 2 of 3 months'), by: 'A001', at: '2026-07-28T11:20' }
+    { emp: 'E1006', period: '2026-Q3', targets: ['TG-102', 'TG-103'], factor: 2 / 3, reason: L('Premeštaj iz Dorćola 01.08. - target za 2 od 3 meseca', 'Transfer from Dorćol on Aug 1 - target for 2 of 3 months'), by: 'A001', at: '2026-07-28T11:20' }
   ];
   D.exceptionFor = function (empId, pid, tid) {
     return D.exceptions.filter(function (x) { return x.emp === empId && x.period === pid && x.targets.indexOf(tid) >= 0; })[0];
@@ -610,7 +624,7 @@
     var r = rng('m1|' + e.id + '|' + pid), dates = rangeOf(pid, e), plan = planFor(e, pid), items = [], n = 0;
     if (!dates.length) return items;
     function add(o) { o.dates = dates; o.seg = o.seg || 'FL'; items.push(mkItem(r, e, pid, ++n, o)); }
-    var tgt = { T1: D.targetFor(e.id, pid, 'T1'), T2: D.targetFor(e.id, pid, 'T2'), T3: D.targetFor(e.id, pid, 'T3') };
+    var tgt = { T1: D.loanPlan(e.id, pid), T2: D.targetFor(e.id, pid, 'T2'), T3: D.targetFor(e.id, pid, 'T3') };
     var st1 = stornoOf(e.id, pid, 'kredit').reduce(function (a, s) { return a + s[3]; }, 0);
     splitLoans(r, tgt.T1 * plan[0] + st1, 'FL', 'kredit').forEach(function (x) { add({ ptype: 'kredit', product: x.product, amount: x.amount }); });
     var c2 = Math.round(tgt.T2 * plan[1]) + stornoOf(e.id, pid, 'racun').length;

@@ -9,11 +9,11 @@
 
   IH.addStrings({
     'd.title': 'Dodela i raspodela targeta', 'd.newAsg': 'Nova dodela', 'd.import': 'Uvoz dodela', 'd.split': 'Raspodeli na bankare', 'd.splitR': 'Raspodeli na ekspoziture', 'd.splitTitle': 'Raspodela targeta ekspoziture na bankare', 'd.splitRTitle': 'Raspodela targeta regije na ekspoziture',
-    'd.colCarrier': 'Nosilac', 'd.colType': 'Nivo', 'd.colBranch': 'Ekspozitura', 'd.colTarget': 'Target', 'd.colValue': 'Vrednost', 'd.colValid': 'Važi', 'd.colSource': 'Izvor', 'd.colApproved': 'Odobrio', 'd.colPeriod': 'Period',
+    'd.colCarrier': 'Nosilac', 'd.colType': 'Nivo', 'd.colBranch': 'Ekspozitura', 'd.colTarget': 'KPI', 'd.colValue': 'Vrednost', 'd.colValid': 'Važi', 'd.colSource': 'Izvor', 'd.colApproved': 'Odobrio', 'd.colPeriod': 'Period',
     'd.srcCasc': 'Raspodela', 'd.srcMan': 'Ručno', 'd.srcImp': 'Uvoz', 'd.srcExc': 'Izuzetak', 'd.srcPlan': 'Plan banke', 'd.srcReg': 'Raspodela regije', 'd.srcSum': 'Zbir',
     'd.carrEmp': 'Zaposleni', 'd.carrTeam': 'Tim', 'd.carrBranch': 'Ekspozitura', 'd.carrRegion': 'Regija', 'd.fFind': 'Ime, ekspozitura',
-    'd.w1': 'Targeti', 'd.w2': 'Nosioci', 'd.w3': 'Vrednosti', 'd.w4': 'Pregled i aktivacija', 'd.fCarr': 'Nosioci', 'd.colCarriers': 'Broj nosilaca', 'd.colPrev': 'Vrednost u {p}', 'd.vals': 'Vrednosti po nosiocu',
-    'd.links': 'Veze u bonus šemi', 'd.noLinks': 'Target ne zavisi od drugih targeta i drugi targeti ne zavise od njega', 'd.linkCond': 'Pravilo', 'd.chk1': 'Izabrani su nosioci', 'd.chk2': 'Svaki nosilac ima vrednost veću od nule', 'd.chk3': 'Važi od {d} - tekući obračun se ne menja',
+    'd.w1': 'KPI', 'd.w2': 'Nosioci', 'd.w3': 'Vrednosti', 'd.w4': 'Pregled i aktivacija', 'd.fCarr': 'Nosioci', 'd.colCarriers': 'Broj nosilaca', 'd.colPrev': 'Vrednost u {p}', 'd.vals': 'Vrednosti po nosiocu',
+    'd.links': 'Veze u bonus šemi', 'd.noLinks': 'KPI ne zavisi od drugih KPI i drugi KPI ne zavise od njega', 'd.linkCond': 'Pravilo', 'd.chk1': 'Izabrani su nosioci', 'd.chk2': 'Svaki nosilac ima vrednost veću od nule', 'd.chk3': 'Važi od {d} - tekući obračun se ne menja',
     'd.fPeriod': 'Period', 'd.notifyEmp': 'Obavesti nosioce', 'd.notifyMgr': 'Obavesti menadžere', 'd.activate': 'Aktiviraj dodelu',
     'd.colNew': 'Vrednost za {p}', 'd.colMembers': 'Članova', 'd.colMgr': 'Menadžer', 'd.diff': 'Razlika',
     'd.same': 'Ista vrednost za sve izabrane', 'd.apply': 'Primeni na sve', 'd.pick': 'Izaberite bar jednog nosioca', 'd.selInfo': 'Izabrano: {n}',
@@ -24,9 +24,9 @@
     'd.fromRegion': 'Target ekspoziture', 'd.fromRegionSub': 'Dodelio {n} · {d} · rok za raspodelu {r}', 'd.dist': 'Raspodela na bankare', 'd.distR': 'Raspodela na ekspoziture', 'd.approver': 'Odobrava',
     'd.approve': 'Odobri raspodelu', 'd.approved': 'Raspodela za {b} je odobrena', 'd.confirm': 'Potvrdi raspodelu', 'd.confirmed': 'Raspodela regije {r} za {p} je potvrđena', 'd.locked': 'Vrednosti tekućeg perioda se ne menjaju',
     'd.i1': 'Fajl', 'd.i2': 'Pregled', 'd.i3': 'Potvrda', 'd.iRead': '26 redova pročitano · 1 list',
-    'd.iSum': '{a} novih dodela · {b} izmena · {c} sa greškom', 'd.iErr1': 'HR broj ne postoji u organizaciji', 'd.iErr2': 'Duplirani red za istog zaposlenog i target', 'd.iCheck1': 'Struktura fajla i obavezne kolone', 'd.iCheck2': 'Zbir po ekspozituri odgovara targetu ekspoziture',
+    'd.iSum': '{a} novih dodela · {b} izmena · {c} sa greškom', 'd.iErr1': 'HR broj ne postoji u organizaciji', 'd.iErr2': 'Duplirani red za istog zaposlenog i KPI', 'd.iCheck1': 'Struktura fajla i obavezne kolone', 'd.iCheck2': 'Zbir po ekspozituri odgovara targetu ekspoziture',
     'd.iConfirm': 'Potvrdi uvoz ({n} dodela)', 'd.iDone': 'Uvoz završen: {n} dodela primenjeno, 2 reda odbijena',
-    'd.fTargets': 'Targeti', 'd.pickT': 'Izaberite bar jedan target', 'd.sameCarr': 'Zajedno se dodeljuju targeti istog nosioca i perioda: {c} · {p}', 'd.prevV': '{p}: {v}', 'd.nTargets': '{n} targeta', 'd.colAsg': 'Broj dodela',
+    'd.fTargets': 'KPI', 'd.pickT': 'Izaberite bar jedan KPI', 'd.sameCarr': 'Zajedno se dodeljuju KPI istog nosioca i perioda: {c} · {p}', 'd.prevV': '{p}: {v}', 'd.nTargets': '{n} KPI', 'd.colAsg': 'Broj dodela',
     'd.doneN': 'Dodela sačuvana: {k} targeta · nosilaca: {n} · {d}', 'd.notInSch': 'Target nije u šemi', 'd.notInSchNote': 'Target još nije u šemi ovih nosilaca; na bonus utiče kada uđe u šemu', 'd.doneAppr': 'Dodela poslata na odobrenje - {n}', 'd.sendAppr': 'Pošalji na odobrenje',
     'd.noSch': 'Bez šeme', 'd.lockNoSch': '{n} nema raspoređenu šemu za {p}', 'd.lockNoT': 'Šema „{s}“ za {p} ne sadrži izabrane targete', 'd.noneOk': 'Nijedan nosilac nema izabrane targete u šemi za {p}',
     'd.impB': 'Uticaj na target ekspoziture', 'd.impR': 'Uticaj na target regije', 'd.colSumB': 'Zbir nosilaca posle dodele', 'd.colSumR': 'Zbir ekspozitura posle dodele',
@@ -35,11 +35,11 @@
     'tt.title': 'Targeti tima', 'tt.q4title': 'Targeti bankara - Q4 2026', 'tt.teamM3': 'Tim univerzalnih bankara - oktobar 2026'
   }, {
     'd.title': 'Target assignment and split', 'd.newAsg': 'New assignment', 'd.import': 'Import assignments', 'd.split': 'Split to bankers', 'd.splitR': 'Split to branches', 'd.splitTitle': 'Split of the branch target to bankers', 'd.splitRTitle': 'Split of the region target to branches',
-    'd.colCarrier': 'Carrier', 'd.colType': 'Level', 'd.colBranch': 'Branch', 'd.colTarget': 'Target', 'd.colValue': 'Value', 'd.colValid': 'Valid', 'd.colSource': 'Source', 'd.colApproved': 'Approved by', 'd.colPeriod': 'Period',
+    'd.colCarrier': 'Carrier', 'd.colType': 'Level', 'd.colBranch': 'Branch', 'd.colTarget': 'KPI', 'd.colValue': 'Value', 'd.colValid': 'Valid', 'd.colSource': 'Source', 'd.colApproved': 'Approved by', 'd.colPeriod': 'Period',
     'd.srcCasc': 'Split', 'd.srcMan': 'Manual', 'd.srcImp': 'Import', 'd.srcExc': 'Exception', 'd.srcPlan': 'Bank plan', 'd.srcReg': 'Region split', 'd.srcSum': 'Sum',
     'd.carrEmp': 'Employee', 'd.carrTeam': 'Team', 'd.carrBranch': 'Branch', 'd.carrRegion': 'Region', 'd.fFind': 'Name, branch',
-    'd.w1': 'Targets', 'd.w2': 'Carriers', 'd.w3': 'Values', 'd.w4': 'Review and activation', 'd.fCarr': 'Carriers', 'd.colCarriers': 'Number of carriers', 'd.colPrev': 'Value in {p}', 'd.vals': 'Values per carrier',
-    'd.links': 'Links in the bonus scheme', 'd.noLinks': 'The target does not depend on other targets and no target depends on it', 'd.linkCond': 'Rule', 'd.chk1': 'Carriers are selected', 'd.chk2': 'Every carrier has a value above zero', 'd.chk3': 'Valid from {d} - the current calculation is not changed',
+    'd.w1': 'KPIs', 'd.w2': 'Carriers', 'd.w3': 'Values', 'd.w4': 'Review and activation', 'd.fCarr': 'Carriers', 'd.colCarriers': 'Number of carriers', 'd.colPrev': 'Value in {p}', 'd.vals': 'Values per carrier',
+    'd.links': 'Links in the bonus scheme', 'd.noLinks': 'The KPI does not depend on other KPIs and no KPI depends on it', 'd.linkCond': 'Rule', 'd.chk1': 'Carriers are selected', 'd.chk2': 'Every carrier has a value above zero', 'd.chk3': 'Valid from {d} - the current calculation is not changed',
     'd.fPeriod': 'Period', 'd.notifyEmp': 'Notify carriers', 'd.notifyMgr': 'Notify managers', 'd.activate': 'Activate assignment',
     'd.colNew': 'Value for {p}', 'd.colMembers': 'Members', 'd.colMgr': 'Manager', 'd.diff': 'Difference',
     'd.same': 'Same value for all selected', 'd.apply': 'Apply to all', 'd.pick': 'Choose at least one carrier', 'd.selInfo': 'Selected: {n}',
@@ -50,9 +50,9 @@
     'd.fromRegion': 'Branch target', 'd.fromRegionSub': 'Assigned by {n} · {d} · split due {r}', 'd.dist': 'Split to bankers', 'd.distR': 'Split to branches', 'd.approver': 'Approver',
     'd.approve': 'Approve split', 'd.approved': 'Split for {b} approved', 'd.confirm': 'Confirm split', 'd.confirmed': 'Split of region {r} for {p} confirmed', 'd.locked': 'Values of the current period do not change',
     'd.i1': 'File', 'd.i2': 'Preview', 'd.i3': 'Confirm', 'd.iRead': '26 rows read · 1 sheet',
-    'd.iSum': '{a} new assignments · {b} changes · {c} with errors', 'd.iErr1': 'HR number does not exist in the organisation', 'd.iErr2': 'Duplicate row for the same employee and target', 'd.iCheck1': 'File structure and mandatory columns', 'd.iCheck2': 'Sum per branch matches the branch target',
+    'd.iSum': '{a} new assignments · {b} changes · {c} with errors', 'd.iErr1': 'HR number does not exist in the organisation', 'd.iErr2': 'Duplicate row for the same employee and KPI', 'd.iCheck1': 'File structure and mandatory columns', 'd.iCheck2': 'Sum per branch matches the branch target',
     'd.iConfirm': 'Confirm import ({n} assignments)', 'd.iDone': 'Import complete: {n} assignments applied, 2 rows rejected',
-    'd.fTargets': 'Targets', 'd.pickT': 'Choose at least one target', 'd.sameCarr': 'Targets are assigned together only with the same carrier and period: {c} · {p}', 'd.prevV': '{p}: {v}', 'd.nTargets': '{n} targets', 'd.colAsg': 'Number of assignments',
+    'd.fTargets': 'KPIs', 'd.pickT': 'Choose at least one KPI', 'd.sameCarr': 'KPIs of the same carrier and period are assigned together: {c} · {p}', 'd.prevV': '{p}: {v}', 'd.nTargets': '{n} KPIs', 'd.colAsg': 'Number of assignments',
     'd.doneN': 'Assignment saved: {k} targets · carriers: {n} · {d}', 'd.notInSch': 'Target not in scheme', 'd.notInSchNote': 'The target is not yet in these carriers\' scheme; it affects the bonus once it is added', 'd.doneAppr': 'Assignment submitted for approval - {n}', 'd.sendAppr': 'Submit for approval',
     'd.noSch': 'No scheme', 'd.lockNoSch': '{n} has no scheme assigned for {p}', 'd.lockNoT': 'Scheme “{s}” for {p} does not contain the selected targets', 'd.noneOk': 'No carrier has the selected targets in a scheme for {p}',
     'd.impB': 'Impact on the branch target', 'd.impR': 'Impact on the region target', 'd.colSumB': 'Sum of carriers after assignment', 'd.colSumR': 'Sum of branches after assignment',
@@ -179,7 +179,7 @@
     return ui.table([{ key: 's', label: t('c.scheme') }, { key: 'c', label: t('d.linkCond') }], l.map(function (x) { return { s: '<a href="#/seme/' + x.s.id + '" data-act="modal-close">' + IH.esc(IH.L(x.s.name)) + '</a> <span class="mut">v' + x.v.v + '</span>', c: V.text(x.s, x.r) }; }), { compact: true });
   }
   IH.targetLinks = function (tg) { return V.linksOf(tg.id); };
-  function asgBody(r, ro) { return ui.form(asgFields(r, ro), { readonly: ro }) + '<div class="fsec" style="margin-top:14px"><h3>' + t('d.links') + '</h3>' + linksTable(r.tg) + '</div>'; }
+  function asgBody(r, ro) { return ui.form(asgFields(r, ro), { readonly: ro }); }
   IH.act['asg-view'] = function (el) { var r = rowById(el.dataset.arg); if (!r) return; IH.modal({ title: t('d.viewTitle') + ' · ' + IH.esc(r.name), wide: true, body: asgBody(r, true), foot: (r.canEdit ? ui.btn(t('c.edit'), { icon: 'edit', act: 'asg-edit', arg: r.id }) : '') + ui.btn(t('c.close'), { act: 'modal-close' }) }); };
   IH.act['asg-edit'] = function (el) { var r = rowById(el.dataset.arg); if (!r || !r.canEdit) { IH.toast(t('d.locked')); return; } IH.form = {}; IH.closeModal(); IH.modal({ title: t('c.edit') + ' · ' + IH.esc(r.name) + ' · ' + IH.esc(IH.L(r.tg.name)), wide: true, body: asgBody(r, false), foot: ui.btn(t('c.cancel'), { act: 'modal-close' }) + ui.btn(t('c.save'), { cls: 'primary', icon: 'check', act: 'asg-edit-save', arg: r.id }) }); };
   IH.act['asg-edit-save'] = function (el) {
@@ -207,7 +207,7 @@
      Vrednosti se mogu dodeliti i pre nego što target uđe u šemu nosioca (planiranje); kolona Šema to pokazuje.
      Izmena perioda koji već ima raspodelu ekspoziture ide na odobrenje kao i raspodela. */
   /* podrazumevani target u kreiranju: poslednji kreirani individualni target za gotovinske kredite (primer za prezentaciju) */
-  function defTg() { var g = IH.targets().filter(function (x) { return x.status === 'aktivan' && x.kind !== 'timski' && /gotovinsk/i.test(IH.L(x.name)); }).pop(); return g ? g.id : 'TG-101'; }
+  function defTg() { var g = IH.targets().filter(function (x) { return x.status === 'aktivan' && x.kind !== 'timski' && /gotovinsk/i.test(IH.L(x.name)); }).pop(); return g ? g.id : 'TG-102'; }
   function AW() { if (!IH.form.aw) { var id = defTg(), tg = D.target(id); IH.form.aw = { tgs: [id], sel: [], per: (tg && aper(tg.periodType)[0]) || null, vals: {} }; } return IH.form.aw; }
   function awTargets() { return AW().tgs.map(D.target).filter(Boolean); }
   function grpOf(tg) { return IH.targetCarrier(tg) + '|' + tg.periodType; }
@@ -327,24 +327,16 @@
       }).join('') + '</tr>';
     }).join('');
     var foot = '<tr class="lvl-0"><td colspan="2">' + t('c.total') + '</td>' + tgs.map(function (tg) { return '<td class="num">' + fmtU(sel.reduce(function (s, c) { return s + newVal(c, tg); }, 0), tg.unit) + '</td>'; }).join('') + '</tr>';
-    /* napomene: odstupanje od nadređenog targeta, promena nadređenog targeta, odobravanje, target van šeme */
-    var imp = impact(), ap = apprOf();
-    var dTxt = function (r, d) { return IH.esc(r.name) + ' · ' + IH.esc(IH.L(r.tg.name)) + ': ' + d; };
-    var mism = imp.filter(function (r) { return r.fixed && Math.abs(r.sum - r.before) > 0.5; }), moved = imp.filter(function (r) { return !r.fixed && Math.abs(r.after - r.before) > 0.5; });
+    /* napomene: odobravanje i KPI van šeme (target ekspoziture nije zbir targeta zaposlenih, pa se uticaj na nadređeni nivo ne prikazuje) */
+    var ap = apprOf();
     var outS = sel.filter(function (c) { return !tgs.some(function (x) { return inSch(c, x, a.per); }); });
     var notes = [];
-    if (mism.length) notes.push({ label: t(emp ? 'd.chkFitB' : 'd.chkFitR'), state: 'warn', sub: mism.map(function (r) { var d = r.sum - r.before; return dTxt(r, (d > 0 ? '+' : '−') + fmtU(Math.abs(d), r.tg.unit)); }).join(' · ') });
-    if (moved.length) notes.push({ label: t(emp ? 'd.chkMoveB' : 'd.chkMoveR'), state: 'warn', sub: moved.map(function (r) { return dTxt(r, fmtU(r.before, r.tg.unit) + ' → ' + fmtU(r.after, r.tg.unit)); }).join(' · ') });
     if (ap.appr.length) notes.push({ label: t('d.chkAppr', { n: IH.esc(ap.heads.join(', ')) }), sub: t('d.chkApprSub', { b: ap.appr.map(D.branchShort).join(', ') }) });
     if (ap.draft.length) notes.push({ label: t('d.chkDraft', { b: ap.draft.map(D.branchShort).join(', ') }) });
     if (outS.length) notes.push({ label: t('d.notInSchNote'), state: 'warn', sub: outS.map(function (c) { return IH.esc(c.name); }).join(', ') });
-    var impCols = [{ key: 'n', label: emp ? t('d.colBranch') : t('c.region') }, { key: 't', label: t('d.colTarget') }, { key: 'p', label: t(emp ? 'd.targetRow' : 'd.targetRowR'), num: true }, { key: 's', label: t(emp ? 'd.colSumB' : 'd.colSumR'), num: true }, { key: 'd', label: t('d.diff'), num: true }];
-    var impRows = imp.map(function (r) { return { n: IH.esc(r.name), t: IH.esc(IH.L(r.tg.name)), p: r.fixed || Math.abs(r.after - r.before) < 0.5 ? fmtU(r.before, r.tg.unit) : fmtU(r.before, r.tg.unit) + ' → <b>' + fmtU(r.after, r.tg.unit) + '</b>', s: fmtU(r.sum, r.tg.unit), d: diffCell(r.sum - r.after, r.tg.unit) }; });
     return '<div class="form-grid g3"><div class="field"><label class="lab">' + t('d.fPeriod') + '</label><div class="in ro">' + IH.esc(D.periodLabel(a.per)) + ' (' + F.date(D.period(a.per).from) + ' - ' + F.date(D.period(a.per).to) + ')</div></div></div>' +
       '<div class="tbl-wrap"><table class="t"><thead>' + th + '</thead><tbody>' + all + rows + '</tbody><tfoot>' + foot + '</tfoot></table></div>' +
       (notes.length ? '<div style="margin-top:14px">' + ui.checks(notes) + '</div>' : '') +
-      '<div class="fsec" style="margin-top:16px"><h3>' + t(emp ? 'd.impB' : 'd.impR') + '</h3>' + ui.table(impCols, impRows, { compact: true }) + '</div>' +
-      '<div class="fsec"><h3>' + t('d.links') + '</h3>' + linksTable(tgs) + '</div>' +
       '<div class="form-grid" style="margin-top:4px">' + ui.toggle('a_n1', t('d.notifyEmp'), true) + ui.toggle('a_n2', t('d.notifyMgr'), true) + '</div>';
   }
   function wizardPage(step) {
@@ -562,7 +554,7 @@
   function impPer() { var l = D.plannedOf('Q'); return l[0] ? l[0].id : null; }
   function iFile(per) { return 'Targeti_' + D.periodLabel(per).replace(/\s+/g, '_') + '_Subotica_Cacak.xlsx'; }
   IH.act['asg-imp'] = function () { if (!impPer()) { IH.toast(t('pe.noPlanned')); return; } IH.v('aimp').file = false; IH.go('dodela-targeta/uvoz/1'); };
-  function m1T() { return ['TG-101', 'TG-102', 'TG-103'].map(D.target); }
+  function m1T() { return ['TG-102', 'TG-103'].map(D.target); }
   function importPage(step) {
     var cur = Math.max(0, Math.min(2, (+step || 1) - 1)), loaded = IH.v('aimp').file;
     var steps = [{ label: t('d.i1') }, { label: t('d.i2') }, { label: t('d.i3') }];
@@ -575,13 +567,13 @@
     } else if (cur === 1) {
       var rows = [], rn = 2;
       lic.forEach(function (e) { tgs.forEach(function (tg) { rows.push({ r: rn++, n: IH.esc(e.name), b: IH.esc(D.branch(e.branch).city), t: IH.esc(IH.L(tg.name)), v: fmtU(D.val(tg.id, per, { emp: e.id }), tg.unit), res: ui.pill(t('k.rOk'), 'success'), a: ui.pill(t('k.aNew'), 'accent') }); }); });
-      rows.push({ r: rn++, n: 'HR-99999', b: 'Čačak', t: IH.esc(IH.L(tgs[0].name)), v: '8.000.000 RSD', res: ui.pill(t('k.rErr'), 'danger') + ' <span class="mut">' + t('d.iErr1') + '</span>', a: ui.pill(t('k.aErr'), 'danger') });
-      rows.push({ r: rn++, n: IH.esc(lic[1].name), b: IH.esc(D.branch(lic[1].branch).city), t: IH.esc(IH.L(tgs[0].name)), v: fmtU(D.val('TG-101', per, { emp: lic[1].id }), 'RSD'), res: ui.pill(t('k.rErr'), 'danger') + ' <span class="mut">' + t('d.iErr2') + '</span>', a: ui.pill(t('k.aErr'), 'danger') });
-      body = '<div class="note">' + t('d.iSum', { a: lic.length * 3, b: 0, c: 2 }) + '</div>' + ui.table([{ key: 'r', label: t('k.impRow'), num: true }, { key: 'a', label: t('k.impAction') }, { key: 'n', label: t('d.colCarrier') }, { key: 'b', label: t('c.branch') }, { key: 't', label: t('d.colTarget') }, { key: 'v', label: t('d.colValue'), num: true }, { key: 'res', label: t('k.impRes') }], rows, { compact: true });
+      rows.push({ r: rn++, n: 'HR-99999', b: 'Čačak', t: IH.esc(IH.L(tgs[0].name)), v: '30 kom', res: ui.pill(t('k.rErr'), 'danger') + ' <span class="mut">' + t('d.iErr1') + '</span>', a: ui.pill(t('k.aErr'), 'danger') });
+      rows.push({ r: rn++, n: IH.esc(lic[1].name), b: IH.esc(D.branch(lic[1].branch).city), t: IH.esc(IH.L(tgs[0].name)), v: fmtU(D.val('TG-102', per, { emp: lic[1].id }), 'kom'), res: ui.pill(t('k.rErr'), 'danger') + ' <span class="mut">' + t('d.iErr2') + '</span>', a: ui.pill(t('k.aErr'), 'danger') });
+      body = '<div class="note">' + t('d.iSum', { a: lic.length * 2, b: 0, c: 2 }) + '</div>' + ui.table([{ key: 'r', label: t('k.impRow'), num: true }, { key: 'a', label: t('k.impAction') }, { key: 'n', label: t('d.colCarrier') }, { key: 'b', label: t('c.branch') }, { key: 't', label: t('d.colTarget') }, { key: 'v', label: t('d.colValue'), num: true }, { key: 'res', label: t('k.impRes') }], rows, { compact: true });
     } else {
-      body = ui.checks([{ label: t('d.iCheck1') }, { label: t('d.iCheck2') }, { label: t('d.iErr1'), state: 'warn' }, { label: t('d.iErr2'), state: 'warn' }]) + '<div class="hr"></div><div class="big-amt">' + (lic.length * 3) + '<span class="u">' + IH.L(L('dodela za primenu', 'assignments to apply')) + '</span></div>';
+      body = ui.checks([{ label: t('d.iCheck1') }, { label: t('d.iCheck2') }, { label: t('d.iErr1'), state: 'warn' }, { label: t('d.iErr2'), state: 'warn' }]) + '<div class="hr"></div><div class="big-amt">' + (lic.length * 2) + '<span class="u">' + IH.L(L('dodela za primenu', 'assignments to apply')) + '</span></div>';
     }
-    var nextBtn = cur < 2 ? (loaded || cur > 0 ? ui.btn(t('c.next'), { cls: 'primary', icon: 'arrow', go: 'dodela-targeta/uvoz/' + (cur + 2) }) : '<button class="btn primary" disabled>' + ic('arrow') + t('c.next') + '</button>') : ui.btn(t('d.iConfirm', { n: lic.length * 3 }), { cls: 'primary', icon: 'check', act: 'aimp-apply' });
+    var nextBtn = cur < 2 ? (loaded || cur > 0 ? ui.btn(t('c.next'), { cls: 'primary', icon: 'arrow', go: 'dodela-targeta/uvoz/' + (cur + 2) }) : '<button class="btn primary" disabled>' + ic('arrow') + t('c.next') + '</button>') : ui.btn(t('d.iConfirm', { n: lic.length * 2 }), { cls: 'primary', icon: 'check', act: 'aimp-apply' });
     var hd = '<div class="pstep">' + steps.map(function (s, i) { return (i ? '<span class="sep">' + ic('chevr') + '</span>' : '') + '<span class="ps ' + (i < cur ? 'done' : i === cur ? 'on' : '') + '"><span class="pn">' + (i < cur ? '✓' : i + 1) + '</span>' + s.label + '</span>'; }).join('') + '</div>';
     return ui.header(t('d.import'), '', '', '<a href="#/dodela-targeta">' + t('d.title') + '</a> ' + ic('chevr') + ' ' + t('d.import')) + hd +
       '<section class="card"><div class="ch"><h2>' + (cur + 1) + '. ' + steps[cur].label + '</h2></div><div class="cb">' + body + '</div><div class="wz-foot"><span class="left">' + t('wz.step', { a: cur + 1, b: 3 }) + '</span>' + ui.btn(t('c.cancel'), { go: 'dodela-targeta' }) + (cur ? ui.btn(t('c.back'), { icon: 'chevl', go: 'dodela-targeta/uvoz/' + cur }) : '') + nextBtn + '</div></section>';
@@ -592,8 +584,8 @@
     var vals = IH.map('vals'), lic = D.branchStaff('B05', 'licni').concat(D.branchStaff('B08', 'licni'));
     lic.forEach(function (e) { m1T().forEach(function (tg) { vals[D.valKey(tg.id, per, { emp: e.id })] = D.val(tg.id, per, { emp: e.id }); }); });
     var st = IH.map('branchSplit'); st['B05|' + per] = 'na_odobravanju'; st['B08|' + per] = 'na_odobravanju';
-    IH.audit('cascade', 'import', { sr: 'Uvoz dodela ' + D.periodLabel(per) + ' - Subotica i Čačak', en: D.periodLabel(per) + ' assignment import - Subotica and Čačak' }, { sr: (lic.length * 3) + ' dodela primenjeno, 2 reda odbijena', en: (lic.length * 3) + ' assignments applied, 2 rows rejected' });
-    EN.invalidate(); IH.save(); IH.v('asg').per = per; IH.go('dodela-targeta'); IH.toast(t('d.iDone', { n: lic.length * 3 }));
+    IH.audit('cascade', 'import', { sr: 'Uvoz dodela ' + D.periodLabel(per) + ' - Subotica i Čačak', en: D.periodLabel(per) + ' assignment import - Subotica and Čačak' }, { sr: (lic.length * 2) + ' dodela primenjeno, 2 reda odbijena', en: (lic.length * 2) + ' assignments applied, 2 rows rejected' });
+    EN.invalidate(); IH.save(); IH.v('asg').per = per; IH.go('dodela-targeta'); IH.toast(t('d.iDone', { n: lic.length * 2 }));
   };
 
   IH.route('dodela-targeta', {

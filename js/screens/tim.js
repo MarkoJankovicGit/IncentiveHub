@@ -5,20 +5,20 @@
 
   IH.addStrings({
     'mo.title': 'Moj obračun', 'mo.desc': 'Obračunski list stavku po stavku - od targeta do pojedinačne prodaje. Saglasnost ili prigovor dajete ovde.', 'mo.items': 'Moje stavke', 'mo.thread': 'Prigovor {c}', 'mo.hist': 'Istorija obračuna',
-    'mo.colPer': 'Period', 'mo.colPay': 'Isplata', 'mo.colSt': 'Status', 'mo.prelim': 'preliminarno',
+    'mo.colPer': 'Period', 'mo.colPay': 'Realizacija bonusa', 'mo.colSt': 'Status', 'mo.prelim': 'preliminarno',
     'tm.title': 'Moj tim', 'tm.desc': 'Zaposleni u vašoj liniji rukovođenja: ostvarenje tekućeg perioda, projekcija bonusa i status obračuna.', 'tm.colEmp': 'Zaposleni', 'tm.colAch': 'Ostvarenje (projekcija)', 'tm.colBonus': 'Bonus (proj.)', 'tm.colCons': 'Saglasnost', 'tm.colScheme': 'Šema',
     'tm.k1': 'Članova tima', 'tm.k2': 'Na putu ka targetu', 'tm.k3': 'Projektovani bonus tima', 'tm.k4': 'Čeka saglasnost', 'tm.k5': 'Otvoreni prigovori', 'tm.card': 'Kartica zaposlenog', 'tm.periods': 'Obračuni po periodima', 'tm.hist': 'Istorija', 'tm.new': 'počinje {d}',
     'sgt.title': 'Saglasnosti tima', 'sgt.desc': 'Obračuni članova tima po statusu saglasnosti. Pregledajte obračunski list, pošaljite podsetnik onima koji nisu odgovorili, a prigovore rešite u Prigovorima tima.',
     'sgt.remind': 'Podsetnik', 'sgt.remindAll': 'Pošalji podsetnik svima bez odgovora ({n})', 'sgt.reminded': 'Podsetnik poslat: {n}', 'sgt.deadline': 'Rok {d} · još {x} dana', 'sgt.toCompl': 'Otvori prigovor',
-    'mb.title': 'Moj bonus', 'mb.desc': 'Vaš obračun iz rezultata tima: krediti i novi klijenti ekspoziture, pomnoženi timskim ponderom prema udelu bankara na targetu.', 'mb.team': 'Doprinos članova tima', 'mb.share': 'Udeo bankara sa targetom Krediti ≥ 100%', 'mb.onT': 'Na targetu', 'mb.to': 'Prigovor na sopstveni obračun rešava regionalni direktor ({n}).'
+    'mb.title': 'Moj bonus', 'mb.desc': 'Vaš obračun iz rezultata tima: krediti i novi klijenti ekspoziture, pomnoženi timskim ponderom prema udelu bankara na targetu.', 'mb.team': 'Doprinos članova tima', 'mb.share': 'Udeo bankara sa targetom Računi ≥ 100%', 'mb.onT': 'Na targetu', 'mb.to': 'Prigovor na sopstveni obračun rešava regionalni direktor ({n}).'
   }, {
     'mo.title': 'My statement', 'mo.desc': 'Statement item by item - from targets down to a single sale. You give consent or file a complaint here.', 'mo.items': 'My items', 'mo.thread': 'Complaint {c}', 'mo.hist': 'Statement history',
-    'mo.colPer': 'Period', 'mo.colPay': 'Payout', 'mo.colSt': 'Status', 'mo.prelim': 'preliminary',
+    'mo.colPer': 'Period', 'mo.colPay': 'Bonus realization', 'mo.colSt': 'Status', 'mo.prelim': 'preliminary',
     'tm.title': 'My team', 'tm.desc': 'Employees in your management line: current period achievement, projected bonus and statement status.', 'tm.colEmp': 'Employee', 'tm.colAch': 'Achievement (projection)', 'tm.colBonus': 'Bonus (proj.)', 'tm.colCons': 'Consent', 'tm.colScheme': 'Scheme',
     'tm.k1': 'Team members', 'tm.k2': 'On track', 'tm.k3': 'Projected team bonus', 'tm.k4': 'Awaiting consent', 'tm.k5': 'Open complaints', 'tm.card': 'Employee card', 'tm.periods': 'Statements by period', 'tm.hist': 'History', 'tm.new': 'starts {d}',
     'sgt.title': 'Team consents', 'sgt.desc': 'Team statements by consent status. Review the statement, remind those who have not replied, and resolve complaints in Team complaints.',
     'sgt.remind': 'Reminder', 'sgt.remindAll': 'Remind everyone without a reply ({n})', 'sgt.reminded': 'Reminder sent: {n}', 'sgt.deadline': 'Due {d} · {x} days left', 'sgt.toCompl': 'Open complaint',
-    'mb.title': 'My bonus', 'mb.desc': 'Your statement from team results: branch loans and new clients, multiplied by the team factor based on the share of bankers on target.', 'mb.team': 'Team member contribution', 'mb.share': 'Share of bankers with Loans ≥ 100%', 'mb.onT': 'On target', 'mb.to': 'A complaint on your own statement is decided by the regional director ({n}).'
+    'mb.title': 'My bonus', 'mb.desc': 'Your statement from team results: branch loans and new clients, multiplied by the team factor based on the share of bankers on target.', 'mb.team': 'Team member contribution', 'mb.share': 'Share of bankers with Accounts ≥ 100%', 'mb.onT': 'On target', 'mb.to': 'A complaint on your own statement is decided by the regional director ({n}).'
   });
 
   function daysLeft(iso) { return Math.max(0, Math.round((Date.parse(iso) - Date.parse(D.TODAY)) / 864e5)); }

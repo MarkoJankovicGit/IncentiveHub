@@ -4,12 +4,12 @@
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt, R = IH.rules, L = D.L2;
 
   IH.addStrings({
-    'mt.title': 'Moji targeti', 'mt.asg': 'Šema {s} · v{v} · važi od {d}', 'mt.measure': 'Kako se meri', 'mt.cond': 'Priznaje se ako', 'mt.subj': 'Proizvodi koji ulaze',
+    'mt.title': 'Moji KPI', 'mt.asg': 'Šema {s} · v{v} · važi od {d}', 'mt.measure': 'Kako se meri', 'mt.cond': 'Priznaje se ako', 'mt.subj': 'Proizvodi koji ulaze',
     'mt.scale': 'Skala isplate', 'mt.value': 'Vrednost za bonus', 'mt.share': 'Udeo u bonusu', 'mt.at100': 'Bonus na 100%', 'mt.perSale': 'Provizija po prodaji', 'mt.now': 'Sada', 'mt.proj': 'Projekcija', 'mt.final': 'Konačno',
     'mt.exc': 'Izuzetak: {r}', 'mt.rules': 'Ostala pravila šeme', 'mt.limit': 'Najviši iznos isplate po periodu: {l}.', 'mt.carry': 'Negativan saldo ne ide u isplatu, već se oduzima od sledećeg pozitivnog obračuna.',
     'mt.cont': 'Kontinuitet: +{a} ako je {k} ≥ {m} {n} perioda zaredom.', 'mt.team': 'Timski targeti - {p}', 'mt.myShare': 'Moje prodaje'
   }, {
-    'mt.title': 'My targets', 'mt.asg': 'Scheme {s} · v{v} · valid from {d}', 'mt.measure': 'How it is measured', 'mt.cond': 'Recognised if', 'mt.subj': 'Products included',
+    'mt.title': 'My KPIs', 'mt.asg': 'Scheme {s} · v{v} · valid from {d}', 'mt.measure': 'How it is measured', 'mt.cond': 'Recognised if', 'mt.subj': 'Products included',
     'mt.scale': 'Payout scale', 'mt.value': 'Value for bonus', 'mt.share': 'Share of bonus', 'mt.at100': 'Bonus at 100%', 'mt.perSale': 'Commission per sale', 'mt.now': 'Now', 'mt.proj': 'Projection', 'mt.final': 'Final',
     'mt.exc': 'Exception: {r}', 'mt.rules': 'Other scheme rules', 'mt.limit': 'Maximum payout per period: {l}.', 'mt.carry': 'A negative balance is not paid out; it is deducted from the next positive calculation.',
     'mt.cont': 'Continuity: +{a} if {k} ≥ {m} for {n} periods in a row.', 'mt.team': 'Team targets - {p}', 'mt.myShare': 'My sales'

@@ -10,11 +10,9 @@
 
   /* ---------- targeti ---------- */
   D.targets = [
-    tg({ id: 'TG-101', name: L('Krediti - fizička lica', 'Loans - private individuals'), kind: 'individualni', pos: 'licni', periodType: 'Q', subject: { segs: ['FL'], ptype: 'kredit', products: [] }, base: 7500000, ver: 2, from: '2026-07-01',
-      note: L('Isplaćeni gotovinski, potrošački, auto i stambeni krediti i prekoračenja', 'Disbursed cash, consumer, car and housing loans and overdrafts') }),
     tg({ id: 'TG-102', name: L('Računi - fizička lica', 'Accounts - private individuals'), kind: 'individualni', pos: 'licni', periodType: 'Q', subject: { segs: ['FL'], ptype: 'racun', products: [] }, base: 24, ver: 2, from: '2026-07-01' }),
     tg({ id: 'TG-103', name: L('Kartice - fizička lica', 'Cards - private individuals'), kind: 'individualni', pos: 'licni', periodType: 'Q', subject: { segs: ['FL'], ptype: 'kartica', products: [] }, base: 12 }),
-    tg({ id: 'TG-201', name: L('Krediti ekspoziture', 'Branch loans'), kind: 'timski', team: ['licni', 'univerzalni'], periodType: 'Q', subject: { segs: ['FL', 'PR', 'PO'], ptype: 'kredit', products: [] }, base: 45000000, value: { mode: 'zbir', of: ['TG-101', 'TG-301'] },
+    tg({ id: 'TG-201', name: L('Krediti ekspoziture', 'Branch loans'), kind: 'timski', team: ['licni', 'univerzalni'], periodType: 'Q', subject: { segs: ['FL', 'PR', 'PO'], ptype: 'kredit', products: [] }, base: 45000000,
       note: L('Stavke se pripisuju ekspozituri u kojoj je zaposleni bio na dan prodaje', 'Items attributed to the branch where the employee worked on the sale date') }),
     tg({ id: 'TG-202', name: L('Računi ekspoziture', 'Branch accounts'), kind: 'timski', team: ['licni', 'univerzalni'], periodType: 'Q', subject: { segs: ['FL', 'PR', 'PO'], ptype: 'racun', products: [] }, base: 230, value: { mode: 'zbir', of: ['TG-102', 'TG-302'] } }),
     tg({ id: 'TG-203', name: L('Kartice ekspoziture', 'Branch cards'), kind: 'timski', team: ['licni', 'univerzalni'], periodType: 'Q', subject: { segs: ['FL', 'PR', 'PO'], ptype: 'kartica', products: [] }, base: 120, value: { mode: 'zbir', of: ['TG-103', 'TG-303'] } }),
@@ -47,8 +45,8 @@
   D.SCALES = { Q: SCALE_Q, M: SCALE_M };
   /* tip šeme: naziv kaže kako zaposleni zarađuje */
   D.schemeTypes = [
-    { id: 'provizija', name: L('Provizija na svaku prodaju', 'Commission on every sale') },
-    { id: 'scorecard', name: L('Fiksni bonus za ispunjen target', 'Fixed bonus for a met target') },
+    { id: 'scorecard', name: L('Bonus prema stepenu ostvarenog targeta', 'Bonus by degree of target achievement') },
+    { id: 'provizija', name: L('Bonus prema ostvarenom obimu prodaje', 'Bonus by achieved sales volume') },
     { id: 'kombinovana', name: L('Kombinovano', 'Combined') }
   ];
   D.schemes = [
@@ -59,19 +57,19 @@
         { v: 1, from: '2026-01-01', to: '2026-06-30', base: 55000, limit: 80000, contAmount: 8000, note: L('Početna verzija', 'Initial version') },
         { v: 2, from: '2026-07-01', to: null, base: 60000, limit: 85000, contAmount: 10000, note: L('Veća osnova i limit', 'Higher base and limit') }
       ],
-      targets: [{ key: 'T1', id: 'TG-101', share: 0.4 }, { key: 'T2', id: 'TG-102', share: 0.3 }, { key: 'T3', id: 'TG-103', share: 0.3 }],
+      targets: [{ key: 'T2', id: 'TG-102', share: 0.5 }, { key: 'T3', id: 'TG-103', share: 0.5 }],
       scale: SCALE_Q,
-      conds: [{ cond: 'T1', min: 0.85, affects: ['T2', 'T3'], factor: 0.5 }, { src: 'eksp', target: 'TG-201', min: 0.8, affects: ['T1', 'T2', 'T3'], factor: 0.8, from: '2026-07-01' }],
-      continuity: { target: 'T1', min: 1.0, periods: 3 },
+      conds: [{ src: 'eksp', target: 'TG-201', min: 0.8, affects: ['T2', 'T3'], factor: 0.8, from: '2026-07-01' }],
+      continuity: { target: 'T2', min: 1.0, periods: 3 },
       carryNegative: true
     },
     {
       id: 'S-M1P', code: 'BS-LB-PROV', type: 'provizija', model: 'M1', name: L('Savetnik - provizija po prodaji (pilot Novi Sad)', 'Advisor - commission per sale (Novi Sad pilot)'),
       pos: 'licni', periodType: 'Q', status: 'aktivan',
       versions: [{ v: 1, from: '2026-07-01', to: null, limit: 90000, contAmount: 0, note: L('Pilot od Q3 2026', 'Pilot from Q3 2026') }],
-      targets: [{ key: 'T1', id: 'TG-101', val: { k: 'pct', v: 0.006 } }, { key: 'T2', id: 'TG-102', val: { k: 'rsd', v: 1200 } }, { key: 'T3', id: 'TG-103', val: { k: 'rsd', v: 1500 } }],
+      targets: [{ key: 'T2', id: 'TG-102', val: { k: 'rsd', v: 1200 } }, { key: 'T3', id: 'TG-103', val: { k: 'rsd', v: 1500 } }],
       scale: SCALE_Q,
-      conds: [{ cond: 'T1', min: 0.85, affects: ['T2', 'T3'], factor: 0.5 }],
+      conds: [],
       carryNegative: true
     },
     {
@@ -83,7 +81,7 @@
       targets: [{ key: 'T1', id: 'TG-201', share: 0.4 }, { key: 'T2', id: 'TG-202', share: 0.3 }, { key: 'T3', id: 'TG-203', share: 0.3 }],
       scale: SCALE_Q,
       conds: [],
-      teamFactor: { by: 'udeo', target: 'TG-101', min: 1.0, pos: ['licni'], bands: [{ to: 0.4, f: 0.8 }, { to: 0.6, f: 0.9 }, { to: 0.8, f: 1.0 }, { to: null, f: 1.1 }] },
+      teamFactor: { by: 'udeo', target: 'TG-102', min: 1.0, pos: ['licni'], bands: [{ to: 0.4, f: 0.8 }, { to: 0.6, f: 0.9 }, { to: 0.8, f: 1.0 }, { to: null, f: 1.1 }] },
       carryNegative: false
     },
     {

@@ -130,7 +130,7 @@
   };
 
   /* ---------- stanje (localStorage + fallback u memoriji) ---------- */
-  var KEY = 'incentive-hub-demo-v1';
+  var KEY = 'incentive-hub-demo-v2'; /* nova verzija ključa: staro lokalno stanje demo-a se ne učitava */
   var DEFAULTS = function () {
     return { role: 'admin', lang: 'sr', tenant: 'unicredit-rs', mode: 'light', notifRead: {}, data: {} };
   };

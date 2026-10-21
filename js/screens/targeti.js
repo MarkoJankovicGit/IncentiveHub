@@ -8,35 +8,35 @@
   var IH = window.IH, D = IH.data, EN = IH.engine, t = IH.t, ic = IH.icon, ui = IH.ui, F = IH.fmt, R = IH.rules, L = D.L2;
 
   IH.addStrings({
-    'tg.title': 'Targeti', 'tg.new': 'Novi target', 'tg.search': 'Naziv targeta', 'tg.free': 'Nije u šemi',
-    'tg.colName': 'Target', 'tg.colSeg': 'Segment', 'tg.colPt': 'Vrsta proizvoda', 'tg.colKind': 'Vrsta targeta', 'tg.colCarrier': 'Nosilac', 'tg.colPer': 'Period', 'tg.colUnit': 'Jedinica', 'tg.colBase': 'Podrazumevana vrednost', 'tg.colScheme': 'Šema', 'tg.colVer': 'Verzija', 'tg.colFrom': 'Važi od',
+    'tg.title': 'KPI katalog', 'tg.new': 'Novi KPI', 'tg.search': 'Naziv KPI-ja', 'tg.free': 'Nije u šemi',
+    'tg.colName': 'KPI', 'tg.colSeg': 'Segment', 'tg.colPt': 'Vrsta proizvoda', 'tg.colKind': 'Vrsta KPI-ja', 'tg.colCarrier': 'Nosilac', 'tg.colPer': 'Period', 'tg.colUnit': 'Jedinica', 'tg.colBase': 'Podrazumevana vrednost', 'tg.colScheme': 'Šema', 'tg.colVer': 'Verzija', 'tg.colFrom': 'Važi od',
     'k.ind': 'Individualni', 'k.team': 'Timski', 'per.M': 'Mesec', 'per.Q': 'Kvartal', 'per.H': 'Polugodište', 'per.Y': 'Godina', 'un.kom': 'Količina', 'un.RSD': 'Novac',
-    'tg.s1': 'Osnovno', 'tg.s2': 'Predmet targeta', 'tg.s3': 'Uslovi priznavanja', 'tg.s4': 'Pregled i aktivacija',
-    'tg.fName': 'Naziv targeta', 'tg.fKind': 'Vrsta targeta', 'tg.fPos': 'Nosilac targeta', 'tg.fTeam': 'Tim čine', 'tg.fAsg': 'Vrednost se dodeljuje', 'tg.asgEmp': 'Po zaposlenom', 'tg.asgBr': 'Po ekspozituri (timu)', 'tg.fPer': 'Period merenja',
+    'tg.s1': 'Osnovno', 'tg.s2': 'Predmet KPI-ja', 'tg.s3': 'Uslovi priznavanja', 'tg.s4': 'Pregled i aktivacija',
+    'tg.fName': 'Naziv KPI-ja', 'tg.fKind': 'Vrsta KPI-ja', 'tg.fPos': 'Nosilac KPI-ja', 'tg.fTeam': 'Tim čine', 'tg.fAsg': 'Vrednost se dodeljuje', 'tg.asgEmp': 'Po zaposlenom', 'tg.asgBr': 'Po ekspozituri (timu)', 'tg.fPer': 'Period merenja',
     'tg.fFrom': 'Važi od', 'tg.fTo': 'Važi do', 'tg.open': 'Bez kraja', 'tg.fVer': 'Verzija', 'tg.fBase': 'Podrazumevana vrednost za dodelu', 'tg.fScheme': 'Bonus šema', 'tg.fReason': 'Razlog izmene', 'tg.teamOf': 'Tim ekspoziture: {p}',
     'tg.fSegs': 'Segment', 'tg.fPt': 'Vrsta proizvoda', 'tg.fProds': 'Proizvodi', 'tg.allProds': 'Svi proizvodi: {t} - {g}', 'tg.prodsN': '{n} proizvoda',
-    'tg.chk1': 'Obavezna polja su popunjena', 'tg.chk2': 'Predmet ima aktivne proizvode u katalogu', 'tg.chk3': 'Nosilac prodaje proizvode iz predmeta', 'tg.chk3no': '{p} ne prodaje proizvode za segment: {g}', 'tg.chk4': 'Uslovi odgovaraju vrsti proizvoda', 'tg.chk5': 'Važi od {d} - tekući obračun se ne menja', 'tg.chk6': 'Sledeći korak: dodela vrednosti nosiocima', 'tg.blocked': 'Target nije sačuvan: {r}',
-    'tg.activate': 'Aktiviraj target', 'tg.saveDraft': 'Sačuvaj kao nacrt', 'tg.created': 'Target „{n}“ je kreiran i važi od {d}', 'tg.draftOk': 'Nacrt targeta „{n}“ je sačuvan',
-    'tg.toAssign': 'Dodeli vrednosti', 'tg.editT': 'Izmena targeta', 'tg.saveVer': 'Sačuvaj novu verziju', 'tg.verDone': 'Verzija v{v} targeta „{n}“ važi od {d}', 'tg.planned': 'Planirana',
-    'tg.archive': 'Arhiviraj', 'tg.archived': 'Target „{n}“ je arhiviran', 'tg.inUse': 'Target je uključen u šemu {s}. Arhiviranje je moguće tek kada se izbaci iz šeme.', 'tg.archTxt': 'Target će biti arhiviran i neće biti dostupan za nove dodele. Istorija i postojeći obračuni ostaju.',
+    'tg.chk1': 'Obavezna polja su popunjena', 'tg.chk2': 'Predmet ima aktivne proizvode u katalogu', 'tg.chk3': 'Nosilac prodaje proizvode iz predmeta', 'tg.chk3no': '{p} ne prodaje proizvode za segment: {g}', 'tg.chk4': 'Uslovi odgovaraju vrsti proizvoda', 'tg.chk5': 'Važi od {d} - tekući obračun se ne menja', 'tg.chk6': 'Sledeći korak: dodela vrednosti nosiocima', 'tg.blocked': 'KPI nije sačuvan: {r}',
+    'tg.activate': 'Aktiviraj KPI', 'tg.saveDraft': 'Sačuvaj kao nacrt', 'tg.created': 'KPI „{n}“ je kreiran i važi od {d}', 'tg.draftOk': 'Nacrt KPI-ja „{n}“ je sačuvan',
+    'tg.toAssign': 'Dodeli vrednosti', 'tg.editT': 'Izmena KPI-ja', 'tg.saveVer': 'Sačuvaj novu verziju', 'tg.verDone': 'Verzija v{v} KPI-ja „{n}“ važi od {d}', 'tg.planned': 'Planirana',
+    'tg.archive': 'Arhiviraj', 'tg.archived': 'KPI „{n}“ je arhiviran', 'tg.inUse': 'KPI je uključen u šemu {s}. Arhiviranje je moguće tek kada se izbaci iz šeme.', 'tg.archTxt': 'KPI će biti arhiviran i neće biti dostupan za nove dodele. Istorija i postojeći obračuni ostaju.',
     'tg.kom': 'kom', 'tg.rsd': 'RSD', 'tg.back': 'Nazad',
     'tg.fDir': 'Smer', 'tg.dirUp': 'Više je bolje', 'tg.dirDown': 'Manje je bolje', 'tg.fMode': 'Način merenja', 'tg.mSale': 'Prodaja u periodu', 'tg.mNet': 'Neto: otvoreni − zatvoreni',
-    'tg.fVal': 'Vrednost ekspoziture', 'tg.vSet': 'Zadaje regija', 'tg.vSum': 'Zbir targeta zaposlenih i tima', 'tg.fOf': 'Sabiraju se', 'tg.chk7': 'Izabrani su targeti koji se sabiraju', 'tg.fUnit': 'Jedinica merenja', 'tg.chk8': 'Izabrani proizvodi imaju iznos', 'tg.chk8no': 'Računi i kartice nemaju iznos u podacima banke - target bi uvek bio 0'
+    'tg.fVal': 'Vrednost ekspoziture', 'tg.vSet': 'Zadaje regija', 'tg.vSum': 'Zbir targeta zaposlenih i tima', 'tg.fOf': 'Sabiraju se', 'tg.chk7': 'Izabrani su KPI koji se sabiraju', 'tg.fUnit': 'Jedinica merenja', 'tg.chk8': 'Izabrani proizvodi imaju iznos', 'tg.chk8no': 'Računi i kartice nemaju iznos u podacima banke - target bi uvek bio 0'
   }, {
-    'tg.title': 'Targets', 'tg.new': 'New target', 'tg.search': 'Target name', 'tg.free': 'Not in a scheme',
-    'tg.colName': 'Target', 'tg.colSeg': 'Segment', 'tg.colPt': 'Product type', 'tg.colKind': 'Target type', 'tg.colCarrier': 'Carrier', 'tg.colPer': 'Period', 'tg.colUnit': 'Unit', 'tg.colBase': 'Default value', 'tg.colScheme': 'Scheme', 'tg.colVer': 'Version', 'tg.colFrom': 'Valid from',
+    'tg.title': 'KPI catalogue', 'tg.new': 'New KPI', 'tg.search': 'KPI name', 'tg.free': 'Not in a scheme',
+    'tg.colName': 'KPI', 'tg.colSeg': 'Segment', 'tg.colPt': 'Product type', 'tg.colKind': 'KPI type', 'tg.colCarrier': 'Carrier', 'tg.colPer': 'Period', 'tg.colUnit': 'Unit', 'tg.colBase': 'Default value', 'tg.colScheme': 'Scheme', 'tg.colVer': 'Version', 'tg.colFrom': 'Valid from',
     'k.ind': 'Individual', 'k.team': 'Team', 'per.M': 'Month', 'per.Q': 'Quarter', 'per.H': 'Half-year', 'per.Y': 'Year', 'un.kom': 'Quantity', 'un.RSD': 'Money',
-    'tg.s1': 'Basics', 'tg.s2': 'Target subject', 'tg.s3': 'Recognition conditions', 'tg.s4': 'Review and activation',
-    'tg.fName': 'Target name', 'tg.fKind': 'Target type', 'tg.fPos': 'Target carrier', 'tg.fTeam': 'Team consists of', 'tg.fAsg': 'Value is assigned', 'tg.asgEmp': 'Per employee', 'tg.asgBr': 'Per branch (team)', 'tg.fPer': 'Measurement period',
+    'tg.s1': 'Basics', 'tg.s2': 'KPI subject', 'tg.s3': 'Recognition conditions', 'tg.s4': 'Review and activation',
+    'tg.fName': 'KPI name', 'tg.fKind': 'KPI type', 'tg.fPos': 'KPI carrier', 'tg.fTeam': 'Team consists of', 'tg.fAsg': 'Value is assigned', 'tg.asgEmp': 'Per employee', 'tg.asgBr': 'Per branch (team)', 'tg.fPer': 'Measurement period',
     'tg.fFrom': 'Valid from', 'tg.fTo': 'Valid to', 'tg.open': 'Open-ended', 'tg.fVer': 'Version', 'tg.fBase': 'Default value for assignment', 'tg.fScheme': 'Bonus scheme', 'tg.fReason': 'Reason for change', 'tg.teamOf': 'Branch team: {p}',
     'tg.fSegs': 'Segment', 'tg.fPt': 'Product type', 'tg.fProds': 'Products', 'tg.allProds': 'All products: {t} - {g}', 'tg.prodsN': '{n} products',
-    'tg.chk1': 'Mandatory fields are filled', 'tg.chk2': 'The subject has active products in the catalogue', 'tg.chk3': 'The carrier sells products in the subject', 'tg.chk3no': '{p} does not sell products for segment: {g}', 'tg.chk4': 'Conditions match the product type', 'tg.chk5': 'Valid from {d} - the current calculation is not changed', 'tg.chk6': 'Next step: assign values to carriers', 'tg.blocked': 'The target was not saved: {r}',
-    'tg.activate': 'Activate target', 'tg.saveDraft': 'Save as draft', 'tg.created': 'Target "{n}" created, valid from {d}', 'tg.draftOk': 'Draft of target "{n}" saved',
-    'tg.toAssign': 'Assign values', 'tg.editT': 'Edit target', 'tg.saveVer': 'Save new version', 'tg.verDone': 'Version v{v} of target "{n}" valid from {d}', 'tg.planned': 'Planned',
-    'tg.archive': 'Archive', 'tg.archived': 'Target "{n}" archived', 'tg.inUse': 'The target is part of scheme {s}. It can be archived only after removal from the scheme.', 'tg.archTxt': 'The target will be archived and unavailable for new assignments. History and existing calculations remain.',
+    'tg.chk1': 'Mandatory fields are filled', 'tg.chk2': 'The subject has active products in the catalogue', 'tg.chk3': 'The carrier sells products in the subject', 'tg.chk3no': '{p} does not sell products for segment: {g}', 'tg.chk4': 'Conditions match the product type', 'tg.chk5': 'Valid from {d} - the current calculation is not changed', 'tg.chk6': 'Next step: assign values to carriers', 'tg.blocked': 'The KPI was not saved: {r}',
+    'tg.activate': 'Activate KPI', 'tg.saveDraft': 'Save as draft', 'tg.created': 'KPI "{n}" was created and is valid from {d}', 'tg.draftOk': 'KPI draft "{n}" saved',
+    'tg.toAssign': 'Assign values', 'tg.editT': 'Edit KPI', 'tg.saveVer': 'Save new version', 'tg.verDone': 'Version v{v} of KPI "{n}" valid from {d}', 'tg.planned': 'Planned',
+    'tg.archive': 'Archive', 'tg.archived': 'KPI "{n}" archived', 'tg.inUse': 'The KPI is included in scheme {s}. It can be archived only after it is removed from the scheme.', 'tg.archTxt': 'The KPI will be archived and will not be available for new assignments. History and existing calculations remain.',
     'tg.kom': 'pcs', 'tg.rsd': 'RSD', 'tg.back': 'Back',
     'tg.fDir': 'Direction', 'tg.dirUp': 'Higher is better', 'tg.dirDown': 'Lower is better', 'tg.fMode': 'Measurement', 'tg.mSale': 'Sales in the period', 'tg.mNet': 'Net: opened − closed',
-    'tg.fVal': 'Branch value', 'tg.vSet': 'Set by the region', 'tg.vSum': 'Sum of employee and team targets', 'tg.fOf': 'Summed targets', 'tg.chk7': 'The summed targets are selected', 'tg.fUnit': 'Unit of measure', 'tg.chk8': 'The selected products have an amount', 'tg.chk8no': 'Accounts and cards have no amount in bank data - the target would always be 0'
+    'tg.fVal': 'Branch value', 'tg.vSet': 'Set by the region', 'tg.vSum': 'Sum of employee and team targets', 'tg.fOf': 'Summed targets', 'tg.chk7': 'The KPIs to sum are selected', 'tg.fUnit': 'Unit of measure', 'tg.chk8': 'The selected products have an amount', 'tg.chk8no': 'Accounts and cards have no amount in bank data - the target would always be 0'
   });
 
   /* ---------- efektivna lista targeta ---------- */
@@ -68,8 +68,8 @@
   /* ---------- lista ---------- */
   function listPage() {
     var grid = IH.grid({
-      id: 'tg-l', exportName: 'Targeti.xlsx', hidden: ['ver', 'from'], searchLabel: t('tg.search'), create: { label: t('tg.new'), act: 'tg-new' },
-      rows: IH.targets, key: function (x) { return x.id; }, label: function (x) { return IH.L(x.name); }, searchKeys: ['n'],
+      id: 'tg-l', exportName: 'KPI_katalog.xlsx', hidden: ['ver', 'from'], searchLabel: t('tg.search'), create: { label: t('tg.new'), act: 'tg-new' },
+      rows: function () { var l = IH.targets(); return l.filter(function (x) { return x.isNew; }).reverse().concat(l.filter(function (x) { return !x.isNew; })); }, key: function (x) { return x.id; }, label: function (x) { return IH.L(x.name); }, searchKeys: ['n'],
       rowCls: function (x) { return x.status === 'aktivan' ? '' : 'muted'; },
       cols: [
         { key: 'st', label: t('c.status'), val: function (x) { return x.status; }, render: function (x) { return ui.st2(x.status) + (x.isNew ? ' ' + ui.pill(t('c.new'), 'accent') : ''); }, filter: function () { return ['aktivan', 'nacrt', 'arhiviran'].map(function (k) { return { v: k, l: t('st2.' + k) }; }); } },

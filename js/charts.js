@@ -16,14 +16,16 @@
   }
 
   /* vertikalni stubići: grupe po oznaci, više serija (grupisano ili naslagano) */
+  /* leva margina prema najdužoj oznaci na osi (npr. „37,5 mil.“), da se brojevi vide celi */
+  function axisPad(maxv, fmt) { var m = 0; for (var g = 0; g <= 4; g++) m = Math.max(m, String(fmt(maxv * g / 4)).length); return Math.max(46, Math.round(m * 6.8 + 14)); }
   ui.chartBars = function (o) {
     var W = o.w || 640, H = o.h || 220, padL = 46, padR = 10, padT = 12, padB = 28;
     var labels = o.labels, series = o.series, stacked = !!o.stacked;
     var maxv = o.max || niceMax(Math.max.apply(null, labels.map(function (_, i) {
       return stacked ? series.reduce(function (a, s) { return a + Math.max(0, s.values[i] || 0); }, 0) : Math.max.apply(null, series.map(function (s) { return s.values[i] || 0; }));
     }).concat([1])));
+    var fmt = o.fmt || short; padL = axisPad(maxv, fmt);
     var iw = W - padL - padR, ih = H - padT - padB, gw = iw / labels.length;
-    var fmt = o.fmt || short;
     var h = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="chart" role="img">';
     for (var g = 0; g <= 4; g++) { var y = padT + ih - ih * g / 4; h += '<line x1="' + padL + '" x2="' + (W - padR) + '" y1="' + y + '" y2="' + y + '" class="grid"/><text x="' + (padL - 6) + '" y="' + (y + 4) + '" class="ax" text-anchor="end">' + IH.esc(fmt(maxv * g / 4)) + '</text>'; }
     labels.forEach(function (lb, i) {
@@ -55,8 +57,8 @@
     var labels = o.labels, series = o.series;
     var all = []; series.forEach(function (s) { s.values.forEach(function (v) { if (v != null) all.push(v); }); });
     var maxv = o.max || niceMax(Math.max.apply(null, all.concat([1])));
+    var fmt = o.fmt || short; padL = axisPad(maxv, fmt);
     var iw = W - padL - padR, ih = H - padT - padB, step = labels.length > 1 ? iw / (labels.length - 1) : iw;
-    var fmt = o.fmt || short;
     var h = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="chart" role="img">';
     for (var g = 0; g <= 4; g++) { var y = padT + ih - ih * g / 4; h += '<line x1="' + padL + '" x2="' + (W - padR) + '" y1="' + y + '" y2="' + y + '" class="grid"/><text x="' + (padL - 6) + '" y="' + (y + 4) + '" class="ax" text-anchor="end">' + IH.esc(fmt(maxv * g / 4)) + '</text>'; }
     labels.forEach(function (lb, i) { h += '<text x="' + (padL + step * i) + '" y="' + (H - 8) + '" class="ax" text-anchor="middle">' + IH.esc(lb) + '</text>'; });

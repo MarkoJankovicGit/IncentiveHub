@@ -18,7 +18,7 @@
     'r.r8': 'Izmene podešavanja (audit)', 'r.r8d': 'Ko je i kada menjao katalog, targete, šeme, rasporede, role i šablone.',
     'r.r9': 'Korisnici i pristupi', 'r.r9d': 'Korisnici po roli i deaktivacije.',
     'rc.comp': 'Komponenta', 'rc.amt': 'Iznos (RSD)', 'rc.share': 'Udeo', 'rc.c1': 'Bonus za targete', 'rc.c2': 'Prodaja van targeta', 'rc.c3': 'Kontinuitet', 'rc.c4': 'Storno umanjenja', 'rc.c5': 'Prenos negativnog salda', 'rc.c6': 'Odsečeno limitom', 'rc.c7': 'Ručne korekcije', 'rc.c8': 'Ispravke isplaćenih perioda', 'rc.m1': 'Savetnici', 'rc.m2': 'Menadžeri ekspozitura', 'rc.m3': 'Timovi univerzalnih bankara', 'rc.tot': 'Ukupno za isplatu',
-    'rc.prod': 'Proizvod', 'rc.seg': 'Segment', 'rc.pt': 'Vrsta', 'rc.sub': 'Podvrsta', 'rc.ty': 'Tip', 'rc.pdate': 'Datum isplate', 'rc.cnt': 'Prodaja (kom)', 'rc.st': 'Storno', 'rc.n': 'Zaposlenih', 'rc.tot2': 'Ukupno', 'rc.avg': 'Prosečno', 'rc.max': 'Najveća', 'rc.paid': 'Isplaćeno', 'rc.reason': 'Razlog', 'rc.count': 'Broj', 'rc.topic': 'Tema', 'rc.codes': 'Šifara', 'rc.role': 'Rola', 'rc.users': 'Korisnika', 'rc.active': 'Aktivnih'
+    'rc.prod': 'Proizvod', 'rc.seg': 'Segment', 'rc.pt': 'Vrsta', 'rc.sub': 'Podvrsta', 'rc.ty': 'Tip', 'rc.pdate': 'Datum isplate', 'rc.cnt': 'Prodaja (kom)', 'rc.st': 'Storno', 'rc.n': 'Zaposlenih', 'rc.tot2': 'Ukupno', 'rc.avg': 'Prosečno', 'rc.max': 'Najveća', 'rc.paid': 'Spremno za isplatu', 'rc.reason': 'Razlog', 'rc.count': 'Broj', 'rc.topic': 'Tema', 'rc.codes': 'Šifara', 'rc.role': 'Rola', 'rc.users': 'Korisnika', 'rc.active': 'Aktivnih'
   }, {
     'rp.title': 'Reports', 'rp.desc': 'A report catalogue over the same data the calculation uses - the same employee has the same amount in a report, a statement and the payout. Every report exports to Excel.',
     'rp.descMgr': 'Reports for your branch and team. Numbers match calculation and payout.', 'rp.descView': 'Reports the administrator approved for the Viewer - read-only tables.',
@@ -34,7 +34,7 @@
     'r.r8': 'Settings changes (audit)', 'r.r8d': 'Who changed the catalogue, targets, schemes, assignments, roles and templates, and when.',
     'r.r9': 'Users and access', 'r.r9d': 'Users by role and deactivations.',
     'rc.comp': 'Component', 'rc.amt': 'Amount (RSD)', 'rc.share': 'Share', 'rc.c1': 'Target bonus', 'rc.c2': 'Out-of-target sales', 'rc.c3': 'Continuity', 'rc.c4': 'Reversal deductions', 'rc.c5': 'Negative balance carried', 'rc.c6': 'Cut by limit', 'rc.c7': 'Manual corrections', 'rc.c8': 'Paid period fixes', 'rc.m1': 'Advisors', 'rc.m2': 'Branch managers', 'rc.m3': 'Universal banker teams', 'rc.tot': 'Total payout',
-    'rc.prod': 'Product', 'rc.seg': 'Segment', 'rc.pt': 'Type', 'rc.sub': 'Subtype', 'rc.ty': 'Kind', 'rc.pdate': 'Payment date', 'rc.cnt': 'Sales (pcs)', 'rc.st': 'Reversals', 'rc.n': 'Staff', 'rc.tot2': 'Total', 'rc.avg': 'Average', 'rc.max': 'Largest', 'rc.paid': 'Paid', 'rc.reason': 'Reason', 'rc.count': 'Count', 'rc.topic': 'Topic', 'rc.codes': 'Codes', 'rc.role': 'Role', 'rc.users': 'Users', 'rc.active': 'Active'
+    'rc.prod': 'Product', 'rc.seg': 'Segment', 'rc.pt': 'Type', 'rc.sub': 'Subtype', 'rc.ty': 'Kind', 'rc.pdate': 'Payment date', 'rc.cnt': 'Sales (pcs)', 'rc.st': 'Reversals', 'rc.n': 'Staff', 'rc.tot2': 'Total', 'rc.avg': 'Average', 'rc.max': 'Largest', 'rc.paid': 'Ready for payout', 'rc.reason': 'Reason', 'rc.count': 'Count', 'rc.topic': 'Topic', 'rc.codes': 'Codes', 'rc.role': 'Role', 'rc.users': 'Users', 'rc.active': 'Active'
   });
 
   var REP = [
@@ -74,7 +74,7 @@
         { key: 'rg', label: t('c.region'), val: function (r) { return IH.L(D.region(r.b.region).name); } },
         { key: 'n', label: t('rc.n'), num: true, search: false, val: function (r) { return r.n; } }]
         .concat(D.TKEYS.map(function (k) { return { key: k, label: tName(k), search: false, val: function (r) { return r[k]; }, render: function (r) { return '<div style="min-width:100px">' + ui.pcell(r[k]) + '</div>'; } }; }))
-        .concat([{ key: 'p', label: t('os.colProj'), num: true, search: false, val: function (r) { return r.pT1; }, render: function (r) { return run ? F.pct(r.pT1) : '<span class="mut">-</span>'; } }, { key: 'on', label: t('os.colOn'), num: true, search: false, val: function (r) { return r.on; }, render: function (r) { return r.on + ' / ' + r.n; } }, { key: 'bn', label: 'Bonus', num: true, search: false, val: function (r) { return r.bonus; }, render: function (r) { return F.num(r.bonus); } }])
+        .concat([{ key: 'p', label: t('os.colProj'), num: true, search: false, val: function (r) { return r['p' + D.TKEYS[0]]; }, render: function (r) { return run ? F.pct(r['p' + D.TKEYS[0]]) : '<span class="mut">-</span>'; } }, { key: 'on', label: t('os.colOn'), num: true, search: false, val: function (r) { return r.on; }, render: function (r) { return r.on + ' / ' + r.n; } }, { key: 'bn', label: 'Bonus', num: true, search: false, val: function (r) { return r.bonus; }, render: function (r) { return F.num(r.bonus); } }])
     });
   };
   R['ostvarenje-zaposleni'] = function () {

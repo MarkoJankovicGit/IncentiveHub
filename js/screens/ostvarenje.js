@@ -5,12 +5,12 @@
 
   IH.addStrings({
     'os.title': 'Dnevno ostvarenje', 'os.my': 'Moje ostvarenje',
-    'os.day': 'Dan {d} od {t}', 'os.daySub': 'podaci do {d}', 'os.netT1': 'Krediti - mreža', 'os.netT1s': 'od {t} · projekcija {p}', 'os.cost': 'Projektovani trošak', 'os.costS': 'savetnici i menadžeri, {p}',
-    'os.onTrack': 'Na putu ka targetu', 'os.onTrackS': 'savetnici, projekcija kredita ≥ 100%', 'os.lastLoad': 'Poslednji uvoz', 'os.lastLoadS': '{n} prodaja · {d}',
-    'os.daily': 'Plasman kredita po danu (RSD)', 'os.byBranch': 'Ostvarenje po ekspozituri', 'os.colProj': 'Projekcija kredita', 'os.colOn': 'Na putu', 'os.colBonus': 'Bonus (proj.)',
+    'os.day': 'Dan {d} od {t}', 'os.daySub': 'podaci do {d}', 'os.netT1': 'Računi - mreža', 'os.netT1s': 'od {t} · projekcija {p}', 'os.cost': 'Projektovani trošak', 'os.costS': 'savetnici i menadžeri, {p}',
+    'os.onTrack': 'Na putu ka targetu', 'os.onTrackS': 'savetnici, projekcija računa ≥ 100%', 'os.lastLoad': 'Poslednji uvoz', 'os.lastLoadS': '{n} prodaja · {d}',
+    'os.daily': 'Plasman kredita po danu (RSD)', 'os.byBranch': 'Ostvarenje po ekspozituri', 'os.colProj': 'Projekcija računa', 'os.colOn': 'Na putu', 'os.colBonus': 'Bonus (proj.)',
     'os.final': 'konačno', 'os.lic': 'Savetnici', 'os.team': 'Tim univerzalnih bankara - {p}', 'os.teamSub': 'timski faktor {f} · {n} člana', 'os.mgr': 'Menadžer ekspoziture',
     'os.targets': 'Ostvarenje po targetu', 'os.items': 'Prodaje', 'os.proj': 'projekcija {p}', 'os.members': 'Članovi tima', 'os.myShare': 'Moje prodaje u timskom targetu',
-    'os.colDate': 'Datum', 'os.colItem': 'Proizvod', 'os.colSeg': 'Segment', 'os.colPt': 'Vrsta', 'os.colType': 'Vrsta prodaje', 'os.colAmt': 'Iznos', 'os.colTg': 'Target', 'os.colVal': 'Vrednost za bonus', 'os.colSrc': 'Izvor', 'os.colClient': 'Klijent', 'os.none': 'Ne ulazi',
+    'os.colDate': 'Datum', 'os.colItem': 'Proizvod', 'os.colSeg': 'Segment', 'os.colPt': 'Vrsta', 'os.colType': 'Vrsta prodaje', 'os.colAmt': 'Iznos', 'os.colTg': 'KPI', 'os.colVal': 'Vrednost za bonus', 'os.colSrc': 'Izvor', 'os.colClient': 'Klijent', 'os.none': 'Ne ulazi',
     'it.priznato': 'Priznato', 'it.storno': 'Storno', 'it.nemapirano': 'Čeka mapiranje', 'it.mapirano': 'Mapirano naknadno', 'it.ceka': 'Čeka ponovni obračun', 'it.korigovano': 'Korigovano', 'it.rucno': 'Ručno dodato', 'it.iskljuceno': 'Isključeno', 'it.premesteno': 'Prebačeno drugom prodavcu',
     'it.why.priznato': 'Prodaja je priznata i ulazi u ostvarenje targeta {t}.', 'it.why.storno': 'Storno umanjuje ostvarenje targeta {t}.', 'it.why.nemapirano': 'Šifra {c} još nije povezana sa proizvodom u katalogu. Prodaja nije izgubljena - ulazi u obračun čim administrator mapira šifru.',
     'it.why.mapirano': 'Šifra {c} je mapirana naknadno; prodaja je uključena u obračun.', 'it.why.ceka': 'Izmena je evidentirana, a period je zaključen - ulazi u obračun pri ponovnom obračunu perioda.', 'it.why.korigovano': 'Prodaja je izmenjena korekcijom {k}; original je sačuvan.',
@@ -21,12 +21,12 @@
     'it.client': 'Klijent', 'it.contract': 'Broj ugovora / kredita', 'it.id': 'ID transakcije', 'it.pid': 'ID proizvoda', 'it.byProd': 'Prodaje po proizvodu', 'it.sold': 'Prodato', 'it.storno': 'Storno', 'it.amt': 'Iznos (RSD)', 'it.brItems': 'Prodaje ekspoziture', 'it.empId': 'ID zaposlenog', 'it.code': 'Šifra proizvoda (core)', 'it.toCorr': 'Korekcija prodaje', 'os.empty': 'Za izabrani period nema prodaja.', 'os.inCalc': 'Prodaja u obračunu', 'os.ofTotal': 'od ukupno {n}', 'os.afterMap': 'ulaze posle mapiranja / ponovnog obračuna', 'os.reduce': 'umanjuju ostvarenje'
   }, {
     'os.title': 'Daily achievement', 'os.my': 'My achievement',
-    'os.day': 'Day {d} of {t}', 'os.daySub': 'data as of {d}', 'os.netT1': 'Loans - network', 'os.netT1s': 'of {t} · projection {p}', 'os.cost': 'Projected cost', 'os.costS': 'advisors and managers, {p}',
-    'os.onTrack': 'On track to target', 'os.onTrackS': 'advisors, loan projection ≥ 100%', 'os.lastLoad': 'Last import', 'os.lastLoadS': '{n} sales · {d}',
-    'os.daily': 'Loan disbursement per day (RSD)', 'os.byBranch': 'Achievement by branch', 'os.colProj': 'Loan projection', 'os.colOn': 'On track', 'os.colBonus': 'Bonus (proj.)',
+    'os.day': 'Day {d} of {t}', 'os.daySub': 'data as of {d}', 'os.netT1': 'Accounts - network', 'os.netT1s': 'of {t} · projection {p}', 'os.cost': 'Projected cost', 'os.costS': 'advisors and managers, {p}',
+    'os.onTrack': 'On track to target', 'os.onTrackS': 'advisors, account projection ≥ 100%', 'os.lastLoad': 'Last import', 'os.lastLoadS': '{n} sales · {d}',
+    'os.daily': 'Loan disbursement per day (RSD)', 'os.byBranch': 'Achievement by branch', 'os.colProj': 'Account projection', 'os.colOn': 'On track', 'os.colBonus': 'Bonus (proj.)',
     'os.final': 'final', 'os.lic': 'Advisors', 'os.team': 'Universal banker team - {p}', 'os.teamSub': 'team factor {f} · {n} members', 'os.mgr': 'Branch manager',
     'os.targets': 'Achievement by target', 'os.items': 'Sales', 'os.proj': 'projection {p}', 'os.members': 'Team members', 'os.myShare': 'My sales in the team target',
-    'os.colDate': 'Date', 'os.colItem': 'Product', 'os.colSeg': 'Segment', 'os.colPt': 'Type', 'os.colType': 'Sale type', 'os.colAmt': 'Amount', 'os.colTg': 'Target', 'os.colVal': 'Value for bonus', 'os.colSrc': 'Source', 'os.colClient': 'Client', 'os.none': 'Not counted',
+    'os.colDate': 'Date', 'os.colItem': 'Product', 'os.colSeg': 'Segment', 'os.colPt': 'Type', 'os.colType': 'Sale type', 'os.colAmt': 'Amount', 'os.colTg': 'KPI', 'os.colVal': 'Value for bonus', 'os.colSrc': 'Source', 'os.colClient': 'Client', 'os.none': 'Not counted',
     'it.priznato': 'Recognised', 'it.storno': 'Reversal', 'it.nemapirano': 'Awaiting mapping', 'it.mapirano': 'Mapped later', 'it.ceka': 'Awaiting recalculation', 'it.korigovano': 'Adjusted', 'it.rucno': 'Manually added', 'it.iskljuceno': 'Excluded', 'it.premesteno': 'Moved to another seller',
     'it.why.priznato': 'The sale is recognised and counts toward target {t}.', 'it.why.storno': 'A reversal reduces the achievement of target {t}.', 'it.why.nemapirano': 'Code {c} is not yet linked to a catalogue product. The sale is not lost - it counts as soon as the administrator maps the code.',
     'it.why.mapirano': 'Code {c} was mapped later; the sale is included.', 'it.why.ceka': 'The change is recorded but the period is locked - it counts when the period is recalculated.', 'it.why.korigovano': 'The sale was changed by correction {k}; the original is kept.',
@@ -255,13 +255,13 @@
     var v = IH.v('os'), pid = v.per === '2026-Q3' ? '2026-Q3' : '2026-Q4', run = pid === '2026-Q4', di = D.daysInfo(pid);
     IH.refreshers.os = function () { IH.render(); };
     var rows = D.branches.map(function (b) { return branchStats(b.id, pid); });
-    var aT = rows.reduce(function (a, r) { return a + r.aT1; }, 0), tT = rows.reduce(function (a, r) { return a + r.tT1; }, 0);
-    var pT = rows.reduce(function (a, r) { return a + r.pT1 * r.tT1; }, 0) / (tT || 1);
+    var K0 = D.TKEYS[0], aT = rows.reduce(function (a, r) { return a + r['a' + K0]; }, 0), tT = rows.reduce(function (a, r) { return a + r['t' + K0]; }, 0);
+    var pT = rows.reduce(function (a, r) { return a + r['p' + K0] * r['t' + K0]; }, 0) / (tT || 1);
     var nOn = rows.reduce(function (a, r) { return a + r.on; }, 0), nL = rows.reduce(function (a, r) { return a + r.n; }, 0), cost = rows.reduce(function (a, r) { return a + r.bonus; }, 0);
     var lastLoad = (IH.loads ? IH.loads()[0] : null);
     var kp = '<div class="kpis">' +
       ui.kpi(run ? t('os.day', { d: di.done, t: di.total }) : D.periodLabel(pid), run ? F.pct(di.done / di.total) : t('os.final'), run ? t('os.daySub', { d: F.date(D.DATA_AS_OF) }) : t('pst.saglasnost')) +
-      ui.kpi(t('os.netT1'), F.mio(aT) + '<span class="u">RSD</span>', t('os.netT1s', { t: F.mio(tT), p: F.pct(run ? pT : aT / tT) }), { hl: true }) +
+      ui.kpi(t('os.netT1'), F.num(Math.round(aT)) + '<span class="u">' + t('u.kom') + '</span>', t('os.netT1s', { t: F.num(tT), p: F.pct(run ? pT : aT / tT) }), { hl: true }) +
       ui.kpi(t('os.onTrack'), nOn + ' / ' + nL, t('os.onTrackS')) +
       ui.kpi(t('os.cost'), F.mio(cost) + '<span class="u">RSD</span>', t('os.costS', { p: D.periodLabel(pid) })) +
       (lastLoad ? ui.kpi(t('os.lastLoad'), F.dt(lastLoad.at).slice(-5), t('os.lastLoadS', { n: F.num(lastLoad.acc), d: F.date(lastLoad.at) }), { go: 'ucitavanje' }) : '') + '</div>';
@@ -276,7 +276,7 @@
         { key: 'b', label: t('c.branch'), val: function (r) { return D.branchShort(r.b); }, render: function (r) { return '<b>' + IH.esc(D.branchShort(r.b)) + '</b>'; } },
         { key: 'rg', label: t('c.region'), val: function (r) { return IH.L(D.region(r.b.region).name); }, fval: function (r) { return r.b.region; }, filter: function () { return D.regions.map(function (x) { return { v: x.id, l: IH.L(x.name) }; }); } }
       ].concat(D.TKEYS.map(function (k) { return { key: k, label: tName(k), search: false, val: function (r) { return r[k]; }, render: function (r) { return '<div style="min-width:100px">' + ui.pcell(r[k]) + '</div>'; } }; })).concat([
-        { key: 'pT1', label: t('os.colProj'), num: true, search: false, val: function (r) { return r.pT1; }, render: function (r) { return run ? '<b style="color:' + (r.pT1 >= 1 ? 'var(--success)' : r.pT1 >= 0.8 ? 'var(--warning)' : 'var(--danger)') + '">' + F.pct(r.pT1) + '</b>' : '<span class="mut">' + t('os.final') + '</span>'; } },
+        { key: 'pT1', label: t('os.colProj'), num: true, search: false, val: function (r) { return r['p' + D.TKEYS[0]]; }, render: function (r) { return run ? '<b style="color:' + (r['p' + D.TKEYS[0]] >= 1 ? 'var(--success)' : r['p' + D.TKEYS[0]] >= 0.8 ? 'var(--warning)' : 'var(--danger)') + '">' + F.pct(r['p' + D.TKEYS[0]]) + '</b>' : '<span class="mut">' + t('os.final') + '</span>'; } },
         { key: 'on', label: t('os.colOn'), num: true, search: false, val: function (r) { return r.on; }, render: function (r) { return r.on + ' / ' + r.n; } },
         { key: 'bon', label: t('os.colBonus'), num: true, search: false, val: function (r) { return r.bonus; }, render: function (r) { return F.num(r.bonus); } }
       ]),
@@ -292,7 +292,7 @@
     var v = IH.v('os'), pid = v.per === '2026-Q3' ? '2026-Q3' : '2026-Q4', run = pid === '2026-Q4', mpid = run ? '2026-10' : '2026-09';
     var st = branchStats(bid, pid), mg = D.branchManager(bid), m2 = EN.m2(mg.id, pid, { project: run }), m3 = EN.m3(bid, mpid, { project: run });
     var kp = '<div class="kpis">' +
-      ui.kpi(tName('T1'), F.pct(st.T1), run ? t('os.proj', { p: F.pct(st.pT1) }) : t('os.final'), { hl: true }) +
+      ui.kpi(tName(D.TKEYS[0]), F.pct(st[D.TKEYS[0]]), run ? t('os.proj', { p: F.pct(st['p' + D.TKEYS[0]]) }) : t('os.final'), { hl: true }) +
       ui.kpi(t('os.onTrack'), st.on + ' / ' + st.n, t('os.onTrackS')) +
       ui.kpi(IH.L(L('Tim univerzalnih', 'Universal team')), F.pct(m3.payoutPct), D.periodLabel(mpid) + ' · ' + IH.L(L('timski faktor', 'team factor')) + ' ×' + F.num(m3.teamFactor, 1)) +
       ui.kpi(t('os.cost'), F.num(st.bonus + m3.total) + '<span class="u">RSD</span>', D.periodLabel(pid) + ' + ' + D.periodLabel(mpid)) + '</div>';

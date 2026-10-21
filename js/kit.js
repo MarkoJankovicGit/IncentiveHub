@@ -125,7 +125,7 @@
       return (i ? '<span class="sep">' + ic('chevr') + '</span>' : '') + '<a class="ps ' + st + '" href="#/' + o.base + '/' + (i + 1) + '"><span class="pn">' + (i < cur ? '✓' : i + 1) + '</span>' + s.label + '</a>';
     }).join('') + '</div>';
     var foot = '<div class="wz-foot"><span class="left">' + t('wz.step', { a: cur + 1, b: n }) + '</span>' +
-      ui.btn(t('c.fill'), { icon: 'edit', act: 'fill-form' }) +
+      ui.btn(t('c.fill'), { act: 'fill-form' }) +
       (o.cancelGo ? ui.btn(t('c.cancel'), { go: o.cancelGo }) : '') +
       (cur > 0 ? ui.btn(t('c.back'), { icon: 'chevl', go: o.base + '/' + cur }) : '') +
       (cur < n - 1 ? ui.btn(t('c.next'), { cls: 'primary', icon: 'arrow', go: o.base + '/' + (cur + 2) }) : ui.btn(o.finishLabel, { cls: 'primary', icon: 'check', act: o.finishAct })) +

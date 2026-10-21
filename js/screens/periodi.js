@@ -130,7 +130,7 @@
     if (p.lockedAt) h.push({ at: p.lockedAt, by: 'A001', action: { sr: 'Podaci zaključani', en: 'Data locked' } });
     if (p.calcAt) h.push({ at: p.calcAt, by: 'A001', action: { sr: 'Obračun pokrenut', en: 'Calculation run' } });
     if (p.sentAt) h.push({ at: p.sentAt, by: 'A001', action: { sr: 'Obračun poslat na saglasnost', en: 'Statements sent for consent' } });
-    if (p.paidAt) h.push({ at: p.paidAt + 'T12:00', by: 'A001', action: { sr: 'Isplaćeno', en: 'Paid' } });
+    if (p.paidAt) h.push({ at: p.paidAt + 'T12:00', by: 'A001', action: { sr: 'Spremno za isplatu', en: 'Ready for payout' } });
     h.sort(function (a, b) { return a.at < b.at ? 1 : -1; });
     IH.showHistory(IH.L(p.label), h);
   };

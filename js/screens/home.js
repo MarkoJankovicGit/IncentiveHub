@@ -10,9 +10,9 @@
     'h.att': 'Zahteva pažnju', 'h.aUnm': '{n} nemapiranih prodaja', 'h.aUnmS': 'Šifre: {c}', 'h.aOrg': '{n} promene u organizaciji', 'h.aOrgS': 'Iz noćnog uvoza', 'h.aCons': '{n} obračuna bez saglasnosti', 'h.aConsS': 'Rok {d}',
     'h.aPay': 'Septembar spreman za isplatu', 'h.aPayS': '{n} obračuna, {a} automatskih saglasnosti', 'h.aAssign': '{n} rasporeda čeka odobrenje', 'h.aAssignS': 'Odobrava menadžer', 'h.aLoad': 'Noćni uvoz završen', 'h.aLoadS': '1.284 prodaje · 06:12',
     'h.navBonus': 'Ukupno obračunat bonus', 'h.navCons': 'Dali saglasnost / ukupno', 'h.navCompl': 'Čekaju odluku menadžera', 'h.navUnm': 'Šifre koje nisu u katalogu', 'h.navBranch': 'Ostvarenje ekspoziture', 'h.navMine': 'Moje ostvarenje targeta', 'h.consTitle': 'Saglasnosti Q3 2026', 'h.flowTitle': 'Tok obračuna', 'h.qTitle': 'Q3 2026 - savetnici i menadžeri', 'h.mTitle': 'Septembar 2026 - timovi univerzalnih bankara',
-    'h.fLock': 'Zaključan', 'h.fCalc': 'Obračunat', 'h.fCtrl': 'Kontrola', 'h.fSend': 'Poslat', 'h.fCons': 'Saglasnosti', 'h.fPay': 'Isplata',
+    'h.fLock': 'Zaključan', 'h.fCalc': 'Obračunat', 'h.fCtrl': 'Kontrola', 'h.fSend': 'Poslat', 'h.fCons': 'Saglasnosti', 'h.fPay': 'Realizacija bonusa',
     'h.salesNet': 'Prodaja savetnika po mesecu', 'h.salesTeam': 'Prodaja ekspoziture po mesecu', 'h.salesMy': 'Moja prodaja po mesecu', 'h.loans': 'Krediti (RSD)', 'h.accs': 'Računi', 'h.cards': 'Kartice', 'h.toDate': 'do {d}',
-    'h.achBranch': 'Ostvarenje po ekspozituri - Q3 2026', 'h.achBanker': 'Ostvarenje po bankaru - Q4 2026', 'h.achDist': 'Raspodela bankara po ostvarenju kredita - Q3 2026', 'h.bankers': 'Bankara', 'h.costQ': 'Trošak bonusa po kvartalu',
+    'h.achBranch': 'Ostvarenje po ekspozituri - Q3 2026', 'h.achBanker': 'Ostvarenje po bankaru - Q4 2026', 'h.achDist': 'Raspodela savetnika po ostvarenju računa - Q3 2026', 'h.bankers': 'Bankara', 'h.costQ': 'Trošak bonusa po kvartalu',
     'h.top': 'Najbolji savetnici - projekcija Q4', 'h.struct': 'Struktura obračuna Q3', 'h.sTargets': 'Bonus po targetima', 'h.sCont': 'Kontinuitet', 'h.sStorno': 'Storno', 'h.sCarry': 'Prenos negativnog salda', 'h.sCap': 'Iznad limita',
     'h.byBranch': 'Pregled po ekspozituri - Q3 2026', 'h.colStaff': 'Zaposlenih', 'h.colAvgT1': 'Krediti', 'h.colAccs': 'Računi', 'h.colCards': 'Kartice', 'h.colOnT': 'Na targetu', 'h.colPaid': 'Bonus', 'h.colCons': 'Saglasnosti', 'h.colCompl': 'Prigovori',
     'h.proj': 'Projekcije', 'h.projNote': 'Projekcija je procena na tekućem tempu i nije obaveza',
@@ -33,9 +33,9 @@
     'h.att': 'Needs attention', 'h.aUnm': '{n} unmapped sales', 'h.aUnmS': 'Codes: {c}', 'h.aOrg': '{n} organisation changes', 'h.aOrgS': 'From the nightly import', 'h.aCons': '{n} statements without consent', 'h.aConsS': 'Due {d}',
     'h.aPay': 'September ready for payout', 'h.aPayS': '{n} statements, {a} auto-consents', 'h.aAssign': '{n} assignments await approval', 'h.aAssignS': 'Approved by the manager', 'h.aLoad': 'Nightly import done', 'h.aLoadS': '1,284 sales · 06:12',
     'h.navBonus': 'Total bonus calculated', 'h.navCons': 'Consented / total', 'h.navCompl': 'Awaiting manager decision', 'h.navUnm': 'Codes not in the catalogue', 'h.navBranch': 'Branch achievement', 'h.navMine': 'My target achievement', 'h.consTitle': 'Q3 2026 consents', 'h.flowTitle': 'Calculation flow', 'h.qTitle': 'Q3 2026 - advisors and managers', 'h.mTitle': 'September 2026 - universal banker teams',
-    'h.fLock': 'Locked', 'h.fCalc': 'Calculated', 'h.fCtrl': 'Checked', 'h.fSend': 'Sent', 'h.fCons': 'Consents', 'h.fPay': 'Payout',
+    'h.fLock': 'Locked', 'h.fCalc': 'Calculated', 'h.fCtrl': 'Checked', 'h.fSend': 'Sent', 'h.fCons': 'Consents', 'h.fPay': 'Bonus realization',
     'h.salesNet': 'Advisor sales per month', 'h.salesTeam': 'Branch sales per month', 'h.salesMy': 'My sales per month', 'h.loans': 'Loans (RSD)', 'h.accs': 'Accounts', 'h.cards': 'Cards', 'h.toDate': 'to {d}',
-    'h.achBranch': 'Achievement per branch - Q3 2026', 'h.achBanker': 'Achievement per banker - Q4 2026', 'h.achDist': 'Bankers by loan achievement - Q3 2026', 'h.bankers': 'Bankers', 'h.costQ': 'Bonus cost per quarter',
+    'h.achBranch': 'Achievement per branch - Q3 2026', 'h.achBanker': 'Achievement per banker - Q4 2026', 'h.achDist': 'Advisors by account achievement - Q3 2026', 'h.bankers': 'Bankers', 'h.costQ': 'Bonus cost per quarter',
     'h.top': 'Top advisors - Q4 projection', 'h.struct': 'Q3 calculation structure', 'h.sTargets': 'Bonus per targets', 'h.sCont': 'Continuity', 'h.sStorno': 'Reversals', 'h.sCarry': 'Negative balance carried', 'h.sCap': 'Above limit',
     'h.byBranch': 'Branch overview - Q3 2026', 'h.colStaff': 'Staff', 'h.colAvgT1': 'Loans', 'h.colAccs': 'Accounts', 'h.colCards': 'Cards', 'h.colOnT': 'On target', 'h.colPaid': 'Bonus', 'h.colCons': 'Consents', 'h.colCompl': 'Complaints',
     'h.proj': 'Projections', 'h.projNote': 'A projection is an estimate at the current pace, not a commitment',
@@ -100,7 +100,8 @@
     /* dijagrami */
     var lic = D.employees.filter(function (e) { return e.pos === 'licni'; });
     h += salesCharts(lic.map(function (e) { return e.id; }), ['2026-05', '2026-06', '2026-07', '2026-08', '2026-09', '2026-10'], t('h.salesNet'));
-    var rows = branchRows(), names = tNames();
+    /* ostvarenje ekspoziture: KPI-jevi šeme menadžera (krediti, računi, kartice ekspoziture) */
+    var rows = branchRows(), names = D.scheme('S-M2').targets.map(function (tc) { return IH.L(D.target(tc.id).name).split(' ')[0]; });
     var achB = ui.chartBars({ labels: rows.map(function (r) { return D.branchShort(r.b); }), series: [{ name: names[0], values: rows.map(function (r) { return r.p1; }) }, { name: names[1], values: rows.map(function (r) { return r.p2; }) }, { name: names[2], values: rows.map(function (r) { return r.p3; }) }], h: 210, fmt: function (v) { return F.pct(v); }, max: 1.5, marker: 1, markerLabel: '100%' });
     var buckets = [0, 0, 0, 0]; lic.forEach(function (e) { var p = EN.m1(e.id, '2026-Q3').targets[0].pct; buckets[p < 0.8 ? 0 : p < 1 ? 1 : p < 1.2 ? 2 : 3]++; });
     var dist = ui.chartBars({ labels: ['< 80%', '80-100%', '100-120%', '> 120%'], series: [{ name: t('h.bankers'), values: buckets, color: 'var(--c4)' }], h: 210, fmt: function (v) { return F.num(v); }, legend: false });
@@ -140,7 +141,7 @@
     h += IH.sech(t('h.myTargets', { p: 'Q4 2026' })) + targetCards(m2now, 'tim');
     h += salesCharts(lic.concat(uni).map(function (e) { return e.id; }), ['2026-07', '2026-08', '2026-09', '2026-10'], t('h.salesTeam'));
     var names = tNames();
-    var achB = ui.chartBars({ labels: proj.map(function (x) { return first(x.e.name) + ' ' + x.e.name.split(' ')[1].slice(0, 1) + '.'; }), series: [0, 1, 2].map(function (i) { return { name: names[i], values: proj.map(function (x) { return x.n.targets[i].pct; }) }; }), h: 210, fmt: function (v) { return F.pct(v); }, max: 1.5, marker: el, markerLabel: t('c.day', { d: D.daysInfo('2026-Q4').done, t: D.daysInfo('2026-Q4').total }) });
+    var achB = ui.chartBars({ labels: proj.map(function (x) { return first(x.e.name) + ' ' + x.e.name.split(' ')[1].slice(0, 1) + '.'; }), series: D.TKEYS.map(function (k, i) { return { name: names[i], values: proj.map(function (x) { return x.n.targets[i].pct; }) }; }), h: 210, fmt: function (v) { return F.pct(v); }, max: 1.5, marker: el, markerLabel: t('c.day', { d: D.daysInfo('2026-Q4').done, t: D.daysInfo('2026-Q4').total }) });
     var dec = '';
     complaints.forEach(function (c) { dec += ui.att({ tone: 'r', icon: 'msg', title: t('h.dCompl', { n: D.emp(c.emp).name }), sub: IH.esc(IH.L(c.subject)) + ' · ' + F.date(c.at), go: 'prigovori-tima' }); });
     pend.forEach(function (a) { dec += ui.att({ tone: 'a', icon: 'calendar', title: t('h.dAssign', { n: D.emp(a.emp).name }), sub: IH.esc(IH.L(a.note)), go: 'rasporedi-odobravanje' }); });
